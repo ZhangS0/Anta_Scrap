@@ -1,0 +1,170 @@
+# 零售日报 - 完整字段参考模板
+# 用法: anta-cli query -t retail_daily.reference
+# 说明: 本模板列出所有可用字段供参考，实际使用时请取消注释需要的字段
+
+report: retail_daily_descente
+
+# ===== 维度字段 (row) - 共 45 个 =====
+# 取消注释需要的维度字段：
+rows:
+  # 组织相关
+  # - 零售经理        # fdId: x658477d23b7841cf819a2bb
+  # - 办事处         # fdId: rc69aa49b9e1f47e195d3b0b
+  # - 省份          # fdId: a9d296999a3b64cb9b9ebdb3
+  # - 区域          # fdId: s1f59a3424f554c9a96816d6
+  # - 城市等级        # fdId: f562bdd05c01941658b8ca55
+
+  # 店铺相关
+  # - 店铺类型明细     # fdId: ua4a1861c7e6446b880eae15
+  # - 门店性质        # fdId: u897b5b7a31fe46adaba379a
+  # - 门店类型        # fdId: lf0e42461913945dc8cf0753
+  # - 经营类型        # fdId: q2e9bb884d9d544a6b2ff13a
+  # - 店铺编码        # fdId: ucd1ad149ec2d4a77bf768f3
+  # - 店铺等级编码     # fdId: t09160010294d4ccf95475ce
+  # - 店铺名称        # fdId: c228cf35113a54b9f9b21856
+  # - 店型          # fdId: va48fef34ceff4430922d097
+  # - 店铺楼层        # fdId: mb872ce28485f4ace9538fcd
+  # - 门店销售面积     # fdId: nf4fc65b2066e465d9b5b9a2
+
+  # 商场相关
+  # - 商场体系        # fdId: ge5c4c189dc4244838da61e5
+  # - 商场代码        # fdId: u3052f8d738d3458f836ec20
+  # - 商场名称        # fdId: e87ad31f0bf59463f85ac41f
+
+  # 品牌相关
+  # - 品牌大区        # fdId: af224d8814e984dcfa75f893
+  # - 渠道品牌        # fdId: l26cc843f46a74741a807ea7
+  # - 商品品牌        # fdId: lb98708b08f4145d29e57abe
+  # - 财务所属品牌     # fdId: ud9507cc5882c439396b1a54
+  # - 品牌终端形象     # fdId: p637147e2f1534b2198a6186
+
+  # 时间相关
+  # - 日历年份        # fdId: p1a8ca57975864bfbb58bfe0
+  # - 日历季度        # fdId: q1c1c50e0fc6b4405ba4ba5e
+  # - 日历月份        # fdId: g64bfc70b24af497a8affdef
+  # - 日历周数        # fdId: h07311ef5780a4d6ebeeb986
+  # - 日历日期        # fdId: sc83e4a2ef10442228a87bd2
+  # - 周几          # fdId: t75f509f993514ead96c2f53
+
+  # 其他
+  # - 同店类型        # fdId: f69db2a971c0d469a973643d
+  # - 是否同店        # fdId: wce7bf8e398ae49dea936eab
+  # - 月同店标识       # fdId: lc8f3ab03b45f40639f69438
+  # - 有效店标识       # fdId: v34692180ca4e439eb2d61cd
+  # - 有效店标识同期    # fdId: s1c513b696e2f48f49ba0868
+  # - 集合店属性       # fdId: od3fbb3f78a704352ba0ff1e
+  # - 区域编码        # fdId: a2d006c67eab4429a8f3ea01
+  # - 城市_映射       # fdId: sfa8ea390fa994a428f7796b
+  # - 顶特高         # fdId: s21c6cb545eaf47c4b6e41af
+  # - 灯塔店         # fdId: ie87d650a26684c7bbb3efcb
+  # - 重点店铺        # fdId: b927a54ceb9dc4a86bae52bd
+
+  # 开店/闭店/改造
+  # - 第一次开业日期   # fdId: q90cb9882a41d47f289b32ba
+  # - 闭店日期        # fdId: n73ee9bb9711a449287ac471
+  # - 最新改造类型     # fdId: t878a113ed7004819a95b7ea
+  # - 最近一次改造开始日期 # fdId: a7061c9e85efd421db66e5fc
+  # - 最近一次改造结束日期 # fdId: aa1780bea7eae4073bdbfe55
+
+  # 示例：选择常用维度
+  - 店铺类型明细
+
+# ===== 度量字段 (metric) - 共 73 个 =====
+# 取消注释需要的度量字段：
+metrics:
+  # 销售相关 (8个)
+  # - 销售吊牌金额同比   # fdId: secaf75fd6cf04ef9889899d
+  # - 销售吊牌金额     # fdId: g87419ac6fa9a42bfabe0844
+  # - 销售吊牌金额同期   # fdId: o389358331e954b8fa3d8b49
+  # - 销售数量同比     # fdId: n69d95f11b7d94e35a15f750
+  # - 销售数量       # fdId: bc98ffef7692442569c243e6
+  # - 销售数量同期     # fdId: w0a45b01e6ff24c9888564cf
+
+  # 小票相关 (8个)
+  # - 小票数同比      # fdId: ud16c5d58012d4e6bbb7aa1c
+  # - 小票数        # fdId: k217102dc439845d2bbd1c8b
+  # - 小票数同期      # fdId: i3a7edb05604844dab6e21d4
+  # - 单件小票数      # fdId: gf77fb625de584d98ac68cff
+  # - 单件小票数同期    # fdId: t75acb0cdb5bb4b7bb03235a
+
+  # 价格相关 (16个)
+  # - 客单价同比      # fdId: r4e188346c69844e4b9390ad
+  # - 客单价        # fdId: f7f4ec318763544c48ea1850
+  # - 客单价同期      # fdId: u5c7c98e862f1425187350df
+  # - 件单价同比      # fdId: ad49dbb4aa9b34bbeb02f682
+  # - 件单价        # fdId: a01834cc505cd42a489dc762
+  # - 件单价同期      # fdId: t53f79d1b0b6c4f789f3022d
+  # - 平均牌价同比     # fdId: r6e8efbf6cc554869ab8726b
+  # - 平均牌价       # fdId: m3dc4a8d666fc4313b0ee788
+  # - 平均牌价同期     # fdId: ubdb01585e1a84b938d6f98b
+  # - 折扣         # fdId: m054336729c1249a8856ab83
+  # - 折扣同期       # fdId: obd2bf1dd5eab4507a01bd81
+  # - 折扣同比       # fdId: r8a4480a4ff294ddb8cd07aa
+
+  # 其他指标 (8个)
+  # - 连带率同比_1    # fdId: fc98c88839cfd4d9c88b9c72
+  # - 连带率        # fdId: bec0f2980e3a946a39a006b1
+  # - 连带率同期      # fdId: u4e83752758bc4536a24ae54
+  # - 单件占比同比     # fdId: d310221e885334402a2d6870
+  # - 单件占比       # fdId: lf24d6eb22932478ea35eb7d
+  # - 单件占比同期     # fdId: x8dea7eaa057e4e3492fd2c5
+
+  # 同店相关 (12个)
+  # - 同店销售吊牌金额   # fdId: wf630dffb9a2d4e3eb12fab5
+  # - 同店销售吊牌金额同期 # fdId: b1407bfd0bb6f49f49cd7aaf
+  # - 同店销售吊牌金额同比 # fdId: g4de7c373032f4a84b8a4629
+  # - 同店销售数量     # fdId: j65f5c72e1e494c268dc18ca
+  # - 同店销售数量同期   # fdId: t414e8a8bb7384a979e8f4b6
+  # - 同店销售数量同比   # fdId: w19e6ee4872f74d3c82fd367
+  # - 同店小票数      # fdId: s9d97c56d912d4b5aa1a6175
+  # - 同店小票数同期    # fdId: cc078166801134d14a536e93
+  # - 同店小票数同比    # fdId: mc01dcab4e7f146e3bbdc164
+
+  # 预算相关 (2个)
+  - 预算流水目标     # fdId: w9729fc9586a44817a4538fd
+  # - 预算达成       # fdId: j280fb685f61c48349cef132
+
+  # 客流相关 (25个)
+  # - 客流有效天数（店+天） # fdId: p53dec5e2909c43ddb5eb7a4
+  # - 店外客流       # fdId: of3a6f13f5fc74d0eaf86c5f
+  # - 进店客流       # fdId: x58a3626951724a6c94115ab
+  # - 进店率        # fdId: hfbdae27c27d5469a946750a
+  # - 进店率同期      # fdId: sb8e5c08a0c9a4b2c8f73b2f
+  # - 进店率同比      # fdId: k6805bb23b1b3498b940f784
+  # - 日均进店客流     # fdId: qa89cf745a9c749b0bc7b44d
+  # - 日均进店客流同期   # fdId: obd1fdb2d72ba406c8e18d8e
+  # - 日均进店客流同比   # fdId: i2641992962d44b9c965e06f
+  # - 成交率        # fdId: qcba8023916b44531a14351e
+  # - 成交率同期      # fdId: b3d4d3acee31943c7a92abb3
+  # - 成交率同比      # fdId: kd55c44034fdc486e8a82d0e
+  # - 客流小票数      # fdId: u821e18abc5364382a118333
+  # - 客流小票数同期    # fdId: ed0b5372f9f634e61b285971
+
+  # 流水相关 (9个)
+  #- 零售流水目标     # fdId: xa0905785640141c2a9e1048
+  #- 零售达成       # fdId: j489f36cba6564030a81c37e
+  - 流水         # fdId: n3e27079318a4444bb6acbb0
+  - 流水同期       # fdId: v2148c403a7044ef08127a58
+  - 流水同比       # fdId: x65ff25a46dc147baa25216a
+  # - 同店流水       # fdId: x943d5a03ed5d439c846fe78
+  # - 同店流水同期     # fdId: f88633a7ee29b4664834cc0c
+  # - 同店流水同比     # fdId: baa5ef05ddca9495d829aa15
+  # - 有效流水       # fdId: e96baef8253b14566962551a
+
+# ===== 筛选条件 (filters) =====
+# 可用的筛选字段（需要先在 rows 或 columns 中声明）：
+# - 渠道品牌       (sourceCdId: me03a1f830c364f44989e8a6)
+# - 商品品牌       (sourceCdId: a9fc640f1ce7d42c788df11b)
+# - 区域           (sourceCdId: v2ccab58704084c55914ea29)
+# - 其他字段可作为筛选条件使用
+filters:
+  - { name: 渠道品牌, values: [DESCENTE] }
+  - { name: 商品品牌, values: [迪桑特] }
+  - { name: 区域, values: [迪桑特-华东区] }
+# ===== 动态参数 (日期范围) =====
+dynamic_params:
+  开始日期-户外-R02: "2026-07-01"  # dpId: o944f3df227424be599bf18f
+  结束日期-户外-R02: "2026-07-29"  # dpId: k66f14015af12438c86fe041
+
+# ===== 其他参数 =====
+limit: 50  # 每页行数

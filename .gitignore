@@ -1,0 +1,20 @@
+# 凭证与本地状态
+.env
+credentials.json
+*.local
+
+# 输出文件
+*.xlsx
+*.csv
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# HAR 文件不进库
+*.har

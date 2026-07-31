@@ -1,0 +1,70 @@
+# KOLON 零售日报 - 完整字段参考模板
+# 用法: anta-cli query -t retail_daily_kolon.reference
+
+report: retail_daily_kolon
+
+# ===== 维度字段 (row) - 共 35 个 =====
+rows:
+  # - 日历日期                  # fdId: sc83e4a2ef10442228a87bd2
+  # - 渠道品牌                  # fdId: l26cc843f46a74741a807ea7
+  # - 店铺编码                  # fdId: ucd1ad149ec2d4a77bf768f3
+  # - 店铺名称                  # fdId: c228cf35113a54b9f9b21856
+  # - 品牌大区                  # fdId: af224d8814e984dcfa75f893
+  # - 集合店属性                 # fdId: od3fbb3f78a704352ba0ff1e
+  # - 日历周数                  # fdId: rac536ed8478240dbb3d1a80
+  # - 日历月份                  # fdId: g64bfc70b24af497a8affdef
+  # - 日历季度                  # fdId: q1c1c50e0fc6b4405ba4ba5e
+  # - 日历年份                  # fdId: p1a8ca57975864bfbb58bfe0
+  # - 销售主管/经理               # fdId: m22bd3f584b0c46db9067650
+  # - 办事处编码                 # fdId: tdd5c8d4357e44c978de8b95
+  # - 办事处                   # fdId: rc69aa49b9e1f47e195d3b0b
+  # - 省份                    # fdId: a9d296999a3b64cb9b9ebdb3
+  # - 城市_映射                 # fdId: i08cdc3965d5d42f6b0f424f
+  # ... 还有 20 个维度字段
+
+  # 示例：选择常用维度
+  - 日历日期
+  - 渠道品牌
+  - 店铺名称
+  - 省份
+
+# ===== 度量字段 (metric) - 共 101 个 =====
+metrics:
+  # - 流水                    # fdId: n3e27079318a4444bb6acbb0
+  # - 零售流水目标                # fdId: xa0905785640141c2a9e1048
+  # - 零售达成                  # fdId: j489f36cba6564030a81c37e
+  # - 流水同期                  # fdId: v2148c403a7044ef08127a58
+  # - 流水同比                  # fdId: x65ff25a46dc147baa25216a
+  # - 同店流水                  # fdId: x943d5a03ed5d439c846fe78
+  # - 同店流水同期                # fdId: f88633a7ee29b4664834cc0c
+  # - 同店流水同比                # fdId: baa5ef05ddca9495d829aa15
+  # - 预算达成                  # fdId: j280fb685f61c48349cef132
+  # - 日均进店客流同期              # fdId: hc9d0a9ad56e94c2d8dcdf83
+  # - 日均进店客流                # fdId: jffb43e4a350f4fb69a964e9
+  # - 有效店标识                 # fdId: v5a21513a35a6420faf8e845
+  # - 预算流水目标                # fdId: w9729fc9586a44817a4538fd
+  # - 挑战目标                  # fdId: s389fe92d37524062bfe0d90
+  # - 挑战达成                  # fdId: u9d5794c7864c40ecafd238e
+  # - 销售吊牌金额                # fdId: g87419ac6fa9a42bfabe0844
+  # - 销售数量                  # fdId: bc98ffef7692442569c243e6
+  # - 小票数                   # fdId: k217102dc439845d2bbd1c8b
+  # - 折扣                    # fdId: m054336729c1249a8856ab83
+  # - 连带率                   # fdId: bec0f2980e3a946a39a006b1
+  # ... 还有 81 个度量字段
+
+  # 示例：选择常用指标
+  - 流水
+  - 预算流水目标
+  - 达成率
+  - 流水同比
+
+# ===== 筛选条件 =====
+filters:
+  # - { name: 渠道品牌, values: [KOLON] }
+
+# ===== 动态参数 =====
+dynamic_params:
+  开始日期-户外-R02: "2026-07-22"
+  结束日期-户外-R02: "2026-07-29"
+
+limit: 50

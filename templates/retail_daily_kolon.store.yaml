@@ -1,0 +1,28 @@
+# KOLON 店效查询模板
+# 基于 \test\零售日报查询_可隆_店效.har 的完整查询配置
+# 用法: .venv/Scripts/python.exe -m anta_scrap.cli export -t retail_daily_kolon.store --format csv
+
+report: retail_daily_kolon
+
+# 维度字段（2个）
+rows:
+  - 店铺类型明细
+  - 门店性质
+
+# 指标字段（1个）
+metrics:
+  - 流水
+
+# 筛选条件（2个）
+filters:
+  - { name: 渠道品牌, values: [KOLON] }
+  - { name: 区域, values: [可隆-华东] }
+
+# 日期范围
+dynamic_params:
+  开始日期-户外-R02: "2026-07-01"
+  结束日期-户外-R02: "2026-07-29"
+
+# 分页
+limit: 50
+offset: 0
