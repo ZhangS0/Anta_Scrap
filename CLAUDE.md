@@ -17,15 +17,13 @@ python scripts/anta_login.py
 # 或
 anta-cli login
 
-# 列字段 / 查询 / 导出
-anta-cli fields
-anta-cli query -t retail_daily.default
-anta-cli query --all
-anta-cli export --format xlsx
-anta-cli export --format csv
+# 导出 CSV（report 可省略，默认取模板里的 report 字段）
+anta-cli export -t retail_daily_descente.default
+anta-cli export -t retail_daily_kolon.default --name kolon_daily
 
-# 注意：当前 shell 默认可能指向 hermes-agent 的 venv Python，跑 CLI 要显式用系统 Python：
-"C:/Users/ZHANGSONG/AppData/Local/Programs/Python/Python312/python.exe" -m anta_scrap.cli <cmd>
+# 注意：项目自带的 .venv（Python 3.13）已 editable 安装本包。PowerShell 里先激活：
+#   .\.venv\Scripts\Activate.ps1
+# 激活后 anta-cli 直接可用；或用完整路径 .\.venv\Scripts\anta-cli.exe <cmd>
 ```
 
 无单元测试套件；验证方式是跑 CLI 看真实接口返回（HAR 文件 `datav.anta.com.har` 是验证 truth 的来源，20MB 不进库）。
@@ -45,10 +43,10 @@ BI API
 ```
 
 **模块边界**：
-- `auth/` 不依赖任何报表概念；只负责 CAS+OAuth2 登录、凭证持久化、Session。
-- `client.py` 不依赖任何报表；只负责带 header 的 HTTP 原语 + 通用轮询。
+- `auth/` 不依赖任何报表概念；只负责 CAS+OAuth2 登录、凭证持久化、Session（含导出前的凭证校验/续期）。
+- `client.py` 不依赖任何报表；只负责带 header 的 HTTP 原语。
 - `reports/base.py:BaseReport` 是抽象基类；`reports/<name>.py` 子类提供 `page_id`/`card_id`/`default_template()`。
-- `paging.py` / `export.py` / `templates.py` / `io_utils.py` 都接受 `BaseReport` 实例，不感知具体报表。
+- `export.py` / `templates.py` 都接受 `BaseReport` 实例，不感知具体报表。
 - **新增报表的 3 步**：写 `reports/<name>.py` 子类 → 在 `config.py:get_report_registry()` 注册 → 加 `templates/<name>.default.yaml`。
 
 ## 关键约定（踩坑总结，改 BI 相关代码必读）
@@ -102,18 +100,28 @@ POST /api/export/file/common/{taskId}            → 二进制流
 - 轮询响应在裸态时 `status` 在顶层，包装态时在 `response.status`，`poll_task` 两种都兼容
 - 文件名从 `content-disposition` 解析；Windows 落盘前用 `re.sub(r'[\\/:*?"<>|]', "_", name)` 替换非法字符
 
-### 8. JWT 14 天有效期
-登录后 `exp` 是签发时间 +14 天（1209600 秒）。`auth/login.py:_decode_jwt_exp` 从 JWT payload 解出 `exp` 存入 `Credentials.expires_at`。当前未实现 refresh_token 续期；过期直接重跑 `anta_login`。
+### 8. JWT 14 天有效期 + 全自动凭证恢复
+登录后 `exp` 是签发时间 +14 天（1209600 秒）。`auth/login.py:_decode_jwt_exp` 从 JWT payload 解出 `exp` 存入 `Credentials.expires_at`。
 
-### 9. 登录链路（auth/login.py）
-CAS + OAuth2 混合：
+`AntaSession.ensure()`（每次 CLI 调用入口）自动校验并恢复凭证，**无需人工重登**：
+1. 校验两个维度：本地 `expires_at` + 服务端 `/api/validate-token`（会话可能被顶号/登出提前作废）
+2. 任一失效 → 先 `refresh_credentials()`（CAS 标准 `POST /oauth2.0/token`，未经成功样本验证）
+3. refresh 失败 → 用 `.env` 的 `ANTA_USERNAME/ANTA_PASSWORD/ANTA_DOM_ID` 走完整 `login()` 自动重登（2026-08 实测成功）
+4. 都失败才抛 `SessionExpired`（如密码已改、触发验证码）
+
+前提：`.env` 里配置了账号密码（`config.py` 启动时加载）。
+
+### 9. 登录链路（auth/login.py，2026-08 实测）
+**必须从 datav 侧发起**，不能用硬编码 state 从 CAS 侧发起（state 内嵌 datav 生成的 token，`authenticate` 端点会校验，伪造 state 会 500 `Error processing async result`）：
 ```
-GET  登录页（带 service 参数）→ 抓 execution（CAS Webflow token）
-POST 表单（username/password/execution/loginTraceId/...）→ 302 带 ticket
-GET  /oauth2.0/callbackAuthorize?ticket=...  → 302 到 datav
-GET  datav.anta.com/?access_token=AT-xxx&refresh_token=RT-xxx  → set-cookie: uIdToken=<JWT>
+GET  datav /standard-oauth2/authenticate（无 code）
+  → 303 CAS /oauth2.0/authorize?...&state=<datav 生成>  → 302 CAS 登录页
+POST 表单（username/password/execution/loginTraceId/...）
+  → callbackAuthorize → authorize → datav authenticate?code=...（303）
+  → datav.anta.com/?access_token=AT-xxx&refresh_token=RT-xxx
+GET  该 URL → set-cookie: uIdToken=<JWT>（httponly）
 ```
-JWT 在 cookie `uIdToken` 里（httponly），不在 HTML 或响应体。`loginTraceId` 抓不到时用随机 32 位 hex 兜底；`execution` 抓不到时用 `e1s1` 兜底。
+全程单一 httpx Client 共享 cookie（CAS 的 TGC 会话）。JWT 在 cookie `uIdToken` 里，不在 HTML 或响应体。`loginTraceId` 抓不到时用随机 32 位 hex 兜底；`execution` 抓不到时用 `e1s1` 兜底。
 
 ## 模板系统（templates/）
 
@@ -132,6 +140,5 @@ limit: 50
 
 ## 已知遗留问题
 
-- **查询数据 DataFrame 列名是 `col_0/col_1/...`**：`raw-backend-response` 响应的 data 单元格是 `{v:val}` 结构，无列名。导出的 xlsx/csv 由服务端生成有正确列名，所以只影响 CLI 终端展示。修复需从 `chartMain.column` 解析列名映射。
-- **`fetch_max_pages` 的 summary 文案**：当 max-pages > 1 时仍显示"当前仅读取第 1 页"，应按实际页数动态生成。
-- **无 refresh_token 续期**：JWT 过期前没有自动刷新，过期后必须重跑 `anta_login`。
+- **refresh 续期路径未验证**：`refresh_credentials()` 走 CAS 标准 `POST /oauth2.0/token`，未拿到成功样本（活 refresh_token 尚未经历过到期）。不重要：失败会自动落到完整重登（已实测成功）。
+- **会话中途凭证失效不自动恢复**：校验/恢复只在 `ensure()` 入口（每次 CLI 调用都经过）；单次导出任务进行中被服务端作废（error_code 1018）会直接抛 `AntaAPIError`，重跑命令即可自动恢复。

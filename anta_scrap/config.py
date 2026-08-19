@@ -19,6 +19,8 @@ USER_HOME = Path(os.path.expanduser("~"))
 ANTA_HOME = USER_HOME / ".anta_scrap"
 ANTA_HOME.mkdir(parents=True, exist_ok=True)
 CREDENTIALS_FILE = ANTA_HOME / "credentials.json"
+# 账号密码本地存储（多用户，明文 0600）：{username: {"password": str, "dom_id": str}}
+ACCOUNTS_FILE = ANTA_HOME / "accounts.json"
 
 # 项目内模板目录
 TEMPLATES_DIR = PROJECT_ROOT / "templates"
@@ -41,10 +43,12 @@ def env_required(key: str) -> str:
 def get_report_registry() -> Dict[str, Type]:
     from anta_scrap.reports.retail_daily_descente import RetailDailyDescenteReport
     from anta_scrap.reports.retail_daily_kolon import RetailDailyKolonReport
+    from anta_scrap.reports.retail_traffic_descente import RetailTrafficDescenteReport
 
     return {
         "retail_daily_descente": RetailDailyDescenteReport,
         "retail_daily_kolon": RetailDailyKolonReport,
+        "retail_traffic_descente": RetailTrafficDescenteReport,
     }
 
 

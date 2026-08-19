@@ -5,23 +5,16 @@
 可选重写：
     default_template() —— 返回该报表的默认 QueryParams（作为本地 YAML 模板的兜底）
 
-字段名 → fdId 的映射通过 dump_fields() 拉一次页面元数据并缓存到实例。
+字段名 → fdId 的映射通过 fetch_meta() 拉一次页面元数据并缓存到实例。
 """
 
 from __future__ import annotations
 
-import json
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from anta_scrap.client import AntaClient
-from anta_scrap.models import (
-    DynamicParam,
-    FieldDef,
-    FilterItem,
-    Page,
-    QueryParams,
-)
+from anta_scrap.models import FieldDef, QueryParams
 
 
 class BaseReport(ABC):
@@ -143,34 +136,10 @@ class BaseReport(ABC):
             + (f" 但有 {len(cands)} 个同名异 ds 候选: {cands[:5]}" if cands else "")
         )
 
-    def dump_fields(self) -> Dict[str, List[str]]:
-        """打印可用字段分类清单。返回 dict 便于程序化使用。"""
-        meta = self.fetch_meta()
-        dims = [n for n, f in self._fields_by_name.items() if f.meta_type == self.META_TYPE_DIM]
-        metrics = [n for n, f in self._fields_by_name.items() if f.meta_type == self.META_TYPE_METRIC]
-        others = [n for n, f in self._fields_by_name.items() if f.meta_type not in (self.META_TYPE_DIM, self.META_TYPE_METRIC)]
-        return {"dimensions": sorted(dims), "metrics": sorted(metrics), "others": sorted(others)}
-
-    def dump_dynamic_params(self) -> List[dict]:
-        """列出报表定义的 dynamicParams（日期等）。"""
-        meta = self.fetch_meta()
-        cards = meta.get("cards", []) or []
-        out = []
-        for card in cards:
-            if card.get("cdId") == self.card_id or card.get("id") == self.card_id:
-                for dp in card.get("dynamicParams", []) or []:
-                    out.append({
-                        "dpId": dp.get("dpId"),
-                        "name": dp.get("name"),
-                        "valueType": dp.get("valueType"),
-                        "defaultValue": dp.get("defaultValue"),
-                    })
-        return out
-
     # ---------- 构造 payload ----------
 
     def build_payload(self, params: QueryParams) -> dict:
-        """把 QueryParams 翻译成 /api/card/{id}/data 的请求体。"""
+        """把 QueryParams 翻译成 /api/write/file/{card_id} 的请求体。"""
         import uuid
 
         zd = {
@@ -213,39 +182,3 @@ class BaseReport(ABC):
             },
             "taskRequestId": str(uuid.uuid4()),
         }
-
-    # ---------- 查询 ----------
-
-    def query(self, params: QueryParams) -> Page:
-        payload = self.build_payload(params)
-        # 与 HAR 一致，带 raw-backend-response 头 + referer 防 CSRF
-        resp = self.client.post_json(
-            f"/api/card/{self.card_id}/data",
-            body=payload,
-            headers={
-                "raw-backend-response": "TRUE",
-                "referer": f"https://datav.anta.com/page/{self.page_id}",
-            },
-        )
-        data = resp.json()
-        cm = data.get("response", {}).get("chartMain", {})
-        return Page(
-            rows=cm.get("data", []) or [],
-            column_defs=_as_list(cm.get("column")),
-            count=int(cm.get("count", 0) or 0),
-            has_more=bool(cm.get("hasMoreData", False)),
-            limit=int(cm.get("limit", params.limit) or params.limit),
-            offset=int(cm.get("offset", params.offset) or params.offset),
-        )
-
-
-def _as_list(x: Any) -> List[dict]:
-    if isinstance(x, list):
-        return x
-    if isinstance(x, dict):
-        # HAR 中 column 是 dict[5]，可能含 columns 子数组
-        for k in ("columns", "list", "items"):
-            if isinstance(x.get(k), list):
-                return x[k]
-        return [x]
-    return []

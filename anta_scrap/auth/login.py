@@ -1,13 +1,17 @@
-"""CAS + OAuth2 登录链路。
+"""CAS + OAuth2 自动登录链路。
 
-流程（HAR 验证）：
-  1. GET  登录页（带 service 参数）→ 从 HTML 抓 execution / loginTraceId 兜底
-  2. POST 登录表单 → 302 带 ticket → /oauth2.0/callbackAuthorize
-  3. GET  callbackAuthorize → 302 → datav.anta.com/?access_token=AT-xxx&refresh_token=RT-xxx
-  4. GET  datav.anta.com/  → 触发后端用 access_token 兑换 JWT
-  5. GET  /api/validate-token（带 JWT） → 200 表示登录态 OK，顺便确认 user-id / dom-id
+流程（实测验证，2026-08）：
+  1. GET  datav /standard-oauth2/authenticate（无 code）
+       → 303 到 CAS /oauth2.0/authorize，携带 datav 自己生成的 state（内嵌 token，
+         authenticate 端点会校验；硬编码旧 state 会 500）
+       → 302 到 CAS 登录页
+  2. POST 登录表单（username/password/execution/...）
+       → 跳转链：callbackAuthorize → authorize → datav authenticate?code=...
+       → 303 到 datav.anta.com/?access_token=AT-xxx&refresh_token=RT-xxx
+  3. GET  最终 URL → set-cookie: uIdToken=<JWT>（httponly）
+  4. GET  /api/validate-token（带 JWT）→ 200 表示登录态 OK
 
-登录页 service 参数固定（datav 的 OAuth client_id=100068），无需用户传。
+全程用一个 httpx Client 共享 cookie（CAS 会话 TGC 等）。
 """
 
 from __future__ import annotations
@@ -17,17 +21,18 @@ import re
 import secrets
 from dataclasses import dataclass
 from typing import Optional
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urljoin, urlparse
 
 import httpx
 
 from anta_scrap.auth.token_store import Credentials, save_credentials
 from anta_scrap.config import CREDENTIALS_FILE
 
-# datav 在 CAS 的 OAuth client 配置（HAR 固定值）
+DATAV_AUTHORIZE_ENTRY = "https://datav.anta.com/standard-oauth2/authenticate"
+
+# refresh_credentials 用的 CAS OAuth client 配置（HAR 固定值）
 CLIENT_ID = "100068"
 REDIRECT_URI = "https://datav.anta.com/standard-oauth2/authenticate"
-STATE_DEFAULT = "1-b84e57bdfa4ef36fc34c207aef983d51baf49832-Y3NyZi1zdGF0ZQ=="
 
 
 class LoginError(RuntimeError):
@@ -52,28 +57,26 @@ def login(
     show_sensitive=True 时在异常里回显响应片段，便于排查。
     """
     with httpx.Client(
-        follow_redirects=False,  # 手动跟，便于在每步抓 token
+        follow_redirects=False,  # 手动跟跳转，便于在每步抓 token / 定位失败点
         timeout=30.0,
         headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/150.0.0.0 Safari/537.36"
-            ),
+            "User-Agent": _DEFAULT_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
-    ) as cli:
-        # 步骤 1：拉登录页，抓 execution
-        service = _build_service_url()
-        login_page_url = f"https://auth.anta.com/login?service={service}"
-        page = cli.get(login_page_url)
-        if page.status_code >= 400:
-            raise LoginError(f"拉取登录页失败: {page.status_code} {page.text[:200]}")
-        execution = _extract_execution(page.text)
-
+    ) as web:
+        # 步骤 1：从 datav 发起 OAuth，跟到 CAS 登录页
+        r = _follow_redirects(web, web.get(DATAV_AUTHORIZE_ENTRY))
+        if "auth.anta.com/login" not in str(r.url) or r.status_code >= 400:
+            raise LoginError(
+                f"OAuth 发起后未落到 CAS 登录页: {r.status_code} {r.url}"
+                + (f" 响应片段: {r.text[:300]}" if show_sensitive else "")
+            )
+        login_page_url = str(r.url)
+        execution = _extract_execution(r.text)
         # loginTraceId：HAR 中是 32 位 hex；优先从 HTML 抓，抓不到随机生成
-        login_trace_id = _extract_login_trace_id(page.text) or secrets.token_hex(16)
+        login_trace_id = _extract_login_trace_id(r.text) or secrets.token_hex(16)
 
-        # 步骤 2：POST 登录表单
+        # 步骤 2：POST 登录表单，跟完整跳转链到 /?access_token=...
         form = {
             "pVersion": "1.1",
             "pReadTime": "",
@@ -85,7 +88,7 @@ def login(
             "loginWay": "7",
             "clientId": "",
             "redirect_uri": "",
-            "service": service,
+            "service": login_page_url,
             "dingLoginTmpCode": "",
             "username": username,
             "password": password,
@@ -95,60 +98,32 @@ def login(
             "smsCaptcha": "",
             "loginTraceId": login_trace_id,
         }
-        login_resp = cli.post(
-            login_page_url,
-            data=form,
-            headers={"Referer": login_page_url},
-        )
-        if login_resp.status_code not in (301, 302):
+        login_resp = web.post(login_page_url, data=form, headers={"Referer": login_page_url})
+        if login_resp.status_code not in (301, 302, 303):
             raise LoginError(
                 f"登录未跳转（status={login_resp.status_code}），"
                 f"账号密码可能错误或触发验证码。"
                 + (f"响应片段: {login_resp.text[:300]}" if show_sensitive else "")
             )
-        callback_url = login_resp.headers["location"]
-        if "ticket=" not in callback_url:
-            raise LoginError(f"登录跳转缺少 ticket: {callback_url}")
+        final = _follow_redirects(web, login_resp)
+        final_url = str(final.url)
 
-        # 步骤 3：GET callbackAuthorize → 连续跳转 → datav.anta.com/?access_token=...
-        #   callbackAuthorize 302 → /standard-oauth2/authenticate 302 → datav.anta.com/?access_token=...&refresh_token=...
-        #   开启 follow_redirects 跟完整个跳转链，然后从最终 URL 解析 token
-        with httpx.Client(
-            follow_redirects=True,
-            timeout=30.0,
-            headers={
-                "User-Agent": cli.headers["User-Agent"],
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            },
-        ) as web:
-            final = web.get(callback_url)
-            final_url = str(final.url)
-
-        parsed = urlparse(final_url)
-        qs = parse_qs(parsed.query)
+        qs = parse_qs(urlparse(final_url).query)
         access_token = _first(qs, "access_token")
         refresh_token = _first(qs, "refresh_token")
         if not access_token or not refresh_token:
-            # 兜底：token 也可能落在 cookie 或响应体重定向里
-            access_token = access_token or _cookie_token(web, "access_token")
-            refresh_token = refresh_token or _cookie_token(web, "refresh_token")
-        if not access_token or not refresh_token:
             raise LoginError(
-                f"登录跳转链结束后未拿到 access_token/refresh_token。最终 URL: {final_url}"
+                f"登录跳转链结束后未拿到 access_token/refresh_token。"
+                f"最终: {final.status_code} {final_url} "
+                + (f"响应片段: {final.text[:200]}" if show_sensitive else "")
             )
 
-        # 步骤 4：访问 datav 首页，触发后端用 access_token 签发 JWT
-        with httpx.Client(
-            follow_redirects=True,
-            timeout=30.0,
-            headers={"User-Agent": cli.headers["User-Agent"]},
-        ) as web:
-            home = web.get(f"https://datav.anta.com/?access_token={access_token}&provider=standardoauth2&refresh_token={refresh_token}")
-            jwt = _extract_jwt_from_cookies(web) or _extract_jwt_from_html(home.text)
-
+        # 步骤 3：访问带 token 的首页，后端签发 JWT（cookie uIdToken，httponly）
+        web.get(final_url)
+        jwt = _extract_jwt_from_cookies(web)
         if not jwt:
             raise LoginError(
-                "登录后未能从首页拿到 JWT（cookie uIdToken 缺失）。"
+                "登录后未能从 cookie uIdToken 拿到 JWT。"
                 "可手动访问 https://datav.anta.com 并从 DevTools 复制 token header。"
             )
 
@@ -164,9 +139,10 @@ def login(
             expires_at=_decode_jwt_exp(jwt),
         )
 
-        # 步骤 5：校验
+        # 步骤 4：校验
         save_credentials(creds, CREDENTIALS_FILE)
-        _verify_token(creds)
+        if not verify_token(creds):
+            raise LoginError("validate-token 失败：登录链路完成但凭证校验不通过")
 
         return LoginResult(
             credentials=creds,
@@ -174,24 +150,100 @@ def login(
         )
 
 
+def refresh_credentials(creds: Credentials) -> Credentials:
+    """用 refresh_token 续期：换新 access_token → 兑换新 JWT → 覆写凭证文件。
+
+    CAS OAuth2 标准端点 POST /oauth2.0/token（grant_type=refresh_token）。
+    HAR 里没有捕获过续期请求，此实现按协议标准编写；任何一步失败抛
+    LoginError，调用方（AntaSession.ensure）回退为提示重新登录。
+    """
+    with httpx.Client(
+        follow_redirects=False,
+        timeout=30.0,
+        headers={"User-Agent": _DEFAULT_USER_AGENT},
+    ) as cli:
+        resp = cli.post(
+            "https://auth.anta.com/oauth2.0/token",
+            data={
+                "grant_type": "refresh_token",
+                "client_id": CLIENT_ID,
+                "redirect_uri": REDIRECT_URI,
+                "refresh_token": creds.refresh_token,
+            },
+        )
+    if resp.status_code != 200:
+        raise LoginError(
+            f"refresh_token 续期失败（token 端点 {resp.status_code}）: {resp.text[:200]}"
+        )
+    tokens = _parse_token_response(resp)
+    access_token = tokens.get("access_token")
+    refresh_token = tokens.get("refresh_token") or creds.refresh_token
+    if not access_token:
+        raise LoginError(f"token 端点响应里没有 access_token: {resp.text[:200]}")
+
+    jwt = _exchange_jwt(access_token, refresh_token)
+    if not jwt:
+        raise LoginError("续期后未能从 datav 首页拿到 JWT（cookie uIdToken 缺失）。")
+
+    new_creds = Credentials(
+        access_token=access_token,
+        refresh_token=refresh_token,
+        jwt=jwt,
+        user_id=creds.user_id,
+        dom_id=creds.dom_id,
+        expires_at=_decode_jwt_exp(jwt),
+    )
+    save_credentials(new_creds, CREDENTIALS_FILE)
+    if not verify_token(new_creds):
+        raise LoginError("续期后 validate-token 失败：新 JWT 校验不通过")
+    return new_creds
+
+
 # ---------- 辅助 ----------
 
 
-def _build_service_url() -> str:
-    """构造 CAS service 参数（OAuth callback URL）。"""
-    from urllib.parse import quote
+def _exchange_jwt(
+    access_token: str,
+    refresh_token: str,
+    user_agent: Optional[str] = None,
+) -> Optional[str]:
+    """访问 datav 首页，触发后端用 access_token 签发 JWT（cookie uIdToken）。"""
+    with httpx.Client(
+        follow_redirects=True,
+        timeout=30.0,
+        headers={"User-Agent": user_agent or _DEFAULT_USER_AGENT},
+    ) as web:
+        home = web.get(
+            "https://datav.anta.com/"
+            f"?access_token={access_token}&provider=standardoauth2&refresh_token={refresh_token}"
+        )
+        return _extract_jwt_from_cookies(web) or _extract_jwt_from_html(home.text)
 
-    inner = (
-        f"client_id={CLIENT_ID}"
-        f"&redirect_uri={quote(REDIRECT_URI, safe='')}"
-        "&response_type=code"
-        f"&state={quote(STATE_DEFAULT, safe='')}"
-        "&client_name=CasOAuthClient"
-    )
-    return quote(
-        f"https://auth.anta.com/oauth2.0/callbackAuthorize?{inner}",
-        safe="",
-    )
+
+def _parse_token_response(resp: httpx.Response) -> dict:
+    """解析 /oauth2.0/token 响应；CAS 可能返回 JSON 或 form-encoded 两种形态。"""
+    ct = resp.headers.get("content-type", "")
+    if "json" in ct:
+        data = resp.json()
+        return data if isinstance(data, dict) else {}
+    return {k: v[0] for k, v in parse_qs(resp.text).items()}
+
+
+_DEFAULT_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/150.0.0.0 Safari/537.36"
+)
+
+
+def _follow_redirects(web: httpx.Client, resp: httpx.Response, max_hops: int = 10) -> httpx.Response:
+    """手动跟随 3xx 跳转链（兼容相对路径），返回第一个非 3xx 响应。"""
+    for _ in range(max_hops):
+        if resp.status_code not in (301, 302, 303, 307, 308):
+            return resp
+        loc = urljoin(str(resp.url), resp.headers["location"])
+        resp = web.get(loc)
+    return resp
 
 
 def _extract_execution(html: str) -> str:
@@ -226,14 +278,6 @@ def _extract_jwt_from_cookies(web: httpx.Client) -> Optional[str]:
     return None
 
 
-def _cookie_token(web: httpx.Client, name: str) -> Optional[str]:
-    """从 cookie 里取指定名字的值（用于 access_token/refresh_token 兜底）。"""
-    for ck in web.cookies.jar:
-        if ck.name == name:
-            return ck.value
-    return None
-
-
 def _extract_jwt_from_html(html: str) -> Optional[str]:
     """首页 JS 可能把 JWT 注入 window.__INITIAL_STATE__ 之类。"""
     m = re.search(r'["\']token["\']\s*:\s*["\']([A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)["\']', html)
@@ -256,8 +300,8 @@ def _decode_jwt_exp(jwt: str) -> Optional[float]:
         return None
 
 
-def _verify_token(creds: Credentials) -> None:
-    """调 /api/validate-token 确认凭证可用，失败抛错。"""
+def verify_token(creds: Credentials) -> bool:
+    """调 /api/validate-token 确认凭证在服务端仍有效（200 = 有效）。"""
     with httpx.Client(timeout=15.0) as cli:
         r = cli.get(
             "https://datav.anta.com/api/validate-token",
@@ -268,5 +312,4 @@ def _verify_token(creds: Credentials) -> None:
                 "Accept": "application/json",
             },
         )
-        if r.status_code != 200:
-            raise LoginError(f"validate-token 失败: {r.status_code} {r.text[:200]}")
+        return r.status_code == 200

@@ -38,13 +38,6 @@ class RetailDailyDescenteReport(BaseReport):
         "区域": "v2ccab58704084c55914ea29",
     }
 
-    def dump_dynamic_params(self) -> list:
-        """覆盖基类：dynamicParams 不在页面元数据里，用本地硬编码定义。"""
-        return [
-            {"dpId": v["dpId"], "name": k, "valueType": v["valueType"], "defaultValue": ""}
-            for k, v in self.DYNAMIC_PARAMS.items()
-        ]
-
     def default_template(self) -> QueryParams:
         """HAR 验证过的完整字段配置（4 维度 + 9 指标 + 2 filter + 2 日期）。"""
         rows = [self.field("渠道品牌"), self.field("店铺名称"), self.field("城市等级"), self.field("商品品牌")]

@@ -124,25 +124,6 @@ class AntaClient:
             return data
         return resp.content  # 二进制（如导出文件）
 
-    # ---------- 轮询工具 ----------
-
-    def poll_until_done(
-        self,
-        path: str,
-        is_done: callable,
-        interval: float = 2.0,
-        timeout: float = 300.0,
-    ) -> Any:
-        """轮询 path，is_done(json) 返回 True 时停止。返回最后一次响应的 JSON。"""
-        deadline = time.time() + timeout
-        last = None
-        while time.time() < deadline:
-            last = self.get_json(path)
-            if is_done(last):
-                return last
-            time.sleep(interval)
-        raise AntaAPIError(f"轮询 {path} 超时（{timeout}s）")
-
 
 def _check_ok(data: Any, path: str) -> None:
     """约定：BI API 返回 {result: 'ok', response: ...} 或 {code: 0, ...}。
@@ -151,6 +132,12 @@ def _check_ok(data: Any, path: str) -> None:
     {taskId, status, ...} 没有 result 字段，这种情况不算失败。
     """
     if isinstance(data, dict):
+        # 凭证在服务端失效（本地 JWT 未到期也可能被作废，如被顶号/登出）
+        if data.get("error_code") == 1018 or "Not Login" in str(data.get("error_message", "")):
+            raise AntaAPIError(
+                f"{path}: 凭证在服务端已失效（Not Login or token expired），"
+                "请重跑 anta-cli login 或 python scripts/anta_login.py"
+            )
         result = data.get("result")
         # result 可能是 "ok" 字符串，也可能是 dict（任务接口的 {success:True, exportPath:...}）
         if isinstance(result, str) and result not in ("ok", "OK"):

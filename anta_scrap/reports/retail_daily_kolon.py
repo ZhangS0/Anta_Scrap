@@ -34,13 +34,6 @@ class RetailDailyKolonReport(BaseReport):
         "区域": "gbc980ddf6fc84ffa9146679",       # 店效查询专用
     }
 
-    def dump_dynamic_params(self) -> list:
-        """覆盖基类：dynamicParams 不在页面元数据里，用本地硬编码定义。"""
-        return [
-            {"dpId": v["dpId"], "name": k, "valueType": v["valueType"], "defaultValue": ""}
-            for k, v in self.DYNAMIC_PARAMS.items()
-        ]
-
     def default_template(self) -> QueryParams:
         """HAR 验证过的完整字段配置（35 维度 + 101 指标 + 1 filter + 2 日期）。"""
         # 维度字段（从 HAR 查询体提取的前 10 个常用维度）
@@ -61,7 +54,7 @@ class RetailDailyKolonReport(BaseReport):
         metrics = [
             self.field("流水"),
             self.field("预算流水目标"),
-            self.field("达成完成"),
+            self.field("零售达成"),
             self.field("流水同期"),
             self.field("流水同比"),
             self.field("同店流水"),

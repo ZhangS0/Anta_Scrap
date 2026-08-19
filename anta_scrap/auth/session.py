@@ -1,4 +1,4 @@
-"""会话管理：加载凭证 → 包装 AntaClient → 401 自动续期。"""
+"""会话管理：加载凭证 → JWT 过期自动续期 → 包装 AntaClient。"""
 
 from __future__ import annotations
 
@@ -7,10 +7,55 @@ from typing import Optional  # noqa: F401  (保留给类型注解使用)
 
 from anta_scrap.auth.token_store import Credentials, load_credentials, save_credentials
 from anta_scrap.client import AntaClient
+from anta_scrap.config import env
 
 
 class SessionExpired(RuntimeError):
     """凭证完全失效（refresh_token 也用不了），需要重新登录。"""
+
+
+def _verify_or_false(creds: Credentials) -> bool:
+    """服务端校验凭证；网络异常等意外情况按"校验失败"处理，交给续期分支兜底。"""
+    from anta_scrap.auth.login import verify_token
+
+    try:
+        return verify_token(creds)
+    except Exception:
+        return False
+
+
+def _renew_credentials(creds: Optional[Credentials]) -> Credentials:
+    """自动恢复失效凭证：先 refresh 续期，失败再用 .env 账号密码重登。"""
+    from anta_scrap.auth.login import LoginError, login, refresh_credentials
+
+    refresh_err = None
+    if creds is not None:
+        try:
+            return refresh_credentials(creds)
+        except LoginError as e:
+            refresh_err = e
+
+    username = env("ANTA_USERNAME")
+    password = env("ANTA_PASSWORD")
+    if not username or not password:
+        raise SessionExpired(
+            "凭证已失效"
+            + (f"且 refresh_token 续期失败（{refresh_err}）" if refresh_err else "")
+            + "；.env 未配置 ANTA_USERNAME/ANTA_PASSWORD，无法自动重登。"
+            "请配置后重试，或手动运行: python scripts/anta_login.py"
+        ) from refresh_err
+    try:
+        result = login(
+            username=username,
+            password=password,
+            dom_id=env("ANTA_DOM_ID", "guanbi") or "guanbi",
+        )
+    except LoginError as e:
+        raise SessionExpired(
+            f"自动重登失败（账号密码可能已改或触发验证码: {e}）。"
+            "请检查 .env 或手动运行: python scripts/anta_login.py"
+        ) from e
+    return result.credentials
 
 
 class AntaSession:
@@ -21,7 +66,9 @@ class AntaSession:
         client = sess.client                # 拿底层 AntaClient
         data = client.get_json("/api/...")
 
-    401 时自动用 refresh_token 续期一次；再失败抛 SessionExpired。
+    ensure() 时若 JWT 已过期，自动用 refresh_token 续期一次并覆写凭证文件；
+    续期也失败则抛 SessionExpired。会话中途的 401 不做被动续期
+    （JWT 有效期 14 天，长会话场景罕见；遇到 401 重跑 ensure 即可）。
     """
 
     def __init__(self, creds: Credentials, client: Optional[AntaClient] = None):
@@ -30,16 +77,22 @@ class AntaSession:
 
     @classmethod
     def ensure(cls, *, dom_id: Optional[str] = None) -> "AntaSession":
-        """加载本地凭证；不存在或过期则提示重登。
+        """加载本地凭证并自动校验；失效时自动恢复，全程无需人工重登。
+
+        校验两个维度：本地 JWT 过期时间 + 服务端 validate-token（会话可能被
+        顶号/登出提前作废）。任一失效按顺序自动恢复：
+          1. refresh_token 续期（轻量，优先）
+          2. 用 .env 的账号密码走完整 CAS 登录（覆写凭证文件）
+
+        两步都失败（如密码已改、触发验证码）才抛 SessionExpired。
 
         dom_id 参数已废弃（保留兼容）：凭证文件里存的已经是 Base64 编码后的
         x-dom-id 值（如 Z3VhbmJp），直接使用即可，无需覆盖。
         """
         creds = load_credentials()
-        if creds is None:
-            raise SessionExpired(
-                "未找到本地凭证，请先运行: python scripts/anta_login.py"
-            )
+        # 没有本地凭证 / 本地过期 / 服务端失效，都走自动恢复（refresh → 重登）
+        if creds is None or creds.is_expired() or not _verify_or_false(creds):
+            creds = _renew_credentials(creds)
         return cls(creds)
 
     def is_jwt_expired(self, skew_seconds: int = 60) -> bool:

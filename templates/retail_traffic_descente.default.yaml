@@ -1,0 +1,30 @@
+# 迪桑特零售客流分析 - 默认模板
+# 用法: anta-cli export -t retail_traffic_descente.default
+
+report: retail_traffic_descente
+
+rows:
+  - 日历日期
+  - 区域
+  - 店铺名称
+
+metrics:
+  - 流水
+  - 流水同期
+  - 流水同比
+  - 店外客流
+  - 进店客流
+  - 店外客流同期
+  - 进店客流同期
+  - 进店率
+
+filters:
+  - { name: 区域, values: [迪桑特-华东区, 迪桑特-华北区] }
+
+dynamic_params:
+  起始小时: "10"
+  终止小时: "23"
+  开始日期-户外-R02: "2026-08-01"
+  结束日期-户外-R02: "2026-08-07"
+
+limit: 50

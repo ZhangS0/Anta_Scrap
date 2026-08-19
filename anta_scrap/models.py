@@ -1,8 +1,7 @@
-"""数据模型：QueryParams / FieldDef / Page。"""
+"""数据模型：QueryParams / FieldDef / FilterItem / DynamicParam。"""
 
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
 from typing import Any, List, Optional
 
@@ -151,37 +150,3 @@ class QueryParams:
     limit: int = 50
     offset: int = 0
     card_name: str = ""
-
-
-@dataclass
-class Page:
-    """一次查询的响应。"""
-
-    rows: List[List[Any]]  # 每行每列的值
-    column_defs: List[dict]  # 列定义（含字段名/类型/标题）
-    count: int  # 总行数
-    has_more: bool
-    limit: int
-    offset: int
-
-    @property
-    def total_pages(self) -> int:
-        if self.limit <= 0:
-            return 1
-        return max(1, math.ceil(self.count / self.limit))
-
-    @property
-    def current_page(self) -> int:
-        return self.offset // self.limit + 1 if self.limit else 1
-
-    @property
-    def row_count(self) -> int:
-        return len(self.rows)
-
-    @property
-    def summary(self) -> str:
-        return (
-            f"共 {self.count} 行 / {self.total_pages} 页，"
-            f"当前仅读取第 {self.current_page} 页（{self.row_count} 行），"
-            f"如需全部请加 --all 或 --max-pages N"
-        )

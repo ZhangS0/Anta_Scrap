@@ -1,8 +1,8 @@
-"""异步导出三步走：trigger → poll → download。
+"""异步导出三步走：trigger → poll → download（仅 CSV）。
 
 HAR 验证：
-  POST /api/write/file/{cardId}?typeOp=PIVOT|CSV  body=查询体  → {taskId, status:PROCESSING}
-  GET  /api/task/{taskId}                          → {response: {status: PROCESSING|SUCCESS|FAILED, ...}}
+  POST /api/write/file/{cardId}?typeOp=CSV  body=查询体  → {taskId, status:PROCESSING}
+  GET  /api/task/{taskId}                   → {response: {status: PROCESSING|SUCCESS|FAILED, ...}}
   POST /api/export/file/common/{taskId}
        body={downloadFileName, time, fileNameWithTime}  → 二进制流
 """
@@ -18,22 +18,21 @@ from anta_scrap.client import AntaAPIError, AntaClient
 from anta_scrap.models import QueryParams
 from anta_scrap.reports.base import BaseReport
 
-EXPORT_PIVOT = "PIVOT"  # Excel
 EXPORT_CSV = "CSV"
 
 _POLL_INTERVAL = 2.0
 _POLL_TIMEOUT = 300.0
 
 
-def trigger_export(report: BaseReport, params: QueryParams, type_op: str) -> str:
-    """触发导出，返回 taskId。"""
+def trigger_export(report: BaseReport, params: QueryParams) -> str:
+    """触发 CSV 导出，返回 taskId。"""
     payload = report.build_payload(params)
     client: AntaClient = report.client
     # 注意：trigger 接口要直接拿原始 JSON（不走 _check_ok），因为响应结构是
     #   {result:"ok", response:{taskId, status, fileName, postBody}}
     resp = client.post_json(
         f"/api/write/file/{report.card_id}",
-        params={"typeOp": type_op},
+        params={"typeOp": EXPORT_CSV},
         body=payload,
         headers={
             "raw-backend-response": "TRUE",
@@ -104,17 +103,16 @@ def download(
     return resp.content, resolved
 
 
-def export_and_download(
+def export_csv(
     report: BaseReport,
     params: QueryParams,
-    type_op: str,
     out_dir: Path,
     download_file_name: Optional[str] = None,
 ) -> Path:
-    """完整三步走，落盘到 out_dir，返回写入的文件路径。"""
+    """完整三步走导出 CSV，落盘到 out_dir，返回写入的文件路径。"""
     client: AntaClient = report.client
     name = download_file_name or params.card_name or report.name
-    task_id = trigger_export(report, params, type_op)
+    task_id = trigger_export(report, params)
     status = poll_task(client, task_id)
     if status not in ("SUCCESS", "SUCCESSFUL", "OK", "DONE", "FINISHED"):
         # 有些后端用非标准状态名，拿到文件流就算成功；这里只在明确失败时报错
