@@ -1,0 +1,29 @@
+# R03-任意时间段销存结构分析 - 默认模板
+# 用法: anta-cli export -t r03_sales_stock_structure.default
+
+report: r03_sales_stock_structure
+
+rows:
+  - 中类
+  - 货号
+
+metrics:
+  - 流水
+  - 流水同期
+  - 销售数量
+  - 库存数量
+  - 动销率
+  - 月库销比
+  - 齐码率
+
+filters:
+  - { name: 渠道品牌, values: [KOLON] }
+
+dynamic_params:
+  开始日期-户外-R02: "2026-08-01"
+  结束日期-户外-R02: "2026-08-07"
+  同期开始日期-户外: "2025-08-01"
+  同期结束日期-户外: "2025-08-07"
+  户外_配货季(多选): "2026Q3"
+
+limit: 50
