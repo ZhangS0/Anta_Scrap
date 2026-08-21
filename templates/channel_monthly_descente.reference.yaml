@@ -1,0 +1,164 @@
+# 渠道运营分析-月报 - 完整字段参考模板
+# 用法: anta-cli export -t channel_monthly_descente.reference
+
+report: channel_monthly_descente
+
+# ===== 维度字段 (row) - 共 39 个（全部注释列出，示例取消注释使用）=====
+rows:
+  # - 日历月份   # fdId: f1bded591ccbf4e13acd55e9
+  # - 渠道品牌   # fdId: wc80c2ce5b44a46839d44e2f
+  # - 区域   # fdId: cc72fb88bdff74bb9bf0a6f0
+  # - 店铺编码   # fdId: p474ae38e04ae4271955ff9d
+  # - 日历年份   # fdId: k7441d23c12f44fcc84c5e5f
+  # - 店铺名称   # fdId: a6890932270e646e4a126f2b
+  # - 关店标记   # fdId: j41773eb9e4874ebbb910ce1
+  # - 省份   # fdId: p8bde40ba686849a489592e9
+  # - 城市_映射   # fdId: v3c321cf51ef94d26a558156
+  # - 区县   # fdId: cacd534c1314a45078f41268
+  # - 经营类型   # fdId: md7a9d14e691a4e46bb0b8fb
+  # - 店铺类型明细   # fdId: vfb685ff38d934ebd92c44e1
+  # - 集合店属性   # fdId: b8c37a33e249a4e1ead016fc
+  # - 集合店属性明细   # fdId: l781ef2e51d1d432cb1a1385
+  # - 品牌分类   # fdId: g4407eca49778486aadc2a1a
+  # - 店铺级别   # fdId: i9bb12cc06d094938851f290
+  # - 门店性质   # fdId: j77bb2cea98e442a28400d2f
+  # - 门店类型   # fdId: j9d5d1837a6bd4a5ca0a01a1
+  # - 关店日期   # fdId: o9995a05641514c4185ebb1f
+  # - 第一次开业时间   # fdId: r2123f6710af6420fa84c183
+  # - 改造类型   # fdId: hc8855548f2fd44ed889cacb
+  # - 最新改造开始日期   # fdId: ucb238ad5f4ce418ab2dc097
+  # - 最新改造结束日期   # fdId: o2282a19e2f624dd5918fbc0
+  # - 商场体系   # fdId: g629e5b7757214a2e86b1ba4
+  # - 同店类型   # fdId: x577a8c85751943e4aeb22ea
+  # - 城市级别代码   # fdId: x171da067c0e04867a364652
+  # - 办事处   # fdId: db50486c138264a5db6a3112
+  # - 形象店龄   # fdId: o54ca1fdc6b2c4f5f94e0b14
+  # - 商场代码   # fdId: wd381dfc2992940899047c0f
+  # - 商场名称   # fdId: i730c5810b41d46659ad68eb
+  # - 店铺楼层   # fdId: i95e2ee4c986f4102bc1ee93
+  # - 是否有效店本期（1是,0否）   # fdId: s5107a590a7494148885df82
+  # - 品牌终端形象   # fdId: f9593d5bfe77144cc9b97963
+  # - 财务所属品牌   # fdId: iab3fe340f1974f149351928
+  # - 零售经理   # fdId: a00264109c104475da894ea8
+  # - 顶特高   # fdId: kfce53baa26ee463a95f51bb
+  # - 灯塔店   # fdId: d4ea1b790697d42eabcdca36
+  # - 重点店铺   # fdId: hc59200e604c449fbb8d7ca7
+  # - 店型   # fdId: ka54f2787219842728776f54
+  - 日历月份
+  - 区域
+  - 店铺名称
+
+# ===== 度量字段 (metric) - 共 95 个 =====
+metrics:
+  # - 月有效店数本期   # fdId: x0c519800f008450294bd467
+  # - 月保有店数本期   # fdId: k29b6bf97653146deacf9670
+  # - 月新开店数本期   # fdId: n26aab73a961a4abca574983
+  # - 月改造店数本期   # fdId: n5932bef9258c428aa6c795d
+  # - 月关闭店数本期   # fdId: mf6db1a12736d4605813fcf8
+  # - 月保有店销售面积同期   # fdId: va9bdc0637a624cc981b4600
+  # - 月有效店数同期   # fdId: ad2faaffb26e14301a20d62c
+  # - 月保有店平均面积同期   # fdId: l4a209a5d01bb40a6ac6b9d4
+  # - 月改造店平均面积同期   # fdId: cf3474a2cf580466aaad0f7c
+  # - 月销售面积本期（坪效）   # fdId: q71b537fe7bad487a85dd42b
+  # - 年累销售面积本期（坪效）   # fdId: qd5a2b903ed8f4767bec938e
+  # - 月保有店总面积同比   # fdId: n32e904ae9f154e9082a7841
+  # - 月店效同比   # fdId: r7096e4544c0840a899b3a90
+  # - 年累店效同期   # fdId: v3e2f448e5f654838b2d9790
+  # - 年累保有店平均面积同比   # fdId: p430892775ccb46d7811a3a8
+  # - 月流水本期   # fdId: r833c6746c49a44d8ad17f03
+  # - 年累流水本期   # fdId: q6298274995d049da8ec94b6
+  # - 月流水同期   # fdId: g55af6423051a4955a4e5363
+  # - 年累流水同期   # fdId: kd127b28248c0455483d3c7a
+  # - 月保有店数同期   # fdId: f1bb735e233334432ab4f387
+  # - 月新开店数同期   # fdId: ae92e17daa3d44074bae50cd
+  # - 月改造店数同期   # fdId: l702cdaddb2ae490fa9c9d39
+  # - 月关闭店数同期   # fdId: v3264dcba731745408fa7f93
+  # - 月店效本期   # fdId: q668741c188364ee0abb5dbb
+  # - 月保有店效本期   # fdId: n5ed9c7ac07144174b9b4298
+  # - 月新开店效本期   # fdId: l7de345f245b94c0682ee74a
+  # - 月改造店效本期   # fdId: fe221d79502874f958ad45a5
+  # - 月店效同期   # fdId: q9951e3150b10466891765e4
+  # - 月改造店效同期   # fdId: g623691fa63b24439b387a6c
+  # - 月改造店效同比   # fdId: qb1f23737b9234538aba2c46
+  # - 月保有店销售面积本期   # fdId: a04c141d0faba42ba8926564
+  # - 月新开店销售面积本期   # fdId: f1035b060888e4b6ca42589b
+  # - 月改造店销售面积本期   # fdId: t0080213bace54a37ba8cdd5
+  # - 月保有店平均面积本期   # fdId: leb5e960376884080a284d0b
+  # - 月新开店平均面积本期   # fdId: r51b7d89f0de74a078d093e0
+  # - 月改造店平均面积本期   # fdId: rd60f5cba04a54ae297098a8
+  # - 月保有店平均面积同比   # fdId: pb956a6a99b4b40ba82d37c4
+  # - 月改造店平均面积同比   # fdId: a32480579deb14e15b3cc62e
+  # - 月度坪效本期   # fdId: t5cb9d87032eb4e1f9147af5
+  # - 月度新开坪效本期   # fdId: r7c2f4317144b4f6a8733196
+  # - 月度改造坪效本期   # fdId: w165694e13eb447b2a8fd27a
+  # - 月度保有坪效本期   # fdId: p4eec3515a0434cf79c9d532
+  # - 月度坪效同期   # fdId: f58e65ea4d3a34ffeb883e42
+  # - 月度坪效同比   # fdId: eaac0e7ac414e46e988af4be
+  # - 月度改造坪效同期   # fdId: l599e5a5555094553964d4a4
+  # - 月度改造坪效同比   # fdId: vff78f5df8a854706bbdbc08
+  # - 月销售面积同期（坪效）   # fdId: h03592df8b0834abf98427b8
+  # - 年累保有店数本期   # fdId: f967da5821159460a9770667
+  # - 年累新开店数本期   # fdId: nadbefa692bd34c268cae3e3
+  # - 年累改造店数本期   # fdId: i7ba0da8f978c4dffb8455ba
+  # - 年累关闭店数本期   # fdId: k22bb33502b3f401792fc4a2
+  # - 年累保有店数同期   # fdId: n2f0efc45dbc348a2a1ea3f9
+  # - 年累新开店数同期   # fdId: tfe7bfd966b784650af2fb42
+  # - 年累改造店数同期   # fdId: medb86e30459a42be9599c78
+  # - 年累关闭店数同期   # fdId: vd5b875ea7d754e239c58486
+  # - 年累店效本期   # fdId: cfb7263bb37cd45398cf5208
+  # - 年累保有店效本期   # fdId: w1c5abb0aa27642b28b8c15c
+  # - 年累新开店效本期   # fdId: x25234f50e9954f058d6f9aa
+  # - 年累改造店效本期   # fdId: m7812cb0a4d4c4f7ca4a65aa
+  # - 年累有效销售月数本期   # fdId: b62ce547cc7754de3a2da1d3
+  # - 年累店效同比1   # fdId: i51a39df00e5b43888298bd9
+  # - 年累改造店效同期   # fdId: q1118f50f0a46442ba275add
+  # - 年累改造店效同比   # fdId: l0987251fb06241f7b1af648
+  # - 年累有效销售月数同期   # fdId: m3e27ec2e10bf44f983989fd
+  # - 年累保有店销售面积本期   # fdId: kd353fd7b17e14ac586dc6c9
+  # - 年累保有店平均面积本期   # fdId: n9dd7355681fa43aeade881f
+  # - 年累新开店销售面积本期   # fdId: c14c91be86b904f2c8de919d
+  # - 年累新开店平均面积本期   # fdId: je49c34329fb647ca977ba60
+  # - 年累改造店销售面积本期   # fdId: wfac49beb3bfc4e128d9e8ca
+  # - 年累改造店平均面积本期   # fdId: w2dee3d63135e421ba686831
+  # - 年累销售面积本期   # fdId: m523dcbe310644aeea82a3a7
+  # - 年累保有店销售面积同期   # fdId: md51b6d7095ba4e02bbc5495
+  # - 年累保有店平均面积同期   # fdId: h22687ec9cbcc4e1da2876b4
+  # - 年累保有店总面积同比   # fdId: vcb02c0598c5f4badac57890
+  # - 年累改造店销售面积同期   # fdId: n20ef9babdc364755924e218
+  # - 年累改造店平均面积同期   # fdId: tf292eaa48f1e42febfe543c
+  # - 年累改造店平均销售面积同比   # fdId: ce354d3115982455794d4224
+  # - 年累改造前销售面积   # fdId: mf55cdf690df44ec885c40cc
+  # - 年累改造前平均销售面积同期   # fdId: dbe8151734b1542688150485
+  # - 年累改造前店效   # fdId: icc3464869dad4b51ac64191
+  # - 年累改造前坪效   # fdId: n7cddf3b3399146d092607cf
+  # - 年累改造后销售面积   # fdId: adc15c70d59f94460bc0c8a9
+  # - 年累改造后平均销售面积本期   # fdId: p7e39d0f863e741af8396ee9
+  # - 年累改造后店效   # fdId: jc63f5dc966eb464499aeacf
+  # - 年累改造后坪效   # fdId: ha63af5fd8621478c98792e3
+  # - 年累坪效本期   # fdId: i8ddd96472dfd40aca0db45d
+  # - 年累新开坪效本期   # fdId: i1b9f327745c5407783868f8
+  # - 年累改造坪效本期   # fdId: ob807bf9e2e8547ea85843bd
+  # - 年累保有坪效本期   # fdId: a19f7b618470d4067ae4cd7f
+  # - 年累改造坪效提升   # fdId: i510356b2f48a480cbd0c2c4
+  # - 年累坪效同期   # fdId: d9717f4bcae694079ae95f9e
+  # - 年累坪效同比   # fdId: o6377edad468846438f2963f
+  # - 年累改造坪效同期   # fdId: eda98bb53cce841d98e7b19b
+  # - 年累改造坪效同比   # fdId: r44f0eaa8820a4f319062681
+  # - 年累销售面积同期（坪效）   # fdId: a2f762686ab9743339977082
+  - 月流水本期
+  - 月流水同期
+  - 月店效本期
+  - 月店效同期
+  - 月有效店数本期
+  - 月保有店数本期
+
+# ===== 筛选条件（仅以下字段有选择器映射 sourceCdId，其它做筛选会 None.get）=====
+filters:
+  - { name: 渠道品牌, values: [DESCENTE] }
+  - { name: 店铺类型明细, values: [正价店, 折扣店] }
+  - { name: 日历月份, values: ["2026-08"] }
+  # 可选筛选: 区域/办事处/城市_映射/店铺编码/店铺名称/门店性质/是否有效店/是否保有店/
+  #   是否新开店/是否改造店/是否关闭店/形象店龄/门店类型/商场体系/新开/关闭店年累流水是否为0
+
+# 月报无动态参数（时间用 日历月份 筛选控制，格式 YYYY-MM）
+limit: 50

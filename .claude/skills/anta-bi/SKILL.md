@@ -15,6 +15,7 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 | `retail_daily_descente` | 零售运营分析-日报-迪桑特 | DESCENTE/迪桑特品牌的流水、目标、客流 | `references/retail_daily_descente.md` |
 | `retail_daily_kolon` | 零售运营分析-日报-KOLON | KOLON/可隆品牌，含试衣指标、店效分级 | `references/retail_daily_kolon.md` |
 | `retail_traffic_descente` | 零售客流分析-迪桑特 | DESCENTE 品牌客流专项（时段/进店率） | `references/retail_traffic_descente.md` |
+| `channel_monthly_descente` | 渠道运营分析-月报 | DESCENTE 月度店数/店效/坪效/开关店/改造（时间用 日历月份 筛选，YYYY-MM） | `references/channel_monthly_descente.md` |
 | — | 指标含义字典（流水/达成/连带率/试衣率怎么算） | 用户问指标定义、需甄别相近指标时 **Grep 查** | `references/metrics-glossary.md` |
 
 两报表共享同一 BI 页面，字段体系相同；区别：DESCENTE 有商品品牌筛选、客流更全；KOLON 多试衣指标、挑战目标、店效分级维度。

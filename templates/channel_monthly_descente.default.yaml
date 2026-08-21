@@ -1,0 +1,28 @@
+# 渠道运营分析-月报 - 默认模板
+# 用法: anta-cli export -t channel_monthly_descente.default
+
+report: channel_monthly_descente
+
+rows:
+  - 日历月份
+  - 区域
+  - 店铺名称
+
+metrics:
+  - 月流水本期
+  - 月流水同期
+  - 月店效本期
+  - 月店效同期
+  - 月有效店数本期
+  - 月保有店数本期
+  - 年累流水本期
+  - 年累流水同期
+  - 年累店效本期
+  - 年累店效同期
+
+filters:
+  - { name: 渠道品牌, values: [DESCENTE] }
+  - { name: 店铺类型明细, values: [正价店, 折扣店] }
+  - { name: 日历月份, values: ["2026-08"] }
+
+limit: 50
