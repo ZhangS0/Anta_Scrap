@@ -32,13 +32,26 @@ class RetailDailyDescenteReport(BaseReport):
         },
     }
 
-    # 字段 → filter 的 sourceCdId 映射（HAR 抓取）。
+    # 字段 → filter 的 sourceCdId 映射（HAR/请求负载抓取）。
     # sourceCdId 是该字段对应的"选择器卡片"ID（不同于数据集 dsId）。
     # BI 后端在处理 filter 时会按 sourceCdId 找选择器配置，缺失会 None.get 报错。
     FIELD_SOURCE_CDID = {
         "渠道品牌": "me03a1f830c364f44989e8a6",
         "商品品牌": "a9fc640f1ce7d42c788df11b",
+        "品牌大区": "a436b9a27fd674252b76ff63",
         "区域": "v2ccab58704084c55914ea29",
+        "城市_映射": "kb4c6703f0369424a80c1dd1",
+        "办事处": "b51648f09eff64a7ea0ddee1",
+        "店铺编码": "i7cc57ae94c734cdab990b9a",
+        "店铺名称": "m5b8996b737964b9cb58c010",
+        "零售经理": "b9456e1d933db4604836571d",
+        "店铺类型明细": "q8a34909a03164207a1c6931",
+        "门店性质": "qe417bacf6b2b41518278b23",
+        "门店类型": "q622fca569b4143c1be1c34d",
+        "店铺等级编码": "cff74089e7a2546478216f96",
+        "经营类型": "lc6ff4662113340e28ccd142",
+        "集合店属性": "l3c755afafca641878e3c26c",
+        "商场体系": "c6e4e95cc12d840658ebee87",
     }
 
     def default_template(self) -> QueryParams:

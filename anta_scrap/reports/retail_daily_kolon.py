@@ -35,11 +35,23 @@ class RetailDailyKolonReport(BaseReport):
         },
     }
 
-    # 字段 → filter 的 sourceCdId 映射（HAR 抓取）
+    # 字段 → filter 的 sourceCdId 映射（请求负载抓取）
     # 注意：同一个字段在不同查询场景下可能使用不同的 sourceCdId
     FIELD_SOURCE_CDID = {
-        "渠道品牌": "lf5837e58c3db4e31b93f159",  # 通用筛选
-        "区域": "gbc980ddf6fc84ffa9146679",       # 店效查询专用
+        "渠道品牌": "lf5837e58c3db4e31b93f159",
+        "品牌大区": "d6e8318bf0ecb42959a05e12",
+        "店铺编码": "k8f31e96608d6498486fe128",
+        "店铺名称": "f616c47a3ec25492593e46ab",
+        "零售经理": "r6dd7534a4e024b768f8fd68",
+        "办事处": "t63163974763f49ba9048118",
+        "城市_映射": "nd3632c0253244a70bfe025d",
+        "区域": "gbc980ddf6fc84ffa9146679",
+        "店铺类型明细": "w922418861a644192b249e5e",
+        "门店类型": "d68af6ba33b1441d59e4231b",
+        "店铺分级编码": "g96b4ed2652db4420a08113f",
+        "经营类型": "r9799397d563440d8a593c42",
+        "集合店属性": "we69c80761ef749d4bdb3268",
+        "商场体系": "h300ada0d53cd47dd843278f",
     }
 
     def default_template(self) -> QueryParams:
