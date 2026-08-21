@@ -30,7 +30,7 @@ from mcp.types import ToolAnnotations
 from anta_scrap.auth.login import LoginError
 from anta_scrap.auth.session import PasswordRequired, SessionExpired, resolve_credentials
 from anta_scrap.client import AntaAPIError, AntaClient
-from anta_scrap.config import get_report_class, get_report_registry
+from anta_scrap.config import create_report_instance, get_report_registry
 from anta_scrap.export import download, poll_task, trigger_export
 from anta_scrap.templates import TemplateError, template_to_params
 
@@ -78,7 +78,8 @@ def _export_sync(
             raise TemplateError(
                 f"未知报表 '{report_key}'，可选: {', '.join(sorted(get_report_registry()))}"
             )
-        rpt = get_report_class(report_key)(client)
+        # 使用新的页面自动发现机制创建报表实例
+        rpt = create_report_instance(report_key, client, username=username)
         params = template_to_params(rpt, tpl)
         task_id = trigger_export(rpt, params)
         status = poll_task(client, task_id)

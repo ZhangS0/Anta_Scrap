@@ -15,14 +15,15 @@ allowed-tools: Read, Grep, Glob, Bash(./.venv/bin/python:*), Bash(./.venv/Script
 ## 环境引导（首次使用必做）
 
 依赖不预装、不改 pyproject，按需装进项目 `.venv`。
-运行环境可能是 Windows 本机或 **Linux 沙盒**，venv 解释器路径不同，先探测再统一用 `$PY`：
+运行环境可能是 Windows 本机或 **Linux 沙盒**，venv 解释器路径不同，先探测再统一用 `$PY`。
+
+**首选「先 try import，缺失再安装」**（自动恢复，无需手动判断）：
 
 ```bash
 # 项目根目录执行（bash；Linux 下 venv 是 .venv/bin/python，Windows 是 .venv/Scripts/python.exe）
-[ -x .venv/bin/python ] || [ -x .venv/Scripts/python.exe ] || python3 -m venv .venv
 [ -x .venv/bin/python ] && PY=.venv/bin/python || PY=.venv/Scripts/python.exe
-$PY -m pip install apache-hamilton pandas openpyxl
-# 包名是 apache-hamilton；sf-hamilton 是旧名，别装错
+# 先 try import，缺失再安装（自动恢复，避免重启丢依赖）
+$PY -c "import hamilton, pandas" 2>/dev/null || $PY -m pip install apache-hamilton pandas openpyxl
 # 验证：
 $PY -c "import hamilton, pandas; print(hamilton.__version__, pandas.__version__)"
 # 可选（DAG 出图，需系统 Graphviz，未装就跳过，不影响其他功能）：
@@ -51,7 +52,8 @@ $PY -c "import hamilton, pandas; print(hamilton.__version__, pandas.__version__)
    函数签名，先跑 `--list-nodes`（只 build 不执行）验证依赖接线，通过后再填函数体。
 4. **运行**：未装依赖先按上节安装；`PYTHONIOENCODING=utf-8 $PY
    analysis/<报告名>.py`（`$PY` 按上节探测；报错先读 `references/pitfalls.md` 再改）。
-5. **产物**：报告写 `reports/`，向用户呈现关键结论；数据量大时先汇总再展示。
+5. **产物**：报告写 `reports/<报告名>/<run>/`（按报表任务 × 运行批次两级组织，见 data-io.md
+   目录约定），向用户呈现关键结论；数据量大时先汇总再展示。
 
 ## 可运行示例（自检 / 模板）
 

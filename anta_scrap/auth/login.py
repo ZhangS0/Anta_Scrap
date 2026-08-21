@@ -137,10 +137,11 @@ def login(
             user_id=user_id,
             dom_id=dom_id_b64,
             expires_at=_decode_jwt_exp(jwt),
+            username=username,
         )
 
         # 步骤 4：校验
-        save_credentials(creds, CREDENTIALS_FILE)
+        save_credentials(creds, username=username)
         if not verify_token(creds):
             raise LoginError("validate-token 失败：登录链路完成但凭证校验不通过")
 
@@ -192,8 +193,9 @@ def refresh_credentials(creds: Credentials) -> Credentials:
         user_id=creds.user_id,
         dom_id=creds.dom_id,
         expires_at=_decode_jwt_exp(jwt),
+        username=creds.username,
     )
-    save_credentials(new_creds, CREDENTIALS_FILE)
+    save_credentials(new_creds, username=creds.username)
     if not verify_token(new_creds):
         raise LoginError("续期后 validate-token 失败：新 JWT 校验不通过")
     return new_creds

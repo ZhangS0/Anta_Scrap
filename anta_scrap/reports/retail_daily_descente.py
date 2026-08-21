@@ -7,7 +7,10 @@ from anta_scrap.reports.base import BaseReport
 
 
 class RetailDailyDescenteReport(BaseReport):
-    page_id = "ne63f6cf08bbb40c28b814e8"
+    page_id = "ne63f6cf08bbb40c28b814e8"  # 默认页面
+    # 候选页面ID列表（根据实际发现的用户页面添加）
+    candidate_page_ids = []
+
     card_id = "q72769bce32b04f91873eeee"
     name = "零售运营分析-日报-迪桑特"
     # HAR 验证：本报表的字段全部来自数据集 d480975549d784546887c757

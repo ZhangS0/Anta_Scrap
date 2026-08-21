@@ -2,8 +2,8 @@
 
 ## 取数两途
 
-1. **`out/` 已有 CSV**：anta-bi 导出文件都在 `out/`（gitignore）。先 `head -2` 看表头再写节点。
-2. **现导现用**：调 anta-bi MCP 工具 `export_report` 拿到 CSV 全文 → 落盘 `out/<名>.csv` → 进 DAG。
+1. **`out/` 已有 CSV**：anta-bi 导出文件在 `out/<报告名>/<run>/`（按报表任务 × 运行批次组织，gitignore）。先 `head -2` 看表头再写节点。
+2. **现导现用**：调 anta-bi MCP 工具 `export_report` 拿到 CSV 全文 → 落盘 `out/<报告名>/<run>/<名>.csv` → 进 DAG。
    字段怎么选、模板怎么写归 **anta-bi skill**（其 `metrics-glossary.md` 只 Grep，勿整读）。
 
 BI 导出 CSV 特征（实测）：UTF-8 **带 BOM**；表头为中文列名；不同报表列集不同；
@@ -45,8 +45,9 @@ def cleaned_sales(raw_sales: pd.DataFrame) -> pd.DataFrame:
 | 内容 | 位置 | 是否入库 |
 |---|---|---|
 | 分析 DAG 模块（.py 代码） | `analysis/<报告名>.py` | **入库** |
-| 报告产物（.md / .xlsx） | `reports/` | 不入库（已 gitignore） |
-| 原始/中间 CSV | `out/` | 不入库 |
+| 报告产物（.md / .xlsx / .html） | `reports/<报告名>/<run>/` | 不入库（已 gitignore） |
+| 原始/中间 CSV | `out/<报告名>/<run>/` | 不入库 |
+| DAG 代码 / 查询模板 | `analysis/`、`templates/` | 入库（跨批次复用资产） |
 
 - markdown 报告在终端节点函数里拼字符串并 `Path.write_text(..., encoding="utf-8")`，
   同时**返回报告全文**（终端节点也照常返回值，便于 execute 拿到）。

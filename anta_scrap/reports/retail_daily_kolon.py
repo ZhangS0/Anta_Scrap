@@ -1,4 +1,9 @@
-"""KOLON 品牌报表：零售运营分析-日报 (card bdea3dc0adfc24d9b9e3f9a3)。"""
+"""KOLON 品牌报表：零售运营分析-日报 (card bdea3dc0adfc24d9b9e3f9a3)。
+
+注意：不同用户可能访问不同的页面实例！
+- 用户 <工号A> 使用页面: ne63f6cf08bbb40c28b814e8
+- 用户 <工号B> 使用页面: e71d78d5bb6234d5ead169a2
+"""
 
 from __future__ import annotations
 
@@ -7,7 +12,10 @@ from anta_scrap.reports.base import BaseReport
 
 
 class RetailDailyKolonReport(BaseReport):
-    page_id = "ne63f6cf08bbb40c28b814e8"  # 与 DESCENTE 共享同一页面
+    # 支持多页面ID（不同用户可能被分配到不同页面实例）
+    page_id = "ne63f6cf08bbb40c28b814e8"  # 默认页面
+    candidate_page_ids = ["e71d78d5bb6234d5ead169a2"]  # 候选页面
+
     card_id = "bdea3dc0adfc24d9b9e3f9a3"
     name = "零售运营分析-日报-KOLON"
     # HAR 验证：本报表的字段全部来自数据集 df905751149c646e4a760566

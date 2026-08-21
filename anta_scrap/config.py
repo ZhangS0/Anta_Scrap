@@ -57,3 +57,18 @@ def get_report_class(name: str) -> Type:
     if name not in registry:
         raise KeyError(f"未知报表 '{name}'，可选: {list(registry)}")
     return registry[name]
+
+
+def create_report_instance(name: str, client, username: Optional[str] = None):
+    """创建报表实例，支持多用户页面自动发现
+
+    Args:
+        name: 报表名称
+        client: BI客户端
+        username: 用户名（用于页面自动发现）
+
+    Returns:
+        报表实例
+    """
+    report_class = get_report_class(name)
+    return report_class(client, username=username)

@@ -4,7 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-`anta-scrap` 是安踏 BI（`datav.anta.com`）的数据抓取库，可导入使用，也提供 `anta-cli` 命令行。首个报表：零售运营分析-日报（page `ne63f6cf08bbb40c28b814e8` / card `q72769bce32b04f91873eeee`）。
+`anta-scrap` 是安踏 BI（`datav.anta.com`）的数据抓取库，可导入使用；也提供 **MCP 服务**（`anta-mcp`，对外 agent 调用）和 `anta-cli` 命令行（仅本地调试）。首个报表：零售运营分析-日报（page `ne63f6cf08bbb40c28b814e8` / card `q72769bce32b04f91873eeee`）。
+
+## MCP 服务（对外查询主入口）
+
+- **启动**：`anta-mcp --host 0.0.0.0 --port 8000`（streamable-http，端点 `/mcp`），常驻供 agent 调用。
+- **唯一工具** `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`password` 仅首次登录/登录失败时传，日常只传 `username`。
+- **接入**：`claude mcp add --transport http anta-bi http://<host>/mcp`（或项目 `.mcp.json`）。
+- **鉴权**：外网暴露须设 `ANTA_MCP_API_KEY`（调用带 `Authorization: Bearer <key>`）并走 HTTPS。
+- **多用户凭证**：`~/.anta_scrap/credentials.json`（按账号存 JWT，map 格式）+ `~/.anta_scrap/accounts.json`（按账号存密码，明文 0600）。`anta_scrap.auth.session.resolve_credentials()` 负责缓存优先/失效重登。
+- 报表与字段说明在 `anta-bi` skill（`.claude/skills/anta-bi/`）的 references/ 里，MCP 不携带字段知识。
 
 ## 常用命令
 

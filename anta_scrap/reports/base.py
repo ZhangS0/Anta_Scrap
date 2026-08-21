@@ -6,6 +6,7 @@
     default_template() —— 返回该报表的默认 QueryParams（作为本地 YAML 模板的兜底）
 
 字段名 → fdId 的映射通过 fetch_meta() 拉一次页面元数据并缓存到实例。
+支持多用户页面自动发现：不同用户可能被分配到不同的页面实例。
 """
 
 from __future__ import annotations
@@ -23,15 +24,21 @@ class BaseReport(ABC):
     name: str = ""  # 卡片名（写入 payload 的 name 字段）
     default_ds_id: Optional[str] = None  # 多数据集报表的默认数据集
 
+    # 候选页面ID列表：用于多用户页面自动发现
+    # 第一个是默认页面，其余是备用页面
+    candidate_page_ids: List[str] = []
+
     # 字段名后缀 → meta_type 的映射（用于解析元数据）
     META_TYPE_DIM = "DIM"
     META_TYPE_METRIC = "METRIC"
 
-    def __init__(self, client: AntaClient):
+    def __init__(self, client: AntaClient, username: Optional[str] = None):
         self.client = client
+        self.username = username  # 当前用户名，用于页面自动发现
         self._meta: Optional[dict] = None
         self._fields_by_name: Dict[str, FieldDef] = {}
         self._fields_by_name_and_ds: Dict[tuple, FieldDef] = {}
+        self._effective_page_id: Optional[str] = None  # 实际使用的页面ID
 
     # ---------- 子类必须提供 ----------
 
@@ -39,14 +46,62 @@ class BaseReport(ABC):
     def default_template(self) -> QueryParams:
         """该报表的默认字段+条件组合（CLI/库在不指定模板时用）。"""
 
+    # ---------- 页面自动发现 ----------
+
+    def _discover_page_id(self) -> str:
+        """自动发现用户对当前报表的正确页面ID"""
+        if not self.username:
+            # 没有用户名，使用默认页面
+            return self.page_id
+
+        try:
+            from anta_scrap.auth.page_discovery import get_page_discovery_service
+            discovery_service = get_page_discovery_service()
+
+            # 获取报表名称（用于缓存键）
+            report_name = self.__class__.__name__.replace("Report", "").replace("Retail", "retail_").lower()
+
+            # 构建候选页面列表
+            candidates = [self.page_id] + getattr(self, "candidate_page_ids", [])
+
+            # 自动发现正确的页面ID
+            discovered_page_id = discovery_service.discover_page_id(
+                client=self.client,
+                username=self.username,
+                report_name=report_name,
+                card_id=self.card_id,
+                candidate_pages=candidates
+            )
+
+            self._effective_page_id = discovered_page_id
+            return discovered_page_id
+
+        except ImportError:
+            # 如果页面发现模块不可用，使用默认页面
+            return self.page_id
+        except Exception as e:
+            # 页面发现失败，使用默认页面
+            print(f"页面发现失败，使用默认页面: {e}")
+            return self.page_id
+
+    @property
+    def effective_page_id(self) -> str:
+        """获取实际使用的页面ID（考虑用户特定的页面）"""
+        if self._effective_page_id is None:
+            self._effective_page_id = self._discover_page_id()
+        return self._effective_page_id
+
     # ---------- 字段元数据 ----------
 
     def fetch_meta(self, force: bool = False) -> dict:
         """调 /api/page/{page_id} 拿页面元数据并缓存。"""
         if self._meta is None or force:
+            # 使用实际发现的页面ID
+            page_to_use = self.effective_page_id
+
             data = self.client.get_json(
-                f"/api/page/{self.page_id}",
-                headers={"referer": f"https://datav.anta.com/page/{self.page_id}"},
+                f"/api/page/{page_to_use}",
+                headers={"referer": f"https://datav.anta.com/page/{page_to_use}"},
             )
             self._meta = data.get("response", data)
             self._index_fields()

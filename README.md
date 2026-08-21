@@ -49,6 +49,68 @@ with AntaSession.ensure() as sess:  # 内部自动校验/续期凭证
     print(out)
 ```
 
+## MCP 服务（对外 agent 调用）
+
+对外提供 MCP 服务 `anta-mcp`（streamable-http），登录在服务端完成、返回 CSV 全文。报表/字段说明见 `anta-bi` skill，MCP 只暴露一个导出工具。
+
+### 启动
+
+```bash
+anta-mcp --host 0.0.0.0 --port 8002
+# 或双击 start_anta_mcp.bat（未设密钥时会交互式提示输入）
+```
+
+- 端点：`http://<host>:8002/mcp`
+- 唯一工具：`export_report(username, template_yaml, password="", dom_id="", output_name="")`
+- 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`
+
+### Agent 接入（项目根 `.mcp.json`）
+
+```json
+{
+  "mcpServers": {
+    "anta-bi": {
+      "type": "http",
+      "url": "http://REDACTED-MCP-HOST:8002/mcp",
+      "headers": { "Authorization": "Bearer REDACTED-OLD-API-KEY" }
+    }
+  }
+}
+```
+
+### 多用户凭证
+
+- `~/.anta_scrap/credentials.json`：按账号存 JWT（map 格式）
+- `~/.anta_scrap/accounts.json`：按账号存密码（明文 0600）
+- 首次登录传 `password`，之后日常只传 `username`，服务端自动复用缓存/用已存密码重登
+
+### 内网穿透（frp，纯 IP）
+
+本地 8002 → frp tcp 转发 → 公网 8002：
+
+```ini
+; frpc.ini（本地）
+[common]
+server_addr = <frps 公网 IP>
+server_port = 7000
+token = <token>
+
+[anta-bi]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 8002
+remote_port = 8002
+```
+
+```ini
+; frps.ini（VPS）
+[common]
+bind_port = 7000
+token = <token>
+```
+
+> 纯 IP 只能明文 HTTP；要 HTTPS 需域名 + `type = https` + `https2http` 插件（证书放 frpc 侧）。
+
 ## 模板
 
 `templates/*.yaml` 是可读的查询配置。修改字段/条件/日期无需改代码：
@@ -76,7 +138,10 @@ limit: 50
 | 路径 | 用途 |
 |---|---|
 | `.env` | 账号密码（**不进库**） |
-| `~/.anta_scrap/credentials.json` | 登录后的 token（**不进库**） |
+| `~/.anta_scrap/credentials.json` | 登录后的 token，按账号存（**不进库**） |
+| `~/.anta_scrap/accounts.json` | 多用户密码，明文 0600（**不进库**） |
+| `.mcp.json` | MCP 接入配置（Claude Code 等） |
+| `start_anta_mcp.bat` | MCP 服务启动脚本（端口 8002） |
 | `templates/` | YAML 模板 |
 | `out/` | 导出文件默认目录 |
 

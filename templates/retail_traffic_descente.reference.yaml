@@ -1,12 +1,10 @@
 # 迪桑特零售客流分析 - 完整字段参考模板
 # 用法: anta-cli export -t retail_traffic_descente.reference
-# 注意：字段目录待通过 MCP 实测导出后补充完整
 
 report: retail_traffic_descente
 
-# ===== 维度字段 (row) =====
+# ===== 维度字段 (row) - 共 7 个 =====
 rows:
-  # HAR 抓取的基础维度（非完整）
   - 日历日期                  # fdId: sc83e4a2ef10442228a87bd2
   - 区域                    # fdId: s1f59a3424f554c9a96816d6
   - 店铺编码                  # fdId: ucd1ad149ec2d4a77bf768f3
@@ -14,11 +12,9 @@ rows:
   - 集合店属性                 # fdId: od3fbb3f78a704352ba0ff1e
   - 有效店标识                 # fdId: v34692180ca4e439eb2d61cd
   - 月同店标识                 # fdId: xf4933153a0e94691a8b3172
-  # TODO: 补充完整维度目录（通过 MCP 实测获取）
 
-# ===== 度量字段 (metric) =====
+# ===== 度量字段 (metric) - 共 11 个 =====
 metrics:
-  # HAR 抓取的基础度量（非完整）
   - 流水                    # fdId: n3e27079318a4444bb6acbb0
   - 流水同期                  # fdId: v2148c403a7044ef08127a58
   - 流水同比                  # fdId: x65ff25a46dc147baa25216a
@@ -30,7 +26,6 @@ metrics:
   - 店外客流同期                # fdId: x7ca8db64d7094d4cb407103
   - 进店客流同期                # fdId: i589e373d4e474683ac64871
   - 进店率                   # fdId: g2b2f405d1e7141beb6f31e3
-  # TODO: 补充完整度量目录（通过 MCP 实测获取）
 
 # ===== 筛选条件 =====
 filters:

@@ -1,0 +1,14 @@
+{
+  "username": "<工号A>",
+  "accessible_pages": [
+    {
+      "page_id": "ne63f6cf08bbb40c28b814e8",
+      "card_count": 21
+    },
+    {
+      "page_id": "e71d78d5bb6234d5ead169a2",
+      "card_count": 20
+    }
+  ],
+  "inaccessible_pages": []
+}

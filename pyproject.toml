@@ -12,10 +12,12 @@ dependencies = [
     "click>=8.1",
     "pyyaml>=6.0",
     "python-dotenv>=1.0",
+    "mcp>=2.0",
 ]
 
 [project.scripts]
 anta-cli = "anta_scrap.cli:main"
+anta-mcp = "anta_scrap.mcp_server:main"
 
 [tool.setuptools.packages.find]
 include = ["anta_scrap*"]

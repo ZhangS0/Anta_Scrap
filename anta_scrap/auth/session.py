@@ -5,13 +5,17 @@ from __future__ import annotations
 import time
 from typing import Optional  # noqa: F401  (保留给类型注解使用)
 
-from anta_scrap.auth.token_store import Credentials, load_credentials, save_credentials
+from anta_scrap.auth.token_store import Credentials, load_account, load_credentials, save_account, save_credentials
 from anta_scrap.client import AntaClient
 from anta_scrap.config import env
 
 
 class SessionExpired(RuntimeError):
     """凭证完全失效（refresh_token 也用不了），需要重新登录。"""
+
+
+class PasswordRequired(RuntimeError):
+    """该账号首次登录或本地无可用密码，需要调用方传入密码。"""
 
 
 def _verify_or_false(creds: Credentials) -> bool:
@@ -22,6 +26,50 @@ def _verify_or_false(creds: Credentials) -> bool:
         return verify_token(creds)
     except Exception:
         return False
+
+
+def resolve_credentials(
+    username: str,
+    password: Optional[str] = None,
+    dom_id: Optional[str] = None,
+) -> Credentials:
+    """多用户会话解析：优先用该账号缓存的 JWT；失效则用「本次传入或已存」的密码重登。
+
+    - 传了 password → 记住它（save_account，供日后免密重登）。
+    - 没传 → 从 accounts.json 取已存 password/dom_id。
+    - 缓存 JWT 有效（未过期 + validate-token 通过）→ 直接返回，不重登（日常快路径）。
+    - 缓存失效且无密码 → PasswordRequired（首次登录需传密码）。
+    - 缓存失效且有密码 → login() 重登并 save_account 兜底。
+    """
+    from anta_scrap.auth.login import login
+
+    provided_pwd = password or None
+    provided_dom = dom_id or None
+
+    effective_pwd = provided_pwd
+    effective_dom = provided_dom
+    if not effective_pwd:
+        acct = load_account(username)
+        if acct:
+            effective_pwd = acct.get("password")
+            effective_dom = effective_dom or acct.get("dom_id")
+    effective_dom = effective_dom or "guanbi"
+
+    creds = load_credentials(username)
+    if creds and not creds.is_expired() and _verify_or_false(creds):
+        if provided_pwd:
+            save_account(username, provided_pwd, effective_dom)
+        return creds
+
+    if not effective_pwd:
+        raise PasswordRequired(
+            f"账号 {username} 首次登录或凭证失效且无本地密码，请传入 password"
+        )
+
+    result = login(username=username, password=effective_pwd, dom_id=effective_dom)
+    creds = result.credentials
+    save_account(username, effective_pwd, effective_dom)
+    return creds
 
 
 def _renew_credentials(creds: Optional[Credentials]) -> Credentials:
@@ -89,7 +137,7 @@ class AntaSession:
         dom_id 参数已废弃（保留兼容）：凭证文件里存的已经是 Base64 编码后的
         x-dom-id 值（如 Z3VhbmJp），直接使用即可，无需覆盖。
         """
-        creds = load_credentials()
+        creds = load_credentials(env("ANTA_USERNAME"))
         # 没有本地凭证 / 本地过期 / 服务端失效，都走自动恢复（refresh → 重登）
         if creds is None or creds.is_expired() or not _verify_or_false(creds):
             creds = _renew_credentials(creds)

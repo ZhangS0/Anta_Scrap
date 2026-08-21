@@ -1,0 +1,30 @@
+# KOLON 最近两周流水分析模板（hamilton-report skill 用例，2026-08-16）
+# 基于 default 模板精简：只留 DAG 需要的维度和指标，日期窗口 2026-08-02 ~ 2026-08-15。
+report: retail_daily_kolon
+
+rows:
+  - 日历日期
+  - 渠道品牌
+  - 店铺编码
+  - 店铺名称
+  - 省份
+  - 区域
+  - 门店性质
+
+metrics:
+  - 流水
+  - 预算流水目标
+  - 流水同期
+  - 同店流水
+  - 同店流水同期
+
+filters:
+  - { name: 渠道品牌, values: [KOLON] }
+
+dynamic_params:
+  开始日期-户外-R02: 2026-08-02
+  结束日期-户外-R02: 2026-08-15
+
+# 约 256 店 × 14 天 ≈ 3600 行，limit 放大留余量
+limit: 5000
+offset: 0

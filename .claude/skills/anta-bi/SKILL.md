@@ -22,7 +22,7 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 ## 查询工作流（4 步）
 
 1. **路由**：按品牌/需求从上表选报表，Read 对应指引（单次最多读 1 个）。
-2. **编制模板**：按指引选维度/指标/筛选/日期，拼一个 YAML 字符串（**内联传给工具，不落盘**）。字段名必须与指引**逐字一致**（中文全名）。格式见指引，示例：
+2. **编制/复用模板**：按指引选维度/指标/筛选/日期拼 YAML，字段名必须与指引**逐字一致**（中文全名）。**模板复用**：正式报表任务（会沉淀 plan、重复执行）的模板编制成功后**保存到 `templates/<报告名>/<模板名>.yaml`**（日期等易变参数留注释占位），此后读取该文件、只改参数再传工具，不重新编制；临时探查才内联。格式见指引，示例：
    ```yaml
    report: retail_daily_kolon
    rows: [日历日期]
@@ -34,7 +34,15 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
      结束日期-户外-R02: "2026-08-09"
    ```
 3. **调用 MCP 工具 `export_report`**：日常**只传 `username`（工号）+ `template_yaml`**。`password` 仅在该账号**首次登录或登录失败**时补传（首次可向用户索取，之后服务端记住密码并自动复用）；`dom_id`/`output_name` 一般不传。
-4. **返回结果**：工具直接返回 **CSV 全文文本**（导出是异步任务，数秒~1分钟）。直接解析并以 markdown 表格/摘要向用户呈现关键数据；数据量大时先汇总再展示。
+4. **返回结果**：工具直接返回 **CSV 全文文本**（导出是异步任务，数秒~1分钟）。注意**返回可能被平台客户端 JSON 包裹**（拿到的是 `{"content": "CSV..."}` 这样的 JSON 字符串而非裸 CSV）——落盘前先解包：
+   ```python
+   text = result.content if isinstance(result.content, str) else str(result.content)
+   if text.lstrip().startswith("{"):
+       try: text = json.loads(text)["content"]
+       except Exception: pass  # 不是 JSON 包裹，原样使用
+   open(path, "w", encoding="utf-8-sig").write(text)
+   ```
+   **纪律：先把拿到的文本原样落盘到 `out/<报告名>/<run>/raw_response.txt`，再在本地解包成 CSV；解包失败绝不允许重新调 export_report**（那会重复触发 BI 导出任务），只对已有文本做格式处理。解包后以 markdown 表格/摘要向用户呈现关键数据；数据量大时先汇总再展示。
 
 ## 排错对照（对应工具返回的错误串）
 
@@ -47,6 +55,7 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 - `查询/导出失败: 导出任务失败` → 多为选了该卡片不可导出的指标（KOLON 常见，见各报表指引「已知缺陷」）；逐个减指标定位坏指标
 - **返回表头少于请求的 metrics** → 缺的指标被服务端**静默丢弃**（不报错！）。每次导出后必须核对 CSV 表头与请求 metrics 一致，缺列就换指标（KOLON 常见，如同比类/客流类）
 - **怀疑日期筛选没生效** → 临时把 rows 改成 `[日历日期]` 查一次，直接看返回的日期范围
+- **落盘的 CSV 里混着 JSON 转义（`\r\n`、文件开头是 `{"content"`）** → 平台客户端把结果 JSON 包裹了一层，属正常现象；按工作流第 4 步先落盘原始返回再本地解包，**不要重新查询**
 - `未授权...` → 调 MCP 时没带 `Authorization: Bearer <ANTA_MCP_API_KEY>`（服务端已启用令牌时）
 
 ## 上下文纪律（重要）

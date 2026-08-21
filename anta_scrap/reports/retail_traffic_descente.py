@@ -63,7 +63,7 @@ class RetailTrafficDescenteReport(BaseReport):
     }
 
     def default_template(self) -> QueryParams:
-        """HAR 验证过的基础字段配置（按日客流统计）。"""
+        """MCP 验证过的完整字段配置（按日客流统计）。"""
         rows = [
             self.field("日历日期"),
             self.field("区域"),
@@ -73,6 +73,9 @@ class RetailTrafficDescenteReport(BaseReport):
             self.field("流水"),
             self.field("流水同期"),
             self.field("流水同比"),
+            self.field("同店流水"),
+            self.field("同店流水同期"),
+            self.field("同店流水同比"),
             self.field("店外客流"),
             self.field("进店客流"),
             self.field("店外客流同期"),
