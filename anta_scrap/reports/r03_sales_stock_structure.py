@@ -90,7 +90,7 @@ class R03SalesStockStructureReport(BaseReport):
             self.field("齐码率"),
         ]
         filters = [
-            self._filter("渠道品牌", ["KOLON"]),
+            self._filter("渠道品牌", ["DESCENTE"]),
         ]
         dynamic_params = [
             self._dp("开始日期-户外-R02", "2026-08-01"),
