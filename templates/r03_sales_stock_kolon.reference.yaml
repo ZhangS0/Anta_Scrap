@@ -1,0 +1,184 @@
+# R03-任意时间段销存结构分析-KOLON - 完整字段参考模板
+# 用法: anta-cli export -t r03_sales_stock_kolon.reference
+
+report: r03_sales_stock_kolon
+
+# ===== 维度字段 (row) - 共 76 个 =====
+rows:
+  # - 品牌大区   # fdId: gdd98f6538558453b9bb52d7
+  # - 渠道品牌   # fdId: ca6e83aa4d1e74344b3fce78
+  # - 区域编码   # fdId: v7fcb2befeb924ef984a40fd
+  # - 区域   # fdId: df8b6d4fb67b74f7183552f0
+  # - 店铺类型明细   # fdId: s161d369279e94638b7fbca1
+  # - 本期产品年季   # fdId: m4093972a76434092a6e1ec0
+  # - 中类   # fdId: de928ec17db5a4f24a8d3f54
+  # - 商品吊牌价格   # fdId: pc57ee9825a97400ca81e365
+  # - 设计国家   # fdId: s7ed2089b91ac4d54befad1f
+  # - 商场体系   # fdId: h16f0767f0373435c852fda7
+  # - 日历日期   # fdId: d031b0413fb314ecb9bf8950
+  # - 日历年份   # fdId: d1c572e2961c14cfbb2f81fa
+  # - 日历年月   # fdId: h5f74b83073f74111a9f8083
+  # - 日历年周   # fdId: d6fbccb0cb0f048e9ad12391
+  # - 周   # fdId: j81455a14dca24e7a9981473
+  # - 月   # fdId: mb2cfa6852562412db58bdde
+  # - 日   # fdId: od3328502d955492f92dd022
+  # - 店仓编码   # fdId: h363a8fa5e9194887a403765
+  # - 店仓名称   # fdId: j47469cdf70114915ad5a083
+  # - 店仓标识   # fdId: d97c17cfeeb844b9abbc0d91
+  # - 办事处   # fdId: r1f7a8d2e5e2c4b01bdf08e5
+  # - 省份   # fdId: od9043c2952b241bda4ce5ce
+  # - 城市映射   # fdId: j4f7fa3233aa346088c6bf8a
+  # - 县区   # fdId: r47fc72e24b274f21b68b554
+  # - 城市等级   # fdId: re1e883cb05ca487bb9d639a
+  # - 仪表盘维度   # fdId: k00acfb00065046f3b4ecc4b
+  # - 门店性质   # fdId: re2528cb5cabd4d89a601b4c
+  # - 门店类型   # fdId: r883a54f0d3534648b101931
+  # - 店铺分级   # fdId: t121fd81523ef44bc808cac4
+  # - 店效分级   # fdId: i74bb9cc6763a4abc83d5612
+  # - 渠道分级   # fdId: g9d6ad76d0c254a6d8af4ae9
+  # - 经营类型   # fdId: occf11e805b334e4eaf21f88
+  # - 商场代码   # fdId: jc352d2abd21c4860b86a0a8
+  # - 商场名称   # fdId: w21c2918ff1544c6a841c392
+  # - 零售经理   # fdId: r0672ce363e6846e7be3bb50
+  # - 销售主管/经理   # fdId: edbfba45ec74e4853ba82334
+  # - 第一次开业日期   # fdId: g9778b76d8997411c85e396a
+  # - 关店日期   # fdId: v9448b9f618ad4c2a83b1d66
+  # - 最新改造类型   # fdId: g777261efa4c84f8295866b3
+  # - 最新改造开始日期   # fdId: v31978abfb6064ba5b3e625c
+  # - 最新改造结束日期   # fdId: uafd86eb632d1460ea0ce8da
+  # - 品牌终端形象   # fdId: s06555d855d0e48ebbb9d763
+  # - 店铺楼层   # fdId: l113044a76fd64b25bbd35f6
+  # - 集合店属性   # fdId: t09d8d69b05b24ad1a466eb5
+  # - 集合店属性明细   # fdId: g54db9f6096554bc19748a0a
+  # - 商品编码   # fdId: k6fab4f1eab794b6d9327f59
+  # - 尺码   # fdId: k52ae97b94ea64446a6c4491
+  # - 货号   # fdId: p49f36c14237247d08409fd5
+  # - 颜色   # fdId: racf126860dc04500ae80833
+  # - 款号   # fdId: pf6c824dfba0a4128a0cbcc7
+  # - 商品名称   # fdId: hdfaa29dcb4e84370b6da5b1
+  # - 商品品牌   # fdId: r747f86dfeb9244b699cb6b7
+  # - 大类   # fdId: bb5cd95cd5c4a4bdfaaac333
+  # - 小类   # fdId: g548483c641a14dd1adfc8c5
+  # - 系列   # fdId: vfd5b9dd2a991448daca059e
+  # - 子系列   # fdId: x898bbfa8eaa04e46baae660
+  # - 本期产品年   # fdId: rd518570072484a919b432e0
+  # - 同期产品年   # fdId: kc93debb3cd6a427da58677e
+  # - 产品季   # fdId: q1d81b23c38be4923befe7ef
+  # - 同期产品年季   # fdId: r51ba036dba83499a8eae2cc
+  # - 性别   # fdId: fa5d5182f5b624ec9842feaf
+  # - 上下装   # fdId: ec6f71d57b61041c9894817d
+  # - POP款   # fdId: leed57c751e1249338f874fc
+  # - IMC类型   # fdId: r31144229a9ce4ab5af55864
+  # - 业务类型   # fdId: u75527c493d8848ea826617f
+  # - 上市日期   # fdId: u8aec704a0bb34e33ab629e5
+  # - 上市月   # fdId: r23965a5dc5364765a99fb5e
+  # - 南区上市日期   # fdId: u4722b1bd81664ebb92c108d
+  # - 北区上市日期   # fdId: j2c963fb5da0d42bc9debcdf
+  # - 华南上市日期   # fdId: x0ef1bf84ae7b4bdcaffead0
+  # - 首销日期-货号   # fdId: n6f21c2b03f434d45b3d780e
+  # - 首销日期-款号   # fdId: e9aff0abe2ecb4a7c912d550
+  # - 图片地址   # fdId: v05ac9dda68dd4c528867da9
+  # - 产品备注   # fdId: t786fe7d526a847deaf11dd7
+  # - 同期款号   # fdId: xb289126770f04d97aa1c878
+  # - 同期款吊牌价   # fdId: d2448ee482939462d91915e6
+  - 中类
+  - 货号
+
+# ===== 度量字段 (metric) - 共 74 个 =====
+metrics:
+  # - 流水   # fdId: h68b2794e2b4145f391f34d5
+  # - 销售数量   # fdId: v6f312daf452e4b1398d5c3a
+  # - 销售吊牌额   # fdId: e35ce79162b034ddc81f462c
+  # - 折扣   # fdId: w799750f257684eab826534c
+  # - 库存数量   # fdId: ha960caceaa194919854916b
+  # - 月库销比   # fdId: m7f4a0163316444ce91cbce6
+  # - 月库销比同期   # fdId: vb94ec0aee3ac4df194d72bb
+  # - 库存均深   # fdId: q6b25d9f7f88448fda13f4da
+  # - 门店库存SKC数   # fdId: e9f56939e059445389d1f637
+  # - 流水同期   # fdId: ha0d94ce8818d4b088fb9bdb
+  # - 销售数量同期   # fdId: g755d89789df24a10aeea917
+  # - 销售吊牌额同期   # fdId: ta6d17ddd3b2c477f84421bc
+  # - 折扣同期   # fdId: k1a15d938d9aa4a0aa67d159
+  # - 流水同比   # fdId: w48fe6dc4beb04c21abf4dcc
+  # - 销售数量同比   # fdId: j4171e59c42c4483cbddae54
+  # - 销售吊牌额同比   # fdId: e99997a4bc3f84688bb72993
+  # - 折扣同比   # fdId: w97ca45431aee488ea85c0af
+  # - 齐码率   # fdId: rde0c46906dbb49f0851c62d
+  # - 齐码率（正价折扣）   # fdId: i132af4ef37b848ecb895cf8
+  # - 货通销售流水   # fdId: xd647daf075774c79a1a6519
+  # - 货通销售数量   # fdId: ee9bd04d2192649a290c5753
+  # - 货通销售吊牌金额   # fdId: p7e820167bfd3459db0a78e6
+  # - 货通销售流水同期   # fdId: b8f3207d907b74ecc991126c
+  # - 货通销售数量同期   # fdId: x5c9dd9cb4c644f47b69bb74
+  # - 货通销售吊牌金额同期   # fdId: vecd8e0c796a14474b6f6970
+  # - 门店齐码SKC数   # fdId: caac3bd7ec3154f9180d6aef
+  # - 门店零售SKC数   # fdId: o671695d1998f4383ad11078
+  # - 门店进货SKC数   # fdId: n4fc21ee9d1a44ec78ce812b
+  # - 办事处库存SKC数   # fdId: c0ebaa090541846b390cbb8c
+  # - 办事处齐码SKC数   # fdId: g288d72fa9c74431b8ae60e9
+  # - 办事处零售SKC数   # fdId: r0719cc50f81b4e7ebe08ded
+  # - 办事处进货SKC数   # fdId: e49b583370f614d34818c248
+  # - 区域库存SKC数   # fdId: f4617b8f46da94ca98d12ac0
+  # - 区域齐码SKC数   # fdId: ieeb341da0bc449da8e65327
+  # - 区域零售SKC数   # fdId: u66ceb73d9ba34ec38d1749c
+  # - 区域进货SKC数   # fdId: d1de6fab24bb34766a5ebb5a
+  # - 全国库存SKC数   # fdId: f765a977c5442460eae7d8d2
+  # - 全国齐码SKC数   # fdId: e5461211e1182475583ba9c2
+  # - 全国零售SKC数   # fdId: kf6df88f9732a4794ac3acde
+  # - 全国进货SKC数   # fdId: fdf9088ea3bda43039bea3e6
+  # - 库存吊牌额   # fdId: j4bec3086a86d4dd086803fa
+  # - 库存数量同期   # fdId: if02ad5ff2528451ca70c081
+  # - 库存吊牌额同期   # fdId: g10ff6eb8cbcb46c1bd790d6
+  # - 库存数量同比   # fdId: tab0c1d6753474481b2e5b4b
+  # - 库存吊牌额同比   # fdId: e517c9fb0f2164b29a5ed04f
+  # - 实物库存数量   # fdId: uba3cc1f03df24eafbb580ab
+  # - 实物库存金额   # fdId: c5ea7c372d4d448749341d7b
+  # - 在途库存数量   # fdId: r0baa0807b5714aee88a5803
+  # - 在途库存金额   # fdId: id565f337d04649ffab495b7
+  # - 库存吊牌均价   # fdId: cb99ce1d944034bdc8fcb218
+  # - 动销率   # fdId: na456e9c61a1f4201b4c753c
+  # - 动销率（只对货号去重）   # fdId: wd526d702a75046369ebb67e
+  # - 期初库存吊牌额   # fdId: dc3fcbd0e79dd408b9e6eabe
+  # - 期初库存吊牌额同期   # fdId: tfccac945b405428393840f6
+  # - 采购入库数量   # fdId: k627397e35c2b487db4ea6f8
+  # - 采购入库吊牌金额   # fdId: v41c24a5c8d624356ba60024
+  # - 报废数量   # fdId: l50ce265a81c6467f9b646ba
+  # - 报废吊牌金额   # fdId: gb9d8fb4192484e6b93e50d7
+  # - 采购入库数量同期   # fdId: a820431e851f8457cab84907
+  # - 采购入库吊牌金额同期   # fdId: x0b62b1ae834d4d42a00c3bd
+  # - 报废数量同期   # fdId: wda5fb55a43c34ad98096fb7
+  # - 报废吊牌金额同期   # fdId: cb220242661b14084bdc2039
+  # - 报废数量同比   # fdId: db619e12ce50842e0978f08b
+  # - 报废吊牌金额同比   # fdId: b1e1d6ceb4f5f4edca3f3999
+  # - 采购入库数量同比   # fdId: xa9116ddf5c914462b3f087e
+  # - 采购入库吊牌金额同比   # fdId: e4d3064d9896b4beaaeb4dc4
+  # - 流水_同期款   # fdId: o07331f82647246798e21529
+  # - 销售数量_同期款   # fdId: j56180b9ab4974fdf924a469
+  # - 销售吊牌额_同期款   # fdId: h97183b3d17244f7b91e6b7e
+  # - 货通销售流水_同期款   # fdId: b009ddf728ace4071af982a6
+  # - 货通销售数量_同期款   # fdId: e56027f8b3f4945f28929151
+  # - 货通销售吊牌金额_同期款   # fdId: d41e4e99da446409f8b93ffa
+  # - 库存数量_同期款   # fdId: r6ba9244c1488467ca82020f
+  # - 库存吊牌额_同期款   # fdId: o231e6792775d4a41aa7ce40
+  - 流水
+  - 流水同期
+  - 销售数量
+  - 库存数量
+  - 动销率
+  - 月库销比
+  - 齐码率
+
+# ===== 筛选条件（12 个有选择器映射）=====
+filters:
+  - { name: 渠道品牌, values: [KOLON] }
+  # 可选: 品牌大区/区域/办事处/店铺类型明细/性别/大类/中类/系列/子系列/上市日期/产品备注
+
+# ===== 动态参数（最多 5 个；配货季多选用逗号分隔，不传即查全部）=====
+dynamic_params:
+  开始日期-户外-R02: "2026-08-01"
+  结束日期-户外-R02: "2026-08-07"
+  同期开始日期-户外: "2025-08-01"
+  同期结束日期-户外: "2025-08-07"
+  # 户外_配货季(多选): "2026Q3,2026Q4"
+
+limit: 50

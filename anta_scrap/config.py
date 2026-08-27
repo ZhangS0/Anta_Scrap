@@ -46,6 +46,7 @@ def get_report_registry() -> Dict[str, Type]:
     from anta_scrap.reports.channel_monthly_descente import ChannelMonthlyDescenteReport
     from anta_scrap.reports.channel_monthly_kolon import ChannelMonthlyKolonReport
     from anta_scrap.reports.r03_sales_stock_structure import R03SalesStockStructureReport
+    from anta_scrap.reports.r03_sales_stock_kolon import R03SalesStockKolonReport
 
     return {
         "retail_daily_descente": RetailDailyDescenteReport,
@@ -53,6 +54,7 @@ def get_report_registry() -> Dict[str, Type]:
         "channel_monthly_descente": ChannelMonthlyDescenteReport,
         "channel_monthly_kolon": ChannelMonthlyKolonReport,
         "r03_sales_stock_structure": R03SalesStockStructureReport,
+        "r03_sales_stock_kolon": R03SalesStockKolonReport,
     }
 
 
