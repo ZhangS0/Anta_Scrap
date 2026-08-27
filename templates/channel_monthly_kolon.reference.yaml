@@ -1,0 +1,323 @@
+# 渠道运营分析-月报-KOLON - 完整字段参考模板
+# 用法: anta-cli export -t channel_monthly_kolon.reference
+
+report: channel_monthly_kolon
+
+# ===== 维度字段 (row) - 共 37 个 =====
+rows:
+  # - 日历月份   # fdId: f1bded591ccbf4e13acd55e9
+  # - 区域   # fdId: cc72fb88bdff74bb9bf0a6f0
+  # - 店铺名称   # fdId: a6890932270e646e4a126f2b
+  # - 日历年份   # fdId: k7441d23c12f44fcc84c5e5f
+  # - 店铺编码   # fdId: p474ae38e04ae4271955ff9d
+  # - 渠道品牌   # fdId: wc80c2ce5b44a46839d44e2f
+  # - 关店标记   # fdId: j41773eb9e4874ebbb910ce1
+  # - 省份   # fdId: p8bde40ba686849a489592e9
+  # - 城市_映射   # fdId: ree1167de8fa54eb7a56c9c5
+  # - 区县   # fdId: cacd534c1314a45078f41268
+  # - 经营类型   # fdId: md7a9d14e691a4e46bb0b8fb
+  # - 店铺类型明细   # fdId: vfb685ff38d934ebd92c44e1
+  # - 集合店属性   # fdId: b8c37a33e249a4e1ead016fc
+  # - 品牌分类   # fdId: g4407eca49778486aadc2a1a
+  # - 店铺级别   # fdId: i9bb12cc06d094938851f290
+  # - 渠道级别   # fdId: o220dca1b763a4b50995738b
+  # - 店效分级   # fdId: dd420e3bf244146609b4ff91
+  # - 门店性质   # fdId: j77bb2cea98e442a28400d2f
+  # - 门店类型   # fdId: jca6ad41500c549259f68c9b
+  # - 关店日期   # fdId: o9995a05641514c4185ebb1f
+  # - 第一次开业时间   # fdId: r2123f6710af6420fa84c183
+  # - 改造类型   # fdId: hc8855548f2fd44ed889cacb
+  # - 最新改造开始日期   # fdId: ucb238ad5f4ce418ab2dc097
+  # - 最新改造结束日期   # fdId: o2282a19e2f624dd5918fbc0
+  # - 商场体系   # fdId: g629e5b7757214a2e86b1ba4
+  # - 同店类型   # fdId: x577a8c85751943e4aeb22ea
+  # - 城市级别代码   # fdId: x171da067c0e04867a364652
+  # - 办事处   # fdId: db50486c138264a5db6a3112
+  # - 店龄   # fdId: m05e9e77f2bcd4a4d83c2424
+  # - 形象店龄   # fdId: o54ca1fdc6b2c4f5f94e0b14
+  # - 品牌终端形象   # fdId: f9593d5bfe77144cc9b97963
+  # - 商场代码   # fdId: wd381dfc2992940899047c0f
+  # - 商场名称   # fdId: i730c5810b41d46659ad68eb
+  # - 店铺楼层   # fdId: j6df9bfd3c6c643028ab8f2a
+  # - 财务所属品牌   # fdId: md7ecc768858f44d6981ef0b
+  # - 零售经理   # fdId: ibd8d476c6d92454596bf778
+  # - 所属大店长   # fdId: o3d1916afac09452f81d5c5d
+  - 日历月份
+  - 区域
+  - 店铺名称
+
+# ===== 度量字段 (metric) - 共 251 个 =====
+# 命名规律：{月|年累}{基础指标}{本期|同期|同比} 全组合（250 个）
+metrics:
+  # - 是否有效店本期（1是,0否）   # fdId: s5107a590a7494148885df82
+  # - 销售面积_最新   # fdId: pefb7c1f401f947d39b56856
+  # - 月店效本期   # fdId: q668741c188364ee0abb5dbb
+  # - 月度坪效本期   # fdId: t5cb9d87032eb4e1f9147af5
+  # - 月零售流水目标   # fdId: ebd1756d3ea5049198b6596c
+  # - 月预算流水目标   # fdId: jcb886413f700469696d5139
+  # - 月流水本期   # fdId: r833c6746c49a44d8ad17f03
+  # - 月销售数量本期   # fdId: xddca4a0a91bc4db4bd89800
+  # - 月销售吊牌金额本期   # fdId: se755973395384443b3b9513
+  # - 月小票数本期   # fdId: wd50f6e591f7e449aaed5ac5
+  # - 月单件小票数本期   # fdId: ba8d1a51df9dc443fa1ca0da
+  # - 月折扣本期   # fdId: q28335fc8e0dd43d0a5a0309
+  # - 月连带率本期   # fdId: jd10584dcd31b44ff91ed3d4
+  # - 月客单价本期   # fdId: q370e7ba91bc74448bf2f350
+  # - 月件单价本期   # fdId: w46cbe09b45bc4784980d317
+  # - 月平均牌价本期   # fdId: w1fe6119439a541bfb858da0
+  # - 月单件占比本期   # fdId: x824f57d63f8648b897d3c13
+  # - 月流水同期   # fdId: g55af6423051a4955a4e5363
+  # - 月销售数量同期   # fdId: q01026aea0d114763972cb2c
+  # - 月销售吊牌金额同期   # fdId: saec503c3a3e54930a384565
+  # - 月小票数同期   # fdId: b092ace5ec793473cbea871a
+  # - 月单件小票数同期   # fdId: m3c807a3e76e94640a59841f
+  # - 月折扣同期   # fdId: scced07d0c5a1495282964dc
+  # - 月连带率同期   # fdId: d142dd3a2e2714d10aa65d69
+  # - 月客单价同期   # fdId: m949b8ced0b9d4792a0951ef
+  # - 月件单价同期   # fdId: h26c84ec26e004aea90c81b2
+  # - 月平均牌价同期   # fdId: d49eca4e58c9947289f56ccd
+  # - 月单件占比同期   # fdId: g69d3f93068574af6a00d8cd
+  # - 月流水同比   # fdId: j32988ba560f8420faa5352f
+  # - 月销售数量同比   # fdId: rbc07f47e53a44f83818f631
+  # - 月销售吊牌金额同比   # fdId: hd2c7992dbdde4f788a8467b
+  # - 月小票数同比   # fdId: q1753a367fb184b4c8f7fe20
+  # - 月折扣同比   # fdId: uaa5fd759e7a5436c8db602c
+  # - 月连带率同比   # fdId: g442cf6788fbe44eda21b3fd
+  # - 月客单价同比   # fdId: jb533c95b986b4f87b97380c
+  # - 月件单价同比   # fdId: l0547d296c7f647ddb2482b6
+  # - 月平均牌价同比   # fdId: p0fa8dc4ac7de40d3b82f4a3
+  # - 月单件占比同比   # fdId: nd53bb930c8684f4aba84098
+  # - 月同店流水本期   # fdId: o1b3dd7b41e744446b78fc2a
+  # - 月同店销售数量本期   # fdId: b4016196e589d4f53b93c059
+  # - 月同店销售吊牌金额本期   # fdId: x5a8a398323c9462db6df712
+  # - 月同店小票数本期   # fdId: da722fbb139944db3aa6f019
+  # - 月同店折扣本期   # fdId: obcd104fac4324b8c836ed8f
+  # - 月同店连带率本期   # fdId: gb58c3766cb7448949e2befd
+  # - 月同店客单价本期   # fdId: na876b2c01f5c43e4b792869
+  # - 月同店件单价本期   # fdId: uae9ed2c536d2407fbfd9c28
+  # - 月同店流水同期   # fdId: a727d9f489b4348e6801c37c
+  # - 月同店销售数量同期   # fdId: k9b18c0e86260475a844a6c5
+  # - 月同店销售吊牌金额同期   # fdId: n5533d2c15ab243dc82a6bde
+  # - 月同店小票数同期   # fdId: deea172f65fa345a89a253ff
+  # - 月同店折扣同期   # fdId: h7f378dd6b7484c3fa0237e8
+  # - 月同店连带率同期   # fdId: g3d32432e6fae40bfb540880
+  # - 月同店客单价同期   # fdId: a04fd97a1a7f7499da4c11c6
+  # - 月同店件单价同期   # fdId: r3cb48a54dc774312971ecbd
+  # - 月同店流水同比   # fdId: m6d9b57f42eb64b54a213f71
+  # - 月同店销售数量同比   # fdId: a6bc73c1052b84dcd9e4ced6
+  # - 月同店销售吊牌金额同比   # fdId: a0356002bc6e74affb9362a5
+  # - 月同店小票数同比   # fdId: bc03bcde0f5c74a439e9afac
+  # - 月同店折扣同比   # fdId: b0a071cc9fd8b49ae95c5c31
+  # - 月同店连带率同比   # fdId: j6ea15144fe8e4b7da27d194
+  # - 月同店客单价同比   # fdId: j9a253e9b9bcb41ff906d419
+  # - 月同店件单价同比   # fdId: rf7d488d761ca46c2b924406
+  # - 月进店客流人次有效天数本期   # fdId: la38104ab097c44b0ad69f5c
+  # - 月客流人次小票数本期   # fdId: sa06085849d604c208fb959f
+  # - 月店外客流人次本期   # fdId: g3175e3f4479542eba5f3352
+  # - 月进店客流人次本期   # fdId: q61241f9fd783411788177a9
+  # - 月日均进店客流本期   # fdId: o1b34b73ad42b4fe6810d6f9
+  # - 月进店率本期   # fdId: je4c99815ec134d40835bee7
+  # - 月成交率本期   # fdId: xf3b4505d33414e87a4e8c03
+  # - 月进店客流人次有效天数同期   # fdId: a409dbcf751024f8ab819407
+  # - 月客流人次小票数同期   # fdId: f5c677b41aaae4e33b33695a
+  # - 月店外客流人次同期   # fdId: ea871efac9f3045a3828f6d7
+  # - 月进店客流人次同期   # fdId: m432c3610bad349d0ad6e822
+  # - 月日均进店客流同期   # fdId: pbb282d54c8454b9082c5713
+  # - 月进店率同期   # fdId: v133ee3e2a87f478197666e9
+  # - 月成交率同期   # fdId: t0be28e1682f14088a38450a
+  # - 月店外客流同比   # fdId: hb8431ff8d5214ef4b3ab7e5
+  # - 月进店客流同比   # fdId: h4034f191fcb548f185e1f22
+  # - 月日均进店客流同比   # fdId: df5e8de99adca4861b1d2f1b
+  # - 月进店率同比   # fdId: sfa00e03ad95249a3a2ded3f
+  # - 月成交率同比   # fdId: q0a701b8285a54e1db248854
+  # - 月有效店数本期   # fdId: x0c519800f008450294bd467
+  # - 月保有店数本期   # fdId: k29b6bf97653146deacf9670
+  # - 月新开店数本期   # fdId: n26aab73a961a4abca574983
+  # - 月改造店数本期   # fdId: n5932bef9258c428aa6c795d
+  # - 月关闭店数本期   # fdId: mf6db1a12736d4605813fcf8
+  # - 月有效店数同期   # fdId: ad2faaffb26e14301a20d62c
+  # - 月保有店数同期   # fdId: f1bb735e233334432ab4f387
+  # - 月新开店数同期   # fdId: ae92e17daa3d44074bae50cd
+  # - 月改造店数同期   # fdId: l702cdaddb2ae490fa9c9d39
+  # - 月关闭店数同期   # fdId: v3264dcba731745408fa7f93
+  # - 月有效流水本期   # fdId: f7ca29e3cae3643cbabb54e3
+  # - 月有效销售月数本期   # fdId: m3984c38944bc421ea5983d6
+  # - 月保有店效本期   # fdId: n5ed9c7ac07144174b9b4298
+  # - 月新开店效本期   # fdId: l7de345f245b94c0682ee74a
+  # - 月改造店效本期   # fdId: fe221d79502874f958ad45a5
+  # - 月店效同期   # fdId: q9951e3150b10466891765e4
+  # - 月店效同比   # fdId: gf2177a1b22cf4602affe046
+  # - 月改造店效同期   # fdId: g623691fa63b24439b387a6c
+  # - 月改造店效同比   # fdId: n1721feae8e1641468b05ff5
+  # - 月保有店销售面积本期   # fdId: a04c141d0faba42ba8926564
+  # - 月新开店销售面积本期   # fdId: f1035b060888e4b6ca42589b
+  # - 月改造店销售面积本期   # fdId: t0080213bace54a37ba8cdd5
+  # - 月保有店平均面积本期   # fdId: leb5e960376884080a284d0b
+  # - 月新开店平均面积本期   # fdId: r51b7d89f0de74a078d093e0
+  # - 月改造店平均面积本期   # fdId: rd60f5cba04a54ae297098a8
+  # - 月保有店销售面积同期   # fdId: va9bdc0637a624cc981b4600
+  # - 月保有店总面积同比   # fdId: n32e904ae9f154e9082a7841
+  # - 月保有店平均面积同期   # fdId: l4a209a5d01bb40a6ac6b9d4
+  # - 月保有店平均面积同比   # fdId: b6b64ff27f9b8463aa0afb05
+  # - 月改造店平均面积同期   # fdId: cf3474a2cf580466aaad0f7c
+  # - 月改造店平均面积同比   # fdId: m7fe65a979d674b0898cace4
+  # - 月度新开坪效本期   # fdId: r7c2f4317144b4f6a8733196
+  # - 月度改造坪效本期   # fdId: w165694e13eb447b2a8fd27a
+  # - 月度保有坪效本期   # fdId: p4eec3515a0434cf79c9d532
+  # - 月销售面积本期（坪效）   # fdId: q71b537fe7bad487a85dd42b
+  # - 月度坪效同期   # fdId: f58e65ea4d3a34ffeb883e42
+  # - 月度坪效同比   # fdId: eaac0e7ac414e46e988af4be
+  # - 月度改造坪效同期   # fdId: l599e5a5555094553964d4a4
+  # - 月度改造坪效同比   # fdId: vff78f5df8a854706bbdbc08
+  # - 月销售面积同期（坪效）   # fdId: h03592df8b0834abf98427b8
+  # - 年累零售流水目标   # fdId: ne1180835e74849219178bab
+  # - 年累预算流水目标   # fdId: x7115c61f19eb400999a7d6c
+  # - 年累流水本期   # fdId: q6298274995d049da8ec94b6
+  # - 年累销售数量本期   # fdId: h32c6bccdaef7418d9601fed
+  # - 年累销售吊牌金额本期   # fdId: ha449ada807f5484d9cc895b
+  # - 年累小票数本期   # fdId: w8049c9d8b3a8494eb1f97d5
+  # - 年累单件小票数本期   # fdId: e9719409ef8c4417096cfc9d
+  # - 年累折扣本期   # fdId: nd5b084e1c19e42c4b5ff336
+  # - 年累连带率本期   # fdId: g3de6a79ae96c476ca551a42
+  # - 年累客单价本期   # fdId: l3cacf185aca149dc92eb86d
+  # - 年累件单价本期   # fdId: w3f1530417c4a4ac7840f419
+  # - 年累平均牌价本期   # fdId: e988e0ecb168f4769bcca6f4
+  # - 年累单件占比本期   # fdId: g826f6eb028934e4a8c93c20
+  # - 年累流水同期   # fdId: kd127b28248c0455483d3c7a
+  # - 年累销售数量同期   # fdId: a922ca1f091764656948eb5a
+  # - 年累销售吊牌金额同期   # fdId: f45afa63b6bc64000a9cebdc
+  # - 年累小票数同期   # fdId: m33e48906d88c47c29c29feb
+  # - 年累单件小票数同期   # fdId: l51d9c6c5c617443c9da5010
+  # - 年累折扣同期   # fdId: sf2ed8066e94b46db9ff3404
+  # - 年累连带率同期   # fdId: l883f954ffabf43e8befddc6
+  # - 年累客单价同期   # fdId: ded7d05c2fbc34f3b9f3bc01
+  # - 年累件单价同期   # fdId: qb924763c2a6441dd87a96fc
+  # - 年累平均牌价同期   # fdId: tf1ece3766a704899a2bd1c2
+  # - 年累单件占比同期   # fdId: r88e686b28027424cacd2cbd
+  # - 年累流水同比   # fdId: x57c5cdbe2857494d9df67fa
+  # - 年累销售数量同比   # fdId: a34ad2b6b3b25490981f8caa
+  # - 年累销售吊牌金额同比   # fdId: b48726e26822d4531a574f17
+  # - 年累小票数同比   # fdId: q610f14a800ed461aa215c7f
+  # - 年累折扣同比   # fdId: ne188d80dc57947fcae7ffb1
+  # - 年累连带率同比   # fdId: r02f68f8bce5a4988ae7ed4b
+  # - 年累客单价同比   # fdId: f6b7a061e4d9d4c0395f6418
+  # - 年累件单价同比   # fdId: n4f174d58efbe4fadba1d67c
+  # - 年累平均牌价同比   # fdId: me8d4f424db11401e93b6d02
+  # - 年累单件占比同比   # fdId: d00746ea6739642bf97c2d3f
+  # - 年累同店流水本期   # fdId: dc38052b1c4784ebe9ad9e61
+  # - 年累同店销售数量本期   # fdId: g5f6ae70db7e74bcf969e282
+  # - 年累同店销售吊牌金额本期   # fdId: pe398879013024009878cc0d
+  # - 年累同店小票数本期   # fdId: p5b106bcb983a4abdb909278
+  # - 年累同店折扣本期   # fdId: b0b8ee55172ee49259cadef3
+  # - 年累同店连带率本期   # fdId: g55f64f339b9241e1a3c8156
+  # - 年累同店客单价本期   # fdId: xc9fa9095c58146a0a99072a
+  # - 年累同店件单价本期   # fdId: xb73cf1ff783040baa0e01d8
+  # - 年累同店流水同期   # fdId: p042b9b3b14e14aee8f6503e
+  # - 年累同店销售数量同期   # fdId: i667a395fdf974fe7888c108
+  # - 年累同店销售吊牌金额同期   # fdId: lf09670d9f4544d4e9b895a1
+  # - 年累同店小票数同期   # fdId: i32b729f688e744c599806e4
+  # - 年累同店折扣同期   # fdId: w3a86152c09d644abbc9249c
+  # - 年累同店连带率同期   # fdId: t40e5fe03143e4339aa66251
+  # - 年累同店客单价同期   # fdId: xc4223f76262b41909b39291
+  # - 年累同店件单价同期   # fdId: i45f7af1ed210460498d304c
+  # - 年累同店流水同比   # fdId: wcbc459e856984ca99cb0b1f
+  # - 年累同店销售数量同比   # fdId: u2a351a7d1bae4751a2dbf67
+  # - 年累同店销售吊牌金额同比   # fdId: v88e462e6a11b4687b74727a
+  # - 年累同店小票数同比   # fdId: jd4d8dba674cb48bab254ee3
+  # - 年累同店折扣同比   # fdId: e6ef370acbbe04ca4a47d957
+  # - 年累同店连带率同比   # fdId: cee68aa56f1dc4f78b201d81
+  # - 年累同店客单价同比   # fdId: a7842469858d94015a9500da
+  # - 年累同店件单价同比   # fdId: v8070f4c69e684b5db77a3f4
+  # - 年累进店客流人次有效天数本期   # fdId: kb1b8c03ec36240adb18f5d8
+  # - 年累客流人次小票数本期   # fdId: j19d01f10ffe847e1b8a4dba
+  # - 年累店外客流人次本期   # fdId: q7649a57a388d4c609b395f3
+  # - 年累进店客流人次本期   # fdId: e0a3fbf429bfd4901b7929f9
+  # - 年累日均进店客流本期   # fdId: q4b0158e604f948f0b993259
+  # - 年累进店率本期   # fdId: o5dcc583dbc0042e7af9d6d2
+  # - 年累成交率本期   # fdId: e9b07cfbd116047c983e6aa7
+  # - 年累进店客流人次有效天数同期   # fdId: f5c6b47ccf7654e8a9d3b620
+  # - 年累客流人次小票数同期   # fdId: j1b678b79b3cf4a70b5c093f
+  # - 年累店外客流人次同期   # fdId: i8fbd2b98ace04d35bab142c
+  # - 年累进店客流人次同期   # fdId: i3a1700a186a04f5bb9e04f0
+  # - 年累日均进店客流同期   # fdId: sce29d919177e4919bf905d7
+  # - 年累进店率同期   # fdId: g35a5d5d4cc6741d4b6956d5
+  # - 年累成交率同期   # fdId: v224593e5fee94c589dbdab3
+  # - 年累店外客流同比   # fdId: l236e9d7d5653428daeb5308
+  # - 年累进店客流同比   # fdId: r91aa8b59f76146c9892c91b
+  # - 年累日均进店客流同比   # fdId: hfd264df2b012462d8b69ccc
+  # - 年累进店率同比   # fdId: fcea52618f62f4e76ac3ea33
+  # - 年累成交率同比   # fdId: w08505405965e4b7e85a70cf
+  # - 年累保有店数本期   # fdId: f967da5821159460a9770667
+  # - 年累新开店数本期   # fdId: nadbefa692bd34c268cae3e3
+  # - 年累改造店数本期   # fdId: i7ba0da8f978c4dffb8455ba
+  # - 年累关闭店数本期   # fdId: k22bb33502b3f401792fc4a2
+  # - 年累保有店数同期   # fdId: n2f0efc45dbc348a2a1ea3f9
+  # - 年累新开店数同期   # fdId: tfe7bfd966b784650af2fb42
+  # - 年累改造店数同期   # fdId: medb86e30459a42be9599c78
+  # - 年累关闭店数同期   # fdId: vd5b875ea7d754e239c58486
+  # - 年累有效流水本期   # fdId: l7a9a4bf776fd41f6a94525e
+  # - 年累有效销售月数本期   # fdId: b62ce547cc7754de3a2da1d3
+  # - 年累店效本期   # fdId: cfb7263bb37cd45398cf5208
+  # - 年累保有店效本期   # fdId: w1c5abb0aa27642b28b8c15c
+  # - 年累新开店效本期   # fdId: x25234f50e9954f058d6f9aa
+  # - 年累改造店效本期   # fdId: m7812cb0a4d4c4f7ca4a65aa
+  # - 年累有效流水同期   # fdId: tcd2a747d7312468ab53ccae
+  # - 年累有效销售月数同期   # fdId: m3e27ec2e10bf44f983989fd
+  # - 年累店效同期   # fdId: v3e2f448e5f654838b2d9790
+  # - 年累店效同比   # fdId: d339573c1cfb24be4b515c33
+  # - 年累改造店效同期   # fdId: q1118f50f0a46442ba275add
+  # - 年累改造店效同比   # fdId: l0987251fb06241f7b1af648
+  # - 年累保有店销售面积本期   # fdId: kd353fd7b17e14ac586dc6c9
+  # - 年累保有店平均面积本期   # fdId: n9dd7355681fa43aeade881f
+  # - 年累新开店销售面积本期   # fdId: c14c91be86b904f2c8de919d
+  # - 年累新开店平均面积本期   # fdId: je49c34329fb647ca977ba60
+  # - 年累改造店销售面积本期   # fdId: wfac49beb3bfc4e128d9e8ca
+  # - 年累改造店平均面积本期   # fdId: w2dee3d63135e421ba686831
+  # - 年累销售面积本期   # fdId: m523dcbe310644aeea82a3a7
+  # - 年累销售面积本期（坪效）   # fdId: qd5a2b903ed8f4767bec938e
+  # - 年累保有店销售面积同期   # fdId: md51b6d7095ba4e02bbc5495
+  # - 年累保有店平均面积同比   # fdId: p430892775ccb46d7811a3a8
+  # - 年累保有店平均面积同期   # fdId: h22687ec9cbcc4e1da2876b4
+  # - 年累改造店平均面积同期   # fdId: tf292eaa48f1e42febfe543c
+  # - 年累保有店总面积同比   # fdId: vcb02c0598c5f4badac57890
+  # - 年累改造店销售面积同期   # fdId: n20ef9babdc364755924e218
+  # - 年累改造店平均销售面积同比   # fdId: ladc808eec4614c4db7c9ce5
+  # - 年累改造前销售面积   # fdId: mf55cdf690df44ec885c40cc
+  # - 年累改造前平均销售面积同期   # fdId: cc73b1fb5974d463d89f7827
+  # - 年累改造前店效   # fdId: icc3464869dad4b51ac64191
+  # - 年累改造前坪效   # fdId: n7cddf3b3399146d092607cf
+  # - 年累改造后销售面积   # fdId: adc15c70d59f94460bc0c8a9
+  # - 年累改造后平均销售面积本期   # fdId: ma80335da22be42ae9715d85
+  # - 年累改造后店效   # fdId: jc63f5dc966eb464499aeacf
+  # - 年累改造后坪效   # fdId: ha63af5fd8621478c98792e3
+  # - 年累坪效本期   # fdId: i8ddd96472dfd40aca0db45d
+  # - 年累新开坪效本期   # fdId: i1b9f327745c5407783868f8
+  # - 年累改造坪效本期   # fdId: ob807bf9e2e8547ea85843bd
+  # - 年累保有坪效本期   # fdId: a19f7b618470d4067ae4cd7f
+  # - 年累改造坪效提升   # fdId: i510356b2f48a480cbd0c2c4
+  # - 年累坪效同期   # fdId: d9717f4bcae694079ae95f9e
+  # - 年累坪效同比   # fdId: o6377edad468846438f2963f
+  # - 年累改造坪效同期   # fdId: eda98bb53cce841d98e7b19b
+  # - 年累改造坪效同比   # fdId: r44f0eaa8820a4f319062681
+  # - 年累销售面积同期（坪效）   # fdId: a2f762686ab9743339977082
+  - 月流水本期
+  - 月流水同期
+  - 月流水同比
+  - 月店效本期
+  - 月度坪效本期
+  - 月有效店数本期
+  - 月保有店数本期
+  - 年累流水本期
+  - 年累流水同期
+  - 年累流水同比
+
+# ===== 筛选条件（14 个有选择器映射）=====
+filters:
+  - { name: 渠道品牌, values: [KOLON] }
+  - { name: 店铺类型明细, values: [正价店, 折扣店] }
+  - { name: 日历月份, values: ["2026-08"] }
+  # 可选: 区域/城市_映射/门店性质/商场体系/店铺编码/店铺名称/
+  #   是否有效店本期/是否保有店/是否新开店/是否改造店/是否撤消店（值为 "1"/"0"）
+
+# 月报无动态参数（时间用 日历月份 筛选控制，格式 YYYY-MM）
+limit: 50
