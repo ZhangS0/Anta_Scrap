@@ -14,7 +14,6 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 |---|---|---|---|---|
 | `retail_daily_descente` | **迪桑特** | 零售运营分析-日报 | DESCENTE 流水、目标、客流 | `references/retail_daily_descente.md` |
 | `retail_daily_kolon` | **可隆 KOLON** | 零售运营分析-日报 | KOLON 流水、目标，含试衣指标、店效分级 | `references/retail_daily_kolon.md` |
-| `retail_traffic_descente` | **迪桑特** | 零售客流分析 | 客流专项（时段/进店率） | `references/retail_traffic_descente.md` |
 | `channel_monthly_descente` | **迪桑特** | 渠道运营分析-月报 | 月度店数/店效/坪效/开关店/改造（时间用 日历月份 筛选，YYYY-MM） | `references/channel_monthly_descente.md` |
 | `r03_sales_stock_structure` | **迪桑特** | R03-任意时间段销存结构分析 | 商品/SKU 级销存：货号/中类/系列的流水、库存、动销率、库销比、齐码率；同期对比期可自定义 | `references/r03_sales_stock_structure.md` |
 
