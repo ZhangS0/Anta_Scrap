@@ -16,11 +16,11 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 | `retail_daily_kolon` | **可隆 KOLON** | 零售运营分析-日报 | KOLON 流水、目标，含试衣指标、店效分级 | `references/retail_daily_kolon.md` |
 | `channel_monthly_descente` | **迪桑特** | 渠道运营分析-月报 | 月度店数/店效/坪效/开关店/改造（时间用 日历月份 筛选，YYYY-MM） | `references/channel_monthly_descente.md` |
 | `channel_monthly_kolon` | **可隆 KOLON** | 渠道运营分析-月报 | KOLON 月度全貌（250 度量）：销售/同店/客流/店数/店效/坪效/同比，时间用 日历月份 筛选 | `references/channel_monthly_kolon.md` |
-| `r03_sales_stock_structure` | **迪桑特** | R03-任意时间段销存结构分析 | 商品/SKU 级销存：货号/中类/系列的流水、库存、动销率、库销比、齐码率；同期对比期可自定义 | `references/r03_sales_stock_structure.md` |
+| `r03_sales_stock_descente` | **迪桑特** | R03-任意时间段销存结构分析 | 商品/SKU 级销存：货号/中类/系列的流水、库存、动销率、库销比、齐码率；同期对比期可自定义 | `references/r03_sales_stock_descente.md` |
 | `r03_sales_stock_kolon` | **可隆 KOLON** | R03-任意时间段销存结构分析 | KOLON 商品/SKU 级销存，SKC 按门店/办事处/区域/全国四级口径，含同期款对比 | `references/r03_sales_stock_kolon.md` |
+| — | — | 指标含义字典（流水/达成/连带率/试衣率怎么算） | 用户问指标定义、需甄别相近指标时 **Grep 查** | `references/metrics-glossary.md` |
 
 > **品牌归属**：迪桑特(DESCENTE)——日报/月报/销存结构；可隆(KOLON)——日报/月报/销存结构。两品牌各三个报表，一一对应。
-| — | 指标含义字典（流水/达成/连带率/试衣率怎么算） | 用户问指标定义、需甄别相近指标时 **Grep 查** | `references/metrics-glossary.md` |
 
 两个零售日报共享同一 BI 页面、字段体系相近；区别：DESCENTE 卡有商品品牌筛选、客流指标更全，KOLON 卡多试衣指标、挑战目标、店效分级维度。其余三个报表各自独立页面。
 

@@ -1,7 +1,7 @@
 # R03-任意时间段销存结构分析 - 完整字段参考模板
-# 用法: anta-cli export -t r03_sales_stock_structure.reference
+# 用法: anta-cli export -t r03_sales_stock_descente.reference
 
-report: r03_sales_stock_structure
+report: r03_sales_stock_descente
 
 # ===== 维度字段 (row) - 共 79 个 =====
 rows:

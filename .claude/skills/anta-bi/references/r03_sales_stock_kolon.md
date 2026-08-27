@@ -4,7 +4,7 @@
 适用：KOLON 商品结构分析（大类/中类/系列/货号）、库存健康（动销率/库销比/齐码率）、**SKC 四级组织口径**（门店/办事处/区域/全国）、**同期款对比**、售罄与采购报废。
 指标定义见 `test/商品运营分析-指标说明.xlsx`。字段名需逐字一致；完整清单在项目 `templates/r03_sales_stock_kolon.reference.yaml`（Grep 定位，勿整读）。
 
-## 与迪桑特 R03（r03_sales_stock_structure）的区别
+## 与迪桑特 R03（r03_sales_stock_descente）的区别
 
 | 维度 | KOLON 版 | 迪桑特版 |
 |---|---|---|

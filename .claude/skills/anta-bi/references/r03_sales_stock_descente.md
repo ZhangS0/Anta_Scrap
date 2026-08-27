@@ -1,9 +1,9 @@
-# 报表指引：R03-任意时间段销存结构分析（r03_sales_stock_structure）
+# 报表指引：R03-任意时间段销存结构分析（r03_sales_stock_descente）
 
 **迪桑特(DESCENTE)品牌**的销存结构报表。商品运营分析：最细到「店仓 × 货号 × 尺码/颜色」颗粒（SKU 级）。79 维度 × 70 度量。
 适用：商品结构分析（大类/中类/系列/货号）、库存健康（动销率/库销比/齐码率）、售罄与采购报废、任意自定义时间段及其同期对比。
 指标定义见 `test/商品运营分析-指标说明.xlsx`（75 行业务口径，按需查）。字段名需逐字一致，fdId 由 MCP 服务端按名解析。
-完整 fdId 清单在项目 `templates/r03_sales_stock_structure.reference.yaml`（Grep 定位，勿整读）。
+完整 fdId 清单在项目 `templates/r03_sales_stock_descente.reference.yaml`（Grep 定位，勿整读）。
 
 ## 与零售日报的区别
 
@@ -27,7 +27,7 @@
 - **库存健康（6）**：齐码率、齐码率（正价折扣）、库存均深、库存吊牌均价、动销率、动销率（只对货号去重）、月库销比、月库销比同期
 - **期初/采购/报废（12）**：期初库存数量/吊牌额（+同期）、采购入库数量/吊牌金额（+同期/同比）、报废数量/吊牌金额（+同期/同比）
 
-> 括号后缀是**口径修饰**（去重范围/店铺类型过滤），名字必须逐字带全。以 `templates/r03_sales_stock_structure.reference.yaml` 注释清单为准。
+> 括号后缀是**口径修饰**（去重范围/店铺类型过滤），名字必须逐字带全。以 `templates/r03_sales_stock_descente.reference.yaml` 注释清单为准。
 
 ## 筛选字段（14 个有选择器映射）
 
@@ -54,7 +54,7 @@
 ## 模板格式与示例
 
 ```yaml
-report: r03_sales_stock_structure
+report: r03_sales_stock_descente
 rows: [中类, 货号]
 metrics: [流水, 流水同期, 销售数量, 库存数量, 动销率, 月库销比, 齐码率]
 filters:
@@ -82,4 +82,4 @@ dynamic_params:
 - **配货季参数谨慎传**：只查特定季商品时才传 `户外_配货季(多选)`；排查"查出来是空"时先去掉它
 - **字段名口径差异**：本报表是 `销售吊牌额`（日报是 `销售吊牌金额`）、`店仓名称`（日报是 `店铺名称`）、`日历周`（日报是 `日历周数`）
 - 导出 CSV 恒为全量结果集：`limit`/`offset` 对导出无效，可不写
-- 拿不准字段名：Grep `templates/r03_sales_stock_structure.reference.yaml`
+- 拿不准字段名：Grep `templates/r03_sales_stock_descente.reference.yaml`

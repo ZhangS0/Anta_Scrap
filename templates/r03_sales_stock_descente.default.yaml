@@ -1,7 +1,7 @@
 # R03-任意时间段销存结构分析 - 默认模板
-# 用法: anta-cli export -t r03_sales_stock_structure.default
+# 用法: anta-cli export -t r03_sales_stock_descente.default
 
-report: r03_sales_stock_structure
+report: r03_sales_stock_descente
 
 rows:
   - 中类

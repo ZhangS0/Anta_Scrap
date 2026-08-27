@@ -1,4 +1,4 @@
-"""报表：R03-任意时间段销存结构分析（新）(page mfeaf38ca3b1e41be8d5f47a / card jfdefcec0ca0e4075b897312)。
+"""迪桑特(DESCENTE)品牌报表：R03-任意时间段销存结构分析（新）(page mfeaf38ca3b1e41be8d5f47a / card jfdefcec0ca0e4075b897312)。
 
 商品运营分析（销存结构）：最细到「店仓 × 货号 × 尺码颜色」颗粒，含销售/库存/齐码/动销/库销比/采购报废等 70 度量。
 特色动态参数：同期开始/结束日期（自定义对比期）、配货季多选（如 2026Q3）。
@@ -16,13 +16,13 @@ from anta_scrap.reports.base import BaseReport
 # HAR 抓取的完整查询配置态字段（147 项，含 metric 必备的 fieldFormat）。
 # 页面字段池里有上百个「XX流水占比」计算字段，某卡片配置态存在 name=流水 的占比字段，
 # 会把基础「流水」挤掉（实测导出成占比小数）。故本报表以 HAR 字段定义最高优先。
-_HAR_FIELDS_FILE = Path(__file__).parent / "r03_har_fields.json"
+_HAR_FIELDS_FILE = Path(__file__).parent / "r03_sales_stock_descente_har_fields.json"
 
 
-class R03SalesStockStructureReport(BaseReport):
+class R03SalesStockDescenteReport(BaseReport):
     page_id = "mfeaf38ca3b1e41be8d5f47a"
     card_id = "jfdefcec0ca0e4075b897312"
-    name = "R03-任意时间段销存结构分析（新）"
+    name = "R03-任意时间段销存结构分析（新）-迪桑特"
     # HAR 抓取：主数据集（维度/筛选字段所在）
     default_ds_id = "f0c3a1724bd3144ba8d3d91b"
 
