@@ -1,57 +1,32 @@
-# anta-scrap
+# anta-scrap — 安踏 BI Agent 配置项目
 
-安踏 BI（`datav.anta.com`）抓取库：按 YAML 模板导出 CSV。可导入使用，也提供 CLI。
+一个完整的 agent 配置项目，由三部分组成：
 
-## 安装
+| # | 组成部分 | 位置 | 作用 |
+|---|---|---|---|
+| ① | **Agent 身份与工作流** | `agent_setup/AGENTS.md` | 「BI报告专员」角色定义 + 「BI 查询 → 数据加工 → 报告生成」完整工作流规范 |
+| ② | **anta-bi MCP 服务器** | `anta_scrap/` 包 | 登录安踏 BI（`datav.anta.com`），按 YAML 模板异步导出 CSV，通过 MCP 对外提供查询 |
+| ③ | **配套 skills** | `.claude/skills/` | `anta-bi`（报表路由 + 字段指引）、`hamilton-report`（Hamilton DAG 数据加工与报告生成） |
+
+工作流全景：agent 按 ① 的身份与流程接需求 → `anta-bi` skill 路由报表、编制模板 → ② MCP 服务器执行查询导出 CSV → `hamilton-report` skill 加工数据、生成报告 → 沉淀模板/DAG/plan 供复用。
+
+## ① Agent 身份与工作流（`agent_setup/`）
+
+`AGENTS.md` 是 agent 的主提示：角色（BI报告专员）、数据可信原则、项目目录规划、
+需求讨论 → 采集 → 加工 → 报告 → plan 沉淀的五步工作流与决策逻辑。
+
+## ② anta-bi MCP 服务器（`anta_scrap/` 包）
+
+### 安装
 
 ```bash
 cd <PROJECT_ROOT>
 pip install -e .
 ```
 
-复制 `.env.example` 为 `.env`，填入账号密码：
-
-```
-ANTA_USERNAME=<工号A>
-ANTA_PASSWORD=your_password
-```
-
-## 使用
-
-### 1. 导出 CSV（凭证全自动，无需手动登录）
-
-```bash
-anta-cli export -t retail_daily_descente.default
-anta-cli export -t retail_daily_kolon.default --name kolon_daily -o ./out
-```
-
-导出前自动校验凭证（本地过期时间 + 服务端 validate-token）；失效时依次自动恢复：
-refresh_token 续期 → 失败则用 `.env` 账号密码走完整 CAS 登录（覆写凭证）。
-全程零人工干预，前提是 `.env` 配置了账号密码。
-
-手动登录命令仍可用（`anta-cli login`），仅用于首次验证账号或排查登录问题。
-
-### 2. 作为库
-
-```python
-from pathlib import Path
-
-from anta_scrap import AntaSession
-from anta_scrap.config import get_report_class
-from anta_scrap.export import export_csv
-from anta_scrap.templates import load_template, template_to_params
-
-with AntaSession.ensure() as sess:  # 内部自动校验/续期凭证
-    cls = get_report_class("retail_daily_descente")
-    rpt = cls(sess.client)
-    params = template_to_params(rpt, load_template("retail_daily_descente.default"))
-    out = export_csv(rpt, params, out_dir=Path("./out"))
-    print(out)
-```
-
-## MCP 服务（对外 agent 调用）
-
-对外提供 MCP 服务 `anta-mcp`（streamable-http），登录在服务端完成、返回 CSV 全文。报表/字段说明见 `anta-bi` skill，MCP 只暴露一个导出工具。
+复制 `.env.example` 为 `.env`，填入账号密码（`ANTA_USERNAME` / `ANTA_PASSWORD`）。
+凭证全自动：导出前自动校验（本地过期时间 + 服务端 validate-token），失效时
+refresh_token 续期 → 失败则用 `.env` 账号密码完整重登，零人工干预。
 
 ### 启动
 
@@ -60,19 +35,20 @@ anta-mcp --host 0.0.0.0 --port 8002
 # 或双击 start_anta_mcp.bat（未设密钥时会交互式提示输入）
 ```
 
-- 端点：`http://<host>:8002/mcp`
-- 唯一工具：`export_report(username, template_yaml, password="", dom_id="", output_name="")`
-- 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`
+- 端点：`http://<host>:<port>/mcp`（streamable-http）
+- 唯一工具：`export_report(username, template_yaml, password="", dom_id="", output_name="")`，
+  登录在服务端完成，返回 CSV 全文文本；`password` 仅首次登录/登录失败时传
+- 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`；外网暴露必须设并走 HTTPS
 
-### Agent 接入（项目根 `.mcp.json`）
+### Agent 接入（项目根 `.mcp.json`，已 gitignore）
 
 ```json
 {
   "mcpServers": {
     "anta-bi": {
       "type": "http",
-      "url": "http://REDACTED-MCP-HOST:8002/mcp",
-      "headers": { "Authorization": "Bearer REDACTED-OLD-API-KEY" }
+      "url": "http://<host>:<port>/mcp",
+      "headers": { "Authorization": "Bearer ${ANTA_MCP_API_KEY}" }
     }
   }
 }
@@ -84,36 +60,48 @@ anta-mcp --host 0.0.0.0 --port 8002
 - `~/.anta_scrap/accounts.json`：按账号存密码（明文 0600）
 - 首次登录传 `password`，之后日常只传 `username`，服务端自动复用缓存/用已存密码重登
 
+### CLI（仅本地调试）
+
+```bash
+anta-cli login                                    # 手动登录（排查登录问题用）
+anta-cli export -t retail_daily_descente.default  # 按模板导出 CSV 到 out/
+```
+
 ### 内网穿透（frp，纯 IP）
 
-本地 8002 → frp tcp 转发 → 公网 8002：
+本地 8002 → frp tcp 转发 → 公网 8002（纯 IP 只能明文 HTTP；要 HTTPS 需域名 + `type = https`）。
+配置样例见 git 历史或向维护者索取。
 
-```ini
-; frpc.ini（本地）
-[common]
-server_addr = <frps 公网 IP>
-server_port = 7000
-token = <token>
+## ③ 配套 skills（`.claude/skills/`）
 
-[anta-bi]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 8002
-remote_port = 8002
-```
+- **`anta-bi`**：MCP 工具使用说明 + 6 个报表（迪桑特/可隆 × 零售日报/渠道月报/R03 销存）
+  的字段指引（`references/`）+ 指标字典。查询时按路由表选报表、按指引逐字取字段名。
+- **`hamilton-report`**：Apache Hamilton DAG 数据加工（清洗 → 聚合 → 指标 → 报告），
+  含 quickstart/装饰器/数据IO/坑点参考与模板脚本。
 
-```ini
-; frps.ini（VPS）
-[common]
-bind_port = 7000
-token = <token>
-```
+## 目录地图
 
-> 纯 IP 只能明文 HTTP；要 HTTPS 需域名 + `type = https` + `https2http` 插件（证书放 frpc 侧）。
+| 路径 | 用途 | 入库 |
+|---|---|---|
+| `agent_setup/` | agent 身份与工作流 | ✅ |
+| `anta_scrap/` | MCP 服务器 + 抓取库代码 | ✅ |
+| `.claude/skills/` | 配套 skills | ✅ |
+| `templates/*.default.yaml` / `*.reference.yaml` | 库级查询模板 / 全字段参考模板 | ✅ |
+| `templates/<报告名>/` | 工作流查询模板（跨批次复用） | ✅ |
+| `analysis/` | Hamilton DAG 代码 | ✅ |
+| `plans/` | 可复用工作流 plan | ✅ |
+| `captures/` | BI 查询过程留档：HAR、请求负载 txt、指标说明 xlsx（字段/接口 truth 来源；`*.har` 不入库） | 部分 |
+| `docs/` | 机制文档（页面发现等） | ✅ |
+| `scripts/` | 登录、页面收集、多用户验证脚本 | ✅ |
+| `out/<报告名>/<run>/` | 本批次原始 CSV 产物 | ❌ |
+| `reports/<报告名>/<run>/` | 本批次报告产物 | ❌ |
+| `.env`、`.mcp.json`、`~/.anta_scrap/` | 凭证与密钥 | ❌ |
+
+`<run>` 为批次号 `YYYYMMDD-HHMM`，每次生成报告新建一个，禁止覆盖历史 run。
 
 ## 模板
 
-`templates/*.yaml` 是可读的查询配置。修改字段/条件/日期无需改代码：
+`templates/*.yaml` 是可读的查询配置，修改字段/条件/日期无需改代码：
 
 ```yaml
 report: retail_daily_descente
@@ -127,26 +115,14 @@ dynamic_params:
 limit: 50
 ```
 
-## 模块化扩展（新增报表）
+- `*.default.yaml`：各报表默认查询；`*.reference.yaml`：全字段参考（注释态，含 fdId）
+- 工作流模板放 `templates/<报告名>/<模板名>.yaml`（如 `templates/kolon_recent_sales/daily.yaml`）
 
-1. 在 `anta_scrap/reports/xxx.py` 新建 `XxxReport(BaseReport)`，设置 `page_id` / `card_id` / `name`，实现 `default_template()`。
-2. 在 `anta_scrap/config.py` 的 `get_report_registry()` 注册。
-3. 加一份 `templates/xxx.default.yaml`。
+## 新增报表（改 `anta_scrap/` 时）
 
-## 目录约定
+1. `anta_scrap/reports/<name>.py` 新建 `XxxReport(BaseReport)`（page_id / card_id / name / default_ds_id / DYNAMIC_PARAMS / FIELD_SOURCE_CDID / default_template()）
+2. `anta_scrap/config.py:get_report_registry()` 注册
+3. 加 `templates/<name>.default.yaml`
+4. `.claude/skills/anta-bi/references/` 加字段指引
 
-| 路径 | 用途 |
-|---|---|
-| `.env` | 账号密码（**不进库**） |
-| `~/.anta_scrap/credentials.json` | 登录后的 token，按账号存（**不进库**） |
-| `~/.anta_scrap/accounts.json` | 多用户密码，明文 0600（**不进库**） |
-| `.mcp.json` | MCP 接入配置（Claude Code 等） |
-| `start_anta_mcp.bat` | MCP 服务启动脚本（端口 8002） |
-| `templates/` | YAML 模板 |
-| `out/` | 导出文件默认目录 |
-
-## 已知风险
-
-- **`loginTraceId` / `execution`**：CAS 表单的这两个 token 实施时如自动抓取失败，可能需要手动从浏览器复制一次或用 Playwright 兜底。
-- **登录页改版/验证码**：若触发（异地登录、多次失败），需在 `auth/login.py` 加 hook。
-- **refresh 续期路径未验证**：refresh_token 换新 token 还没有成功样本；不重要，失败会自动落到完整重登（已实测成功）。
+详见 `CLAUDE.md` 的「关键约定（踩坑总结）」。

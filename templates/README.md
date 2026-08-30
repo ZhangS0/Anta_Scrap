@@ -1,111 +1,50 @@
-# 模板使用说明
+# 模板目录说明
 
-本目录存放 YAML 查询模板，用于配置报表查询参数。
+YAML 查询模板分两层：**库级模板**（本目录根）和**工作流模板**（`templates/<报告名>/` 子目录）。
 
-## 可用模板
+## 库级模板
 
-### retail_daily.default.yaml
-默认模板，常用字段配置：
-- 4 个维度：渠道品牌、店铺名称、城市等级、商品品牌
-- 9 个指标：零售流水目标、零售达成、流水、流水同期、流水同比、客单价、同店流水、同店流水同期、同店流水同比
-- 2 个筛选：渠道品牌=DESCENTE、商品品牌=迪桑特
-- 日期范围：2026-07-22 至 2026-07-29
+### `<report>.default.yaml` × 6 — 各报表默认查询
 
-### retail_daily.reference.yaml
-**完整字段参考模板**，列出所有可用字段（供查阅）：
-- **45 个维度字段**：组织、店铺、商场、品牌、时间、开店/闭店/改造等
-- **73 个指标字段**：销售、小票、价格、同店、预算、客流、流水等
-- 使用时需要取消注释想要的字段
+| 模板 | 报表 |
+|---|---|
+| `retail_daily_descente.default.yaml` | 迪桑特 零售运营分析-日报 |
+| `retail_daily_kolon.default.yaml` | 可隆 零售运营分析-日报 |
+| `channel_monthly_descente.default.yaml` | 迪桑特 渠道运营分析-月报 |
+| `channel_monthly_kolon.default.yaml` | 可隆 渠道运营分析-月报 |
+| `r03_sales_stock_descente.default.yaml` | 迪桑特 R03 销存结构分析 |
+| `r03_sales_stock_kolon.default.yaml` | 可隆 R03 销存结构分析 |
 
-## 使用方法
+用法：`anta-cli export -t retail_daily_kolon.default`（或 MCP 模板里 `report:` 对应同名 registry key）。
 
-### 查看所有可用字段
-```bash
-anta-cli fields
-```
+### `<report>.reference.yaml` × 6 — 全字段参考（注释态）
 
-### 使用默认模板查询
-```bash
-# 只读第 1 页（默认 50 行）
-anta-cli query -t retail_daily.default
+列出该报表全部维度/指标字段（含 fdId 注释），供编制模板时 Grep 定位字段名。
+skill 指引（`.claude/skills/anta-bi/references/`）会指向对应文件，**勿整读，用 Grep**。
 
-# 拉取全部数据
-anta-cli query -t retail_daily.default --all
+## 工作流模板 `templates/<报告名>/<模板名>.yaml`
 
-# 拉取前 5 页
-anta-cli query -t retail_daily.default --max-pages 5
-```
+正式报表任务的查询模板（`agent_setup/AGENTS.md` 目录约定），编制成功后保存在这里，
+复用时只改日期/筛选等参数，不重新编制。
 
-### 使用参考模板
-1. 复制参考模板：
-```bash
-cp templates/retail_daily.reference.yaml templates/my_query.yaml
-```
+- `kolon_recent_sales/daily.yaml`：KOLON 近两周流水（店 × 日颗粒），配套 `analysis/kolon_recent_sales.py`
 
-2. 编辑 `my_query.yaml`，取消注释需要的字段：
+## 模板 schema
+
 ```yaml
-rows:
-  - 渠道品牌
-  - 店铺名称
-  - 省份
-  # - 城市  # 不需要此字段则保持注释
-
-metrics:
-  - 零售流水目标
-  - 流水
-  # - 客单价  # 不需要此指标则保持注释
-```
-
-3. 运行查询：
-```bash
-anta-cli query -t my_query
-```
-
-### 自定义筛选条件
-在模板的 `filters` 部分添加或修改筛选：
-```yaml
+report: retail_daily_kolon        # registry key（必填）
+rows: [渠道品牌, 店铺名称]         # 维度
+# columns: [...]                  # 列维度（可选）
+metrics: [零售流水目标, 流水]      # 指标
 filters:
-  - { name: 渠道品牌, values: [DESCENTE, ANTA] }
-  - { name: 省份, values: [北京, 上海] }
-  - { name: 城市等级, values: [L1, L2] }
-```
-
-### 修改日期范围
-编辑 `dynamic_params` 部分：
-```yaml
+  - { name: 渠道品牌, values: [KOLON] }
 dynamic_params:
-  开始日期-户外-R02: "2026-07-01"
-  结束日期-户外-R02: "2026-07-31"
+  开始日期-户外-R02: 2026-07-22    # YAML 解析成 date，templates.py 内部转回字符串
+  结束日期-户外-R02: 2026-07-29
+limit: 50
+offset: 0
+# card_name: 自定义导出文件名（缺省用报表 name）
 ```
 
-## 字段分类说明
-
-### 维度字段 (rows)
-- **组织相关**：零售经理、办事处、省份、区域、城市等级
-- **店铺相关**：店铺编码、店铺名称、店铺类型、门店性质、经营类型
-- **商场相关**：商场体系、商场代码、商场名称
-- **品牌相关**：品牌大区、渠道品牌、商品品牌、财务所属品牌
-- **时间相关**：日历年份、日历季度、日历月份、日历日期、周几
-
-### 指标字段 (metrics)
-- **销售相关**：销售吊牌金额、销售数量、及其同比/同期
-- **小票相关**：小票数、单件小票数、及其同比/同期
-- **价格相关**：客单价、件单价、平均牌价、折扣、及其同比/同期
-- **同店相关**：同店销售吊牌金额、同店小票数、及其同比/同期
-- **流水相关**：零售流水目标、流水、同店流水、及其同比/同期
-- **客流相关**：进店客流、成交率、进店率、及其同比/同期
-- **预算相关**：预算流水目标、预算达成
-
-## 动态参数说明
-
-当前报表支持 2 个日期参数：
-- `开始日期-户外-R02`：查询开始日期
-- `结束日期-户外-R02`：查询结束日期
-
-格式：`YYYY-MM-DD`（字符串或日期类型均可）
-
-## 注意事项
-
-1. **筛选条件需要先声明字段**：要筛选某个字段，必须先在 `rows` 或 `columns` 中声明它
-2. **多数据集字段**：某些字段名可能在不同数据集中重复，程序会自动使用 `default_ds_id` 指定的数据集
-3. **中文编码**：Windows 控制台可能无法正确显示中文，建议使用 PowerShell 或将输出重定向到文件
+注意：字段名必须与 BI 逐字一致（查 skill 指引或 reference 模板）；
+`find_template` 只在本目录根按文件名查找，子目录模板需传路径。
