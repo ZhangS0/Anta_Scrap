@@ -90,7 +90,7 @@ export.py: trigger_export → poll_task → download                # 异步导�
 
 ### 1. 凭证 header 必须是 Base64 形态
 - `token` = JWT 字符串（原样）
-- `user-id` = `base64(username)`，如 `V0VCVVNFUg====`
+- `user-id` = `base64(username)`，如 `V0VCVVNFUg==`（即 "WEBUSER"）
 - `x-dom-id` = `base64(明文)`，如 `Z3VhbmJp`（明文是 `guanbi`，**不能**直接发明文）
 - 全部在 `auth/token_store.py:Credentials` 里保存，`client.py:_auth_headers()` 注入
 
