@@ -3,7 +3,7 @@
 **可隆(KOLON)品牌**的渠道月报。37 维度 × 250 度量（本库度量最多的报表），最细到「店 × 月」颗粒。
 覆盖：销售/同店/客流人次/店数/店效/坪效/面积/改造前后 的 **{月度|年累} × {本期|同期|同比}** 全组合 + 零售/预算目标。
 适用：KOLON 月度经营全貌、店效坪效、开关店、客流表现、同比分析。
-指标定义见 `test/渠道运营分析-月报-可隆 指标说明.xlsx`。字段名需逐字一致；完整 250 度量清单在项目 `templates/channel_monthly_kolon.reference.yaml`（Grep 定位，勿整读）。
+指标定义见 `captures/渠道运营分析-月报-可隆 指标说明.xlsx`。字段名需逐字一致；完整 250 度量清单在项目 `templates/channel_monthly_kolon.reference.yaml`（Grep 定位，勿整读）。
 
 ## 与迪桑特月报（channel_monthly_descente）的区别
 

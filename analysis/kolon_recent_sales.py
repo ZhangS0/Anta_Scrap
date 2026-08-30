@@ -1,6 +1,6 @@
 """KOLON 最近两周流水分析 DAG（hamilton-report skill 用例，2026-08-16）。
 
-数据源: out/kolon_recent*.csv（templates/retail_daily_kolon.recent.yaml 导出，
+数据源: out/kolon_recent*.csv（templates/kolon_recent_sales/daily.yaml 导出，
 窗口 2026-08-02 ~ 2026-08-15，店 × 日颗粒）。复制自 skill 的 scripts/kolon_report.py 模板。
 
 运行:
