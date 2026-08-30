@@ -1,11 +1,11 @@
-"""KOLON 最近两周流水分析 DAG（hamilton-report skill 用例，2026-08-16）。
+"""KOLON 最近两周流水分析 DAG（bi-report-build 工作流资产，报告任务 kolon_recent_sales_3t4g）。
 
-数据源: out/kolon_recent*.csv（templates/kolon_recent_sales/daily.yaml 导出，
-窗口 2026-08-02 ~ 2026-08-15，店 × 日颗粒）。复制自 skill 的 scripts/kolon_report.py 模板。
+数据源: history/<run>/ 下的导出 CSV（templates/daily.yaml 导出，
+窗口见 plan.md 参数表，店 × 日颗粒）。复制自 skill 的 scripts/kolon_report.py 模板。
 
 运行:
-    PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe analysis/kolon_recent_sales.py
-产物: reports/kolon_recent_sales.md
+    PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe analysis.py --csv history/<run>/xxx.csv
+产物: history/<run>/report.md（默认最新 run；--out 可覆盖）
 
 DAG 结构:
     csv_path ─→ raw_sales ─→ cleaned_sales ─→ daily_trend ─┬→ overall_attainment ─┐
@@ -206,17 +206,10 @@ def _md_table(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="KOLON 最近两周流水分析 DAG")
-    parser.add_argument("--csv", default=None, help="输入 CSV；默认取 out/kolon_recent*.csv 最新一个")
-    parser.add_argument("--out", default="reports/kolon_recent_sales.md", help="报告输出路径")
+    parser.add_argument("--csv", default=None, help="输入 CSV；默认取 history/ 下最新 run 的 CSV")
+    parser.add_argument("--out", default=None, help="报告输出路径；默认与输入 CSV 同目录 report.md")
     parser.add_argument("--list-nodes", action="store_true", help="仅列出 DAG 全部节点")
     args = parser.parse_args()
-
-    csv_path = args.csv
-    if csv_path is None:
-        candidates = sorted(glob.glob("out/kolon_recent*.csv"), key=os.path.getmtime)
-        if not candidates:
-            raise SystemExit("out/ 下没有 kolon_recent*.csv；先导出，或用 --csv 指定路径")
-        csv_path = candidates[-1]
 
     import __main__  # noqa: F401 —— 单文件 dataflow：把当前模块对象交给 Hamilton
 
@@ -226,6 +219,16 @@ if __name__ == "__main__":
         for var in dr.list_available_variables():
             print(f"- {var.name}")
         raise SystemExit(0)
+
+    history_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "history")
+    csv_path = args.csv
+    if csv_path is None:
+        candidates = sorted(glob.glob(os.path.join(history_dir, "*", "*.csv")), key=os.path.getmtime)
+        if not candidates:
+            raise SystemExit("history/ 下没有 CSV；先按 plan.md 采集，或用 --csv 指定路径")
+        csv_path = candidates[-1]
+    if args.out is None:
+        args.out = os.path.join(os.path.dirname(os.path.abspath(csv_path)), "report.md")
 
     results = dr.execute(
         ["report_markdown"],

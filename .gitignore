@@ -4,12 +4,17 @@ credentials.json
 *.local
 # MCP 接入配置（含 API key，不入库）
 .mcp.json
+# 项目初始化 prompt（本机专用引导词，不同步 git）
+agent_setup/INIT_PROMPT.md
 
 # 输出文件（仅仓库根的产物目录，勿误伤 anta_scrap/reports/ 包代码）
 *.xlsx
 *.csv
 /out/
-/reports/
+# agent 使用反馈（submit_feedback 按天 JSONL 落盘）
+/feedback/
+# workspace 报告任务的历史生成为批次产物，不入库（资产本身入库）
+workspace/**/history/
 
 # Python
 __pycache__/

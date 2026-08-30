@@ -43,22 +43,24 @@ $PY -c "import hamilton, pandas; print(hamilton.__version__, pandas.__version__)
 
 ## 最小工作流（5 步）
 
-1. **取数**：`out/` 已有 CSV 直接用；或调 anta-bi MCP `export_report`，把返回的 CSV 全文
-   存到 `out/<名>.csv`（量大时建 `templates/<名>.yaml` 走 `anta-cli export` 直落盘）。
+1. **取数**：报告任务 `workspace/<报告名>_<报告id>/history/` 下已有 CSV 直接用；或调 anta-bi
+   MCP `export_report`，把返回的 CSV 全文存到该报告 `history/<run>/<名>.csv`。
    动手前 `head -2` 确认表头。
 2. **设计（DOT 先行）**：先用几行 DOT 画出节点与依赖（运行时输入标 `[shape=box]`），
    确认结构再动代码——写法见 `references/quickstart.md`。
-3. **起草与验证**：复制 `scripts/kolon_report.py` 到 `analysis/<报告名>.py`，把 DOT 翻译成
-   函数签名，先跑 `--list-nodes`（只 build 不执行）验证依赖接线，通过后再填函数体。
+3. **起草与验证**：复制 `scripts/kolon_report.py` 到 `workspace/<报告>/analysis.py`（IO 路径
+   改成本报告 history/），把 DOT 翻译成函数签名，先跑 `--list-nodes`（只 build 不执行）
+   验证依赖接线，通过后再填函数体。
 4. **运行**：未装依赖先按上节安装；`PYTHONIOENCODING=utf-8 $PY
-   analysis/<报告名>.py`（`$PY` 按上节探测；报错先读 `references/pitfalls.md` 再改）。
-5. **产物**：报告写 `reports/<报告名>/<run>/`（按报表任务 × 运行批次两级组织，见 data-io.md
+   workspace/<报告>/analysis.py`（`$PY` 按上节探测；报错先读 `references/pitfalls.md` 再改）。
+5. **产物**：报告写同报告 `history/<run>/`（报表任务 × 运行批次两级，见 data-io.md
    目录约定），向用户呈现关键结论；数据量大时先汇总再展示。
 
 ## 可运行示例（自检 / 模板）
 
 `scripts/kolon_report.py` 读 `out/kolon_daily*.csv`（默认最新，可 `--csv` 指定）→
-清洗 → 日汇总/区域汇总/门店 Top10 → 总体达成率 → 写 `reports/kolon_report.md`：
+清洗 → 日汇总/区域汇总/门店 Top10 → 总体达成率 → 写 `reports/kolon_report.md`
+（示例脚本的 IO 路径是演示用的；复制到报告任务时改成该报告 `workspace/<报告>/history/`）：
 
 ```bash
 [ -x .venv/bin/python ] && PY=.venv/bin/python || PY=.venv/Scripts/python.exe
@@ -73,9 +75,9 @@ $PY .claude/skills/hamilton-report/scripts/kolon_report.py --list-nodes
 
 - 只 Read 当前需要的 **1 个** reference，禁止全读后再动手；`pitfalls.md` 仅在报错或
   处理中文列/编码问题时读。
-- `out/` 下 CSV（100~300KB）**禁止整读进上下文**：用 `head -2` 看表头，数据交给 DAG 节点算。
+- `history/` 下 CSV（100~300KB）**禁止整读进上下文**：用 `head -2` 看表头，数据交给 DAG 节点算。
 - 字段/指标知识一律走 anta-bi skill，本 skill 不复制字段清单。
-- DAG 代码放 `analysis/`（入库）；报告产物放 `reports/`（已 gitignore）。
+- DAG 代码放 `workspace/<报告>/analysis.py`（入库）；产物放同报告 `history/<run>/`（已 gitignore）。
 
 ## 备注
 

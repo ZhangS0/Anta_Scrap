@@ -1,6 +1,7 @@
 # 模板目录说明
 
-YAML 查询模板分两层：**库级模板**（本目录根）和**工作流模板**（`templates/<报告名>/` 子目录）。
+本目录只放**库级模板**（属于报表注册体系，由 `anta-bi-onboard` skill 维护）。
+报告任务自己的工作流模板在 `workspace/<报告名>_<报告id>/templates/`，随该报告的 plan 与脚本管理。
 
 ## 库级模板
 
@@ -22,13 +23,6 @@ YAML 查询模板分两层：**库级模板**（本目录根）和**工作流模
 列出该报表全部维度/指标字段（含 fdId 注释），供编制模板时 Grep 定位字段名。
 skill 指引（`.claude/skills/anta-bi/references/`）会指向对应文件，**勿整读，用 Grep**。
 
-## 工作流模板 `templates/<报告名>/<模板名>.yaml`
-
-正式报表任务的查询模板（`agent_setup/AGENTS.md` 目录约定），编制成功后保存在这里，
-复用时只改日期/筛选等参数，不重新编制。
-
-- `kolon_recent_sales/daily.yaml`：KOLON 近两周流水（店 × 日颗粒），配套 `analysis/kolon_recent_sales.py`
-
 ## 模板 schema
 
 ```yaml
@@ -47,4 +41,4 @@ offset: 0
 ```
 
 注意：字段名必须与 BI 逐字一致（查 skill 指引或 reference 模板）；
-`find_template` 只在本目录根按文件名查找，子目录模板需传路径。
+`find_template` 只在本目录根按文件名查找，workspace 下的模板需传路径加载。
