@@ -27,6 +27,10 @@ TEMPLATES_DIR = PROJECT_ROOT / "templates"
 OUTPUT_DIR = PROJECT_ROOT / "out"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+# agent 反馈落盘目录（submit_feedback 工具写，按天 JSONL，不入库）
+FEEDBACK_DIR = PROJECT_ROOT / "feedback"
+FEEDBACK_DIR.mkdir(parents=True, exist_ok=True)
+
 
 def env(key: str, default: str | None = None) -> str | None:
     return os.getenv(key, default)

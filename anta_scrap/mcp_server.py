@@ -1,9 +1,12 @@
-"""anta-scrap MCP 服务：streamable-http 常驻，暴露唯一导出工具 export_report。
+"""anta-scrap MCP 服务：streamable-http 常驻，暴露两个工具 export_report + submit_feedback。
 
 登录+查询下沉到本服务：外网 agent 只传 账号 + 查询模板，服务端登录 → 导出 CSV →
 返回 CSV 全文文本。多用户凭证：按账号分别缓存 JWT（~/.anta_scrap/credentials.json），
 账号密码存 ~/.anta_scrap/accounts.json（明文 0600）；仅首次登录或登录失败时需传
 password，日常只传 username。报表/字段说明在 skill（anta-bi）的 references/ 里。
+
+submit_feedback：agent 端结构化使用反馈（skill 调用记录 / 字段口径笔记 / 报表要求 /
+问题），按天追加到项目 feedback/ 目录（不入库），供维护者改进 skills 与字段指引。
 
 启动：
   anta-mcp                          # 默认 0.0.0.0:8000，路径 /mcp
@@ -29,8 +32,9 @@ from mcp.types import ToolAnnotations
 
 from anta_scrap.auth.login import LoginError
 from anta_scrap.auth.session import PasswordRequired, SessionExpired, resolve_credentials
+from anta_scrap.auth.token_store import load_account
 from anta_scrap.client import AntaAPIError, AntaClient
-from anta_scrap.config import create_report_instance, get_report_registry
+from anta_scrap.config import FEEDBACK_DIR, create_report_instance, get_report_registry
 from anta_scrap.export import download, poll_task, trigger_export
 from anta_scrap.templates import TemplateError, template_to_params
 
@@ -39,7 +43,10 @@ API_KEY = os.environ.get("ANTA_MCP_API_KEY", "").strip()
 mcp = MCPServer(
     name="anta_bi_mcp",
     title="安踏 BI 查询导出",
-    instructions="唯一工具 export_report：登录安踏 BI 并按 YAML 模板导出 CSV，返回 CSV 全文文本。",
+    instructions=(
+        "export_report：登录安踏 BI 并按 YAML 模板导出 CSV，返回 CSV 全文文本。"
+        "submit_feedback：上报使用反馈（skill 调用/字段口径/报表要求/问题），格式见工具说明。"
+    ),
 )
 
 
@@ -55,6 +62,71 @@ def _check_auth(headers: Optional[Mapping[str, str]]) -> Optional[str]:
     if auth == f"Bearer {API_KEY}":
         return None
     return "未授权：缺少或错误的 Authorization 头（应为 Bearer <ANTA_MCP_API_KEY>）"
+
+
+# ---------- submit_feedback：agent 使用反馈回传 ----------
+
+_FEEDBACK_CATEGORIES = ("skill_call", "field_note", "report_note", "issue")
+_FEEDBACK_BODY_LIMIT = 32_000  # body 字符上限，超长截断
+
+
+def _redact_secrets(username: str, text: str) -> str:
+    """把该账号已存密码替换为 ***，避免明文落进反馈文件。"""
+    acct = load_account(username) or {}
+    secret = acct.get("password")
+    if isinstance(secret, str) and secret.strip():
+        text = text.replace(secret, "***")
+    return text
+
+
+def _submit_feedback_sync(
+    username: str,
+    category: str,
+    title: str,
+    body: str,
+    context_json: str,
+) -> str:
+    """校验、脱敏后按天追加到 feedback/YYYY-MM-DD.jsonl，返回确认串。"""
+    import datetime as _dt
+    import json as _json
+
+    if category not in _FEEDBACK_CATEGORIES:
+        return f"category 无效: '{category}'，可选: {', '.join(_FEEDBACK_CATEGORIES)}"
+    title = (title or "").strip()
+    if not title:
+        return "title 不能为空"
+    context: dict = {}
+    if (context_json or "").strip():
+        try:
+            context = _json.loads(context_json)
+        except _json.JSONDecodeError as e:
+            return f"context_json 不是合法 JSON: {e}"
+        if not isinstance(context, dict):
+            return "context_json 必须是 JSON 对象（如 {\"report\": \"retail_daily_kolon\"}）"
+    body = body or ""
+    if len(body) > _FEEDBACK_BODY_LIMIT:
+        body = body[:_FEEDBACK_BODY_LIMIT] + f"\n...[截断，原长 {len(body)} 字符]"
+    body = _redact_secrets(username, body)
+    title = _redact_secrets(username, title)
+    # context 嵌套字符串同样脱敏：序列化→替换→还原
+    if context:
+        context = _json.loads(
+            _redact_secrets(username, _json.dumps(context, ensure_ascii=False))
+        )
+
+    line = {
+        "ts": _dt.datetime.now().isoformat(timespec="seconds"),
+        "username": username,
+        "category": category,
+        "title": title,
+        "body": body,
+        "context": context,
+    }
+    path = FEEDBACK_DIR / f"{_dt.date.today().isoformat()}.jsonl"
+    with path.open("a", encoding="utf-8") as f:
+        f.write(_json.dumps(line, ensure_ascii=False) + "\n")
+    seq = sum(1 for _ in path.open(encoding="utf-8"))
+    return f"已记录 (#{seq} {category}: {title[:40]}) → {path.name}"
 
 
 def _export_sync(
@@ -141,6 +213,51 @@ async def export_report(
         return f"查询/导出失败: {e}"
     except Exception as e:  # 兜底，避免服务端异常静默吞掉
         return f"未知错误: {type(e).__name__}: {e}"
+
+
+@mcp.tool(
+    name="submit_feedback",
+    annotations=ToolAnnotations(
+        read_only_hint=False,
+        destructive_hint=False,
+        idempotent_hint=False,
+        open_world_hint=False,
+    ),
+)
+async def submit_feedback(
+    username: str,
+    category: str,
+    title: str,
+    body: str = "",
+    context_json: str = "",
+    ctx: Optional[Context] = None,
+) -> str:
+    """上报使用反馈（结构化摘要），供项目维护者改进 skills 与字段指引。检查点必调：
+    每次查询导出后、报告任务交付后、遇到报错或用户提出特殊口径要求时。
+
+    Args:
+        username: 上报者工号（与 export_report 同一账号体系）。
+        category: 四选一。
+            - skill_call：skill/查询调用记录（title=报表名+动作；body=关键摘要；
+              context 放 report/skill/template 摘要/rows 数/metrics 数/状态/耗时秒）
+            - field_note：字段口径坑与特殊要求（静默丢指标、字段不可用、口径澄清）
+            - report_note：报表级要求（筛选依赖、固定口径、格式偏好、新报表约定）
+            - issue：报错现象与解决过程（含工具返回的错误串与最终解法）
+        title: 一行标题（必填，≤40 字为宜），如 "retail_daily_kolon 导出成功 3500 行"。
+        body: 摘要正文（≤32k 字符，超长自动截断）。只写结论与关键数据，
+              **严禁包含密码、API key、全量对话转写**。
+        context_json: 可选 JSON 对象字符串（必须形如 {} 的对象），放结构化上下文，
+              常用键：report、skill、template_yaml、rows、metrics、status、run、duration_s。
+
+    Returns:
+        确认串（含当日序号与类别）；参数不合法时返回错误说明。
+    """
+    err = _check_auth(ctx.headers if ctx else None)
+    if err:
+        return err
+    return await asyncio.to_thread(
+        _submit_feedback_sync, username, category, title, body, context_json
+    )
 
 
 def _parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
