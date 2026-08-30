@@ -19,13 +19,29 @@ class PasswordRequired(RuntimeError):
 
 
 def _verify_or_false(creds: Credentials) -> bool:
-    """服务端校验凭证；网络异常等意外情况按"校验失败"处理，交给续期分支兜底。"""
+    """服务端校验凭证。
+
+    网络抖动处理（2026-08-31 踩坑）：此前网络异常直接按"校验失败"处理，
+    会误触发完整重登；若重登也撞上瞬时异常，用户会看到误导性的
+    「账号密码可能错误」（实测密码正确、CAS 链路正常）。现在：
+    - 网络类异常（TransportError）重试一次；
+    - 仍不可达时，本地 JWT 未过期则信任缓存（带着它去查询，最多查询报错
+      重跑即恢复），过期才按失效走重登；
+    - 非网络异常（解析错误等）仍按校验失败兜底。
+    """
+    import httpx
+
     from anta_scrap.auth.login import verify_token
 
-    try:
-        return verify_token(creds)
-    except Exception:
-        return False
+    for attempt in (1, 2):
+        try:
+            return verify_token(creds)
+        except httpx.TransportError:
+            if attempt == 2:
+                return not creds.is_expired()
+        except Exception:
+            return False
+    return False
 
 
 def resolve_credentials(
