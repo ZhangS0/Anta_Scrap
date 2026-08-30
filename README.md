@@ -4,16 +4,18 @@
 
 | # | 组成部分 | 位置 | 作用 |
 |---|---|---|---|
-| ① | **Agent 身份与工作流** | `agent_setup/AGENTS.md` | 「BI报告专员」角色定义 + 「BI 查询 → 数据加工 → 报告生成」完整工作流规范 |
+| ① | **Agent 身份与路由** | `agent_setup/AGENTS.md` | 「BI报告专员」身份 + 全局硬约束 + 任务路由表（很短，全文常驻） |
 | ② | **anta-bi MCP 服务器** | `anta_scrap/` 包 | 登录安踏 BI（`datav.anta.com`），按 YAML 模板异步导出 CSV，通过 MCP 对外提供查询 |
-| ③ | **配套 skills** | `.claude/skills/` | `anta-bi`（报表路由 + 字段指引）、`hamilton-report`（Hamilton DAG 数据加工与报告生成） |
+| ③ | **配套 skills** | `.claude/skills/` | `anta-bi` 查询、`hamilton-report` 加工、`bi-report-build` 报告构建、`bi-report-rerun` 按计划重跑、`anta-bi-onboard` 新增报表 |
 
-工作流全景：agent 按 ① 的身份与流程接需求 → `anta-bi` skill 路由报表、编制模板 → ② MCP 服务器执行查询导出 CSV → `hamilton-report` skill 加工数据、生成报告 → 沉淀模板/DAG/plan 供复用。
+工作流全景：agent 按 ① 的路由表把需求分类（查数 / 建报告 / 重跑 / 新增报表）→ 加载对应 skill
+→ 查询走 ② MCP 导出 CSV → 加工与报告按 skill 流程执行 → 资产沉淀到 `workspace/<报告名>_<报告id>/`（模板/plan/DAG 入库，历史生成留档）。
 
-## ① Agent 身份与工作流（`agent_setup/`）
+## ① Agent 身份与路由（`agent_setup/`）
 
-`AGENTS.md` 是 agent 的主提示：角色（BI报告专员）、数据可信原则、项目目录规划、
-需求讨论 → 采集 → 加工 → 报告 → plan 沉淀的五步工作流与决策逻辑。
+`AGENTS.md` 是路由入口（~23 行）：身份一句话、全局硬约束（数据可信原则 / workspace 目录与 run
+约定 / 安全 / 反馈义务）、任务路由表。工作流细节全部在 skills 里，按路由按需加载——不占常驻上下文。
+另有 `USAGE.md` 使用者日常使用说明；`INIT_PROMPT.md` 安装引导（含密钥，本地不入库）。
 
 ## ② anta-bi MCP 服务器（`anta_scrap/` 包）
 
@@ -36,8 +38,12 @@ anta-mcp --host 0.0.0.0 --port 8002
 ```
 
 - 端点：`http://<host>:<port>/mcp`（streamable-http）
-- 唯一工具：`export_report(username, template_yaml, password="", dom_id="", output_name="")`，
-  登录在服务端完成，返回 CSV 全文文本；`password` 仅首次登录/登录失败时传
+- 工具两个：
+  - `export_report(username, template_yaml, password="", dom_id="", output_name="")`——
+    登录在服务端完成，返回 CSV 全文文本；`password` 仅首次登录/登录失败时传
+  - `submit_feedback(username, category, title, body="", context_json="")`——agent 使用
+    反馈回传（skill 调用/字段口径/报表要求/问题四类），按天落 `feedback/`（不入库），
+    供维护者改进 skills 与字段指引；agent 侧调用约定见 `agent_setup/AGENTS.md` 反馈义务
 - 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`；外网暴露必须设并走 HTTPS
 
 ### Agent 接入（项目根 `.mcp.json`，已 gitignore）
@@ -78,26 +84,30 @@ anta-cli export -t retail_daily_descente.default  # 按模板导出 CSV 到 out/
   的字段指引（`references/`）+ 指标字典。查询时按路由表选报表、按指引逐字取字段名。
 - **`hamilton-report`**：Apache Hamilton DAG 数据加工（清洗 → 聚合 → 指标 → 报告），
   含 quickstart/装饰器/数据IO/坑点参考与模板脚本。
+- **`bi-report-build`**：报告构建全流程（需求讨论与口径验证 → 计划与结构确认 → 采集 →
+  加工 → 报告 → plan 沉淀），支持从 0 构建与修改/整合。
+- **`bi-report-rerun`**：读 `workspace/<报告>/plan.md`，只改参数重跑（异常驱动确认）。
+- **`anta-bi-onboard`**：anta-bi 的辅助维护 skill，按用户提供的 HAR/查询参数接入新报表
+  （写子类 → 注册 → 库级模板 → skill 指引 → 冒烟）。
 
 ## 目录地图
 
 | 路径 | 用途 | 入库 |
 |---|---|---|
-| `agent_setup/` | agent 身份与工作流 | ✅ |
+| `agent_setup/` | agent 身份与路由（AGENTS.md）、使用说明（USAGE.md）；INIT_PROMPT.md 本机专用不入库 | ✅ |
 | `anta_scrap/` | MCP 服务器 + 抓取库代码 | ✅ |
-| `.claude/skills/` | 配套 skills | ✅ |
-| `templates/*.default.yaml` / `*.reference.yaml` | 库级查询模板 / 全字段参考模板 | ✅ |
-| `templates/<报告名>/` | 工作流查询模板（跨批次复用） | ✅ |
-| `analysis/` | Hamilton DAG 代码 | ✅ |
-| `plans/` | 可复用工作流 plan | ✅ |
+| `.claude/skills/` | 配套 skills（5 个） | ✅ |
+| `workspace/<报告名>_<报告id>/` | 报告任务全家桶：templates/ 查询模板、plan.md、analysis.py、history/ 历史生成 | 资产✅ / history❌ |
+| `templates/*.default.yaml` / `*.reference.yaml` | 库级查询模板 / 全字段参考模板（报表注册体系，onboard 维护） | ✅ |
 | `captures/` | BI 查询过程留档：HAR、请求负载 txt、指标说明 xlsx（字段/接口 truth 来源；`*.har` 不入库） | 部分 |
 | `docs/` | 机制文档（页面发现等） | ✅ |
 | `scripts/` | 登录、页面收集、多用户验证脚本 | ✅ |
-| `out/<报告名>/<run>/` | 本批次原始 CSV 产物 | ❌ |
-| `reports/<报告名>/<run>/` | 本批次报告产物 | ❌ |
+| `out/` | CLI 默认导出的临时目录 | ❌ |
+| `feedback/` | agent 回传的使用反馈（submit_feedback 按天 JSONL） | ❌ |
 | `.env`、`.mcp.json`、`~/.anta_scrap/` | 凭证与密钥 | ❌ |
 
-`<run>` 为批次号 `YYYYMMDD-HHMM`，每次生成报告新建一个，禁止覆盖历史 run。
+`<报告id>` 为创建时分配的 4 位随机 id，永久不变；`<run>` 为批次号 `YYYYMMDD-HHMM`，
+每次生成报告新建一个，禁止覆盖历史 run。
 
 ## 模板
 
@@ -116,7 +126,8 @@ limit: 50
 ```
 
 - `*.default.yaml`：各报表默认查询；`*.reference.yaml`：全字段参考（注释态，含 fdId）
-- 工作流模板放 `templates/<报告名>/<模板名>.yaml`（如 `templates/kolon_recent_sales/daily.yaml`）
+- 报告任务的工作流模板在 `workspace/<报告名>_<报告id>/templates/`（如
+  `workspace/kolon_recent_sales_3t4g/templates/daily.yaml`），随该报告的 plan/脚本同目录管理
 
 ## 新增报表（改 `anta_scrap/` 时）
 

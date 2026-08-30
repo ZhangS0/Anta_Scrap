@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 本项目是**完整的 agent 配置项目**，由三部分组成：
 
-1. **Agent 身份定义与功能描述** — `agent_setup/AGENTS.md`：「BI报告专员」角色 + 「BI 查询 → Hamilton 加工 → 报告生成」五步工作流规范（目录规划、预览确认、plan 沉淀等纪律都在这里）。
+1. **Agent 身份定义与功能描述** — `agent_setup/AGENTS.md`：「BI报告专员」身份 + 全局硬约束 + 任务路由表（~23 行，常驻；流程细节全在 skills）。配套 `agent_setup/USAGE.md`（使用者日常说明）与 `INIT_PROMPT.md`（安装引导，本地不入库）。
 2. **anta-bi MCP 服务器** — `anta_scrap/` 包（`anta-mcp` 入口）：登录安踏 BI（`datav.anta.com`），按 YAML 模板异步导出 CSV，通过 MCP 对外提供查询；`anta-cli` 仅本地调试。
-3. **配套 skills** — `.claude/skills/anta-bi/`（报表路由 + 每报表字段指引）、`.claude/skills/hamilton-report/`（Hamilton DAG 数据加工）。
+3. **配套 skills** — `.claude/skills/` 五个：`anta-bi`（报表查询与字段指引）、`hamilton-report`（Hamilton DAG 数据加工）、`bi-report-build`（报告构建全流程）、`bi-report-rerun`（按 plan 参数化重跑）、`anta-bi-onboard`（为 anta-bi 新增报表，维护用）。任务路由入口在 `agent_setup/AGENTS.md`。
 
 面向使用者的说明在 `README.md`；本文件面向在本仓库写代码的场景。
 
@@ -28,7 +28,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## MCP 服务（对外查询主入口）
 
 - **启动**：`anta-mcp --host 0.0.0.0 --port 8000`（streamable-http，端点 `/mcp`；默认端口 8000，可用 `MCP_HTTP_PORT` 覆盖。本地部署用 `start_anta_mcp.bat`，跑在 **8002**）。常驻供 agent 调用。
-- **唯一工具** `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`password` 仅首次登录/登录失败时传，日常只传 `username`。
+- **两工具**：
+  - `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`password` 仅首次登录/登录失败时传，日常只传 `username`。
+  - `submit_feedback(username, category, title, body="", context_json="")`：agent 使用反馈回传（category 白名单 `skill_call`/`field_note`/`report_note`/`issue`；body 32k 截断；写入前按 accounts.json 脱敏密码）。按天追加到项目 `feedback/YYYY-MM-DD.jsonl`（gitignore），供维护者改进 skills 与字段指引；调用约定写在 AGENTS.md「反馈义务」与各 skill 检查点。
 - **接入**：`claude mcp add --transport http anta-bi http://<host>:<port>/mcp`（或项目 `.mcp.json`，已 gitignore）。
 - **鉴权**：外网暴露须设 `ANTA_MCP_API_KEY`（调用带 `Authorization: Bearer <key>`）并走 HTTPS。
 - **多用户凭证**：`~/.anta_scrap/credentials.json`（按账号存 JWT，map 格式）+ `~/.anta_scrap/accounts.json`（按账号存密码，明文 0600）。`auth/session.py:resolve_credentials()` 负责缓存优先/失效重登，MCP 路径用它；CLI 路径用 `AntaSession.ensure()`。
@@ -173,22 +175,24 @@ limit: 50
 # card_name: 自定义导出文件名（缺省用报表 name）
 ```
 
-注意：`find_template` 只在 `templates/` 根目录按文件名找；子目录模板（见下节 `templates/<报告名>/`）要用 `load_template` 传绝对路径。
+注意：`find_template` 只在 `templates/` 根目录按文件名找；workspace 报告目录下的模板（见下节）要用 `load_template` 传绝对路径。
 
-## 报表工作流目录约定（agent_setup/AGENTS.md）
+## 报表工作流目录约定（workspace/）
 
-除库代码外，仓库还承载「BI 查询 → Hamilton 加工 → 报告」工作流的可复用资产（`agent_setup/AGENTS.md` 是完整工作流规范）：
+报告任务的资产与产物统一收纳在 `workspace/<报告名>_<报告id>/`（agent 侧工作流规范见 `agent_setup/AGENTS.md` 路由 + 各 `bi-report-*` skill）：
 
 ```
-templates/<报告名>/<模板名>.yaml   # 工作流查询模板（入库；注意与根目录 templates/*.default.yaml 区分）
-analysis/<报告名>.py               # Hamilton DAG 代码（入库）
-plans/<主题名>.plan.md             # 可复用工作流 plan（入库）
-captures/                          # BI 查询过程留档：HAR/请求负载/指标说明（truth 来源）
-out/<报告名>/<run>/                # 原始 CSV 产物（gitignore）
-reports/<报告名>/<run>/            # 报告产物（gitignore；根目录 reports/ 是产物，包代码在 anta_scrap/reports/）
+workspace/<报告名>_<报告id>/       # 一报告任务一目录（报告id=4位随机，创建后不变）
+├── templates/                     # 该报告的查询模板（跨 run 复用，入库）
+├── plan.md                        # 工作流 plan：参数表/资产路径/自检清单（入库）
+├── analysis.py                    # Hamilton DAG 脚本（入库）
+└── history/<run>/                 # 历史生成：CSV + 报告产物（gitignore）
 ```
 
-`<run>` 为批次号 `YYYYMMDD-HHMM`，只新建不覆盖。
+- `<run>` 为批次号 `YYYYMMDD-HHMM`，只新建不覆盖。
+- **两级分工**：本目录放报告任务资产；根 `templates/` 放库级模板（`*.default.yaml`/`*.reference.yaml`，属于报表注册体系，由 `anta-bi-onboard` skill 维护）。
+- `captures/` 存 BI 查询过程留档（HAR/请求负载/指标说明，truth 来源）；`out/` 仅作 CLI 默认导出的临时目录；`feedback/` 存 agent 回传的使用反馈（submit_feedback 落盘，gitignore）。
+
 
 ## 已知遗留问题
 
