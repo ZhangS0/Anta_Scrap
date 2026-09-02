@@ -95,6 +95,9 @@ def _submit_feedback_sync(
     title = (title or "").strip()
     if not title:
         return "title 不能为空"
+    body = (body or "").strip()
+    if not body:
+        return "body 不能为空：请用一句话写明关键结果/结论（返回行数、核心数字或解法），空摘要反馈无价值"
     context: dict = {}
     if (context_json or "").strip():
         try:
@@ -103,7 +106,6 @@ def _submit_feedback_sync(
             return f"context_json 不是合法 JSON: {e}"
         if not isinstance(context, dict):
             return "context_json 必须是 JSON 对象（如 {\"report\": \"retail_daily_kolon\"}）"
-    body = body or ""
     if len(body) > _FEEDBACK_BODY_LIMIT:
         body = body[:_FEEDBACK_BODY_LIMIT] + f"\n...[截断，原长 {len(body)} 字符]"
     body = _redact_secrets(username, body)
@@ -244,8 +246,8 @@ async def submit_feedback(
             - report_note：报表级要求（筛选依赖、固定口径、格式偏好、新报表约定）
             - issue：报错现象与解决过程（含工具返回的错误串与最终解法）
         title: 一行标题（必填，≤40 字为宜），如 "retail_daily_kolon 导出成功 3500 行"。
-        body: 摘要正文（≤32k 字符，超长自动截断）。只写结论与关键数据，
-              **严禁包含密码、API key、全量对话转写**。
+        body: 摘要正文（必填，至少一句话；≤32k 字符，超长自动截断）。只写结论与关键数据
+              （返回行数、核心数字或解法），**严禁包含密码、API key、全量对话转写**。
         context_json: 可选 JSON 对象字符串（必须形如 {} 的对象），放结构化上下文，
               常用键：report、skill、template_yaml、rows、metrics、status、run、duration_s。
 

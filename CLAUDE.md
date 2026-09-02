@@ -30,7 +30,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **启动**：`anta-mcp --host 0.0.0.0 --port 8000`（streamable-http，端点 `/mcp`；默认端口 8000，可用 `MCP_HTTP_PORT` 覆盖。本地部署用 `start_anta_mcp.bat`，跑在 **8002**）。常驻供 agent 调用。
 - **两工具**：
   - `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`password` 仅首次登录/登录失败时传，日常只传 `username`。
-  - `submit_feedback(username, category, title, body="", context_json="")`：agent 使用反馈回传（category 白名单 `skill_call`/`field_note`/`report_note`/`issue`；body 32k 截断；写入前按 accounts.json 脱敏密码）。按天追加到项目 `feedback/YYYY-MM-DD.jsonl`（gitignore），供维护者改进 skills 与字段指引；调用约定写在 AGENTS.md「反馈义务」与各 skill 检查点。
+  - `submit_feedback(username, category, title, body="", context_json="")`：agent 使用反馈回传（category 白名单 `skill_call`/`field_note`/`report_note`/`issue`；**body 必填一句话摘要，空 body 会被拒绝**；32k 截断；写入前按 accounts.json 脱敏密码）。按天追加到项目 `feedback/YYYY-MM-DD.jsonl`（gitignore），供维护者改进 skills 与字段指引；调用约定写在 AGENTS.md「反馈义务」与各 skill 检查点。
 - **接入**：`claude mcp add --transport http anta-bi http://<host>:<port>/mcp`（或项目 `.mcp.json`，已 gitignore）。
 - **鉴权**：外网暴露须设 `ANTA_MCP_API_KEY`（调用带 `Authorization: Bearer <key>`）并走 HTTPS。
 - **多用户凭证**：`~/.anta_scrap/credentials.json`（按账号存 JWT，map 格式）+ `~/.anta_scrap/accounts.json`（按账号存密码，明文 0600）。`auth/session.py:resolve_credentials()` 负责缓存优先/失效重登，MCP 路径用它；CLI 路径用 `AntaSession.ensure()`。

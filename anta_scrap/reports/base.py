@@ -11,6 +11,7 @@
 
 from __future__ import annotations
 
+import difflib
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
 
@@ -186,9 +187,14 @@ class BaseReport(ABC):
             return self._fields_by_name[name]
         # 兜底：列出全部匹配的 (ds_id, fdId)
         cands = [(ds, fd.fd_id) for (n, ds), fd in self._fields_by_name_and_ds.items() if n == name]
+        # 相近字段名候选（防调用方未读字段指引、盲猜字段名反复试错）
+        close = difflib.get_close_matches(name, self._fields_by_name.keys(), n=5, cutoff=0.4)
+        ref_name = type(self).__module__.rsplit(".", 1)[-1]  # 与 registry key / skill reference 文件名一致
         raise KeyError(
             f"字段 '{name}' 未在报表 {self.card_id} 找到。"
             + (f" 但有 {len(cands)} 个同名异 ds 候选: {cands[:5]}" if cands else "")
+            + (f" 相近字段: {close}。" if close else "")
+            + f" 完整字段清单见 .claude/skills/anta-bi/references/{ref_name}.md"
         )
 
     # ---------- 构造 payload ----------

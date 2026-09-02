@@ -42,7 +42,8 @@ anta-mcp --host 0.0.0.0 --port 8002
   - `export_report(username, template_yaml, password="", dom_id="", output_name="")`——
     登录在服务端完成，返回 CSV 全文文本；`password` 仅首次登录/登录失败时传
   - `submit_feedback(username, category, title, body="", context_json="")`——agent 使用
-    反馈回传（skill 调用/字段口径/报表要求/问题四类），按天落 `feedback/`（不入库），
+    反馈回传（skill 调用/字段口径/报表要求/问题四类；body 必填一句话摘要，空 body 被拒），
+    按天落 `feedback/`（不入库），
     供维护者改进 skills 与字段指引；agent 侧调用约定见 `agent_setup/AGENTS.md` 反馈义务
 - 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`；外网暴露必须设并走 HTTPS
 
