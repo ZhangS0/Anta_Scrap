@@ -10,7 +10,7 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 
 ## 报表路由（按需求选一个，只 Read 对应指引）
 
-| registry key | 品牌 | 报表 | 适用场景 | 指引 |
+| 报表 key | 品牌 | 报表 | 适用场景 | 指引 |
 |---|---|---|---|---|
 | `retail_daily_descente` | **迪桑特** | 零售运营分析-日报 | DESCENTE 流水、目标、客流 | `references/retail_daily_descente.md` |
 | `retail_daily_kolon` | **可隆 KOLON** | 零售运营分析-日报 | KOLON 流水、目标，含试衣指标、店效分级 | `references/retail_daily_kolon.md` |
@@ -21,6 +21,10 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 | — | — | 指标含义字典（流水/达成/连带率/试衣率怎么算） | 用户问指标定义、需甄别相近指标时 **Grep 查** | `references/metrics-glossary.md` |
 
 > **品牌归属**：迪桑特(DESCENTE)——日报/月报/销存结构；可隆(KOLON)——日报/月报/销存结构。两品牌各三个报表，一一对应。
+
+> **两类报表**：表内 6 个为**内置**报表，模板直接 `report: <报表 key>`；其余新报表的连接知识由其指引的
+> 「报表连接 spec」小节承载，模板改为内联 `report_spec` 块（从该小节原样复制，形态见工作流第 2 步）。
+> MCP 对二者一视同仁——新报表接入是纯文档动作，不需要改服务端。
 
 两个零售日报共享同一 BI 页面、字段体系相近；区别：DESCENTE 卡有商品品牌筛选、客流指标更全，KOLON 卡多试衣指标、挑战目标、店效分级维度。其余三个报表各自独立页面。
 
@@ -37,6 +41,17 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
    dynamic_params:
      开始日期-户外-R02: "2026-08-03"
      结束日期-户外-R02: "2026-08-09"
+   ```
+   新报表（指引含「报表连接 spec」小节）用内联 spec 块替代 `report` 行，其余键不变：
+   ```yaml
+   report_spec:                        # 整块从该报表指引原样复制
+     key: new_store_tracking_kolon
+     card_name: 新开店追踪表
+     page_id: f61508f44232c46be9f61d99
+     card_id: e56bdeed7b88b44b1ac10ca0
+     # dynamic_params / field_source_cdid / har_fields_file 视指引内容携带
+   rows: [日历月份]
+   metrics: [月流水本期]
    ```
 3. **调用 MCP 工具 `export_report`**：日常**只传 `username`（工号）+ `template_yaml`**。`password` 仅在该账号**首次登录或登录失败**时补传（首次可向用户索取，之后服务端记住密码并自动复用）；`dom_id`/`output_name` 一般不传。
 4. **返回结果**：工具直接返回 **CSV 全文文本**（导出是异步任务，数秒~1分钟）。注意**返回可能被平台客户端 JSON 包裹**（拿到的是 `{"content": "CSV..."}` 这样的 JSON 字符串而非裸 CSV）——落盘前先解包：
@@ -55,7 +70,9 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 - `需要密码: ...` → 该账号首次登录或凭证失效且无本地密码，向用户索取后补传 `password`
 - `登录失败...账号密码可能错误或触发验证码` → 账密错或触发验证码，向用户确认后重试
 - `模板错误: ...缺少 report 字段` → template_yaml 里漏了 `report`
-- `模板错误: 未知报表 'xxx'` → report 名写错，可选值见路由表 registry key
+- `模板错误: 未知报表 'xxx'` → report key 不在内置 6 个。目标报表的指引若含「报表连接 spec」小节 → 去掉 report 行、改内联 report_spec 块；若确为内置报表 → 核对拼写（可选值=路由表）
+- `模板错误: 模板缺少报表标识...` → 模板既无 report 也无 report_spec；内置报表写 report 字段，新报表从指引复制 report_spec 块
+- `模板错误: report_spec 无效...` → spec 块缺 page_id/card_id、动态参数缺 dpId、har_fields_file 路径不存在等；回该报表指引「报表连接 spec」小节逐键核对后原样复制
 - `字段未找到...` → 字段名与 BI 不一致，核对该报表 reference 清单
 - `查询/导出失败: 卡片查询错误，错误详情: None.get` → metric 名写错或该字段不在卡片配置态
 - `查询/导出失败: 导出任务失败` → 多为选了该卡片不可导出的指标（KOLON 常见，见各报表指引「已知缺陷」）；逐个减指标定位坏指标
@@ -74,4 +91,4 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 
 - MCP 服务与字段解析（fdId）在项目 `anta-scrap`（`anta-mcp`）内，本 skill 无需关心。
 - 本地调试用项目内 `anta-cli`（非本 skill 范畴）。
-- 要**新增可查询报表**（有 HAR/查询参数）→ 用 `anta-bi-onboard` skill，本 skill 不承载接入流程。
+- 要**新增可查询报表**（有 HAR/查询参数）→ 用 `anta-bi-onboard` skill（**纯文档接入**：写含「报表连接 spec」小节的指引即可生效，不改服务端、不需重启），本 skill 不承载接入流程。

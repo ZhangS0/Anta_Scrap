@@ -6,10 +6,12 @@
    由 `client.py` 自动注入，子类不用管——但手工 curl 验证时必须带 Base64 形态。
 2. **所有 `/api/*` 请求必须带 referer**：`client.py` 自动注入；不在 `/api/page/...` 路径上的
    接口（如 task 轮询）要显式传 `referer: https://datav.anta.com/page/{page_id}`。
-3. **filter / dynamicParams 的 sourceCdId 不在页面元数据里**：必须从 HAR/请求负载硬编码进
-   子类 `FIELD_SOURCE_CDID` / `DYNAMIC_PARAMS`；缺失时 BI 报 `卡片查询错误，错误详情: None.get`。
-4. **配置态 metric 必须透传 raw**：`_har_fields.json` 里的字段项原样进索引（`FieldDef.raw`），
-   精简掉 `fieldFormat` 等属性会触发 None.get。
+3. **filter / dynamicParams 的 sourceCdId 不在页面元数据里**：必须从 HAR/请求负载写进指引
+   「报表连接 spec」小节的 `field_source_cdid` / `dynamic_params`（调用方模板内联进 report_spec）；
+   缺失时 BI 报 `卡片查询错误，错误详情: None.get`。
+4. **配置态 metric 必须透传 raw**：HAR 字段项（`templates/specs/<key>.har_fields.json`，由 spec 的
+   `har_fields_file` 指向；或 `har_fields` 内联）原样进索引（`FieldDef.raw`），精简掉
+   `fieldFormat` 等属性会触发 None.get。
 5. **响应有三种形态**：标准 `{result, response}`；带 `raw-backend-response: TRUE` 头的包装态；
    任务接口裸态（`status` 在顶层）。`client._check_ok` / `poll_task` 已兼容，新代码别破坏。
 6. **导出三步走**：`POST /api/write/file/{card_id}?typeOp=CSV` → 轮询 `GET /api/task/{id}` →

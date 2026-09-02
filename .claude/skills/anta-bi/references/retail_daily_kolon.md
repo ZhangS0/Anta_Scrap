@@ -4,6 +4,40 @@ KOLON/可隆品牌的零售日报。35 维度 × 101 度量，最细到「店 ×
 特色：试衣指标全（18 个，⚠ 当前导出失败，见「已知缺陷」）、挑战目标、店效分级/渠道分级维度。
 指标含义查 `metrics-glossary.md`（Grep，勿整读）。字段名以下方维度/度量清单为准（逐字一致），fdId 由 MCP 服务端按名解析。
 
+## 报表连接 spec（通用执行器用）
+
+本报表**内置**：日常查询直接 `report: retail_daily_kolon` 即可，无需下方 spec 块。
+此块是通用执行器的等价路径（与内置子类同源、机械生成），**兼作新报表指引的格式样板**——
+新报表的指引应包含同款小节，调用方从原样复制进模板的 `report_spec:` 下：
+
+```yaml
+report_spec:
+  key: retail_daily_kolon
+  card_name: 零售运营分析-日报-KOLON
+  page_id: ne63f6cf08bbb40c28b814e8
+  candidate_page_ids: [e71d78d5bb6234d5ead169a2]
+  card_id: bdea3dc0adfc24d9b9e3f9a3
+  default_ds_id: df905751149c646e4a760566
+  dynamic_params:
+    开始日期-户外-R02: { dpId: o944f3df227424be599bf18f, valueType: DATE, sourceCdId: mbe3a806f444e461a88fcc14 }
+    结束日期-户外-R02: { dpId: k66f14015af12438c86fe041, valueType: DATE, sourceCdId: u8ac950fae3f849f4a14e727 }
+  field_source_cdid:
+    渠道品牌: lf5837e58c3db4e31b93f159
+    品牌大区: d6e8318bf0ecb42959a05e12
+    店铺编码: k8f31e96608d6498486fe128
+    店铺名称: f616c47a3ec25492593e46ab
+    零售经理: r6dd7534a4e024b768f8fd68
+    办事处: t63163974763f49ba9048118
+    城市_映射: nd3632c0253244a70bfe025d
+    区域: gbc980ddf6fc84ffa9146679
+    店铺类型明细: w922418861a644192b249e5e
+    门店类型: d68af6ba33b1441d59e4231b
+    店铺分级编码: g96b4ed2652db4420a08113f
+    经营类型: r9799397d563440d8a593c42
+    集合店属性: we69c80761ef749d4bdb3268
+    商场体系: h300ada0d53cd47dd843278f
+```
+
 ## 维度（35，按分类）
 
 - **时间（5）**：日历日期、日历年份、日历季度、日历月份、日历周数

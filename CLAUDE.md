@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 面向使用者的说明在 `README.md`；本文件面向在本仓库写代码的场景。
 
-报表矩阵：迪桑特(DESCENTE) / 可隆(KOLON) 两品牌 × 三类报表，共 6 个 registry key（`config.py:get_report_registry()`）：
+报表矩阵：迪桑特(DESCENTE) / 可隆(KOLON) 两品牌 × 三类报表，共 6 个**内置**报表 key（`config.py:get_report_registry()`）。MCP 同时是**通用执行器**：模板内联 `report_spec` 块（`reports/generic.py:GenericReport` 装配）可查任意报表，新报表零代码接入（见「新增报表」两条路径）：
 
 | registry key | 品牌 | BI 报表 |
 |---|---|---|
@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **启动**：`anta-mcp --host 0.0.0.0 --port 8000`（streamable-http，端点 `/mcp`；默认端口 8000，可用 `MCP_HTTP_PORT` 覆盖。本地部署用 `start_anta_mcp.bat`，跑在 **8002**）。常驻供 agent 调用。
 - **两工具**：
-  - `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`password` 仅首次登录/登录失败时传，日常只传 `username`。
+  - `export_report(username, template_yaml, password="", dom_id="", output_name="")`：登录在服务端完成，返回 CSV 全文文本。`template_yaml` 含 `report`（内置报表 key）**或** `report_spec` 块（新报表连接 spec，从该报表指引「报表连接 spec」小节复制）；`password` 仅首次登录/登录失败时传，日常只传 `username`。
   - `submit_feedback(username, category, title, body="", context_json="")`：agent 使用反馈回传（category 白名单 `skill_call`/`field_note`/`report_note`/`issue`；**body 必填一句话摘要，空 body 会被拒绝**；32k 截断；写入前按 accounts.json 脱敏密码）。按天追加到项目 `feedback/YYYY-MM-DD.jsonl`（gitignore），供维护者改进 skills 与字段指引；调用约定写在 AGENTS.md「反馈义务」与各 skill 检查点。
 - **接入**：`claude mcp add --transport http anta-bi http://<host>:<port>/mcp`（或项目 `.mcp.json`，已 gitignore）。
 - **鉴权**：外网暴露须设 `ANTA_MCP_API_KEY`（调用带 `Authorization: Bearer <key>`）并走 HTTPS。
@@ -59,8 +59,9 @@ anta-cli export -t retail_daily_kolon.default --name kolon_daily
 ## 架构（按调用顺序）
 
 ```
-CLI (cli.py): AntaSession.ensure() → cls(client)                # 用类上的 page_id
-MCP (mcp_server.py): resolve_credentials(username) → create_report_instance(name, client, username)
+CLI (cli.py): AntaSession.ensure() → create_report_from_template(tpl, client)   # 不传 username
+MCP (mcp_server.py): resolve_credentials(username) → create_report_from_template(tpl, client, username)
+  # dispatch（config.py）：report_spec 块 → GenericReport；report key → 内置子类别名
   ↓
 BaseReport.effective_page_id  ← auth/page_discovery.py          # 多用户页面自动发现（仅 MCP 路径带 username）
   ↓
@@ -75,14 +76,17 @@ export.py: trigger_export → poll_task → download                # 异步导�
 - `auth/` 不依赖任何报表概念；只负责 CAS+OAuth2 登录、凭证持久化、Session、页面发现。
 - `client.py` 不依赖任何报表；只负责带 header 的 HTTP 原语。
 - `reports/base.py:BaseReport` 是抽象基类；`reports/<name>.py` 子类提供 `page_id`/`card_id`/`name`/`default_ds_id`/`DYNAMIC_PARAMS`/`FIELD_SOURCE_CDID`/`default_template()`。
-- `export.py` / `templates.py` 都接受 `BaseReport` 实例，不感知具体报表。
+- `reports/generic.py:GenericReport` 由模板内联 `report_spec` 装配出与内置子类**同构**的实例属性（dict/list 一律新建）；`config.py:create_report_from_template()` 是 CLI/MCP 共用的报表 dispatch（spec 优先 → 内置别名）。
+- `export.py` / `templates.py` 都接受 `BaseReport` 实例，不感知具体报表（实例属性与类属性等价，全部经 `self`/`getattr` 读取）。
 
-**新增报表 4 步**：写 `reports/<name>.py` 子类 → 在 `config.py:get_report_registry()` 注册 → 加 `templates/<name>.default.yaml` → 在 `.claude/skills/anta-bi/references/` 加字段指引。若报表字段多/同名冲突风险高（R03、渠道月报 KOLON 都这么做了），从 HAR 抠出完整配置态字段存 `reports/<name>_har_fields.json` 并重写 `_index_fields()`。
+**新增报表两条路径**：
+- **标准路径（纯文档，新报表一律走这条）**：`anta-bi-onboard` skill 产出含「报表连接 spec」小节的字段指引（+可选 `templates/specs/<key>.har_fields.json` 数据文件，查询时按请求读取）→ 调用方模板内联 `report_spec` 块即可查询。**不改服务端代码、不需重启。**
+- **内置路径（仅维护既有 6 子类时）**：写 `reports/<name>.py` 子类 → 在 `config.py:get_report_registry()` 注册 → 加 `templates/<name>.default.yaml` → 加字段指引；同名冲突风险高时从 HAR 抠配置态字段存 `reports/<name>_har_fields.json` 并重写 `_index_fields()`。改动需部署重启才生效。
 
-## 报表子类的固定结构（抄现有子类）
+## 报表子类的固定结构（抄现有子类；GenericReport 由 report_spec 等价装配）
 
-- `FIELD_SOURCE_CDID`：filter 字段名 → 选择器卡片 ID（硬编码，从 HAR 抓）。
-- `DYNAMIC_PARAMS`：动态参数名 → `{dpId, valueType, sourceCdId}`（硬编码，从 HAR 抓）。
+- `FIELD_SOURCE_CDID`：filter 字段名 → 选择器卡片 ID（硬编码，从 HAR 抓；GenericReport 对应 spec 的 `field_source_cdid`）。
+- `DYNAMIC_PARAMS`：动态参数名 → `{dpId, valueType, sourceCdId}`（硬编码，从 HAR 抓；GenericReport 对应 spec 的 `dynamic_params`，构造时归一化校验）。
 - `_filter(name, values)` / `_dp(name, value)` helper：构造时自动注入 sourceCdId。
 - `_index_fields()` 覆盖（可选）：先 `super()._index_fields()`，再以 `<name>_har_fields.json` 的字段为最高优先重建索引。页面字段池同名冲突风险高时必须这么做。
 
@@ -103,7 +107,7 @@ client.get_json("/api/some/path", headers={"referer": f"https://datav.anta.com/p
 
 ### 3. 字段元数据多源策略（reports/base.py:_index_fields）
 字段定义来源，**优先级从高到低**：
-1. 子类重写 `_index_fields()` 注入的 `<name>_har_fields.json`（HAR 抓的完整配置态，r03×2、channel_monthly_kolon 在用）
+1. HAR 配置态：子类重写 `_index_fields()` 注入的 `<name>_har_fields.json`（r03×2、channel_monthly_kolon 在用）；GenericReport 对应 spec 的 `har_fields`（内联）或 `har_fields_file`（相对项目根，如 `templates/specs/<key>.har_fields.json`，**缺文件/越界/解析失败均明确报错，不静默退化**）
 2. `cards[].content.meta.chartMain.zoneData.{row,column,metric}` —— 页面已配置态，含 `calculationType`/`isAggregated`/`fieldFormat` 等 metric 必备属性
 3. `dsInfos[*].columns` —— 数据集字段池，回退用
 
@@ -113,7 +117,7 @@ client.get_json("/api/some/path", headers={"referer": f"https://datav.anta.com/p
 同一字段名（如"渠道品牌"）在不同数据集里 fdId 不同。子类用 `default_ds_id` 指定首选数据集；`field(name, ds_id=...)` 可显式选。`_fields_by_name_and_ds` 是完整索引。
 
 ### 5. filter 和 dynamicParams 的 sourceCdId
-`sourceCdId`（选择器/控件卡片 ID）**不在页面元数据里**，要硬编码到子类的 `FIELD_SOURCE_CDID` / `DYNAMIC_PARAMS`。`templates.py:template_to_params` 会按这两个映射自动注入；缺了会 None.get 报错。新增报表时从留档（`captures/*.har` 或请求负载 txt）抓这两组 ID 复制过来。
+`sourceCdId`（选择器/控件卡片 ID）**不在页面元数据里**，要硬编码到子类的 `FIELD_SOURCE_CDID` / `DYNAMIC_PARAMS`（GenericReport 由 spec 的 `field_source_cdid`/`dynamic_params` 携带）。`templates.py:template_to_params` 会按这两个映射自动注入；缺了会 None.get 报错。新增报表时从留档（`captures/*.har` 或请求负载 txt）抓这两组 ID，写进指引「报表连接 spec」小节。
 
 ### 6. 响应结构有三种形态（client.py:_check_ok）
 `_check_ok` 必须全兼容：
@@ -157,7 +161,7 @@ GET  该 URL → set-cookie: uIdToken=<JWT>（httponly）
 全程单一 httpx Client 共享 cookie（CAS 的 TGC 会话）。JWT 在 cookie `uIdToken` 里，不在 HTML 或响应体。`loginTraceId` 抓不到时用随机 32 位 hex 兜底；`execution` 抓不到时用 `e1s1` 兜底。
 
 ### 10. 多用户页面自动发现（auth/page_discovery.py）
-不同用户可能被分配到同一报表的不同页面实例。MCP 路径经 `create_report_instance(name, client, username=...)` → `BaseReport.effective_page_id` → `PageDiscoveryService`：查缓存（`~/user_page_mappings.json`）→ 拉服务端用户页面列表逐个验证 → 试子类 `candidate_page_ids` → 兜底用默认 `page_id`。CLI 路径不传 username，直接用类上的 `page_id`。新用户报"无权访问"时：跑 `python scripts/collect_user_pages.py <工号>` 收集其页面，必要时加进子类 `candidate_page_ids`；详见 `docs/PAGE_DISCOVERY.md`。
+不同用户可能被分配到同一报表的不同页面实例。MCP 路径经 `create_report_from_template(tpl, client, username=...)` → `BaseReport.effective_page_id` → `PageDiscoveryService`：查缓存（`~/user_page_mappings.json`，键=报表名）→ 拉服务端用户页面列表逐个验证 → 试候选页（子类 `candidate_page_ids` / spec `candidate_page_ids`）→ 兜底用默认 `page_id`。缓存键来自 `discovery_key`（GenericReport=spec 的 `key`，防单类共键串缓存；内置子类=类名派生）。CLI 路径不传 username，直接用 `page_id`。新用户报"无权访问"时：跑 `python scripts/collect_user_pages.py <工号>` 收集其页面，必要时补候选页（内置=子类 `candidate_page_ids`；新报表=指引 spec 的 `candidate_page_ids`）；详见 `docs/PAGE_DISCOVERY.md`。
 
 ## 模板系统（templates/）
 
@@ -173,6 +177,7 @@ dynamic_params:
   开始日期-户外-R02: 2026-07-22   # YAML 会解析成 date，templates.py 内部转回字符串
 limit: 50
 # card_name: 自定义导出文件名（缺省用报表 name）
+# 新报表：不写 report 行，改为内联 report_spec 块（从该报表指引「报表连接 spec」小节原样复制）
 ```
 
 注意：`find_template` 只在 `templates/` 根目录按文件名找；workspace 报告目录下的模板（见下节）要用 `load_template` 传绝对路径。

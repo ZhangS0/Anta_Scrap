@@ -13,9 +13,9 @@ import click
 
 from anta_scrap.auth.login import LoginError, login
 from anta_scrap.auth.session import AntaSession, SessionExpired
-from anta_scrap.config import OUTPUT_DIR, env, get_report_class
+from anta_scrap.config import OUTPUT_DIR, create_report_from_template, env
 from anta_scrap.export import export_csv
-from anta_scrap.templates import load_template, template_to_params
+from anta_scrap.templates import TemplateError, load_template, template_to_params
 
 
 @click.group()
@@ -59,8 +59,9 @@ def export(report, template, download_name, out_dir):
     try:
         with AntaSession.ensure() as sess:  # ensure 内部自动校验/续期凭证
             tpl = load_template(template)
-            cls = get_report_class(report or tpl.get("report"))
-            rpt = cls(sess.client)
+            if report and "report_spec" not in tpl:
+                tpl["report"] = report  # -r 覆盖模板的 report 字段（spec 模板不受影响）
+            rpt = create_report_from_template(tpl, sess.client)
             params = template_to_params(rpt, tpl)
             out = export_csv(
                 rpt, params,
@@ -70,6 +71,9 @@ def export(report, template, download_name, out_dir):
             click.echo(f"已导出: {out}")
     except SessionExpired as e:
         click.echo(str(e), err=True)
+        sys.exit(1)
+    except TemplateError as e:
+        click.echo(f"模板错误: {e}", err=True)
         sys.exit(1)
 
 

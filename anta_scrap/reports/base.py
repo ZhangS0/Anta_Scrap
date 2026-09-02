@@ -29,6 +29,10 @@ class BaseReport(ABC):
     # 第一个是默认页面，其余是备用页面
     candidate_page_ids: List[str] = []
 
+    # GenericReport（模板内联 report_spec）注入用；内置子类保持 None → 走原派生逻辑
+    reference_key: Optional[str] = None  # 字段报错指引文件名（不含 .md）
+    discovery_key: Optional[str] = None  # 页面发现缓存键
+
     # 字段名后缀 → meta_type 的映射（用于解析元数据）
     META_TYPE_DIM = "DIM"
     META_TYPE_METRIC = "METRIC"
@@ -59,8 +63,8 @@ class BaseReport(ABC):
             from anta_scrap.auth.page_discovery import get_page_discovery_service
             discovery_service = get_page_discovery_service()
 
-            # 获取报表名称（用于缓存键）
-            report_name = self.__class__.__name__.replace("Report", "").replace("Retail", "retail_").lower()
+            # 获取报表名称（用于缓存键）；GenericReport 用注入的 discovery_key
+            report_name = self.discovery_key or self.__class__.__name__.replace("Report", "").replace("Retail", "retail_").lower()
 
             # 构建候选页面列表
             candidates = [self.page_id] + getattr(self, "candidate_page_ids", [])
@@ -189,7 +193,8 @@ class BaseReport(ABC):
         cands = [(ds, fd.fd_id) for (n, ds), fd in self._fields_by_name_and_ds.items() if n == name]
         # 相近字段名候选（防调用方未读字段指引、盲猜字段名反复试错）
         close = difflib.get_close_matches(name, self._fields_by_name.keys(), n=5, cutoff=0.4)
-        ref_name = type(self).__module__.rsplit(".", 1)[-1]  # 与 registry key / skill reference 文件名一致
+        # 内置子类=模块名（registry key）；GenericReport=spec 注入的 reference_key
+        ref_name = self.reference_key or type(self).__module__.rsplit(".", 1)[-1]
         raise KeyError(
             f"字段 '{name}' 未在报表 {self.card_id} 找到。"
             + (f" 但有 {len(cands)} 个同名异 ds 候选: {cands[:5]}" if cands else "")

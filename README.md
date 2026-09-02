@@ -45,6 +45,8 @@ anta-mcp --host 0.0.0.0 --port 8002
     反馈回传（skill 调用/字段口径/报表要求/问题四类；body 必填一句话摘要，空 body 被拒），
     按天落 `feedback/`（不入库），
     供维护者改进 skills 与字段指引；agent 侧调用约定见 `agent_setup/AGENTS.md` 反馈义务
+  - `export_report` 的 `template_yaml` 支持两种报表标识：`report`（内置报表 key）或
+    `report_spec` 块（新报表连接 spec，从该报表指引复制）——**新报表接入无需改服务端代码或重启**
 - 鉴权：设环境变量 `ANTA_MCP_API_KEY` 后，调用须带 `Authorization: Bearer <key>`；外网暴露必须设并走 HTTPS
 
 ### Agent 接入（项目根 `.mcp.json`，已 gitignore）
@@ -89,7 +91,7 @@ anta-cli export -t retail_daily_descente.default  # 按模板导出 CSV 到 out/
   加工 → 报告 → plan 沉淀），支持从 0 构建与修改/整合。
 - **`bi-report-rerun`**：读 `workspace/<报告>/plan.md`，只改参数重跑（异常驱动确认）。
 - **`anta-bi-onboard`**：anta-bi 的辅助维护 skill，按用户提供的 HAR/查询参数接入新报表
-  （写子类 → 注册 → 库级模板 → skill 指引 → 冒烟）。
+  （纯文档流程：解析 → 写含「报表连接 spec」的指引 → 冒烟 → 提交；不改服务端、不需重启）。
 
 ## 目录地图
 
@@ -130,11 +132,12 @@ limit: 50
 - 报告任务的工作流模板在 `workspace/<报告名>_<报告id>/templates/`（如
   `workspace/kolon_recent_sales_3t4g/templates/daily.yaml`），随该报告的 plan/脚本同目录管理
 
-## 新增报表（改 `anta_scrap/` 时）
+## 新增报表
 
-1. `anta_scrap/reports/<name>.py` 新建 `XxxReport(BaseReport)`（page_id / card_id / name / default_ds_id / DYNAMIC_PARAMS / FIELD_SOURCE_CDID / default_template()）
-2. `anta_scrap/config.py:get_report_registry()` 注册
-3. 加 `templates/<name>.default.yaml`
-4. `.claude/skills/anta-bi/references/` 加字段指引
+**标准路径（纯文档，推荐）**：MCP 是通用执行器——用 `anta-bi-onboard` skill 产出含
+「报表连接 spec」小节的字段指引（+可选 `templates/specs/<key>.har_fields.json` 字段数据文件），
+调用方模板内联 `report_spec` 块即可查询。**不改服务端代码、不需重启。**
 
-详见 `CLAUDE.md` 的「关键约定（踩坑总结）」。
+内置路径（仅维护既有 6 报表子类时）：写 `reports/<name>.py` 子类 →
+`config.py:get_report_registry()` 注册 → 加 `templates/<name>.default.yaml` → 加字段指引；
+改动需部署重启生效。详见 `CLAUDE.md` 的「新增报表两条路径」与「关键约定」。

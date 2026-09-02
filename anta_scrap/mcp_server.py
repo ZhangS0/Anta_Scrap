@@ -3,7 +3,8 @@
 登录+查询下沉到本服务：外网 agent 只传 账号 + 查询模板，服务端登录 → 导出 CSV →
 返回 CSV 全文文本。多用户凭证：按账号分别缓存 JWT（~/.anta_scrap/credentials.json），
 账号密码存 ~/.anta_scrap/accounts.json（明文 0600）；仅首次登录或登录失败时需传
-password，日常只传 username。报表/字段说明在 skill（anta-bi）的 references/ 里。
+password，日常只传 username。报表/字段说明在 skill（anta-bi）的 references/ 里；
+新报表的连接知识由调用方模板内联 report_spec 携带（服务端免注册）。
 
 submit_feedback：agent 端结构化使用反馈（skill 调用记录 / 字段口径笔记 / 报表要求 /
 问题），按天追加到项目 feedback/ 目录（不入库），供维护者改进 skills 与字段指引。
@@ -34,7 +35,7 @@ from anta_scrap.auth.login import LoginError
 from anta_scrap.auth.session import PasswordRequired, SessionExpired, resolve_credentials
 from anta_scrap.auth.token_store import load_account
 from anta_scrap.client import AntaAPIError, AntaClient
-from anta_scrap.config import FEEDBACK_DIR, create_report_instance, get_report_registry
+from anta_scrap.config import FEEDBACK_DIR, create_report_from_template
 from anta_scrap.export import download, poll_task, trigger_export
 from anta_scrap.templates import TemplateError, template_to_params
 
@@ -145,15 +146,8 @@ def _export_sync(
         tpl = yaml.safe_load(template_yaml)
         if not isinstance(tpl, dict):
             raise TemplateError("模板不是合法的 YAML 字典")
-        report_key = tpl.get("report")
-        if not report_key:
-            raise TemplateError("模板缺少 report 字段（如 retail_daily_kolon）")
-        if report_key not in get_report_registry():
-            raise TemplateError(
-                f"未知报表 '{report_key}'，可选: {', '.join(sorted(get_report_registry()))}"
-            )
-        # 使用新的页面自动发现机制创建报表实例
-        rpt = create_report_instance(report_key, client, username=username)
+        # dispatch：report_spec 块（通用执行器，新报表免注册）优先，其次内置 registry key 别名
+        rpt = create_report_from_template(tpl, client, username=username)
         params = template_to_params(rpt, tpl)
         task_id = trigger_export(rpt, params)
         status = poll_task(client, task_id)
@@ -186,7 +180,8 @@ async def export_report(
 
     Args:
         username: 安踏 BI 账号（工号）。日常调用仅传此项。
-        template_yaml: 查询模板（YAML 字符串），含 report/rows/metrics/filters/dynamic_params/limit。
+        template_yaml: 查询模板（YAML 字符串），含 report（内置报表 key）或 report_spec（新报表
+            连接 spec 块，从该报表指引「报表连接 spec」小节复制）+ rows/metrics/filters/dynamic_params/limit。
         password: 密码。仅首次登录或登录失败时传入；日常可省略，服务端用已存密码/缓存 JWT 自动恢复。
         dom_id: 域标识，默认 guanbi；一般不传。
         output_name: 导出文件名（不含扩展名），缺省取模板 card_name。

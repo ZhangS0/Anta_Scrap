@@ -82,3 +82,35 @@ def create_report_instance(name: str, client, username: Optional[str] = None):
     """
     report_class = get_report_class(name)
     return report_class(client, username=username)
+
+
+def create_report_from_template(tpl: dict, client, username: Optional[str] = None):
+    """模板 → 报表实例的统一 dispatch：report_spec 块（通用执行器）优先，其次内置 registry key。
+
+    新报表不需要服务端注册：调用方模板内联 report_spec（内容从该报表指引的
+    「报表连接 spec」小节复制），由 GenericReport 装配出与内置子类同构的实例。
+    report 与 report_spec 同给时 spec 优先、report 忽略。
+    """
+    from anta_scrap.reports.generic import GenericReport, SpecError
+    from anta_scrap.templates import TemplateError
+
+    spec = tpl.get("report_spec")
+    if spec is not None:
+        try:
+            return GenericReport(client, spec, username=username)
+        except SpecError as e:
+            raise TemplateError(f"report_spec 无效: {e}") from e
+    key = tpl.get("report")
+    if not key:
+        raise TemplateError(
+            "模板缺少报表标识：内置报表用 report 字段（如 retail_daily_kolon），"
+            "新报表用 report_spec 块（内容见该报表指引「报表连接 spec」小节）"
+        )
+    registry = get_report_registry()
+    if key not in registry:
+        raise TemplateError(
+            f"未知报表 '{key}'。内置报表可选: {', '.join(sorted(registry))}；"
+            "非内置报表不传 report，改在模板内加 report_spec 块"
+            "（从该报表指引的「报表连接 spec」小节原样复制）"
+        )
+    return create_report_instance(key, client, username=username)
