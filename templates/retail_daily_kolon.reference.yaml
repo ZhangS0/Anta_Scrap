@@ -43,8 +43,8 @@ metrics:
   # - 日均进店客流                # fdId: jffb43e4a350f4fb69a964e9
   # - 有效店标识                 # fdId: v5a21513a35a6420faf8e845
   # - 预算流水目标                # fdId: w9729fc9586a44817a4538fd
-  # - 挑战目标                  # fdId: s389fe92d37524062bfe0d90
-  # - 挑战达成                  # fdId: u9d5794c7864c40ecafd238e
+  # - 挑战目标                  # fdId: s389fe92d37524062bfe0d90   # ⚠ 实测 2026-09 服务端「字段未找到」，不可用
+  # - 挑战达成                  # fdId: u9d5794c7864c40ecafd238e   # ⚠ 实测 2026-09 服务端「字段未找到」，不可用
   # - 销售吊牌金额                # fdId: g87419ac6fa9a42bfabe0844
   # - 销售数量                  # fdId: bc98ffef7692442569c243e6
   # - 小票数                   # fdId: k217102dc439845d2bbd1c8b
