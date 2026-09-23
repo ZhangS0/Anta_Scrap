@@ -36,7 +36,7 @@ from anta_scrap.auth.session import PasswordRequired, SessionExpired, resolve_cr
 from anta_scrap.auth.token_store import load_account
 from anta_scrap.client import AntaAPIError, AntaClient
 from anta_scrap.config import FEEDBACK_DIR, create_report_from_template
-from anta_scrap.export import download, poll_task, trigger_export
+from anta_scrap.export import download, trigger_and_poll
 from anta_scrap.templates import TemplateError, template_to_params
 
 API_KEY = os.environ.get("ANTA_MCP_API_KEY", "").strip()
@@ -63,6 +63,28 @@ def _check_auth(headers: Optional[Mapping[str, str]]) -> Optional[str]:
     if auth == f"Bearer {API_KEY}":
         return None
     return "未授权：缺少或错误的 Authorization 头（应为 Bearer <ANTA_MCP_API_KEY>）"
+
+
+def _api_key_config_error(key: str) -> Optional[str]:
+    """ANTA_MCP_API_KEY 为占位符/密文形态时返回错误说明；None=可用（含未设置）。
+
+    教训（2026-09）：平台环境里 key 为 `${...}` 占位符或 smenc 密文时，服务照常
+    启动但所有调用 401，连续 3 期定时刷新被阻断才被发现——这里快速失败。
+    未设置 key（本地开放模式）不拦。
+    """
+    if not key:
+        return None
+    if key.startswith("${") and key.endswith("}"):
+        return (
+            f"ANTA_MCP_API_KEY 是未替换的占位符（{key}）：平台环境变量注入失败，"
+            "请用 env-manager set_env 保存真实 key 后重启本服务。"
+        )
+    if key.lower().startswith("smenc:"):
+        return (
+            "ANTA_MCP_API_KEY 是 smenc 加密密文而非明文，本服务无法解密："
+            "请用 env-manager set_env 保存真实 key 后重启本服务。"
+        )
+    return None
 
 
 # ---------- submit_feedback：agent 使用反馈回传 ----------
@@ -149,10 +171,9 @@ def _export_sync(
         # dispatch：report_spec 块（通用执行器，新报表免注册）优先，其次内置 registry key 别名
         rpt = create_report_from_template(tpl, client, username=username)
         params = template_to_params(rpt, tpl)
-        task_id = trigger_export(rpt, params)
-        status = poll_task(client, task_id)
+        task_id, status = trigger_and_poll(rpt, params)
         if status in ("FAILED", "ERROR", "FAILURE"):
-            raise AntaAPIError(f"导出任务失败: status={status}")
+            raise AntaAPIError(f"导出任务失败: status={status}（已自动重试 1 次）")
         content, _ = download(client, task_id, output_name or params.card_name)
         return content.decode("utf-8-sig")
     finally:
@@ -267,6 +288,10 @@ def _parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
 
 def main(argv: Optional[list[str]] = None) -> None:
     args = _parse_args(argv)
+    key_err = _api_key_config_error(API_KEY)
+    if key_err:
+        print(f"[error] {key_err}", file=sys.stderr)
+        raise SystemExit(2)
     if not API_KEY:
         print(
             "[warn] 未设置 ANTA_MCP_API_KEY，服务以开放模式运行（仅限内网/调试）。"

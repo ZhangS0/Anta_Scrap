@@ -10,6 +10,7 @@ HAR 验证：
 from __future__ import annotations
 
 import datetime as dt
+import sys
 from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote
@@ -22,6 +23,9 @@ EXPORT_CSV = "CSV"
 
 _POLL_INTERVAL = 2.0
 _POLL_TIMEOUT = 300.0
+
+_TASK_OK_STATUSES = ("SUCCESS", "SUCCESSFUL", "OK", "DONE", "FINISHED")
+_TASK_FAILED_STATUSES = ("FAILED", "ERROR", "FAILURE")
 
 
 def trigger_export(report: BaseReport, params: QueryParams) -> str:
@@ -75,6 +79,27 @@ def poll_task(client: AntaClient, task_id: str, *, interval: float = _POLL_INTER
     raise AntaAPIError(f"导出任务 {task_id} 轮询超时（{timeout}s），最后状态: {last_status}")
 
 
+def trigger_and_poll(report: BaseReport, params: QueryParams, *, attempts: int = 2) -> tuple[str, str]:
+    """触发导出并轮询到完成，返回 (task_id, status)。
+
+    BI 导出任务偶发 FAILED（如 cmp_kolon 模板，重发一次即成功，2026-09 实测），
+    默认自动重发 1 次——查询幂等。只重试任务级失败；触发阶段的 1004/字段错误
+    属确定性失败，由 trigger_export 直接抛出不重试。
+    """
+    client: AntaClient = report.client
+    task_id, status = "", ""
+    for attempt in range(1, max(attempts, 1) + 1):
+        task_id = trigger_export(report, params)
+        status = poll_task(client, task_id)
+        if status not in _TASK_FAILED_STATUSES or attempt >= attempts:
+            return task_id, status
+        print(
+            f"[anta-scrap] 导出任务 {status}（task {task_id}），自动重发 {attempt}/{attempts - 1}",
+            file=sys.stderr,
+        )
+    return task_id, status
+
+
 def download(
     client: AntaClient,
     task_id: str,
@@ -112,12 +137,11 @@ def export_csv(
     """完整三步走导出 CSV，落盘到 out_dir，返回写入的文件路径。"""
     client: AntaClient = report.client
     name = download_file_name or params.card_name or report.name
-    task_id = trigger_export(report, params)
-    status = poll_task(client, task_id)
-    if status not in ("SUCCESS", "SUCCESSFUL", "OK", "DONE", "FINISHED"):
+    task_id, status = trigger_and_poll(report, params)
+    if status not in _TASK_OK_STATUSES:
         # 有些后端用非标准状态名，拿到文件流就算成功；这里只在明确失败时报错
-        if status in ("FAILED", "ERROR", "FAILURE"):
-            raise AntaAPIError(f"导出任务失败: status={status}")
+        if status in _TASK_FAILED_STATUSES:
+            raise AntaAPIError(f"导出任务失败: status={status}（已自动重试）")
 
     content, resolved = download(client, task_id, name)
     out_dir.mkdir(parents=True, exist_ok=True)
