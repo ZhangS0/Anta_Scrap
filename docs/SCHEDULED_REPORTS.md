@@ -49,3 +49,17 @@ context 带 `run`。这样维护者分析日志时能把「当期失败」与「
 3. 迪桑特日报类查询：确认含 `商品品牌=迪桑特` 双筛（漏筛翻倍，2026-09-04 定时任务复发过）
 4. 聚合后：与上一 run 交叉核对重叠日数值（BI 回流修正在 ±0.1% 内正常，以最新为准）
 5. 交付后：`submit_feedback` 报结果；失败按上面 SOP 处置并 `[补推]` 回填
+
+## 版本更新检查（check 可定时，更新永远需人确认）
+
+机制：`python scripts/update.py check [--json]`（只读，不碰工作区）对比本地 `VERSION` 与
+GitHub 上游（origin/main），输出分叉检测（本地定制提交/脏文件/自加内容）与影响范围分桶
+（🔴 需重启 / 🟡 需动作 / 🟢 无感）。执行更新用 `apply`，必须人工确认——**不做静默自动更新**。
+
+定时接入两例：
+
+- **agent 平台（远程环境）**：message_schedule 每日一次
+  `python scripts/update.py check --json`，解析 JSON 的 `behind` 字段——`>0` 才向用户播报
+  影响范围并询问是否 `apply`；`==0` 静默结束。
+- **Windows 本地**：双击 `scripts\check_update.bat` 手动查；要定时就把它挂进任务计划程序
+  （程序：`c:\path\to\Anta_Scrap\scripts\check_update.bat`，触发器：每日任意时间）。

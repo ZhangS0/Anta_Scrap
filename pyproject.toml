@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "anta-scrap"
-version = "0.1.0"
+dynamic = ["version"]
 description = "安踏 BI (datav.anta.com) 数据抓取与导出库"
 requires-python = ">=3.9"
 dependencies = [
@@ -21,3 +21,6 @@ anta-mcp = "anta_scrap.mcp_server:main"
 
 [tool.setuptools.packages.find]
 include = ["anta_scrap*"]
+
+[tool.setuptools.dynamic]
+version = { file = "VERSION" }

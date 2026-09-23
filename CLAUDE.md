@@ -199,6 +199,12 @@ workspace/<报告名>_<报告id>/       # 一报告任务一目录（报告id=4�
 - `captures/` 存 BI 查询过程留档（HAR/请求负载/指标说明，truth 来源）；`out/` 仅作 CLI 默认导出的临时目录；`feedback/` 存 agent 回传的使用反馈（submit_feedback 落盘，gitignore）。
 
 
+## 版本与发布（维护者）
+
+- **版本真源**：根目录 `VERSION`（pyproject 经 `[tool.setuptools.dynamic]` 读取）；用户可见变更记 `CHANGELOG.md`，每条标影响范围（🔴 需重启 MCP / 🟡 需用户动作 / 🟢 无感）。
+- **发布流程**：改 `VERSION` → 写 `CHANGELOG.md` → `git tag v<版本>` → `git push && git push --tags`。
+- **部署实例更新**：`python scripts/update.py check`（只读对比+分叉检测+影响范围）→ `apply`（仅快进，`--ff-only`；本地数据安全区与 untracked 自加内容零触碰，兼容约定见 CHANGELOG 头部）。定时只做 check，apply 必人确认。
+
 ## 已知遗留问题
 
 - **refresh 续期路径未验证**：`refresh_credentials()` 走 CAS 标准 `POST /oauth2.0/token`，未拿到成功样本（活 refresh_token 尚未经历过到期）。不重要：失败会自动落到完整重登（已实测成功）。
