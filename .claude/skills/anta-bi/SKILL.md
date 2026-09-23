@@ -26,10 +26,15 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 > 「报表连接 spec」小节承载，模板改为内联 `report_spec` 块（从该小节原样复制，形态见工作流第 2 步）。
 > MCP 对二者一视同仁——新报表接入是纯文档动作，不需要改服务端。
 
+> **已接入的新报表（指引含 spec + 已验证坑）**：`sell_through_rate_descente`（售罄率-迪桑特，
+> 周报/预警日报在用）、`ecom_daily_kolon`（KOLON 电商日报）、`new_store_tracking_kolon`
+> （新开店追踪-KOLON）——指引在 `references/` 同名 md，模板按第 2 步内联 report_spec 查询。
+
 两个零售日报共享同一 BI 页面、字段体系相近；区别：DESCENTE 卡有商品品牌筛选、客流指标更全，KOLON 卡多试衣指标、挑战目标、店效分级维度。其余三个报表各自独立页面。
 
 ## 查询工作流（5 步）
 
+0. **开工预检**：MCP 工具不可用/会话未注册 anta-bi（`Unknown MCP server` / `No MCP server is registered`）时**不阻塞任务**——改用直连通道：`python scripts/anta_mcp_call.py export_report --args '{"username": "<工号>", "template_yaml": "<模板>"}'`（submit_feedback 同理；端点自动读项目 `.mcp.json`，可用 `--url` 覆盖）。返回文本与 MCP 工具一致。
 1. **路由**：按品牌/需求从上表选报表，Read 对应指引（单次最多读 1 个）。
 2. **编制/复用模板**：按指引选维度/指标/筛选/日期拼 YAML，字段名必须与指引**逐字一致**（中文全名）。**模板复用**：正式报表任务（会沉淀 plan、重复执行）的模板编制成功后**保存到 `workspace/<报告名>_<报告id>/templates/<模板名>.yaml`**（日期等易变参数留注释占位），此后读取该文件、只改参数再传工具，不重新编制；临时探查才内联。格式见指引，示例：
    ```yaml
