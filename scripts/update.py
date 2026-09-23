@@ -2,12 +2,12 @@
 
 用法：
   python scripts/update.py check [--json]     # 只读检查（可定时跑，不碰工作区）
-  python scripts/update.py apply [--yes] [--stash] [--force-diverged]
+  python scripts/update.py apply [--yes] [--stash]
 
 安全模型：
 - check 只做 git fetch（更新远程跟踪引用），不修改工作区任何文件
 - apply 仅快进（git merge --ff-only），绝不合流；工作区脏、本地有未推送定制
-  提交时默认拒绝并逐项列出
+  提交（与上游分叉）时拒绝并逐项列出——分叉没有绕过选项，须先处理定制
 - 用户本地状态不在 git 管理内，任何更新都不触碰：已生成报表（workspace/**/history/）、
   feedback/、.mcp.json、.env、agent_setup/INIT_PROMPT.md、~/.anta_scrap 凭证、
   untracked 的自加 skill/报表指引/模板
@@ -193,7 +193,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         print(f"\n⚠ 本地有 {ahead} 个未推送定制提交（更新机制不会丢弃它们，但 apply 默认拒绝）：")
         for c in result["local_commits"]:
             print(f"    {c}")
-        print("    处置：把定制推回上游（git push）合并，或确认保留后用 apply --force-diverged")
+        print("    处置：推回上游合并（git push）、rebase 到上游，或确认放弃（reset --hard）")
     if result["dirty_files"]:
         print("\n⚠ 本地已修改的跟踪文件（会阻断更新，先提交或 apply --stash）：")
         for f in result["dirty_files"]:
@@ -241,13 +241,14 @@ def cmd_apply(args: argparse.Namespace) -> int:
         print(f"✓ 已是最新{f'（本地保留 {len(ahead)} 个定制提交）' if ahead else ''}，无需更新")
         return 0
 
-    # 安全门 1：本地定制提交
-    if ahead and not args.force_diverged:
-        print(f"✗ 本地有 {len(ahead)} 个未推送定制提交，快进更新会埋掉分叉历史。处置：")
+    # 安全门 1：本地定制提交（真分叉下 ff-only 数学上不可能成功，无绕过选项，必须先处理定制）
+    if ahead:
+        print(f"✗ 本地有 {len(ahead)} 个未推送定制提交，与上游分叉，无法自动更新。处置（三选一）：")
         for c in ahead:
             print(f"    {c}")
-        print("  ① 把定制推回上游合并（推荐：git push）后重试；")
-        print("  ② 确认放弃分叉历史：apply --force-diverged（提交仍在 reflog，可找回）")
+        print("  ① 推回上游合并（推荐）：git push origin HEAD:main，合入后本地即为上游一部分")
+        print("  ② 变基到上游：git fetch origin && git rebase origin/main，再重跑 apply")
+        print("  ③ 确认放弃定制：git reset --hard origin/main（提交仍在 reflog 可找回）")
         return 1
 
     # 安全门 2：工作区脏
@@ -267,10 +268,10 @@ def cmd_apply(args: argparse.Namespace) -> int:
     pre_head = _git("rev-parse", "HEAD").stdout.strip()
     try:
         _git("merge", "--ff-only", FETCH_REF)
-    except RuntimeError as e:
+    except RuntimeError:
         if stashed:
             _git("stash", "pop", check=False)
-        print(f"✗ 快进更新失败，已中止：{e}")
+        print("✗ 快进失败：本地历史与上游分叉（本机制绝不合流）。按上方指引先处理定制提交后重试")
         return 1
 
     new_v = local_version()
@@ -322,7 +323,6 @@ def main(argv: Optional[list[str]] = None) -> int:
     a = sub.add_parser("apply", help="快进更新到 origin/main（本地数据安全区零触碰）")
     a.add_argument("--yes", action="store_true", help="跳过交互确认（脚本化场景用；确认逻辑由调用方负责）")
     a.add_argument("--stash", action="store_true", help="本地脏文件自动 stash 并在更新后恢复（仅跟踪文件）")
-    a.add_argument("--force-diverged", action="store_true", help="有本地定制提交时仍强制快进（提交仍在 reflog 可找回）")
     args = p.parse_args(argv)
     try:
         return cmd_check(args) if args.cmd == "check" else cmd_apply(args)
