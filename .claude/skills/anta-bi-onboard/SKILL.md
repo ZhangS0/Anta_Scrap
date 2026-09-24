@@ -26,12 +26,13 @@ git 提交仅为沉淀知识供后续复现，不再有"部署重启"环节。
    （chartMain.zoneData + dsInfos.columns）。字段池同名冲突风险高（如多维销存报表）时，
    把配置态字段存 `templates/specs/<key>.har_fields.json`（数据文件，查询时按请求读取、
    无需重启；缺失会明确报错而非静默退化）。
-2. **写报表指引** `.claude/skills/anta-bi/references/<key>.md`：
+2. **写报表指引** `.claude/skills/anta-bi/references/<key>.md`（**只新增文件，不修改 anta-bi
+   SKILL.md 等上游分发文件**——路由发现靠 SKILL.md 的「自加报表通用发现规则」，改了反而会在
+   工具更新时被覆盖丢失）：
    - 头部「报表连接 spec」小节：`report_spec` 块本体，键序 `key/card_name/page_id/
      candidate_page_ids/card_id/default_ds_id/dynamic_params/field_source_cdid/har_fields_file`，
      调用方从原样复制进模板（格式样板见 `retail_daily_kolon.md` 同名小节）；
-   - 维度/度量清单、筛选字段、日期参数、已知缺陷、模板格式与示例、常用配方；
-   - `anta-bi` SKILL.md 报表路由表加一行。
+   - 维度/度量清单、筛选字段、日期参数、已知缺陷、模板格式与示例、常用配方。
 3. **冒烟验证**：MCP `export_report` 传含 `report_spec` 的最小查询；核对返回 CSV 表头
    与请求 metrics 一致（防静默丢列）、行数量级合理。
 4. **交付**：git 提交（建议 `docs: add <key> report guide`，仅文档+可选 specs 数据文件）；

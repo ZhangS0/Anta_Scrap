@@ -30,6 +30,11 @@ description: 安踏 BI（datav.anta.com）数据查询与导出。当用户要�
 > 周报/预警日报在用）、`ecom_daily_kolon`（KOLON 电商日报）、`new_store_tracking_kolon`
 > （新开店追踪-KOLON）——指引在 `references/` 同名 md，模板按第 2 步内联 report_spec 查询。
 
+> **自加报表的发现规则（通用）**：`references/` 目录下凡含「报表连接 spec」小节的 md 都是
+> 可查报表——上表未列出的，按文件名路由（`<key>.md` 对应 spec 的 `key`）。接入新报表只会
+> **新增**这类文件（anta-bi-onboard 流程），不修改本文件，故工具更新（update_agent apply）
+> 不会丢失任何自加报表。
+
 两个零售日报共享同一 BI 页面、字段体系相近；区别：DESCENTE 卡有商品品牌筛选、客流指标更全，KOLON 卡多试衣指标、挑战目标、店效分级维度。其余三个报表各自独立页面。
 
 ## 查询工作流（5 步）
