@@ -211,7 +211,7 @@ workspace/<报告名>_<报告id>/       # 一报告任务一目录（报告id=4�
 
 - **版本真源**：根目录 `VERSION`（pyproject 经 `[tool.setuptools.dynamic]` 读取）；用户可见变更记 `CHANGELOG.md`，每条标影响范围（🔴 需重启 MCP / 🟡 需用户动作 / 🟢 无感）。
 - **发布流程**：改 `VERSION` → 写 `CHANGELOG.md` → `git tag v<版本>` → `git push && git push --tags`。
-- **部署实例更新**：使用端 agent 跑 `python .magic/skills/anta-bi/scripts/update_agent.py check` / `apply`（随 skill 分发，保护性覆盖）；部署机/维护者用 `python scripts/update.py check` / `apply`（git ff 语义，含服务端代码）。定时只做 check，apply 必人确认。
+- **部署实例更新**：使用端 agent 跑 `python .magic/skills/anta-bi/scripts/update_agent.py check` / `apply`（随 skill 分发，保护性覆盖+修改备份）；**存量老实例**（无 update_agent.py）由项目所有者发 `agent_setup/UPGRADE_PROMPT.md` 做一次性引导升级，之后自助；部署机/维护者用 `python scripts/update.py check` / `apply`（git ff 语义，含服务端代码）。定时只做 check，apply 必人确认。
 
 ## 已知遗留问题
 
