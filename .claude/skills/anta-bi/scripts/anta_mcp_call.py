@@ -4,12 +4,15 @@
 平台客户端没注入 mcp_servers.json / `claude mcp add` 不可用时，直接对服务端
 端点发 JSON-RPC initialize → tools/call，等价于 MCP 工具调用。
 
-用法：
-  python scripts/anta_mcp_call.py export_report --args '{"username": "1385118", "template_yaml": "..."}'
-  python scripts/anta_mcp_call.py submit_feedback --args '{...}'
+本脚本随 anta-bi skill 分发（<skill目录>/scripts/anta_mcp_call.py），在 agent
+的项目根目录下运行：
 
-端点解析优先级：--url > 项目 .mcp.json（mcpServers["anta-bi"]）> http://127.0.0.1:8002/mcp
-鉴权：透传 .mcp.json 里配置的 headers（如 Authorization: Bearer <ANTA_MCP_API_KEY>）。
+用法：
+  python .magic/skills/anta-bi/scripts/anta_mcp_call.py export_report --args '{"username": "1385118", "template_yaml": "..."}'
+  python .magic/skills/anta-bi/scripts/anta_mcp_call.py submit_feedback --args '{...}'
+
+端点解析优先级：--url > 当前项目（含上级目录）的 .mcp.json（mcpServers["anta-bi"]）> 默认部署端点。
+鉴权：透传 .mcp.json 里配置的 headers（如 Authorization: Bearer <key>）。
 输出：工具文本结果（CSV 全文）原样打到 stdout；错误串打到 stderr 并以非零码退出。
 """
 
@@ -23,19 +26,27 @@ import urllib.request
 from pathlib import Path
 from typing import Optional, Union
 
-DEFAULT_URL = "http://127.0.0.1:8002/mcp"
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-MCP_JSON = PROJECT_ROOT / ".mcp.json"
+DEFAULT_URL = "http://139.196.92.82:8002/mcp"
 
 Json = Union[dict, list, str, int, float, bool, None]
 
 
+def _find_mcp_json() -> Optional[Path]:
+    """从当前工作目录向上找 .mcp.json（agent 项目根 convention）。"""
+    for d in [Path.cwd(), *Path.cwd().resolve().parents]:
+        p = d / ".mcp.json"
+        if p.exists():
+            return p
+    return None
+
+
 def resolve_endpoint(url: Optional[str]) -> tuple[str, dict[str, str]]:
-    """返回 (端点 URL, 附加 HTTP 头)。优先级：--url > .mcp.json > 默认本地。"""
+    """返回 (端点 URL, 附加 HTTP 头)。优先级：--url > .mcp.json > 默认部署端点。"""
     if url:
         return url, {}
-    if MCP_JSON.exists():
-        cfg = json.loads(MCP_JSON.read_text(encoding="utf-8"))
+    mcp_json = _find_mcp_json()
+    if mcp_json:
+        cfg = json.loads(mcp_json.read_text(encoding="utf-8"))
         srv = (cfg.get("mcpServers") or {}).get("anta-bi") or {}
         endpoint = srv.get("url")
         if endpoint:

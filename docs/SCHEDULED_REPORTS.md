@@ -52,14 +52,18 @@ context 带 `run`。这样维护者分析日志时能把「当期失败」与「
 
 ## 版本更新检查（check 可定时，更新永远需人确认）
 
-机制：`python scripts/update.py check [--json]`（只读，不碰工作区）对比本地 `VERSION` 与
-GitHub 上游（origin/main），输出分叉检测（本地定制提交/脏文件/自加内容）与影响范围分桶
-（🔴 需重启 / 🟡 需动作 / 🟢 无感）。执行更新用 `apply`，必须人工确认——**不做静默自动更新**。
+两个视角两套工具，按部署形态选用：
+
+- **使用端 agent 项目**（工具装在 `.magic/skills/`）：`python .magic/skills/anta-bi/scripts/update_agent.py check [--json]`
+  ——临时浅克隆上游对比版本标记，只读不碰本地；apply 为保护性覆盖（只更新五个 skill +
+  AGENTS/USAGE，workspace/自加内容零触碰）。
+- **本仓库（维护者/部署机，完整 git clone）**：`python scripts/update.py check [--json]`
+  ——git ff 更新语义，含服务端代码，apply 后需重启 MCP（见 CHANGELOG 🔴 标注）。
 
 定时接入两例：
 
-- **agent 平台（远程环境）**：message_schedule 每日一次
-  `python scripts/update.py check --json`，解析 JSON 的 `behind` 字段——`>0` 才向用户播报
-  影响范围并询问是否 `apply`；`==0` 静默结束。
-- **Windows 本地**：双击 `scripts\check_update.bat` 手动查；要定时就把它挂进任务计划程序
+- **agent 平台（使用端）**：message_schedule 每日一次
+  `python .magic/skills/anta-bi/scripts/update_agent.py check --json`，本地版本 ≠ 上游版本
+  才向用户播报并询问是否 `apply`；一致则静默结束。
+- **部署机本地**：双击 `scripts\check_update.bat` 手动查；要定时就挂任务计划程序
   （程序：`c:\path\to\Anta_Scrap\scripts\check_update.bat`，触发器：每日任意时间）。

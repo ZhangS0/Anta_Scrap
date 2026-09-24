@@ -12,6 +12,25 @@
 
 影响范围图标：🔴 需重启 MCP 服务端 ｜ 🟡 需用户动作（如重装依赖）｜ 🟢 无感（更新即生效）
 
+## [1.1.0] - 2026-09-24
+
+使用端视角整备：使用端 = 按 INIT_PROMPT 配置的其他 AI agent（浅克隆后只装五个 skill +
+AGENTS/USAGE 到 `.magic/skills/`，纯 MCP 客户端，无 scripts/docs/.git）。
+
+- 🟢 **直连逃生通道首次真正可达使用端**：`anta_mcp_call.py` 移入 anta-bi skill（`scripts/`）随分发；
+  端点探测改为从 agent 项目根向上找 `.mcp.json`，兜底默认部署端点
+- 🟢 **新增使用端更新器** `anta-bi/scripts/update_agent.py`（check/apply）：临时浅克隆通道对比
+  版本标记；apply 白名单覆盖五个 skill + AGENTS/USAGE，**保护性覆盖**（上游已删而你自加的
+  报表指引/skill 保留并列出）；workspace/、out/、feedback-pending.jsonl、.mcp.json、凭证零触碰
+- 🟢 INIT_PROMPT 配置完成即写入版本标记（`.magic/skills/anta-bi/VERSION`）
+- 🟢 SKILL.md 第 0 步直连路径与 1004/行级权限排错处置改为使用端可达口径（权限矩阵向项目所有者确认）
+- 🟢 AGENTS.md 新增「工具版本与更新」小节；USAGE.md「九、版本与更新」改使用端命令
+- 🟢 部署形态定位写入 CLAUDE.md（服务端部署源 + 使用端分发源两重身份，功能必须随 skill 分发）
+- 🟡 **存量已配置实例**：拿不到新 INIT_PROMPT（它不入 git）——由项目所有者重新分发一次
+  INIT_PROMPT，或在使用端手动 `git clone --depth 1` 拷一次 `.claude/skills/anta-bi/scripts/`
+  到 `.magic/skills/anta-bi/scripts/` 并写入 VERSION 标记；之后即可自助 check/apply
+- 🔴 无服务端代码变更，无需重启 MCP
+
 ## [1.0.0] - 2026-09-23
 
 首个带版本与更新机制的发布（此前变更见 git log）。

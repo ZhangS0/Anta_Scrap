@@ -82,7 +82,7 @@ workspace/<报告名>_<报告id>/
 
 ## 九、版本与更新
 
-- **检查更新**：对 agent 说「检查更新」（或自己跑 `python scripts/update.py check`）——会告诉你：当前版本 vs GitHub 最新版本、本地有没有自己的定制改动、更新会影响哪些文件（🔴 需重启服务 / 🟡 需重装依赖 / 🟢 无感）。
-- **更新**：确认影响范围后说「更新到最新版」（agent 跑 `python scripts/update.py apply`，只做快进更新）。
-- **不会被更新触碰的东西**：已生成的报表（`workspace/**/history/`）、使用反馈、`.mcp.json`、账号凭证、你自己新增的 skills / 报表指引 / 模板。改过项目自带文件时更新会先拒绝并列出来，绝不悄悄覆盖。
-- 定时自动**检查**（只查不更）的配置方法见 `docs/SCHEDULED_REPORTS.md`「版本更新检查」。
+- **检查更新**：对 agent 说「检查更新」——它会跑 `python .magic/skills/anta-bi/scripts/update_agent.py check`，告诉你当前工具版本 vs 上游最新版本，以及更新说明（CHANGELOG）。
+- **更新**：确认后说「更新到最新版」（agent 跑 `apply`）。只覆盖五个 skill 与 AGENTS.md/USAGE.md，**保护性覆盖**：已生成的报表（`workspace/`）、`out/`、你自己新增的 skill 或报表指引、`.mcp.json` 与凭证一律不碰；上游已删除而你自加的文件会保留并列出来。
+- skill 更新即生效（重新加载 skills），无需重启任何服务；MCP 服务端由项目所有者统一升级。
+- 定时自动**检查**（只查不更）：让 agent 用平台定时任务每日跑一次 `check --json`，有新版本才播报。

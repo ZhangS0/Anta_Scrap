@@ -4,6 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
+> **部署形态（先读，防止功能错位）**：本仓库有两重身份——
+> ① **服务端部署源**：`anta_scrap` MCP 在部署机常驻运行，所有使用端共享；
+> ② **使用端分发源**：其他 AI agent 按 `agent_setup/INIT_PROMPT.md` 从本仓库**浅克隆后只拷
+> 五个 skill + AGENTS.md + USAGE.md + VERSION 标记**到其项目根（skills 在 `<项目根>/.magic/skills/`），
+> 然后删除临时克隆——使用端是纯 MCP 客户端，**没有 `scripts/`、`docs/`、`.git`，也不跑服务端**。
+> 因此：**给使用端的功能必须随 skill 目录分发**（skill 是唯一直达使用端的载体）；
+> 根 `scripts/`、`docs/` 仅维护者/部署机可用。改动 skills 即改变所有使用端行为。
+
 本项目是**完整的 agent 配置项目**，由三部分组成：
 
 1. **Agent 身份定义与功能描述** — `agent_setup/AGENTS.md`：「BI报告专员」身份 + 全局硬约束 + 任务路由表（~23 行，常驻；流程细节全在 skills）。配套 `agent_setup/USAGE.md`（使用者日常说明）与 `INIT_PROMPT.md`（安装引导，本地不入库）。
@@ -203,7 +211,7 @@ workspace/<报告名>_<报告id>/       # 一报告任务一目录（报告id=4�
 
 - **版本真源**：根目录 `VERSION`（pyproject 经 `[tool.setuptools.dynamic]` 读取）；用户可见变更记 `CHANGELOG.md`，每条标影响范围（🔴 需重启 MCP / 🟡 需用户动作 / 🟢 无感）。
 - **发布流程**：改 `VERSION` → 写 `CHANGELOG.md` → `git tag v<版本>` → `git push && git push --tags`。
-- **部署实例更新**：`python scripts/update.py check`（只读对比+分叉检测+影响范围）→ `apply`（仅快进，`--ff-only`；本地数据安全区与 untracked 自加内容零触碰，兼容约定见 CHANGELOG 头部）。定时只做 check，apply 必人确认。
+- **部署实例更新**：使用端 agent 跑 `python .magic/skills/anta-bi/scripts/update_agent.py check` / `apply`（随 skill 分发，保护性覆盖）；部署机/维护者用 `python scripts/update.py check` / `apply`（git ff 语义，含服务端代码）。定时只做 check，apply 必人确认。
 
 ## 已知遗留问题
 
