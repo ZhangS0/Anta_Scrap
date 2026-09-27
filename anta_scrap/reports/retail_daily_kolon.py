@@ -1,8 +1,11 @@
 """KOLON 品牌报表：零售运营分析-日报 (card bdea3dc0adfc24d9b9e3f9a3)。
 
-注意：不同用户可能访问不同的页面实例！
-- 用户 <工号A> 使用页面: ne63f6cf08bbb40c28b814e8
-- 用户 <工号B> 使用页面: e71d78d5bb6234d5ead169a2
+注意：不同用户可能访问不同的页面实例，且两实例的卡片配置不同！
+- e71d78d5bb6234d5ead169a2（默认）：客流/试衣字段配置在可导出数据集，2026-09-27 实测全返回
+- ne63f6cf08bbb40c28b814e8（候选，旧默认）：客流/试衣是跨数据集配置，CSV 导出静默丢列——
+  2026-08-19~09-27 期间「KOLON 客流/试衣不可用」结论的根因即此页面
+部署本改动时须同时清理部署机 ~/user_page_mappings.json 中本报表的缓存映射（缓存优先于
+默认页，旧缓存仍会把请求路由到 ne63f6cf）。
 """
 
 from __future__ import annotations
@@ -13,8 +16,8 @@ from anta_scrap.reports.base import BaseReport
 
 class RetailDailyKolonReport(BaseReport):
     # 支持多页面ID（不同用户可能被分配到不同页面实例）
-    page_id = "ne63f6cf08bbb40c28b814e8"  # 默认页面
-    candidate_page_ids = ["e71d78d5bb6234d5ead169a2"]  # 候选页面
+    page_id = "e71d78d5bb6234d5ead169a2"  # 默认页面（卡片配置完整，客流/试衣可导出）
+    candidate_page_ids = ["ne63f6cf08bbb40c28b814e8"]  # 候选页面（旧默认；客流/试衣跨数据集不可导出）
 
     card_id = "bdea3dc0adfc24d9b9e3f9a3"
     name = "零售运营分析-日报-KOLON"
