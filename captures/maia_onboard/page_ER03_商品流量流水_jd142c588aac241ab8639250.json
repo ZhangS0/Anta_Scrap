@@ -1,0 +1,4527 @@
+{
+  "pgId": "jd142c588aac241ab8639250",
+  "domId": "guanbi",
+  "name": "ER03-商品流量流水分析",
+  "uId": "je23e7dff6de64b8dba3b530",
+  "pgType": "CUSTOM_REPORT",
+  "description": "",
+  "meta": {
+    "layout": [
+      {
+        "w": 10,
+        "h": 13,
+        "x": 2,
+        "y": 2,
+        "i": "e95d02c629eac43619836687",
+        "minW": 2,
+        "minH": 2,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      },
+      {
+        "w": 2,
+        "h": 15,
+        "x": 0,
+        "y": 0,
+        "i": "tb22a79ff602049e78faf379",
+        "minW": 1,
+        "minH": 1,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      },
+      {
+        "w": 10,
+        "h": 2,
+        "x": 2,
+        "y": 0,
+        "i": "v41770e902ea646e98ace0ec",
+        "minW": 1,
+        "minH": 1,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      }
+    ],
+    "layoutSetting": {
+      "compact": true,
+      "printView": false,
+      "orientation": "vertical",
+      "cardMargin": 6,
+      "card": {
+        "border": {
+          "radius": 2,
+          "enabled": false
+        },
+        "boxShadow": {
+          "enabled": false
+        }
+      },
+      "page": {
+        "background": {
+          "image": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    "filterLayout": [
+      "ee08ecf7267eb42dc9fc184d",
+      "vd0201987217b45aabab5a6a",
+      "x33f43e35b4ee4173a5d4f0a",
+      "i4a5091db3ca54d1087173b7",
+      "r51d922a57d504c51a0348b2",
+      "bd2d8fb52de3c492eb0eceef",
+      "ee7ae9eb5218e49638dbde73",
+      "v62bda560f3804f098dadc8b",
+      "n0a2911f219b34af1b5a1f14"
+    ],
+    "phoneLayout": {
+      "layoutSetting": {},
+      "layoutItemSettings": {},
+      "layout": [],
+      "layoutItemMap": {},
+      "tabMap": {},
+      "mobileAnchorCds": []
+    },
+    "tabMap": {},
+    "layoutItemMap": {
+      "mergedZone_tb22a79ff602049e78faf379": {
+        "layout": [
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "uc983732de65e4c9ba5fd4a5",
+            "y": 0
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "ta6a44d2a8b1b4f77b51c00a",
+            "y": 34
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "d4706615-600f-8661-af5b-2c23b2fd8f16",
+            "y": 68
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "feb1c2ea-8b32-1926-06d0-dadfbc6b5277",
+            "y": 102
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "770f40f4-6c8e-e747-5989-8d40e01e5418",
+            "y": 136
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "997aeee0-cd89-d79b-7bc6-7d66f4b7d0fc",
+            "y": 170
+          }
+        ]
+      }
+    }
+  },
+  "parentDirId": "h5f61131039bb4924a537b56",
+  "cards": [
+    {
+      "name": "ER03-商品流量流水分析",
+      "pgId": "jd142c588aac241ab8639250",
+      "domId": "guanbi",
+      "utime": "2026-08-06 10:15:17+0800",
+      "originName": "ER03-商品流量流水分析",
+      "content": {
+        "chartType": "PIVOT_TABLE",
+        "dsId": "f8f546bc9621d48b78ad8953",
+        "dsInfo": {
+          "name": "ER03-商品流量流水分析",
+          "parentDirId": "wd58f679c44f34d409279942",
+          "storageId": "f8f546bc9621d48b78ad8953",
+          "aliasMap": {
+            "同期商品成交老客数": "同期商品成交老客数",
+            "同期销售金额": "同期销售金额",
+            "本期商品加购件数": "本期商品加购件数",
+            "本期推广成交笔数": "本期推广成交笔数",
+            "本期商品下单金额": "本期商品下单金额",
+            "本期商品成交老客金额": "本期商品成交老客金额",
+            "商品ID": "商品ID",
+            "本期推广花费": "本期推广花费",
+            "本期推广点击量": "本期推广点击量",
+            "同期商品下单金额": "同期商品下单金额",
+            "商品标题": "商品标题",
+            "本期客单价": "本期客单价",
+            "本期商品曝光次数": "本期商品曝光次数",
+            "本期销售吊牌金额": "本期销售吊牌金额",
+            "本期推广直接成交金额": "本期推广直接成交金额",
+            "商品品牌": "商品品牌",
+            "本期推广展现量": "本期推广展现量",
+            "本期销售数量": "本期销售数量",
+            "同期商品加购人数": "同期商品加购人数",
+            "小类": "小类",
+            "大类编码": "大类编码",
+            "同期销售数量": "同期销售数量",
+            "同期商品成交老客金额": "同期商品成交老客金额",
+            "同期推广展现量": "同期推广展现量",
+            "小类编码": "小类编码",
+            "本期推广加购数": "本期推广加购数",
+            "同期推广加购数": "同期推广加购数",
+            "同期商品访问次数": "同期商品访问次数",
+            "同期推广花费": "同期推广花费",
+            "本期商品成交新客数": "本期商品成交新客数",
+            "门店名称": "门店名称",
+            "同期商品加购件数": "同期商品加购件数",
+            "同期客单价": "同期客单价",
+            "同期商品下单人数": "同期商品下单人数",
+            "本期商品成交单数": "本期商品成交单数",
+            "大类": "大类",
+            "本期商品加购人数": "本期商品加购人数",
+            "统计日期": "统计日期",
+            "同期推广直接成交金额": "同期推广直接成交金额",
+            "同期推广成交笔数": "同期推广成交笔数",
+            "本期商品成交人数": "本期商品成交人数",
+            "中类": "中类",
+            "电商平台": "电商平台",
+            "门店编码": "门店编码",
+            "本期商品下单数量": "本期商品下单数量",
+            "本期商品成交金额": "本期商品成交金额",
+            "同期商品曝光次数": "同期商品曝光次数",
+            "本期商品下单人数": "本期商品下单人数",
+            "本期销售金额": "本期销售金额",
+            "同期商品成交金额": "同期商品成交金额",
+            "本期商品访问人数": "本期商品访问人数",
+            "本期推广成交金额": "本期推广成交金额",
+            "上下装": "上下装",
+            "同期推广成交金额": "同期推广成交金额",
+            "同期商品成交新客数": "同期商品成交新客数",
+            "商品名称": "商品名称",
+            "同期商品成交人数": "同期商品成交人数",
+            "本期商品成交老客数": "本期商品成交老客数",
+            "同期商品成交单数": "同期商品成交单数",
+            "属性": "属性",
+            "本期商品成交商品数": "本期商品成交商品数",
+            "同期推广点击量": "同期推广点击量",
+            "本期推广直接成交笔数": "本期推广直接成交笔数",
+            "同期推广直接成交笔数": "同期推广直接成交笔数",
+            "款号": "款号",
+            "同期商品成交商品数": "同期商品成交商品数",
+            "中类编码": "中类编码",
+            "同期商品访问人数": "同期商品访问人数",
+            "同期销售吊牌金额": "同期销售吊牌金额",
+            "商品品牌编码": "商品品牌编码",
+            "本期商品访问次数": "本期商品访问次数",
+            "同期商品下单数量": "同期商品下单数量"
+          },
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "colCount": 74,
+          "columns": [
+            {
+              "name": "件单价",
+              "fdType": "DOUBLE",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "bf7c4626ed4794f4aade0a29",
+              "metaType": "METRIC",
+              "seqNo": 74,
+              "formula": "case \nwhen cast(SUM([本期商品成交商品数]) as Double)=0 then 0\nelse cast(SUM(IFNULL([本期商品成交金额],0)) as Double)/cast(SUM([本期商品成交商品数]) as Double)\nend",
+              "isAggregated": true,
+              "calculationType": "aggregation"
+            },
+            {
+              "name": "同期件单价",
+              "fdType": "DOUBLE",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "d5130e8a15ac249f98855629",
+              "metaType": "METRIC",
+              "seqNo": 75,
+              "formula": "case \nwhen cast(SUM([同期商品成交商品数]) as Double)=0 then 0\nelse cast(SUM(IFNULL([同期商品成交金额],0)) as Double)/cast(SUM([同期商品成交商品数]) as Double)\nend",
+              "isAggregated": true,
+              "calculationType": "aggregation"
+            }
+          ],
+          "cnId": "clickhouse",
+          "description": "",
+          "displayType": "CLICKHOUSE",
+          "rowCount": 6428,
+          "acId": "udcca59f87b4d4b75ad73b5f",
+          "config": {
+            "tableQuery": {
+              "queryType": "query",
+              "query": "with sale_rst as (\n    select\n        t1.sale_dt                    as sale_dt\n\t\t,t1.store_code                as store_code\n\t\t,t2.fashion_num               as fashion_num\n\t\t,t2.good_brand_code           as good_brand_code\n\t\t,t2.good_brand                as good_brand\n\t\t,t2.big_class_code            as big_class_code\n\t\t,t2.big_class                 as big_class\n\t\t,t2.mid_class_code            as mid_class_code\n\t    ,t2.mid_class                 as mid_class\n\t\t,t2.small_class_code          as small_class_code\n\t\t,t2.small_class               as small_class\n\t\t,t2.prop                      as prop\n\t\t,t2.top_bottom                as top_bottom\n\t\t,t2.series                    as series\n\t\t,t2.sub_series                as sub_series\n\t\t,t2.good_name                 as good_name\n\t\t,sum(t1.origin_sale_qty)      as sale_qty\n\t\t,sum(t1.origin_sale_amt)      as sale_amt\n\t\t,sum(t1.origin_sale_tag_amt)  as sale_tag_amt\n\tfrom maia_pcbi.dm_maia_sale_order_dtl_mi t1\n\tleft join maia_pcbi.dm_maia_good_art_no_df t2\n\t    on t1.art_no=t2.art_no\n\tleft join maia_pcbi.dm_maia_store_info_df t3\n\t    on t1.store_code=t3.store_code\n\twhere t3.region_code in ('MA000','MA009')\n\tand t1.store_code not in ('VIP_MAIA00463','SP_MAIA00261','GF_MAIA00427','YK_MAIA00044','QT_MAIA00202','PD_MAIA00201','GF_MAIA00046')\n\tand is_gift<>'Y'\n\tgroup by t1.sale_dt\n\t\t,t1.store_code\n\t\t,t2.fashion_num\n\t\t,t2.good_brand_code\n\t\t,t2.good_brand\n\t\t,t2.big_class_code\n\t\t,t2.big_class\n\t\t,t2.mid_class_code\n\t    ,t2.mid_class\n\t\t,t2.small_class_code\n\t\t,t2.small_class\n\t\t,t2.prop\n\t\t,t2.top_bottom\n\t\t,t2.series\n\t\t,t2.sub_series\n\t\t,t2.good_name\n)\nselect\n    t.statis_dt                       as `统计日期`\n    ,t.store_code                     as `门店编码`\n\t,t2.store_name                    as `门店名称`\n\t,case when t.store_code like '%DY_MAIA%' THEN '抖音'\n\t      when t.store_code='JD_MAIA00045' THEN '京东'\n\t\t  when t.store_code='MC_MAIA00039' THEN '天猫'\n\t\t  when t.store_code='XH_MAIA00043' THEN '小红书'\n\t\t  when t.store_code='SP_MAIA00261' THEN '视频号'\n\t\t  when t.store_code='GF_MAIA00427' THEN '官网'\n\tend                               as `电商平台`\n    ,t.good_id                        as `商品ID`\n\t,t.good_title                     as `商品标题`\n\t,t.good_name                      as `商品名称`\n    ,t.fashion_num                    as `款号`\n\t,t.good_brand_code                  as `商品品牌编码`\n\t,t.good_brand                       as `商品品牌`\n\t,t.big_class_code                   as `大类编码`\n\t,t.big_class                        as `大类`\n\t,t.mid_class_code                   as `中类编码`\n\t,t.mid_class                        as `中类`\n\t,t.small_class_code                 as `小类编码`\n\t,t.small_class                      as `小类`\n\t,t.prop                             as `属性`\n\t,t.top_bottom                       as `上下装`\n\t,t.series                           as `主题`\n\t,t.sub_series                       as `故事包`\n\t,sum(bq_good_show_cnt)               as `本期商品曝光次数`\n    ,sum(bq_good_acs_user_cnt)           as `本期商品访问人数`\n    ,sum(bq_good_acs_cnt)                as `本期商品访问次数`\n    ,sum(bq_good_add_buy_cnt)            as `本期商品加购件数`\n    ,sum(bq_good_add_buy_user_cnt)       as `本期商品加购人数`\n    ,sum(bq_good_order_by_qty)           as `本期商品下单人数`\n    ,sum(bq_good_order_qty)              as `本期商品下单数量`\n    ,sum(bq_good_order_amt)              as `本期商品下单金额`\n    ,sum(bq_good_barg_cnt)               as `本期商品成交人数`\n    ,sum(bq_good_barg_singl_qty)         as `本期商品成交单数`\n    ,sum(bq_good_barg_good_qty)          as `本期商品成交商品数`\n    ,sum(bq_good_barg_amt)               as `本期商品成交金额`\n    ,sum(bq_good_barg_old_cust_qty)      as `本期商品成交老客数`\n    ,sum(bq_good_barg_old_cust_amt)      as `本期商品成交老客金额`\n    ,sum(bq_good_barg_new_cust_qty)      as `本期商品成交新客数`\n    ,sum(bq_pct)                         as `本期客单价`\n    ,sum(bq_extent_show_num)             as `本期推广展现量`\n    ,sum(bq_extent_click_num)            as `本期推广点击量`\n\t,sum(bq_extent_cost)                 as `本期推广花费`\n    ,sum(bq_extent_barg_amt)             as `本期推广成交金额`\n    ,sum(bq_extent_direct_barg_amt)      as `本期推广直接成交金额`\n    ,sum(bq_extent_barg_cnt)             as `本期推广成交笔数`\n    ,sum(bq_extent_direct_barg_cnt)      as `本期推广直接成交笔数`\n    ,sum(bq_extent_add_buy_qty)          as `本期推广加购数`\n\t,sum(bq_sale_qty)                    as `本期销售数量`\n\t,sum(bq_sale_amt)                    as `本期销售金额`\n\t,sum(bq_sale_tag_amt)                as `本期销售吊牌金额`\n\t,sum(tq_good_show_cnt)               as `同期商品曝光次数`\n    ,sum(tq_good_acs_user_cnt)           as `同期商品访问人数`\n    ,sum(tq_good_acs_cnt)                as `同期商品访问次数`\n    ,sum(tq_good_add_buy_cnt)            as `同期商品加购件数`\n    ,sum(tq_good_add_buy_user_cnt)       as `同期商品加购人数`\n    ,sum(tq_good_order_by_qty)           as `同期商品下单人数`\n    ,sum(tq_good_order_qty)              as `同期商品下单数量`\n    ,sum(tq_good_order_amt)              as `同期商品下单金额`\n    ,sum(tq_good_barg_cnt)               as `同期商品成交人数`\n    ,sum(tq_good_barg_singl_qty)         as `同期商品成交单数`\n    ,sum(tq_good_barg_good_qty)          as `同期商品成交商品数`\n    ,sum(tq_good_barg_amt)               as `同期商品成交金额`\n    ,sum(tq_good_barg_old_cust_qty)      as `同期商品成交老客数`\n    ,sum(tq_good_barg_old_cust_amt)      as `同期商品成交老客金额`\n    ,sum(tq_good_barg_new_cust_qty)      as `同期商品成交新客数`\n    ,sum(tq_pct)                         as `同期客单价`\n    ,sum(tq_extent_show_num)             as `同期推广展现量`\n    ,sum(tq_extent_click_num)            as `同期推广点击量`\n\t,sum(tq_extent_cost)                 as `同期推广花费`\n    ,sum(tq_extent_barg_amt)             as `同期推广成交金额`\n    ,sum(tq_extent_direct_barg_amt)      as `同期推广直接成交金额`\n    ,sum(tq_extent_barg_cnt)             as `同期推广成交笔数`\n    ,sum(tq_extent_direct_barg_cnt)      as `同期推广直接成交笔数`\n    ,sum(tq_extent_add_buy_qty)          as `同期推广加购数`\n\t,sum(tq_sale_qty)                    as `同期销售数量`\n\t,sum(tq_sale_amt)                    as `同期销售金额`\n\t,sum(tq_sale_tag_amt)                as `同期销售吊牌金额`\nfrom (\n--本期商品流量\nselect\n    statis_dt                       --统计日期\n    ,store_code                     --门店编码\n    ,good_id                        --商品ID\n\t,'' as good_title                     --商品标题\n    ,fashion_num                    --款号\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n    ,good_show_cnt                  as bq_good_show_cnt                --本期商品曝光次数\n    ,good_acs_user_cnt              as bq_good_acs_user_cnt            --本期商品访问人数\n    ,good_acs_cnt                   as bq_good_acs_cnt                 --本期商品访问次数\n    ,good_add_buy_cnt               as bq_good_add_buy_cnt             --本期商品加购件数\n    ,good_add_buy_user_cnt          as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,good_order_by_qty              as bq_good_order_by_qty            --本期商品下单人数\n    ,good_order_qty                 as bq_good_order_qty               --本期商品下单数量\n    ,good_order_amt                 as bq_good_order_amt               --本期商品下单金额\n    ,good_barg_cnt                  as bq_good_barg_cnt                --本期商品成交人数\n    ,good_barg_singl_qty            as bq_good_barg_singl_qty          --本期商品成交单数\n    ,good_barg_good_qty             as bq_good_barg_good_qty           --本期商品成交商品数\n    ,good_barg_amt                  as bq_good_barg_amt                --本期商品成交金额\n    ,good_barg_old_cust_qty         as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,good_barg_old_cust_amt         as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,good_barg_new_cust_qty         as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,pct                            as bq_pct                          --本期客单价\n    ,extent_show_num                as bq_extent_show_num              --本期推广展现量\n    ,extent_click_num               as bq_extent_click_num             --本期推广点击量\n\t,extent_cost                    as bq_extent_cost                  --本期推广花费\n    ,extent_barg_amt                as bq_extent_barg_amt              --本期推广成交金额\n    ,extent_direct_barg_amt         as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,extent_barg_cnt                as bq_extent_barg_cnt              --本期推广成交笔数\n    ,extent_direct_barg_cnt         as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,extent_add_buy_qty             as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom maia_pcbi.dm_maia_rpa_goods_flow_df\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表结束时间])\n\t\nunion all\n--同期商品流量\nselect\n    statis_dt                       --统计日期\n    ,store_code                     --门店编码\n    ,good_id                        --商品ID\n\t,'' as good_title                     --商品标题\n    ,fashion_num                    --款号\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n    ,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,good_show_cnt                  as tq_good_show_cnt                --同期商品曝光次数\n    ,good_acs_user_cnt              as tq_good_acs_user_cnt            --同期商品访问人数\n    ,good_acs_cnt                   as tq_good_acs_cnt                 --同期商品访问次数\n    ,good_add_buy_cnt               as tq_good_add_buy_cnt             --同期商品加购件数\n    ,good_add_buy_user_cnt          as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,good_order_by_qty              as tq_good_order_by_qty            --同期商品下单人数\n    ,good_order_qty                 as tq_good_order_qty               --同期商品下单数量\n    ,good_order_amt                 as tq_good_order_amt               --同期商品下单金额\n    ,good_barg_cnt                  as tq_good_barg_cnt                --同期商品成交人数\n    ,good_barg_singl_qty            as tq_good_barg_singl_qty          --同期商品成交单数\n    ,good_barg_good_qty             as tq_good_barg_good_qty           --同期商品成交商品数\n    ,good_barg_amt                  as tq_good_barg_amt                --同期商品成交金额\n    ,good_barg_old_cust_qty         as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,good_barg_old_cust_amt         as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,good_barg_new_cust_qty         as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,pct                            as tq_pct                          --同期客单价\n    ,extent_show_num                as tq_extent_show_num              --同期推广展现量\n    ,extent_click_num               as tq_extent_click_num             --同期推广点击量\n\t,extent_cost                    as tq_extent_cost                  --同期推广花费\n    ,extent_barg_amt                as tq_extent_barg_amt              --同期推广成交金额\n    ,extent_direct_barg_amt         as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,extent_barg_cnt                as tq_extent_barg_cnt              --同期推广成交笔数\n    ,extent_direct_barg_cnt         as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,extent_add_buy_qty             as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom maia_pcbi.dm_maia_rpa_goods_flow_df\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表同期开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表同期结束时间])\n\nunion all\n--本期流水\nselect\n    sale_dt            as statis_dt\n\t,store_code\n\t,''                as good_id                        --商品ID\n\t,''                as good_title                     --商品标题\n\t,fashion_num\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n\t,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,sale_qty           as bq_sale_qty       --本期销售数量\n\t,sale_amt           as bq_sale_amt       --本期销售金额\n\t,sale_tag_amt       as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom sale_rst\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表结束时间])\n\t\nunion all\n--同期流水\nselect\n    sale_dt            as statis_dt\n\t,store_code\n\t,''                as good_id                        --商品ID\n\t,''                as good_title                     --商品标题\n\t,fashion_num\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n\t,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,sale_qty           as tq_sale_qty       --同期销售数量\n\t,sale_amt           as tq_sale_amt       --同期销售金额\n\t,sale_tag_amt       as tq_sale_tag_amt   --同期销售吊牌金额\nfrom sale_rst\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表同期开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表同期结束时间])\n)t \nleft join maia_pcbi.dm_maia_store_info_df t2\non t.store_code=t2.store_code\ngroup by t.statis_dt\n    ,t.store_code\n\t,t2.store_name\n    ,t.good_id\n\t,t.good_title\n\t,t.good_name\n    ,t.fashion_num\n\t,t.good_brand_code\n\t,t.good_brand\n\t,t.big_class_code\n\t,t.big_class\n\t,t.mid_class_code\n\t,t.mid_class\n\t,t.small_class_code\n\t,t.small_class\n\t,t.prop\n\t,t.top_bottom\n\t,t.series\n\t,t.sub_series",
+              "isBasicSelectForm": false,
+              "preSql": []
+            },
+            "storageType": "VIRTUAL",
+            "sourceType": "DIRECT_CONNECT_DATABASE",
+            "realTimeUpdateSetting": {
+              "enabled": false,
+              "interval": 600,
+              "disableCache": false,
+              "cacheType": "GLOBAL"
+            },
+            "primaryKeyColumns": [],
+            "guanIndexIncrementalUpdateSetting": null,
+            "dynamicParameters": [
+              {
+                "dpId": "g27135225cea244c3955ce50",
+                "name": "MAIA报表同期结束时间",
+                "valueType": "DATE",
+                "defaultValue": "{{{yesterday-1 years}}}",
+                "customize": false,
+                "multiple": false,
+                "optionValue": [
+                  ""
+                ],
+                "inheritParent": true
+              },
+              {
+                "dpId": "o1fd655a544974ec7a3707dc",
+                "name": "MAIA报表开始时间",
+                "valueType": "DATE",
+                "defaultValue": "{{{yesterday}}}",
+                "customize": false,
+                "multiple": false,
+                "optionValue": [
+                  ""
+                ],
+                "inheritParent": true
+              },
+              {
+                "dpId": "md2ca7b9112034b84803c874",
+                "name": "MAIA报表结束时间",
+                "valueType": "DATE",
+                "defaultValue": "{{{yesterday}}}",
+                "customize": false,
+                "multiple": false,
+                "optionValue": [
+                  ""
+                ],
+                "inheritParent": true
+              },
+              {
+                "dpId": "haf0e9fcc999c4b438f18e45",
+                "name": "MAIA报表同期开始时间",
+                "valueType": "DATE",
+                "defaultValue": "{{{yesterday-1 years}}}",
+                "customize": false,
+                "multiple": false,
+                "optionValue": [
+                  ""
+                ],
+                "inheritParent": true
+              }
+            ],
+            "sensitive": null,
+            "datasourceModifyTime": "2026-08-06 10:14:54+0800",
+            "dataDesensitization": null,
+            "priority": null,
+            "enableSchedule": false,
+            "lastExecution": {
+              "startTime": "2026-08-06 10:14:54+0800",
+              "endTime": "2026-08-06 10:14:55+0800",
+              "executionTime": 1
+            },
+            "taskId": "9d545110-913c-11f1-bfc8-91c14cdff1a2"
+          },
+          "version": 33,
+          "utime": "2026-08-06 10:14:55+0800"
+        },
+        "meta": {
+          "chartMain": {
+            "zoneInfo": [
+              {
+                "zoneId": "row",
+                "title": "维度",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": false,
+                "setting": {
+                  "hasGrandTotal": false
+                }
+              },
+              {
+                "zoneId": "column",
+                "title": "对比",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": false
+              },
+              {
+                "zoneId": "metric",
+                "title": "数值",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": true
+              },
+              {
+                "zoneId": "filters",
+                "title": "筛选",
+                "minCount": 0,
+                "maxCount": 20,
+                "needAggregation": false
+              },
+              {
+                "zoneId": "sorting",
+                "title": "排序",
+                "minCount": 0,
+                "maxCount": 20,
+                "needAggregation": true
+              }
+            ],
+            "zoneData": {
+              "row": [
+                {
+                  "fdId": "fac468d0739344c2e980365f",
+                  "name": "统计日期",
+                  "alias": "日历天",
+                  "fdType": "DATE",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "zLNmFgaYGhZETWIcsRqwrKbe",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "日历天"
+                },
+                {
+                  "fdId": "fac468d0739344c2e980365f_week",
+                  "name": "周",
+                  "alias": "日历周",
+                  "fdType": "SUB_DATE",
+                  "metaType": "DIM",
+                  "parentFdName": "统计日期",
+                  "granularity": "WEEK",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "TalYYhQtnGWZyJuIvelZKjKo",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "日历周"
+                },
+                {
+                  "fdId": "fac468d0739344c2e980365f_dayofweek",
+                  "name": "星期",
+                  "alias": "星期",
+                  "fdType": "SUB_DATE",
+                  "metaType": "DIM",
+                  "parentFdName": "统计日期",
+                  "granularity": "DAYOFWEEK",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "DGhaDnyonCZuWpEwwDsRTEMe",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "星期"
+                },
+                {
+                  "fdId": "fac468d0739344c2e980365f_month",
+                  "name": "月",
+                  "alias": "日历月",
+                  "fdType": "SUB_DATE",
+                  "metaType": "DIM",
+                  "parentFdName": "统计日期",
+                  "granularity": "MONTH",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "vNKloHUswkQIqdoPIToKIAeT",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "日历月"
+                },
+                {
+                  "fdId": "fac468d0739344c2e980365f_quarter",
+                  "name": "季度",
+                  "alias": "日历季",
+                  "fdType": "SUB_DATE",
+                  "metaType": "DIM",
+                  "parentFdName": "统计日期",
+                  "granularity": "QUARTER",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "tjwyRbbdoHcZlgLxKZzdtCDI",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "日历季"
+                },
+                {
+                  "fdId": "fac468d0739344c2e980365f_year",
+                  "name": "年",
+                  "alias": "日历年",
+                  "fdType": "SUB_DATE",
+                  "metaType": "DIM",
+                  "parentFdName": "统计日期",
+                  "granularity": "YEAR",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "ZzDJXHlSHzHdsfynWvdPXFJd",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "日历年"
+                },
+                {
+                  "fdId": "g39a37d0b8d5640ac883d631",
+                  "name": "电商平台",
+                  "alias": "平台名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "mBWWBTNTIRJmndMCalPcGtWj",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "平台名称"
+                },
+                {
+                  "fdId": "ada0b25dd6481412d8921068",
+                  "name": "门店编码",
+                  "alias": "店铺编码",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "TADlXUxUYRpxrMuwFyjmkUAo",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "店铺编码"
+                },
+                {
+                  "fdId": "i90e6da4040ff44888853b14",
+                  "name": "门店名称",
+                  "alias": "店铺名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "ouaptBKTPkkaINSVnIgocwBH",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "店铺名称"
+                },
+                {
+                  "fdId": "c9fa00aad18454e3494370d2",
+                  "name": "商品品牌",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "IexlqTLdFWApdWTWksgAthcO",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "商品品牌"
+                },
+                {
+                  "fdId": "v2e825fb7acdf431392a5e3d",
+                  "name": "大类",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "UXmtkuzCLDKgIqRGYugtymaR",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "大类"
+                },
+                {
+                  "fdId": "xebcdfbd19c4c45da9b22115",
+                  "name": "商品品牌编码",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "MEVSPeDuIrUJBOuzruJagEZF",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "商品品牌编码"
+                },
+                {
+                  "fdId": "lcc5d220c7ce74ab4a02bce7",
+                  "name": "中类",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "hDTvtDiKRkrOdXaELODErvGv",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "中类"
+                },
+                {
+                  "fdId": "jda487cef86ab4ae0bc3afcc",
+                  "name": "小类",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "BNdXrzdMhZIhqqhObTuwMFIt",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "小类"
+                },
+                {
+                  "fdId": "jd6973537136f4680a42cad7",
+                  "name": "属性",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "XqxLYXymxxueayvupQOGdERp",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "属性"
+                },
+                {
+                  "fdId": "p66e7b8fa55374185aa9e6f3",
+                  "name": "上下装",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "XgjsfCxxUbAiVWWkLkpRUIdi",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "上下装"
+                },
+                {
+                  "fdId": "jc1e5c7c2d61249d6a6860a6",
+                  "name": "商品ID",
+                  "alias": "平台商品ID",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "FxkkaDxfBsYIJnUeOopswcCD",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "平台商品ID"
+                },
+                {
+                  "fdId": "nf8d232985da64fc98c6a798",
+                  "name": "款号",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "hUJtzMdzJuHHmISkSfbwSmPn",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "款号"
+                },
+                {
+                  "fdId": "cdc59826b460040a9baadd81",
+                  "name": "商品名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "VfXzKfxrbtjWsjJjJYiWtgBd",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "商品名称"
+                },
+                {
+                  "fdId": "rf35a844eee7b44e88d048e4",
+                  "name": "主题",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "zRFaGgNBvBgXhUmdUAOafGFu",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "主题"
+                },
+                {
+                  "fdId": "h05ef56b5839e4d7b92773cf",
+                  "name": "故事包",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "itbnZRtbfJVQoovDtoFXUENe",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "故事包"
+                }
+              ],
+              "column": [
+                {
+                  "name": "度量名",
+                  "metaType": "MPH",
+                  "key": "AtuLeBTTNRLSYaAKXcIVDzBe",
+                  "nameTranslated": "度量名"
+                }
+              ],
+              "metric": [
+                {
+                  "fdId": "ge256b99bc22b46e88ee013d",
+                  "name": "同期商品曝光次数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "EivdygkQKjavRcVSDgcdOrgL",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品曝光次数"
+                },
+                {
+                  "fdId": "b2288bbd11ec44b05ac5817f",
+                  "name": "同期商品访问人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "kxUSscnqkoeNHOVvFMkxlrcR",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品访问人数"
+                },
+                {
+                  "fdId": "kcaba0894f2ac4683bcaafeb",
+                  "name": "同期商品访问次数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "MWMtjuqnilrjbfAdlEUopzlB",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品访问次数"
+                },
+                {
+                  "fdId": "o654a244ce12741e79271e47",
+                  "name": "同期商品加购件数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "egftKidqWaQCuuZkFCrZhDYH",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品加购件数"
+                },
+                {
+                  "fdId": "g27954d4bfcd340f19c85718",
+                  "name": "同期商品加购人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "uwyVoQfjkJxtjAmsmceHWcLX",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品加购人数"
+                },
+                {
+                  "fdId": "refbd0a9b86db42669972911",
+                  "name": "同期商品下单人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "IPbYGOUSPRiQUNrwmSAEfOMk",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品下单人数"
+                },
+                {
+                  "fdId": "gb67a3ebe98e745c187a7f5a",
+                  "name": "同期商品下单数量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "ITevymamjjZyUvyHmjDyIQZY",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品下单数量"
+                },
+                {
+                  "fdId": "i3c18378e0db84f949289c71",
+                  "name": "同期商品下单金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "QfgpJpYXMdymAvewhckUNXYK",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品下单金额"
+                },
+                {
+                  "fdId": "s4f1134fe1be347d58b200f9",
+                  "name": "同期商品成交人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "rcjNyCJRhReMVOqwhnTJHJqh",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交人数"
+                },
+                {
+                  "fdId": "g1d7f7f9a831e4dbab888c28",
+                  "name": "同期商品成交单数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "LrrwjhBLudFLqLDwPNwXidyM",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交单数"
+                },
+                {
+                  "fdId": "xd404e8059e68410285f039f",
+                  "name": "同期商品成交老客数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "EhSfspTAzNmebvDGpsgPmImN",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交老客数"
+                },
+                {
+                  "fdId": "a5cc2be98e61b41709124c28",
+                  "name": "同期商品成交老客金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "MtQclbykCcLDovpMgAfaHfsH",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交老客金额"
+                },
+                {
+                  "fdId": "l22000ba13d684e118acdd5d",
+                  "name": "同期商品成交新客数",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "key": "vJXWMdmTgIeOIsPoewCZwGls",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交新客数"
+                },
+                {
+                  "fdId": "id6e9986918a44bce80f76e6",
+                  "name": "同期客单价",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "subtotalSetting": {
+                    "isDisplayed": false
+                  },
+                  "key": "WkPAvFMjQgSApLzuJCKouIjh",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期客单价"
+                },
+                {
+                  "fdId": "jfcebfa11fb784e43b966a32",
+                  "name": "本期推广直接成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "PoAFQgULtHbIwPSpseMrbCTK",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广直接成交金额"
+                },
+                {
+                  "fdId": "r6d372669eaea43b4bc15322",
+                  "name": "本期推广成交笔数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "LWWTKtEYDHTiODwPOVMimGPp",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广成交笔数"
+                },
+                {
+                  "fdId": "l363526d7845b46c7a9b71ef",
+                  "name": "本期推广直接成交笔数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "mjRFkxalXtDOzpnfcuvFwZyX",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广直接成交笔数"
+                },
+                {
+                  "fdId": "nc8108b5099364c2dbc288d0",
+                  "name": "本期推广加购数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "TMOEtIEmgjbUfZOPZGzVqowQ",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广加购数"
+                },
+                {
+                  "fdId": "fcdf63eb18c0c492e9ee4a9c",
+                  "name": "同期推广展现量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "LbZFekfoNBZvLOFnYYQPKQgI",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广展现量"
+                },
+                {
+                  "fdId": "h8e3101e879584d7a9fc2f60",
+                  "name": "同期推广点击量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "oANqnpnaSmVtKUJMiMNzNcJE",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广点击量"
+                },
+                {
+                  "fdId": "u93cdb35e22124121addb3a8",
+                  "name": "同期推广花费",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "ONHXemfewBeJPVayLbGdbBLP",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广花费"
+                },
+                {
+                  "fdId": "d9a428c00e085436cb7adbee",
+                  "name": "同期推广成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "eLXVVFckTMSyOzHySReRVAXW",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广成交金额"
+                },
+                {
+                  "fdId": "bf243b2d75f1746598b80fc8",
+                  "name": "同期推广直接成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "JEiDimKNSpBRWYyqlGFjAXmG",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广直接成交金额"
+                },
+                {
+                  "fdId": "lfc245078f09d4d91967a63f",
+                  "name": "同期推广成交笔数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "VcVXsWbNFOrmRjcZwgJaWTqH",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广成交笔数"
+                },
+                {
+                  "fdId": "l9f84c87d761e40c3b3133c1",
+                  "name": "同期推广直接成交笔数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "wFRiHRjUCSNieQwdsOHeqxSy",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广直接成交笔数"
+                },
+                {
+                  "fdId": "rfdbd2bcfdf1945e0942768a",
+                  "name": "同期推广加购数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "ZuHCVHFgqhFNjisimPyjecfk",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期推广加购数"
+                },
+                {
+                  "fdId": "o357c155b8be64d3cb9bdb3d",
+                  "name": "同期商品成交商品数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "lFZdIcMNhbveuxSuUcCsXwsg",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交商品数"
+                },
+                {
+                  "fdId": "l9c459525c9e14b41819486c",
+                  "name": "同期商品成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "rtZOYTSfHbaUtUwkZSBgBQNV",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期商品成交金额"
+                },
+                {
+                  "fdId": "d5130e8a15ac249f98855629",
+                  "name": "同期件单价",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "5932467a5a53414b6432686c6269426a59584e304b464e5654536862355a434d35707966355a5747355a4f42356f6951354c716b355a5747355a4f423570577758536b6759584d6752473931596d786c4b5430774948526f5a5734674d41706c62484e6c49474e686333516f5531564e4b456c47546c564d54436862355a434d35707966355a5747355a4f42356f6951354c716b3659655236614b64585377774b536b6759584d6752473931596d786c4b53396a59584e304b464e5654536862355a434d35707966355a5747355a4f42356f6951354c716b355a5747355a4f423570577758536b6759584d6752473931596d786c4b51706c626d513d",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "jfBFvgEULBgCVgtVkUQtMaAE",
+                  "nameTranslated": "同期件单价"
+                },
+                {
+                  "fdId": "k652b8d09f56648b0b20ec6d",
+                  "name": "本期销售金额",
+                  "alias": "本期零售金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "eSDauWTQDywfmwBTnmgXblxe",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期零售金额"
+                },
+                {
+                  "fdId": "te7d9e4a163e9435da38d21a",
+                  "name": "本期销售吊牌金额",
+                  "alias": "本期零售吊牌金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "MriSVxSRzAhkmjndCBZDAFWt",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期零售吊牌金额"
+                },
+                {
+                  "fdId": "t4a233a01b9cf469490b6356",
+                  "name": "本期销售数量",
+                  "alias": "本期零售数量",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "ltHXTaNNTuzVCArdwIfCmKps",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期零售数量"
+                },
+                {
+                  "fdId": "ad71fa5c57af64d6cba583e6",
+                  "name": "同期销售金额",
+                  "alias": "同期零售金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "xUWqaWIBAhfpCanPYaJRyRnr",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期零售金额"
+                },
+                {
+                  "fdId": "k26d0ac2d263747f69cef414",
+                  "name": "同期销售吊牌金额",
+                  "alias": "同期零售吊牌金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "fiMHYxNxILkqKBPYTJounXZF",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期零售吊牌金额"
+                },
+                {
+                  "fdId": "n7b53e7a8ccd8449f905ec1d",
+                  "name": "同期销售数量",
+                  "alias": "同期零售数量",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "EoiBaTWPqPLTjuNBNGlCOYft",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "同期零售数量"
+                },
+                {
+                  "fdId": "fc7223be898624f13b4a6d8c",
+                  "name": "本期商品加购件数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "CidgGJwpZmpQhmpyTEfRiZIX",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品加购件数"
+                },
+                {
+                  "fdId": "u901f32f3fd9746d695a5700",
+                  "name": "本期商品下单人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "OKkyeJluFIuLskXMJBeQlHXo",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品下单人数"
+                },
+                {
+                  "fdId": "n5f0561ac86b54d9787b9c58",
+                  "name": "本期商品下单数量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "zvCkASoMDHBRShVQxJaOOuzs",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品下单数量"
+                },
+                {
+                  "fdId": "rf595995ac7424e59809a223",
+                  "name": "本期商品下单金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "PVrqheQcRWLeBrTVNecKupAB",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品下单金额"
+                },
+                {
+                  "fdId": "j1f43a21fab664da390de597",
+                  "name": "本期商品成交单数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "HibveIVHrTfBTudBDzOftkkL",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交单数"
+                },
+                {
+                  "fdId": "t1329cef7c44a41c3ae717a6",
+                  "name": "本期商品成交商品数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "PZdMZXtREkYaTNPjVIIefNbw",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交商品数"
+                },
+                {
+                  "fdId": "e1a9cbd9e5831410388630ab",
+                  "name": "本期商品成交老客数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "PGhmCmLVQYlMbICDcIxucuMF",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交老客数"
+                },
+                {
+                  "fdId": "bfe8618f2487e4ff2bc29bde",
+                  "name": "本期商品成交老客金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "FcGYkJMPTwOXOccTlsPwqNHo",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交老客金额"
+                },
+                {
+                  "fdId": "eca4b9a2fae9b4c939c50767",
+                  "name": "本期商品成交新客数",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "tnpqGjPvCvnkjUjgRyFyBYTn",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交新客数"
+                },
+                {
+                  "fdId": "u6c686d6e19964331906b30a",
+                  "name": "本期客单价",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "subtotalSetting": {
+                    "isDisplayed": false
+                  },
+                  "key": "aNbHdpKicyrLhHmtZthisGkd",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期客单价"
+                },
+                {
+                  "fdId": "bf7c4626ed4794f4aade0a29",
+                  "name": "件单价",
+                  "alias": "本期件单价",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "case \nwhen cast(SUM([本期商品成交商品数]) as Double)=0 then 0\nelse cast(SUM(IFNULL([本期商品成交金额],0)) as Double)/cast(SUM([本期商品成交商品数]) as Double)\nend",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "dymutWlsXFHpNLPvzjiDUHTT",
+                  "nameTranslated": "本期件单价"
+                },
+                {
+                  "fdId": "gb31afa6b57d7493fb6e276c",
+                  "name": "本期商品加购人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "ngUMmfeQMilPBQFyxvzQBzMT",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品加购人数"
+                },
+                {
+                  "fdId": "cec9bdc63d159414eb9a053c",
+                  "name": "本期商品曝光次数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "GpNkaBhnFpyqzBZwGicRWlww",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品曝光次数"
+                },
+                {
+                  "fdId": "o91e6147677ad456eb0b82d1",
+                  "name": "本期商品访问次数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "EtabBEWjFXlsdpecjkjRXVoi",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品访问次数"
+                },
+                {
+                  "fdId": "hc2469f1dfcf649f48ca3af9",
+                  "name": "本期商品成交人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "qJvFuuhGpwWbUQUOPFAzOwRk",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交人数"
+                },
+                {
+                  "fdId": "b25b4844d24594d9296af159",
+                  "name": "本期商品成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "HyWRxtuzOZrCDxpoMLLeGUut",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品成交金额"
+                },
+                {
+                  "fdId": "w491be6bbd35a4105a2f5e0e",
+                  "name": "本期推广展现量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "hkYHKeVpBQYQJcjgzcnrttmw",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广展现量"
+                },
+                {
+                  "fdId": "t1c612dcecdef4a09bdba9b4",
+                  "name": "本期推广点击量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "VoNepzZfPisCgJckriFWmbfd",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广点击量"
+                },
+                {
+                  "fdId": "k219fc04d75054b2a9f619b4",
+                  "name": "本期推广花费",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "eTioiYgUBCyUYHlleGiNDeFK",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广花费"
+                },
+                {
+                  "fdId": "w61ab85e396a54e5f964d018",
+                  "name": "本期推广成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "dKzzZooFyrYDAaMrIorDgqkG",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期推广成交金额"
+                },
+                {
+                  "fdId": "p076a676ba09c4c568c38c3f",
+                  "name": "本期商品访问人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "key": "HAriIwnhrjoXrAuGVurqIYXR",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "nameTranslated": "本期商品访问人数"
+                }
+              ]
+            },
+            "props": {
+              "dynamicParameters": [
+                {
+                  "dpId": "g27135225cea244c3955ce50",
+                  "name": "MAIA报表同期结束时间",
+                  "valueType": "DATE",
+                  "defaultValue": "{{{yesterday-1 years}}}",
+                  "customize": false,
+                  "multiple": false,
+                  "optionValue": [
+                    ""
+                  ],
+                  "inheritParent": true
+                },
+                {
+                  "dpId": "o1fd655a544974ec7a3707dc",
+                  "name": "MAIA报表开始时间",
+                  "valueType": "DATE",
+                  "defaultValue": "{{{yesterday}}}",
+                  "customize": false,
+                  "multiple": false,
+                  "optionValue": [
+                    ""
+                  ],
+                  "inheritParent": true
+                },
+                {
+                  "dpId": "md2ca7b9112034b84803c874",
+                  "name": "MAIA报表结束时间",
+                  "valueType": "DATE",
+                  "defaultValue": "{{{yesterday}}}",
+                  "customize": false,
+                  "multiple": false,
+                  "optionValue": [
+                    ""
+                  ],
+                  "inheritParent": true
+                },
+                {
+                  "dpId": "haf0e9fcc999c4b438f18e45",
+                  "name": "MAIA报表同期开始时间",
+                  "valueType": "DATE",
+                  "defaultValue": "{{{yesterday-1 years}}}",
+                  "customize": false,
+                  "multiple": false,
+                  "optionValue": [
+                    ""
+                  ],
+                  "inheritParent": true
+                }
+              ],
+              "grandTotal": {
+                "onRow": {
+                  "position": "TOP"
+                }
+              }
+            },
+            "isSplit": false
+          },
+          "summary": {
+            "fdId": "",
+            "name": "",
+            "label": "",
+            "fdType": "STRING",
+            "aggrType": "NUL",
+            "summaryType": "NONE",
+            "metaType": "NONE"
+          }
+        },
+        "hasDrill": false,
+        "drillViews": []
+      },
+      "isDsReadable": false,
+      "cdId": "e95d02c629eac43619836687",
+      "cdType": "CHART",
+      "ctime": "2025-10-31 16:24:35+0800"
+    },
+    {
+      "cdId": "tb22a79ff602049e78faf379",
+      "domId": "guanbi",
+      "name": "可选字段",
+      "originName": "可选字段",
+      "content": {
+        "selectorType": "MERGE_ZONE_ELEMENT",
+        "group": [
+          {
+            "cdId": "uc983732de65e4c9ba5fd4a5",
+            "domId": "guanbi",
+            "name": "时间维度",
+            "originName": "时间维度",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "zLNmFgaYGhZETWIcsRqwrKbe",
+                "TalYYhQtnGWZyJuIvelZKjKo",
+                "DGhaDnyonCZuWpEwwDsRTEMe",
+                "vNKloHUswkQIqdoPIToKIAeT",
+                "tjwyRbbdoHcZlgLxKZzdtCDI",
+                "ZzDJXHlSHzHdsfynWvdPXFJd"
+              ],
+              "defaultValue": [],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "settings": {},
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "ctime": "2025-10-31 16:24:35+0800",
+            "utime": "2025-10-31 16:27:21+0800",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "ta6a44d2a8b1b4f77b51c00a",
+            "domId": "guanbi",
+            "name": "渠道维度",
+            "originName": "渠道维度",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "mBWWBTNTIRJmndMCalPcGtWj",
+                "TADlXUxUYRpxrMuwFyjmkUAo",
+                "ouaptBKTPkkaINSVnIgocwBH"
+              ],
+              "defaultValue": [
+                "mBWWBTNTIRJmndMCalPcGtWj",
+                "TADlXUxUYRpxrMuwFyjmkUAo",
+                "ouaptBKTPkkaINSVnIgocwBH"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "settings": {},
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "ctime": "2025-10-31 16:24:35+0800",
+            "utime": "2025-10-31 16:28:33+0800",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "d4706615-600f-8661-af5b-2c23b2fd8f16",
+            "name": "商品维度",
+            "originName": "新建字段窗格 2025-10-31 16:28",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "FxkkaDxfBsYIJnUeOopswcCD",
+                "MEVSPeDuIrUJBOuzruJagEZF",
+                "IexlqTLdFWApdWTWksgAthcO",
+                "hUJtzMdzJuHHmISkSfbwSmPn",
+                "VfXzKfxrbtjWsjJjJYiWtgBd",
+                "UXmtkuzCLDKgIqRGYugtymaR",
+                "hDTvtDiKRkrOdXaELODErvGv",
+                "BNdXrzdMhZIhqqhObTuwMFIt",
+                "XqxLYXymxxueayvupQOGdERp",
+                "XgjsfCxxUbAiVWWkLkpRUIdi",
+                "zRFaGgNBvBgXhUmdUAOafGFu",
+                "itbnZRtbfJVQoovDtoFXUENe"
+              ],
+              "defaultValue": [
+                "FxkkaDxfBsYIJnUeOopswcCD",
+                "hUJtzMdzJuHHmISkSfbwSmPn",
+                "VfXzKfxrbtjWsjJjJYiWtgBd"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "feb1c2ea-8b32-1926-06d0-dadfbc6b5277",
+            "name": "结算指标",
+            "originName": "新建字段窗格 2025-10-31 16:29",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "eSDauWTQDywfmwBTnmgXblxe",
+                "MriSVxSRzAhkmjndCBZDAFWt",
+                "ltHXTaNNTuzVCArdwIfCmKps",
+                "xUWqaWIBAhfpCanPYaJRyRnr",
+                "fiMHYxNxILkqKBPYTJounXZF",
+                "EoiBaTWPqPLTjuNBNGlCOYft"
+              ],
+              "defaultValue": [],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "770f40f4-6c8e-e747-5989-8d40e01e5418",
+            "name": "平台流量指标",
+            "originName": "新建字段窗格 2025-10-31 16:29",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "GpNkaBhnFpyqzBZwGicRWlww",
+                "HAriIwnhrjoXrAuGVurqIYXR",
+                "EtabBEWjFXlsdpecjkjRXVoi",
+                "CidgGJwpZmpQhmpyTEfRiZIX",
+                "ngUMmfeQMilPBQFyxvzQBzMT",
+                "OKkyeJluFIuLskXMJBeQlHXo",
+                "zvCkASoMDHBRShVQxJaOOuzs",
+                "PVrqheQcRWLeBrTVNecKupAB",
+                "qJvFuuhGpwWbUQUOPFAzOwRk",
+                "HibveIVHrTfBTudBDzOftkkL",
+                "PZdMZXtREkYaTNPjVIIefNbw",
+                "HyWRxtuzOZrCDxpoMLLeGUut",
+                "PGhmCmLVQYlMbICDcIxucuMF",
+                "FcGYkJMPTwOXOccTlsPwqNHo",
+                "tnpqGjPvCvnkjUjgRyFyBYTn",
+                "aNbHdpKicyrLhHmtZthisGkd",
+                "dymutWlsXFHpNLPvzjiDUHTT",
+                "EivdygkQKjavRcVSDgcdOrgL",
+                "kxUSscnqkoeNHOVvFMkxlrcR",
+                "MWMtjuqnilrjbfAdlEUopzlB",
+                "egftKidqWaQCuuZkFCrZhDYH",
+                "uwyVoQfjkJxtjAmsmceHWcLX",
+                "IPbYGOUSPRiQUNrwmSAEfOMk",
+                "ITevymamjjZyUvyHmjDyIQZY",
+                "QfgpJpYXMdymAvewhckUNXYK",
+                "rcjNyCJRhReMVOqwhnTJHJqh",
+                "LrrwjhBLudFLqLDwPNwXidyM",
+                "lFZdIcMNhbveuxSuUcCsXwsg",
+                "rtZOYTSfHbaUtUwkZSBgBQNV",
+                "EhSfspTAzNmebvDGpsgPmImN",
+                "MtQclbykCcLDovpMgAfaHfsH",
+                "vJXWMdmTgIeOIsPoewCZwGls",
+                "WkPAvFMjQgSApLzuJCKouIjh",
+                "jfBFvgEULBgCVgtVkUQtMaAE"
+              ],
+              "defaultValue": [
+                "GpNkaBhnFpyqzBZwGicRWlww",
+                "HAriIwnhrjoXrAuGVurqIYXR",
+                "EtabBEWjFXlsdpecjkjRXVoi",
+                "qJvFuuhGpwWbUQUOPFAzOwRk",
+                "HyWRxtuzOZrCDxpoMLLeGUut"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "997aeee0-cd89-d79b-7bc6-7d66f4b7d0fc",
+            "name": "推广指标",
+            "originName": "新建字段窗格 2025-10-31 16:29",
+            "content": {
+              "source": "e95d02c629eac43619836687",
+              "options": [
+                "hkYHKeVpBQYQJcjgzcnrttmw",
+                "VoNepzZfPisCgJckriFWmbfd",
+                "eTioiYgUBCyUYHlleGiNDeFK",
+                "dKzzZooFyrYDAaMrIorDgqkG",
+                "PoAFQgULtHbIwPSpseMrbCTK",
+                "LWWTKtEYDHTiODwPOVMimGPp",
+                "mjRFkxalXtDOzpnfcuvFwZyX",
+                "TMOEtIEmgjbUfZOPZGzVqowQ",
+                "LbZFekfoNBZvLOFnYYQPKQgI",
+                "oANqnpnaSmVtKUJMiMNzNcJE",
+                "ONHXemfewBeJPVayLbGdbBLP",
+                "eLXVVFckTMSyOzHySReRVAXW",
+                "JEiDimKNSpBRWYyqlGFjAXmG",
+                "VcVXsWbNFOrmRjcZwgJaWTqH",
+                "wFRiHRjUCSNieQwdsOHeqxSy",
+                "ZuHCVHFgqhFNjisimPyjecfk"
+              ],
+              "defaultValue": [
+                "hkYHKeVpBQYQJcjgzcnrttmw",
+                "VoNepzZfPisCgJckriFWmbfd",
+                "eTioiYgUBCyUYHlleGiNDeFK",
+                "dKzzZooFyrYDAaMrIorDgqkG"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "pgId": "jd142c588aac241ab8639250_draft",
+            "cdType": "SELECTOR"
+          }
+        ]
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-10-31 16:28:41+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "cdType": "MERGE_SELECTOR"
+    },
+    {
+      "cdType": "TEXT",
+      "cdId": "v41770e902ea646e98ace0ec",
+      "domId": "guanbi",
+      "name": "新建文本 2025-11-05 17:18",
+      "originName": "新建文本 2025-11-05 17:18",
+      "content": {
+        "text": "报表说明：\n1、报表内容：各电商平台天/商品（平台商品ID）维度流量流水分析指标\n2、报表使用：自主选择不同的维度和指标，看统计数据\n3、指标说明：a、ER03数据采集自各电商平台每天每个店铺每个商品的数据，若查询某时间段数据，ER03报表指标汇总不做去重处理，或与平台筛选时间段数据不同\n                      b、结算指标统计颗粒度到款号，查询结算指标数据时不可勾选平台商品ID\n                      c、平台流量指标、推广指标统计颗粒度到平台商品ID，各平台存在一个商品链接（平台商品ID）中含多款商品（款号），对应商品ID的平台流量指标、推广指标数据×款号数\n                      d、平台采集分多次，所以每天报表分3个时间段更新数据，更新时间：10：30、14：30、17：30",
+        "body": {
+          "blocks": [
+            {
+              "key": "2j4cp",
+              "text": "报表说明：",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 5,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "14rrc",
+              "text": "1、报表内容：各电商平台天/商品（平台商品ID）维度流量流水分析指标",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 34,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "agq8g",
+              "text": "2、报表使用：自主选择不同的维度和指标，看统计数据",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 25,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "5atmn",
+              "text": "3、指标说明：a、ER03数据采集自各电商平台每天每个店铺每个商品的数据，若查询某时间段数据，ER03报表指标汇总不做去重处理，或与平台筛选时间段数据不同",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 77,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "9ec2a",
+              "text": "                      b、结算指标统计颗粒度到款号，查询结算指标数据时不可勾选平台商品ID",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 56,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "26hjj",
+              "text": "                      c、平台流量指标、推广指标统计颗粒度到平台商品ID，各平台存在一个商品链接（平台商品ID）中含多款商品（款号），对应商品ID的平台流量指标、推广指标数据×款号数",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 102,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "bcg4o",
+              "text": "                      d、平台采集分多次，所以每天报表分3个时间段更新数据，更新时间：10：30、14：30、17：30",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 71,
+                  "style": "12px"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            }
+          ],
+          "entityMap": {}
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-05 17:18:04+0800",
+      "utime": "2026-08-06 10:15:17+0800"
+    },
+    {
+      "cdId": "ee08ecf7267eb42dc9fc184d",
+      "domId": "guanbi",
+      "name": "开始时间",
+      "originName": "开始时间",
+      "content": {
+        "parameter": {
+          "dpId": "o1fd655a544974ec7a3707dc",
+          "name": "MAIA报表开始时间",
+          "valueType": "DATE",
+          "defaultValue": "{{{yesterday}}}",
+          "customize": false,
+          "multiple": false,
+          "optionValue": [
+            ""
+          ],
+          "inheritParent": true
+        },
+        "defaultValue": {
+          "valueType": "TIME_MACRO",
+          "value": [
+            "2026-10-15"
+          ],
+          "expr": [
+            "{{{yesterday}}}"
+          ]
+        },
+        "options": [
+          ""
+        ],
+        "display": {
+          "showColName": true
+        },
+        "selectorType": "PARAMETER"
+      },
+      "settings": {},
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:16:58+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "vd0201987217b45aabab5a6a",
+      "domId": "guanbi",
+      "name": "结束时间",
+      "originName": "结束时间",
+      "content": {
+        "parameter": {
+          "dpId": "md2ca7b9112034b84803c874",
+          "name": "MAIA报表结束时间",
+          "valueType": "DATE",
+          "defaultValue": "{{{yesterday}}}",
+          "customize": false,
+          "multiple": false,
+          "optionValue": [
+            ""
+          ],
+          "inheritParent": true
+        },
+        "defaultValue": {
+          "valueType": "TIME_MACRO",
+          "value": [
+            "2026-10-15"
+          ],
+          "expr": [
+            "{{{yesterday}}}"
+          ]
+        },
+        "options": [
+          ""
+        ],
+        "display": {
+          "showColName": true
+        },
+        "selectorType": "PARAMETER"
+      },
+      "settings": {},
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:17:41+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "x33f43e35b4ee4173a5d4f0a",
+      "domId": "guanbi",
+      "name": "同期开始时间",
+      "originName": "同期开始时间",
+      "content": {
+        "parameter": {
+          "dpId": "haf0e9fcc999c4b438f18e45",
+          "name": "MAIA报表同期开始时间",
+          "valueType": "DATE",
+          "defaultValue": "{{{yesterday-1 years}}}",
+          "customize": false,
+          "multiple": false,
+          "optionValue": [
+            ""
+          ],
+          "inheritParent": true
+        },
+        "defaultValue": {
+          "valueType": "TIME_MACRO",
+          "value": [
+            "2025-10-15"
+          ],
+          "expr": [
+            "{{{yesterday-1 years}}}"
+          ]
+        },
+        "options": [
+          ""
+        ],
+        "display": {
+          "showColName": true
+        },
+        "selectorType": "PARAMETER"
+      },
+      "settings": {},
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:18:10+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "i4a5091db3ca54d1087173b7",
+      "domId": "guanbi",
+      "name": "同期结束时间",
+      "originName": "同期结束时间",
+      "content": {
+        "parameter": {
+          "dpId": "g27135225cea244c3955ce50",
+          "name": "MAIA报表同期结束时间",
+          "valueType": "DATE",
+          "defaultValue": "{{{yesterday-1 years}}}",
+          "customize": false,
+          "multiple": false,
+          "optionValue": [
+            ""
+          ],
+          "inheritParent": true
+        },
+        "defaultValue": {
+          "valueType": "TIME_MACRO",
+          "value": [
+            "2025-10-15"
+          ],
+          "expr": [
+            "{{{yesterday-1 years}}}"
+          ]
+        },
+        "options": [
+          ""
+        ],
+        "display": {
+          "showColName": true
+        },
+        "selectorType": "PARAMETER"
+      },
+      "settings": {},
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:18:27+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "r51d922a57d504c51a0348b2",
+      "domId": "guanbi",
+      "name": "平台名称",
+      "originName": "平台名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "dsName": "ER03-商品流量流水分析",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "g39a37d0b8d5640ac883d631",
+            "name": "电商平台",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "level": "dataset",
+            "dsId": "f8f546bc9621d48b78ad8953"
+          }
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "e95d02c629eac43619836687"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "电商平台",
+                "fdId": "g39a37d0b8d5640ac883d631"
+              },
+              "targetFields": [
+                {
+                  "name": "电商平台",
+                  "fdId": "g39a37d0b8d5640ac883d631",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "cdId": "e95d02c629eac43619836687"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:19:05+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "bd2d8fb52de3c492eb0eceef",
+      "domId": "guanbi",
+      "name": "店铺编码",
+      "originName": "店铺编码",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "dsName": "ER03-商品流量流水分析",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "ada0b25dd6481412d8921068",
+            "name": "门店编码",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "f8f546bc9621d48b78ad8953"
+          }
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "e95d02c629eac43619836687"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "门店编码",
+                "fdId": "ada0b25dd6481412d8921068"
+              },
+              "targetFields": [
+                {
+                  "name": "门店编码",
+                  "fdId": "ada0b25dd6481412d8921068",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "cdId": "e95d02c629eac43619836687"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:19:41+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "ee7ae9eb5218e49638dbde73",
+      "domId": "guanbi",
+      "name": "店铺名称",
+      "originName": "店铺名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "dsName": "ER03-商品流量流水分析",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "i90e6da4040ff44888853b14",
+            "name": "门店名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "f8f546bc9621d48b78ad8953"
+          }
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "e95d02c629eac43619836687"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "门店名称",
+                "fdId": "i90e6da4040ff44888853b14"
+              },
+              "targetFields": [
+                {
+                  "name": "门店名称",
+                  "fdId": "i90e6da4040ff44888853b14",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "cdId": "e95d02c629eac43619836687"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:20:03+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "v62bda560f3804f098dadc8b",
+      "domId": "guanbi",
+      "name": "平台商品ID",
+      "originName": "平台商品ID",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "dsName": "ER03-商品流量流水分析",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "jc1e5c7c2d61249d6a6860a6",
+            "name": "商品ID",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "f8f546bc9621d48b78ad8953"
+          }
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "e95d02c629eac43619836687"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "商品ID",
+                "fdId": "jc1e5c7c2d61249d6a6860a6"
+              },
+              "targetFields": [
+                {
+                  "name": "商品ID",
+                  "fdId": "jc1e5c7c2d61249d6a6860a6",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "cdId": "e95d02c629eac43619836687"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:20:32+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "n0a2911f219b34af1b5a1f14",
+      "domId": "guanbi",
+      "name": "款号",
+      "originName": "款号",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "dsName": "ER03-商品流量流水分析",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "nf8d232985da64fc98c6a798",
+            "name": "款号",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "f8f546bc9621d48b78ad8953"
+          }
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "e95d02c629eac43619836687"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "款号",
+                "fdId": "nf8d232985da64fc98c6a798"
+              },
+              "targetFields": [
+                {
+                  "name": "款号",
+                  "fdId": "nf8d232985da64fc98c6a798",
+                  "dsId": "f8f546bc9621d48b78ad8953",
+                  "cdId": "e95d02c629eac43619836687"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "jd142c588aac241ab8639250",
+      "ctime": "2025-11-03 12:20:53+0800",
+      "utime": "2026-08-06 10:15:17+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    }
+  ],
+  "dsInfos": [
+    {
+      "parentDirId": "wd58f679c44f34d409279942",
+      "storageId": "f8f546bc9621d48b78ad8953",
+      "aliasMap": {
+        "同期商品成交老客数": "同期商品成交老客数",
+        "同期销售金额": "同期销售金额",
+        "本期商品加购件数": "本期商品加购件数",
+        "本期推广成交笔数": "本期推广成交笔数",
+        "本期商品下单金额": "本期商品下单金额",
+        "本期商品成交老客金额": "本期商品成交老客金额",
+        "商品ID": "商品ID",
+        "本期推广花费": "本期推广花费",
+        "本期推广点击量": "本期推广点击量",
+        "同期商品下单金额": "同期商品下单金额",
+        "商品标题": "商品标题",
+        "本期客单价": "本期客单价",
+        "本期商品曝光次数": "本期商品曝光次数",
+        "本期销售吊牌金额": "本期销售吊牌金额",
+        "本期推广直接成交金额": "本期推广直接成交金额",
+        "商品品牌": "商品品牌",
+        "本期推广展现量": "本期推广展现量",
+        "本期销售数量": "本期销售数量",
+        "同期商品加购人数": "同期商品加购人数",
+        "小类": "小类",
+        "大类编码": "大类编码",
+        "同期销售数量": "同期销售数量",
+        "同期商品成交老客金额": "同期商品成交老客金额",
+        "同期推广展现量": "同期推广展现量",
+        "小类编码": "小类编码",
+        "本期推广加购数": "本期推广加购数",
+        "同期推广加购数": "同期推广加购数",
+        "同期商品访问次数": "同期商品访问次数",
+        "同期推广花费": "同期推广花费",
+        "本期商品成交新客数": "本期商品成交新客数",
+        "门店名称": "门店名称",
+        "同期商品加购件数": "同期商品加购件数",
+        "同期客单价": "同期客单价",
+        "同期商品下单人数": "同期商品下单人数",
+        "本期商品成交单数": "本期商品成交单数",
+        "大类": "大类",
+        "本期商品加购人数": "本期商品加购人数",
+        "统计日期": "统计日期",
+        "同期推广直接成交金额": "同期推广直接成交金额",
+        "同期推广成交笔数": "同期推广成交笔数",
+        "本期商品成交人数": "本期商品成交人数",
+        "中类": "中类",
+        "电商平台": "电商平台",
+        "门店编码": "门店编码",
+        "本期商品下单数量": "本期商品下单数量",
+        "本期商品成交金额": "本期商品成交金额",
+        "同期商品曝光次数": "同期商品曝光次数",
+        "本期商品下单人数": "本期商品下单人数",
+        "本期销售金额": "本期销售金额",
+        "同期商品成交金额": "同期商品成交金额",
+        "本期商品访问人数": "本期商品访问人数",
+        "本期推广成交金额": "本期推广成交金额",
+        "上下装": "上下装",
+        "同期推广成交金额": "同期推广成交金额",
+        "同期商品成交新客数": "同期商品成交新客数",
+        "商品名称": "商品名称",
+        "同期商品成交人数": "同期商品成交人数",
+        "本期商品成交老客数": "本期商品成交老客数",
+        "同期商品成交单数": "同期商品成交单数",
+        "属性": "属性",
+        "本期商品成交商品数": "本期商品成交商品数",
+        "同期推广点击量": "同期推广点击量",
+        "本期推广直接成交笔数": "本期推广直接成交笔数",
+        "同期推广直接成交笔数": "同期推广直接成交笔数",
+        "款号": "款号",
+        "同期商品成交商品数": "同期商品成交商品数",
+        "中类编码": "中类编码",
+        "同期商品访问人数": "同期商品访问人数",
+        "同期销售吊牌金额": "同期销售吊牌金额",
+        "商品品牌编码": "商品品牌编码",
+        "本期商品访问次数": "本期商品访问次数",
+        "同期商品下单数量": "同期商品下单数量"
+      },
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "colCount": 74,
+      "dirPath": [
+        {
+          "dirId": "u169da343e5af4dcea87e145",
+          "dirName": "根目录"
+        },
+        {
+          "dirId": "t63a96786e57a4e1ebefeb62",
+          "dirName": "05MAIA"
+        },
+        {
+          "dirId": "wd58f679c44f34d409279942",
+          "dirName": "零售"
+        }
+      ],
+      "columns": [
+        {
+          "name": "同期商品成交老客金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "a5cc2be98e61b41709124c28",
+          "metaType": "METRIC",
+          "seqNo": 60,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期销售金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "ad71fa5c57af64d6cba583e6",
+          "metaType": "METRIC",
+          "seqNo": 72,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "门店编码",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "ada0b25dd6481412d8921068",
+          "metaType": "DIM",
+          "seqNo": 1,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "同期商品访问人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "b2288bbd11ec44b05ac5817f",
+          "metaType": "METRIC",
+          "seqNo": 48,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "b25b4844d24594d9296af159",
+          "metaType": "METRIC",
+          "seqNo": 31,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期推广直接成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "bf243b2d75f1746598b80fc8",
+          "metaType": "METRIC",
+          "seqNo": 67,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交老客金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "bfe8618f2487e4ff2bc29bde",
+          "metaType": "METRIC",
+          "seqNo": 33,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "商品品牌",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "c9fa00aad18454e3494370d2",
+          "metaType": "DIM",
+          "seqNo": 9,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "商品名称",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "cdc59826b460040a9baadd81",
+          "metaType": "DIM",
+          "seqNo": 6,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期商品曝光次数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "cec9bdc63d159414eb9a053c",
+          "metaType": "METRIC",
+          "seqNo": 20,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期推广成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "d9a428c00e085436cb7adbee",
+          "metaType": "METRIC",
+          "seqNo": 66,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交老客数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "e1a9cbd9e5831410388630ab",
+          "metaType": "METRIC",
+          "seqNo": 32,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交新客数",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "eca4b9a2fae9b4c939c50767",
+          "metaType": "METRIC",
+          "seqNo": 34,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "统计日期",
+          "fdType": "DATE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "fac468d0739344c2e980365f",
+          "metaType": "DIM",
+          "seqNo": 0,
+          "subs": [
+            {
+              "name": "年",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "fac468d0739344c2e980365f_year",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "YEAR",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "季度",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "fac468d0739344c2e980365f_quarter",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "QUARTER",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "月",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "fac468d0739344c2e980365f_month",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "MONTH",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "周",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "fac468d0739344c2e980365f_week",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "WEEK",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "星期",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "f8f546bc9621d48b78ad8953",
+              "fdId": "fac468d0739344c2e980365f_dayofweek",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "DAYOFWEEK",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            }
+          ],
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DATE",
+          "hidden": false
+        },
+        {
+          "name": "本期商品加购件数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "fc7223be898624f13b4a6d8c",
+          "metaType": "METRIC",
+          "seqNo": 23,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期推广展现量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "fcdf63eb18c0c492e9ee4a9c",
+          "metaType": "METRIC",
+          "seqNo": 63,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交单数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "g1d7f7f9a831e4dbab888c28",
+          "metaType": "METRIC",
+          "seqNo": 56,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品加购人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "g27954d4bfcd340f19c85718",
+          "metaType": "METRIC",
+          "seqNo": 51,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "电商平台",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "g39a37d0b8d5640ac883d631",
+          "metaType": "DIM",
+          "seqNo": 3,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期商品加购人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "gb31afa6b57d7493fb6e276c",
+          "metaType": "METRIC",
+          "seqNo": 24,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品下单数量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "gb67a3ebe98e745c187a7f5a",
+          "metaType": "METRIC",
+          "seqNo": 53,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品曝光次数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "ge256b99bc22b46e88ee013d",
+          "metaType": "METRIC",
+          "seqNo": 47,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "故事包",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "h05ef56b5839e4d7b92773cf",
+          "metaType": "DIM",
+          "seqNo": 19,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "同期推广点击量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "h8e3101e879584d7a9fc2f60",
+          "metaType": "METRIC",
+          "seqNo": 64,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "hc2469f1dfcf649f48ca3af9",
+          "metaType": "METRIC",
+          "seqNo": 28,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品下单金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "i3c18378e0db84f949289c71",
+          "metaType": "METRIC",
+          "seqNo": 54,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "门店名称",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "i90e6da4040ff44888853b14",
+          "metaType": "DIM",
+          "seqNo": 2,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "同期客单价",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "id6e9986918a44bce80f76e6",
+          "metaType": "METRIC",
+          "seqNo": 62,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交单数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "j1f43a21fab664da390de597",
+          "metaType": "METRIC",
+          "seqNo": 29,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "商品ID",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "jc1e5c7c2d61249d6a6860a6",
+          "metaType": "DIM",
+          "seqNo": 4,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "属性",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "jd6973537136f4680a42cad7",
+          "metaType": "DIM",
+          "seqNo": 16,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "小类",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "jda487cef86ab4ae0bc3afcc",
+          "metaType": "DIM",
+          "seqNo": 15,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期推广直接成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "jfcebfa11fb784e43b966a32",
+          "metaType": "METRIC",
+          "seqNo": 40,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期推广花费",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "k219fc04d75054b2a9f619b4",
+          "metaType": "METRIC",
+          "seqNo": 38,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期销售吊牌金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "k26d0ac2d263747f69cef414",
+          "metaType": "METRIC",
+          "seqNo": 73,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期销售金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "k652b8d09f56648b0b20ec6d",
+          "metaType": "METRIC",
+          "seqNo": 45,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期商品访问次数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "kcaba0894f2ac4683bcaafeb",
+          "metaType": "METRIC",
+          "seqNo": 49,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交新客数",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "l22000ba13d684e118acdd5d",
+          "metaType": "METRIC",
+          "seqNo": 61,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期推广直接成交笔数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "l363526d7845b46c7a9b71ef",
+          "metaType": "METRIC",
+          "seqNo": 42,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "l9c459525c9e14b41819486c",
+          "metaType": "METRIC",
+          "seqNo": 58,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期推广直接成交笔数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "l9f84c87d761e40c3b3133c1",
+          "metaType": "METRIC",
+          "seqNo": 69,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "中类",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "lcc5d220c7ce74ab4a02bce7",
+          "metaType": "DIM",
+          "seqNo": 13,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "同期推广成交笔数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "lfc245078f09d4d91967a63f",
+          "metaType": "METRIC",
+          "seqNo": 68,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品下单数量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "n5f0561ac86b54d9787b9c58",
+          "metaType": "METRIC",
+          "seqNo": 26,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期销售数量",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "n7b53e7a8ccd8449f905ec1d",
+          "metaType": "METRIC",
+          "seqNo": 71,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期推广加购数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "nc8108b5099364c2dbc288d0",
+          "metaType": "METRIC",
+          "seqNo": 43,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "商品标题",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "nec690d37189646f9b93e50b",
+          "metaType": "DIM",
+          "seqNo": 5,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "款号",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "nf8d232985da64fc98c6a798",
+          "metaType": "DIM",
+          "seqNo": 7,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交商品数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "o357c155b8be64d3cb9bdb3d",
+          "metaType": "METRIC",
+          "seqNo": 57,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品加购件数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "o654a244ce12741e79271e47",
+          "metaType": "METRIC",
+          "seqNo": 50,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品访问次数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "o91e6147677ad456eb0b82d1",
+          "metaType": "METRIC",
+          "seqNo": 22,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品访问人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "p076a676ba09c4c568c38c3f",
+          "metaType": "METRIC",
+          "seqNo": 21,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "中类编码",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "p537f7016fead487e823c7e0",
+          "metaType": "DIM",
+          "seqNo": 12,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "上下装",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "p66e7b8fa55374185aa9e6f3",
+          "metaType": "DIM",
+          "seqNo": 17,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期推广成交笔数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "r6d372669eaea43b4bc15322",
+          "metaType": "METRIC",
+          "seqNo": 41,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品下单人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "refbd0a9b86db42669972911",
+          "metaType": "METRIC",
+          "seqNo": 52,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "主题",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "rf35a844eee7b44e88d048e4",
+          "metaType": "DIM",
+          "seqNo": 18,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期商品下单金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "rf595995ac7424e59809a223",
+          "metaType": "METRIC",
+          "seqNo": 27,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期推广加购数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "rfdbd2bcfdf1945e0942768a",
+          "metaType": "METRIC",
+          "seqNo": 70,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "s4f1134fe1be347d58b200f9",
+          "metaType": "METRIC",
+          "seqNo": 55,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期商品成交商品数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "t1329cef7c44a41c3ae717a6",
+          "metaType": "METRIC",
+          "seqNo": 30,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期推广点击量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "t1c612dcecdef4a09bdba9b4",
+          "metaType": "METRIC",
+          "seqNo": 37,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期销售数量",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "t4a233a01b9cf469490b6356",
+          "metaType": "METRIC",
+          "seqNo": 44,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "小类编码",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "t5e031c1526b4472d84d871a",
+          "metaType": "DIM",
+          "seqNo": 14,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期销售吊牌金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "te7d9e4a163e9435da38d21a",
+          "metaType": "METRIC",
+          "seqNo": 46,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "大类编码",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "tfc0ab01ee8a4463aad77c6c",
+          "metaType": "DIM",
+          "seqNo": 10,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期客单价",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "u6c686d6e19964331906b30a",
+          "metaType": "METRIC",
+          "seqNo": 35,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "本期商品下单人数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "u901f32f3fd9746d695a5700",
+          "metaType": "METRIC",
+          "seqNo": 25,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "同期推广花费",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "u93cdb35e22124121addb3a8",
+          "metaType": "METRIC",
+          "seqNo": 65,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "大类",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "v2e825fb7acdf431392a5e3d",
+          "metaType": "DIM",
+          "seqNo": 11,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "本期推广展现量",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "w491be6bbd35a4105a2f5e0e",
+          "metaType": "METRIC",
+          "seqNo": 36,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "本期推广成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "w61ab85e396a54e5f964d018",
+          "metaType": "METRIC",
+          "seqNo": 39,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "同期商品成交老客数",
+          "fdType": "LONG",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "xd404e8059e68410285f039f",
+          "metaType": "METRIC",
+          "seqNo": 59,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "商品品牌编码",
+          "fdType": "STRING",
+          "dsId": "f8f546bc9621d48b78ad8953",
+          "fdId": "xebcdfbd19c4c45da9b22115",
+          "metaType": "DIM",
+          "seqNo": 8,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        }
+      ],
+      "cnId": "clickhouse",
+      "isReadable": false,
+      "name": "ER03-商品流量流水分析",
+      "description": "",
+      "displayType": "CLICKHOUSE",
+      "rowCount": 4290,
+      "acId": "udcca59f87b4d4b75ad73b5f",
+      "config": {
+        "tableQuery": {
+          "queryType": "query",
+          "query": "with sale_rst as (\n    select\n        t1.sale_dt                    as sale_dt\n\t\t,t1.store_code                as store_code\n\t\t,t2.fashion_num               as fashion_num\n\t\t,t2.good_brand_code           as good_brand_code\n\t\t,t2.good_brand                as good_brand\n\t\t,t2.big_class_code            as big_class_code\n\t\t,t2.big_class                 as big_class\n\t\t,t2.mid_class_code            as mid_class_code\n\t    ,t2.mid_class                 as mid_class\n\t\t,t2.small_class_code          as small_class_code\n\t\t,t2.small_class               as small_class\n\t\t,t2.prop                      as prop\n\t\t,t2.top_bottom                as top_bottom\n\t\t,t2.series                    as series\n\t\t,t2.sub_series                as sub_series\n\t\t,t2.good_name                 as good_name\n\t\t,sum(t1.origin_sale_qty)      as sale_qty\n\t\t,sum(t1.origin_sale_amt)      as sale_amt\n\t\t,sum(t1.origin_sale_tag_amt)  as sale_tag_amt\n\tfrom maia_pcbi.dm_maia_sale_order_dtl_mi t1\n\tleft join maia_pcbi.dm_maia_good_art_no_df t2\n\t    on t1.art_no=t2.art_no\n\tleft join maia_pcbi.dm_maia_store_info_df t3\n\t    on t1.store_code=t3.store_code\n\twhere t3.region_code in ('MA000','MA009')\n\tand t1.store_code not in ('VIP_MAIA00463','SP_MAIA00261','GF_MAIA00427','YK_MAIA00044','QT_MAIA00202','PD_MAIA00201','GF_MAIA00046')\n\tand is_gift<>'Y'\n\tgroup by t1.sale_dt\n\t\t,t1.store_code\n\t\t,t2.fashion_num\n\t\t,t2.good_brand_code\n\t\t,t2.good_brand\n\t\t,t2.big_class_code\n\t\t,t2.big_class\n\t\t,t2.mid_class_code\n\t    ,t2.mid_class\n\t\t,t2.small_class_code\n\t\t,t2.small_class\n\t\t,t2.prop\n\t\t,t2.top_bottom\n\t\t,t2.series\n\t\t,t2.sub_series\n\t\t,t2.good_name\n)\nselect\n    t.statis_dt                       as `统计日期`\n    ,t.store_code                     as `门店编码`\n\t,t2.store_name                    as `门店名称`\n\t,case when t.store_code like '%DY_MAIA%' THEN '抖音'\n\t      when t.store_code='JD_MAIA00045' THEN '京东'\n\t\t  when t.store_code='MC_MAIA00039' THEN '天猫'\n\t\t  when t.store_code='XH_MAIA00043' THEN '小红书'\n\t\t  when t.store_code='SP_MAIA00261' THEN '视频号'\n\t\t  when t.store_code='GF_MAIA00427' THEN '官网'\n\tend                               as `电商平台`\n    ,t.good_id                        as `商品ID`\n\t,t.good_title                     as `商品标题`\n\t,t.good_name                      as `商品名称`\n    ,t.fashion_num                    as `款号`\n\t,t.good_brand_code                  as `商品品牌编码`\n\t,t.good_brand                       as `商品品牌`\n\t,t.big_class_code                   as `大类编码`\n\t,t.big_class                        as `大类`\n\t,t.mid_class_code                   as `中类编码`\n\t,t.mid_class                        as `中类`\n\t,t.small_class_code                 as `小类编码`\n\t,t.small_class                      as `小类`\n\t,t.prop                             as `属性`\n\t,t.top_bottom                       as `上下装`\n\t,t.series                           as `主题`\n\t,t.sub_series                       as `故事包`\n\t,sum(bq_good_show_cnt)               as `本期商品曝光次数`\n    ,sum(bq_good_acs_user_cnt)           as `本期商品访问人数`\n    ,sum(bq_good_acs_cnt)                as `本期商品访问次数`\n    ,sum(bq_good_add_buy_cnt)            as `本期商品加购件数`\n    ,sum(bq_good_add_buy_user_cnt)       as `本期商品加购人数`\n    ,sum(bq_good_order_by_qty)           as `本期商品下单人数`\n    ,sum(bq_good_order_qty)              as `本期商品下单数量`\n    ,sum(bq_good_order_amt)              as `本期商品下单金额`\n    ,sum(bq_good_barg_cnt)               as `本期商品成交人数`\n    ,sum(bq_good_barg_singl_qty)         as `本期商品成交单数`\n    ,sum(bq_good_barg_good_qty)          as `本期商品成交商品数`\n    ,sum(bq_good_barg_amt)               as `本期商品成交金额`\n    ,sum(bq_good_barg_old_cust_qty)      as `本期商品成交老客数`\n    ,sum(bq_good_barg_old_cust_amt)      as `本期商品成交老客金额`\n    ,sum(bq_good_barg_new_cust_qty)      as `本期商品成交新客数`\n    ,sum(bq_pct)                         as `本期客单价`\n    ,sum(bq_extent_show_num)             as `本期推广展现量`\n    ,sum(bq_extent_click_num)            as `本期推广点击量`\n\t,sum(bq_extent_cost)                 as `本期推广花费`\n    ,sum(bq_extent_barg_amt)             as `本期推广成交金额`\n    ,sum(bq_extent_direct_barg_amt)      as `本期推广直接成交金额`\n    ,sum(bq_extent_barg_cnt)             as `本期推广成交笔数`\n    ,sum(bq_extent_direct_barg_cnt)      as `本期推广直接成交笔数`\n    ,sum(bq_extent_add_buy_qty)          as `本期推广加购数`\n\t,sum(bq_sale_qty)                    as `本期销售数量`\n\t,sum(bq_sale_amt)                    as `本期销售金额`\n\t,sum(bq_sale_tag_amt)                as `本期销售吊牌金额`\n\t,sum(tq_good_show_cnt)               as `同期商品曝光次数`\n    ,sum(tq_good_acs_user_cnt)           as `同期商品访问人数`\n    ,sum(tq_good_acs_cnt)                as `同期商品访问次数`\n    ,sum(tq_good_add_buy_cnt)            as `同期商品加购件数`\n    ,sum(tq_good_add_buy_user_cnt)       as `同期商品加购人数`\n    ,sum(tq_good_order_by_qty)           as `同期商品下单人数`\n    ,sum(tq_good_order_qty)              as `同期商品下单数量`\n    ,sum(tq_good_order_amt)              as `同期商品下单金额`\n    ,sum(tq_good_barg_cnt)               as `同期商品成交人数`\n    ,sum(tq_good_barg_singl_qty)         as `同期商品成交单数`\n    ,sum(tq_good_barg_good_qty)          as `同期商品成交商品数`\n    ,sum(tq_good_barg_amt)               as `同期商品成交金额`\n    ,sum(tq_good_barg_old_cust_qty)      as `同期商品成交老客数`\n    ,sum(tq_good_barg_old_cust_amt)      as `同期商品成交老客金额`\n    ,sum(tq_good_barg_new_cust_qty)      as `同期商品成交新客数`\n    ,sum(tq_pct)                         as `同期客单价`\n    ,sum(tq_extent_show_num)             as `同期推广展现量`\n    ,sum(tq_extent_click_num)            as `同期推广点击量`\n\t,sum(tq_extent_cost)                 as `同期推广花费`\n    ,sum(tq_extent_barg_amt)             as `同期推广成交金额`\n    ,sum(tq_extent_direct_barg_amt)      as `同期推广直接成交金额`\n    ,sum(tq_extent_barg_cnt)             as `同期推广成交笔数`\n    ,sum(tq_extent_direct_barg_cnt)      as `同期推广直接成交笔数`\n    ,sum(tq_extent_add_buy_qty)          as `同期推广加购数`\n\t,sum(tq_sale_qty)                    as `同期销售数量`\n\t,sum(tq_sale_amt)                    as `同期销售金额`\n\t,sum(tq_sale_tag_amt)                as `同期销售吊牌金额`\nfrom (\n--本期商品流量\nselect\n    statis_dt                       --统计日期\n    ,store_code                     --门店编码\n    ,good_id                        --商品ID\n\t,'' as good_title                     --商品标题\n    ,fashion_num                    --款号\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n    ,good_show_cnt                  as bq_good_show_cnt                --本期商品曝光次数\n    ,good_acs_user_cnt              as bq_good_acs_user_cnt            --本期商品访问人数\n    ,good_acs_cnt                   as bq_good_acs_cnt                 --本期商品访问次数\n    ,good_add_buy_cnt               as bq_good_add_buy_cnt             --本期商品加购件数\n    ,good_add_buy_user_cnt          as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,good_order_by_qty              as bq_good_order_by_qty            --本期商品下单人数\n    ,good_order_qty                 as bq_good_order_qty               --本期商品下单数量\n    ,good_order_amt                 as bq_good_order_amt               --本期商品下单金额\n    ,good_barg_cnt                  as bq_good_barg_cnt                --本期商品成交人数\n    ,good_barg_singl_qty            as bq_good_barg_singl_qty          --本期商品成交单数\n    ,good_barg_good_qty             as bq_good_barg_good_qty           --本期商品成交商品数\n    ,good_barg_amt                  as bq_good_barg_amt                --本期商品成交金额\n    ,good_barg_old_cust_qty         as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,good_barg_old_cust_amt         as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,good_barg_new_cust_qty         as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,pct                            as bq_pct                          --本期客单价\n    ,extent_show_num                as bq_extent_show_num              --本期推广展现量\n    ,extent_click_num               as bq_extent_click_num             --本期推广点击量\n\t,extent_cost                    as bq_extent_cost                  --本期推广花费\n    ,extent_barg_amt                as bq_extent_barg_amt              --本期推广成交金额\n    ,extent_direct_barg_amt         as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,extent_barg_cnt                as bq_extent_barg_cnt              --本期推广成交笔数\n    ,extent_direct_barg_cnt         as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,extent_add_buy_qty             as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom maia_pcbi.dm_maia_rpa_goods_flow_df\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表结束时间])\n\t\nunion all\n--同期商品流量\nselect\n    statis_dt                       --统计日期\n    ,store_code                     --门店编码\n    ,good_id                        --商品ID\n\t,'' as good_title                     --商品标题\n    ,fashion_num                    --款号\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n    ,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,good_show_cnt                  as tq_good_show_cnt                --同期商品曝光次数\n    ,good_acs_user_cnt              as tq_good_acs_user_cnt            --同期商品访问人数\n    ,good_acs_cnt                   as tq_good_acs_cnt                 --同期商品访问次数\n    ,good_add_buy_cnt               as tq_good_add_buy_cnt             --同期商品加购件数\n    ,good_add_buy_user_cnt          as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,good_order_by_qty              as tq_good_order_by_qty            --同期商品下单人数\n    ,good_order_qty                 as tq_good_order_qty               --同期商品下单数量\n    ,good_order_amt                 as tq_good_order_amt               --同期商品下单金额\n    ,good_barg_cnt                  as tq_good_barg_cnt                --同期商品成交人数\n    ,good_barg_singl_qty            as tq_good_barg_singl_qty          --同期商品成交单数\n    ,good_barg_good_qty             as tq_good_barg_good_qty           --同期商品成交商品数\n    ,good_barg_amt                  as tq_good_barg_amt                --同期商品成交金额\n    ,good_barg_old_cust_qty         as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,good_barg_old_cust_amt         as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,good_barg_new_cust_qty         as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,pct                            as tq_pct                          --同期客单价\n    ,extent_show_num                as tq_extent_show_num              --同期推广展现量\n    ,extent_click_num               as tq_extent_click_num             --同期推广点击量\n\t,extent_cost                    as tq_extent_cost                  --同期推广花费\n    ,extent_barg_amt                as tq_extent_barg_amt              --同期推广成交金额\n    ,extent_direct_barg_amt         as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,extent_barg_cnt                as tq_extent_barg_cnt              --同期推广成交笔数\n    ,extent_direct_barg_cnt         as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,extent_add_buy_qty             as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom maia_pcbi.dm_maia_rpa_goods_flow_df\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表同期开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表同期结束时间])\n\nunion all\n--本期流水\nselect\n    sale_dt            as statis_dt\n\t,store_code\n\t,''                as good_id                        --商品ID\n\t,''                as good_title                     --商品标题\n\t,fashion_num\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n\t,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,sale_qty           as bq_sale_qty       --本期销售数量\n\t,sale_amt           as bq_sale_amt       --本期销售金额\n\t,sale_tag_amt       as bq_sale_tag_amt   --本期销售吊牌金额\n\t,0 as tq_sale_qty       --同期销售数量\n\t,0 as tq_sale_amt       --同期销售金额\n\t,0 as tq_sale_tag_amt   --同期销售吊牌金额\nfrom sale_rst\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表结束时间])\n\t\nunion all\n--同期流水\nselect\n    sale_dt            as statis_dt\n\t,store_code\n\t,''                as good_id                        --商品ID\n\t,''                as good_title                     --商品标题\n\t,fashion_num\n\t,good_name\n\t,good_brand_code\n\t,good_brand\n\t,big_class_code\n\t,big_class\n\t,mid_class_code\n\t,mid_class\n\t,small_class_code\n\t,small_class\n\t,prop\n\t,top_bottom\n\t,series\n\t,sub_series\n\t,0 as bq_good_show_cnt                --本期商品曝光次数\n    ,0 as bq_good_acs_user_cnt            --本期商品访问人数\n    ,0 as bq_good_acs_cnt                 --本期商品访问次数\n    ,0 as bq_good_add_buy_cnt             --本期商品加购件数\n    ,0 as bq_good_add_buy_user_cnt        --本期商品加购人数\n    ,0 as bq_good_order_by_qty            --本期商品下单人数\n    ,0 as bq_good_order_qty               --本期商品下单数量\n    ,0 as bq_good_order_amt               --本期商品下单金额\n    ,0 as bq_good_barg_cnt                --本期商品成交人数\n    ,0 as bq_good_barg_singl_qty          --本期商品成交单数\n    ,0 as bq_good_barg_good_qty           --本期商品成交商品数\n    ,0 as bq_good_barg_amt                --本期商品成交金额\n    ,0 as bq_good_barg_old_cust_qty       --本期商品成交老客数\n    ,0 as bq_good_barg_old_cust_amt       --本期商品成交老客金额\n    ,0 as bq_good_barg_new_cust_qty       --本期商品成交新客数\n    ,0 as bq_pct                          --本期客单价\n    ,0 as bq_extent_show_num              --本期推广展现量\n    ,0 as bq_extent_click_num             --本期推广点击量\n\t,0 as bq_extent_cost                  --本期推广花费\n    ,0 as bq_extent_barg_amt              --本期推广成交金额\n    ,0 as bq_extent_direct_barg_amt       --本期推广直接成交金额\n    ,0 as bq_extent_barg_cnt              --本期推广成交笔数\n    ,0 as bq_extent_direct_barg_cnt       --本期推广直接成交笔数\n    ,0 as bq_extent_add_buy_qty           --本期推广加购数\n\t,0 as tq_good_show_cnt                --同期商品曝光次数\n    ,0 as tq_good_acs_user_cnt            --同期商品访问人数\n    ,0 as tq_good_acs_cnt                 --同期商品访问次数\n    ,0 as tq_good_add_buy_cnt             --同期商品加购件数\n    ,0 as tq_good_add_buy_user_cnt        --同期商品加购人数\n    ,0 as tq_good_order_by_qty            --同期商品下单人数\n    ,0 as tq_good_order_qty               --同期商品下单数量\n    ,0 as tq_good_order_amt               --同期商品下单金额\n    ,0 as tq_good_barg_cnt                --同期商品成交人数\n    ,0 as tq_good_barg_singl_qty          --同期商品成交单数\n    ,0 as tq_good_barg_good_qty           --同期商品成交商品数\n    ,0 as tq_good_barg_amt                --同期商品成交金额\n    ,0 as tq_good_barg_old_cust_qty       --同期商品成交老客数\n    ,0 as tq_good_barg_old_cust_amt       --同期商品成交老客金额\n    ,0 as tq_good_barg_new_cust_qty       --同期商品成交新客数\n    ,0 as tq_pct                          --同期客单价\n    ,0 as tq_extent_show_num              --同期推广展现量\n    ,0 as tq_extent_click_num             --同期推广点击量\n\t,0 as tq_extent_cost                  --同期推广花费\n    ,0 as tq_extent_barg_amt              --同期推广成交金额\n    ,0 as tq_extent_direct_barg_amt       --同期推广直接成交金额\n    ,0 as tq_extent_barg_cnt              --同期推广成交笔数\n    ,0 as tq_extent_direct_barg_cnt       --同期推广直接成交笔数\n    ,0 as tq_extent_add_buy_qty           --同期推广加购数\n\t,0 as bq_sale_qty       --本期销售数量\n\t,0 as bq_sale_amt       --本期销售金额\n\t,0 as bq_sale_tag_amt   --本期销售吊牌金额\n\t,sale_qty           as tq_sale_qty       --同期销售数量\n\t,sale_amt           as tq_sale_amt       --同期销售金额\n\t,sale_tag_amt       as tq_sale_tag_amt   --同期销售吊牌金额\nfrom sale_rst\nwhere statis_dt >= toDate([DYNAMIC_PARAMS.MAIA报表同期开始时间])\n    and statis_dt <= toDate([DYNAMIC_PARAMS.MAIA报表同期结束时间])\n)t \nleft join maia_pcbi.dm_maia_store_info_df t2\non t.store_code=t2.store_code\ngroup by t.statis_dt\n    ,t.store_code\n\t,t2.store_name\n    ,t.good_id\n\t,t.good_title\n\t,t.good_name\n    ,t.fashion_num\n\t,t.good_brand_code\n\t,t.good_brand\n\t,t.big_class_code\n\t,t.big_class\n\t,t.mid_class_code\n\t,t.mid_class\n\t,t.small_class_code\n\t,t.small_class\n\t,t.prop\n\t,t.top_bottom\n\t,t.series\n\t,t.sub_series",
+          "isBasicSelectForm": false,
+          "preSql": []
+        },
+        "storageType": "VIRTUAL",
+        "sourceType": "DIRECT_CONNECT_DATABASE",
+        "realTimeUpdateSetting": {
+          "enabled": false,
+          "interval": 600,
+          "disableCache": false,
+          "cacheType": "GLOBAL"
+        },
+        "primaryKeyColumns": [],
+        "guanIndexIncrementalUpdateSetting": null,
+        "dynamicParameters": [
+          {
+            "dpId": "g27135225cea244c3955ce50",
+            "name": "MAIA报表同期结束时间",
+            "valueType": "DATE",
+            "defaultValue": "{{{yesterday-1 years}}}",
+            "customize": false,
+            "multiple": false,
+            "optionValue": [
+              ""
+            ],
+            "inheritParent": true
+          },
+          {
+            "dpId": "o1fd655a544974ec7a3707dc",
+            "name": "MAIA报表开始时间",
+            "valueType": "DATE",
+            "defaultValue": "{{{yesterday}}}",
+            "customize": false,
+            "multiple": false,
+            "optionValue": [
+              ""
+            ],
+            "inheritParent": true
+          },
+          {
+            "dpId": "md2ca7b9112034b84803c874",
+            "name": "MAIA报表结束时间",
+            "valueType": "DATE",
+            "defaultValue": "{{{yesterday}}}",
+            "customize": false,
+            "multiple": false,
+            "optionValue": [
+              ""
+            ],
+            "inheritParent": true
+          },
+          {
+            "dpId": "haf0e9fcc999c4b438f18e45",
+            "name": "MAIA报表同期开始时间",
+            "valueType": "DATE",
+            "defaultValue": "{{{yesterday-1 years}}}",
+            "customize": false,
+            "multiple": false,
+            "optionValue": [
+              ""
+            ],
+            "inheritParent": true
+          }
+        ],
+        "sensitive": null,
+        "datasourceModifyTime": "2026-08-06 10:14:54+0800",
+        "dataDesensitization": null,
+        "priority": null,
+        "enableSchedule": false,
+        "lastExecution": {
+          "startTime": "2026-08-06 10:14:54+0800",
+          "endTime": "2026-08-06 10:14:55+0800",
+          "executionTime": 1
+        },
+        "taskId": "9d545110-913c-11f1-bfc8-91c14cdff1a2"
+      },
+      "version": 33,
+      "utime": "2026-08-06 10:14:55+0800"
+    }
+  ],
+  "ctime": "2025-10-31 16:24:35+0800",
+  "utime": "2026-08-06 10:15:17+0800",
+  "settings": {
+    "authorized": true,
+    "authorizedOnPC": true,
+    "authorizedOnMobile": false,
+    "inheritAuth": true,
+    "descriptionVisible": false
+  },
+  "isOwner": false,
+  "canManage": false,
+  "canExport": true,
+  "isFavorite": false,
+  "pgPaths": {
+    "origin": [
+      {
+        "id": "lb18ea674e6bd4cc9b31be86",
+        "name": "根目录"
+      },
+      {
+        "id": "m01310c009b1c44dcb8fac2c",
+        "name": "MAIA"
+      },
+      {
+        "id": "h5f61131039bb4924a537b56",
+        "name": "电商"
+      },
+      {
+        "id": "jd142c588aac241ab8639250",
+        "name": "ER03-商品流量流水分析",
+        "isPage": true
+      }
+    ]
+  },
+  "uniformResourceType": "DATA_ANALYSIS_CUSTOM_REPORT"
+}

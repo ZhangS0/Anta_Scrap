@@ -1,0 +1,2585 @@
+{
+  "pgId": "s4b872716d99c43d7b22dc17",
+  "domId": "guanbi",
+  "name": "ER04-推广效果分析报表",
+  "uId": "se14f2e35a21e4613848a161",
+  "pgType": "CUSTOM_REPORT",
+  "description": "",
+  "meta": {
+    "layout": [
+      {
+        "w": 10,
+        "h": 14,
+        "x": 2,
+        "y": 1,
+        "i": "ad764c200bf6845c99036425",
+        "minW": 2,
+        "minH": 2,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      },
+      {
+        "w": 2,
+        "h": 14,
+        "x": 0,
+        "y": 0,
+        "i": "m1f9a2a431ca84776b300b2d",
+        "minW": 1,
+        "minH": 1,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      },
+      {
+        "w": 10,
+        "h": 1,
+        "x": 2,
+        "y": 0,
+        "i": "g6b84a428c501465881ccfea",
+        "minW": 1,
+        "minH": 1,
+        "moved": false,
+        "static": false,
+        "isResizable": true
+      }
+    ],
+    "layoutSetting": {
+      "compact": true,
+      "printView": false,
+      "orientation": "vertical",
+      "cardMargin": 6,
+      "card": {
+        "border": {
+          "radius": 2,
+          "enabled": false
+        },
+        "boxShadow": {
+          "enabled": false
+        }
+      },
+      "page": {
+        "background": {
+          "image": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    "filterLayout": [
+      "hb1e90cebaa5a4441bc89f37",
+      "o172d3de12d3a49f189a5d7e",
+      "ab96865b30b564c85af996b9",
+      "c7b34177d133d43839132abb",
+      "c5bbe6eaaf2b341c58831c6a",
+      "b738b2e4fe3c6458e87392b1",
+      "s2ce38db227ad4407822253f",
+      "wbb5c96857ccb4b88ad6afbf",
+      "cdc8cb94f30d1455e988e0c1",
+      "sa0acaf1c48e240e5ab95b88",
+      "x5a403261d4224378bb0a1e6",
+      "jf7ed895cb87a4833a526819"
+    ],
+    "phoneLayout": {
+      "layoutSetting": {},
+      "layoutItemSettings": {},
+      "layout": [],
+      "layoutItemMap": {},
+      "tabMap": {},
+      "mobileAnchorCds": []
+    },
+    "tabMap": {},
+    "layoutItemMap": {
+      "mergedZone_m1f9a2a431ca84776b300b2d": {
+        "layout": [
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "r5122964618314e7c8ac3359",
+            "y": 0
+          },
+          {
+            "w": 4,
+            "h": 34,
+            "x": 0,
+            "minW": 4,
+            "minH": 6,
+            "moved": false,
+            "static": false,
+            "isDraggable": false,
+            "isResizable": true,
+            "i": "gec29f47b877e479f8c7d32a",
+            "y": 34
+          }
+        ]
+      }
+    }
+  },
+  "parentDirId": "h5f61131039bb4924a537b56",
+  "cards": [
+    {
+      "name": "报表",
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "displayType": "CLICKHOUSE",
+      "domId": "guanbi",
+      "utime": "2026-09-10 11:15:47+0800",
+      "originName": "报表",
+      "content": {
+        "chartType": "PIVOT_TABLE",
+        "dsId": "k579c9d2ba02248e0bbba923",
+        "dsInfo": {
+          "name": "ER04-推广效果分析报表",
+          "parentDirId": "u276a0b28a5f446e98c3c4a6",
+          "storageId": "k579c9d2ba02248e0bbba923",
+          "aliasMap": {
+            "互动量": "互动量",
+            "账户类型": "账户类型",
+            "总购物车数": "总购物车数",
+            "门店名称": "门店名称",
+            "观看次数": "观看次数",
+            "展现量": "展现量",
+            "门店编码": "门店编码",
+            "成交新客占比": "成交新客占比",
+            "费用金额": "费用金额",
+            "宝贝名称/主体名称": "宝贝名称/主体名称",
+            "点击率": "点击率",
+            "推广类型描述": "推广类型描述",
+            "归因模型": "归因模型",
+            "加购成本": "加购成本",
+            "总成交笔数": "总成交笔数",
+            "进店量": "进店量",
+            "投放类型": "投放类型",
+            "宝贝ID/主体ID": "宝贝ID/主体ID",
+            "计划ID": "计划ID",
+            "点击量": "点击量",
+            "成交新客数": "成交新客数",
+            "统计日期": "统计日期",
+            "词名/词包名称": "词名/词包名称",
+            "营销场景": "营销场景",
+            "计划名称": "计划名称",
+            "总成交人数": "总成交人数",
+            "总成交金额": "总成交金额",
+            "省份名称": "省份名称",
+            "人群名称": "人群名称",
+            "归因周期": "归因周期"
+          },
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "colCount": 30,
+          "columns": [],
+          "cnId": "clickhouse",
+          "description": "",
+          "displayType": "CLICKHOUSE",
+          "rowCount": 1198170,
+          "acId": "udcca59f87b4d4b75ad73b5f",
+          "config": {
+            "tableQuery": {
+              "queryType": "query",
+              "query": "select \n  statis_dt as \"统计日期\"\n, store_code as \"门店编码\"\n, store_name as \"门店名称\"\n, extent_type_desc as \"推广类型描述\"\n, attribution_period as \"归因周期\"\n, attribution_model  as \"归因模型\"\n, deliv_type as \"投放类型\"\n, acct_type as \"账户类型\"\n, cam_scene as \"营销场景\"\n, word_bag_name as \"词名/词包名称\"\n, item_main_id as \"宝贝ID/主体ID\"\n, item_main_name as \"宝贝名称/主体名称\"\n, crowd_name as \"人群名称\"\n, plan_id as \"计划ID\"\n, plan_name as \"计划名称\"\n, province_name as \"省份名称\"\n, ifnull(press_amt,0) as \"展现量\"\n, ifnull(click_amt,0) as \"点击量\"\n, ifnull(cost_amt,0) as \"费用金额\"\n, ifnull(total_barg_amt,0) as \"总成交金额\"\n, ifnull(total_barg_cnt,0) as \"总成交笔数\"\n, ifnull(total_barg_per_cnt,0) as \"总成交人数\"\n, ifnull(barg_new_cust_qty,0) as \"成交新客数\"\n, ifnull(total_cart_qty,0) as \"总购物车数\"\n, ifnull(visit_cnt,0) as \"观看次数\"\n, ifnull(in_store_amt,0) as \"进店量\"\n, ifnull(interact_num,0) as \"互动量\"\n, ifnull(click_ratio,0) as \"点击率\"\n--, ifnull(cpc_amt,0) as \"平均点击花费CPC\"\n--, ifnull(cpm_amt,0) as \"千次展现花费CPM\"\n--, ifnull(roi,0) as \"投入产出比ROI\"\n--, ifnull(conversion_ratio,0) as \"转化率\"\n, ifnull(add_cart_cost,0) as \"加购成本\"\n, ifnull(barg_new_cust_pct,0) as \"成交新客占比\"\n  \n  \nfrom dm_ebi_maia_rpa_extent_anl_df",
+              "isBasicSelectForm": false,
+              "preSql": []
+            },
+            "storageType": "VIRTUAL",
+            "sourceType": "DIRECT_CONNECT_DATABASE",
+            "realTimeUpdateSetting": {
+              "enabled": false,
+              "interval": 600,
+              "disableCache": false,
+              "cacheType": "GLOBAL"
+            },
+            "primaryKeyColumns": [],
+            "guanIndexIncrementalUpdateSetting": null,
+            "dynamicParameters": [],
+            "sensitive": null,
+            "datasourceModifyTime": "2026-06-10 17:16:40+0800",
+            "dataDesensitization": null,
+            "priority": null,
+            "enableSchedule": false,
+            "lastExecution": {
+              "startTime": "2026-06-10 17:16:43+0800",
+              "endTime": "2026-06-10 17:16:44+0800",
+              "executionTime": 1
+            },
+            "taskId": "191e1e00-64ad-11f1-b69e-99f2dd918fcf"
+          },
+          "version": 17,
+          "utime": "2026-06-10 17:16:44+0800"
+        },
+        "meta": {
+          "chartMain": {
+            "zoneInfo": [
+              {
+                "zoneId": "row",
+                "title": "维度",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": false,
+                "setting": {
+                  "hasGrandTotal": true
+                }
+              },
+              {
+                "zoneId": "column",
+                "title": "对比",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": false
+              },
+              {
+                "zoneId": "metric",
+                "title": "数值",
+                "minCount": 0,
+                "maxCount": -1,
+                "needAggregation": true
+              },
+              {
+                "zoneId": "filters",
+                "title": "筛选",
+                "minCount": 0,
+                "maxCount": 20,
+                "needAggregation": false
+              },
+              {
+                "zoneId": "sorting",
+                "title": "排序",
+                "minCount": 0,
+                "maxCount": 20,
+                "needAggregation": true
+              }
+            ],
+            "zoneData": {
+              "row": [
+                {
+                  "fdId": "lef28bd30691a46d9aa5f15e",
+                  "name": "统计日期",
+                  "fdType": "DATE",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DATE",
+                  "key": "rKiyyQHxnoWkeuKoOCstNYJn",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "统计日期"
+                },
+                {
+                  "fdId": "i9a8b4fe43c614ab885e0bd9",
+                  "name": "门店编码",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "MvvSXvtRgFudPyWvWWneUIhG",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "门店编码"
+                },
+                {
+                  "fdId": "d7d3b53b2f713497883e09a3",
+                  "name": "门店名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "hyoYoMiGWnqdBfgwgdyCctJj",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "门店名称"
+                },
+                {
+                  "fdId": "e6ad39802e02740998e28cd5",
+                  "name": "归因周期",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "LJBrCHAfJMAiqTsPezOBZkyf",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "归因周期"
+                },
+                {
+                  "fdId": "i4acb72448bde49f7a062112",
+                  "name": "账户类型",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "mHBeRNkkKohUjcuWofEoIuNy",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "账户类型"
+                },
+                {
+                  "fdId": "hae6d5d2789ac4facbab4c18",
+                  "name": "词名/词包名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "HfIxXlXnGVHQUWrXrDYMXNOy",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "词名/词包名称"
+                },
+                {
+                  "fdId": "x1b7d40afdf2f4a4380a7157",
+                  "name": "宝贝ID/主体ID",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "QJOKSkXNkdtqXgMIPyYLOPnD",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "宝贝ID/主体ID"
+                },
+                {
+                  "fdId": "i1d5adfd8a0474e2bb634116",
+                  "name": "宝贝名称/主体名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "nhLqcLgkMVrysvHeWDlmdgmq",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "宝贝名称/主体名称"
+                },
+                {
+                  "fdId": "m11e8466474d34ea9b7b8c06",
+                  "name": "人群名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "bHztBWLWORniQCDynVzoTNSx",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "人群名称"
+                },
+                {
+                  "fdId": "ncbc5e280afc6442aaa1862e",
+                  "name": "计划ID",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "EalpdbWXXVfXuomuhNlHOcZU",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "计划ID"
+                },
+                {
+                  "fdId": "p629201977f1e4b22b5dd8b1",
+                  "name": "计划名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "tLeSITWVGRYUHzZodKDsdOHg",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "计划名称"
+                },
+                {
+                  "fdId": "x5603f639a94a411996773fb",
+                  "name": "省份名称",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "RRlahEVxnDOjYlhUxRunTUCe",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "省份名称"
+                },
+                {
+                  "fdId": "oa103fd4823c94804984d614",
+                  "name": "推广类型描述",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "NRqUtPhgceoteYlMibVmPkuO",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "推广类型描述"
+                },
+                {
+                  "fdId": "j22f3e606443d450fa96f9ea",
+                  "name": "投放类型",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "ACHqQmjxFvkvulztYNcdkYrc",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "投放类型"
+                },
+                {
+                  "fdId": "e86a015086181453398432f4",
+                  "name": "营销场景",
+                  "fdType": "STRING",
+                  "metaType": "DIM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "STRING",
+                  "key": "JsEsDCvbAOLGrwuZxGnkdcaS",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "营销场景"
+                }
+              ],
+              "column": [
+                {
+                  "name": "度量名",
+                  "metaType": "MPH",
+                  "key": "oaTtBgSSAbQcbaFiUEdNLoSm",
+                  "nameTranslated": "度量名"
+                }
+              ],
+              "metric": [
+                {
+                  "fdId": "f9dba2ade53c846409f69740",
+                  "name": "成交新客数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "WWLCZjOaRjtcuqRFnPLhidOM",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "成交新客数"
+                },
+                {
+                  "fdId": "lb25b523f795e4f90bbcaf25",
+                  "name": "总购物车数",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "qEfITwmjcHAIccuORFTuGsjO",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "总购物车数"
+                },
+                {
+                  "fdId": "q6bc28c4608a8402fb1a8222",
+                  "name": "加购成本",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "HSrbmltJsDaHiBhAKLrQwRVM",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "加购成本"
+                },
+                {
+                  "fdId": "t4017aaf719364c90a61c0e1",
+                  "name": "成交新客占比",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "HnfRUKPsJWmYvtFQKfoEbRSr",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "成交新客占比"
+                },
+                {
+                  "fdId": "l074ca8ae340843e5a2bebf7",
+                  "name": "观看次数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "xKRNxLSnmRDeHFRIiUaIUTTn",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "观看次数"
+                },
+                {
+                  "fdId": "ga553fe1bc4fc47a5af54733",
+                  "name": "进店量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "keowLILTXGpZEuOQoKNdPTIv",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "进店量"
+                },
+                {
+                  "fdId": "t17993d740e7e484cbcabdf4",
+                  "name": "互动量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "VnEUNgRYoeFWOlVtyJawycPp",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "互动量"
+                },
+                {
+                  "fdId": "ab12ff028e2ae455e96a3b18",
+                  "name": "费用金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "QzXkAssRbvXSQeBjvLDHBSbZ",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "费用金额"
+                },
+                {
+                  "fdId": "bc85ea88334cb4e2b848a444",
+                  "name": "展现量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "lRAVrFYYXPTpPxnWceYvGGJE",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "展现量"
+                },
+                {
+                  "fdId": "v61a05b4522144e1eb111ef4",
+                  "name": "点击量",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "EjtbFsHNZtKtMHSzgkKsnXcJ",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "点击量"
+                },
+                {
+                  "fdId": "h04b14a4f8f5e43c6ad40114",
+                  "name": "总成交金额",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "sXpsxWWNRsTmSQNpQOaLPluV",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "总成交金额"
+                },
+                {
+                  "fdId": "o4ba8cceef1a644a28d15dc0",
+                  "name": "总成交笔数",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "DOUBLE",
+                  "key": "LRivZTuncnQmwcLEcopxnrvQ",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "总成交笔数"
+                },
+                {
+                  "fdId": "me4dd59b4590f481ab20ef4a",
+                  "name": "总成交人数",
+                  "fdType": "LONG",
+                  "metaType": "METRIC",
+                  "aggrType": "SUM",
+                  "isAggregated": false,
+                  "calculationType": "normal",
+                  "baseFdType": "LONG",
+                  "key": "AzYbJxqqkgCCsSWuZclAhEEA",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "总成交人数"
+                },
+                {
+                  "fdId": "f51442373081448c9aab4242",
+                  "name": "CPC",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "5932467a5a5342336147567549464e565453686235344b35355965373659655058536b394d43423061475675494441675a57787a5a5342545655306f572b693075656555714f6d486b656d696e5630704c314e565453686235344b35355965373659655058536b675a57356b49413d3d",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "decimalPlaces": 2,
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "baseFdType": "DOUBLE",
+                  "key": "IoWMdfsOeIhtOtShcZPWjgyd",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "CPC"
+                },
+                {
+                  "fdId": "je5501f4f3b67412297d5b19",
+                  "name": "CPM",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "case when SUM([展现量])=0 then 0 else SUM([费用金额])/SUM([展现量]) end ",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "NUMBER",
+                      "decimalPlaces": 2,
+                      "useThousandsSeparator": true,
+                      "showPrefixUnit": true,
+                      "suffix": ""
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "baseFdType": "DOUBLE",
+                  "key": "dupLfZuRTbhBPrXAFWBMBcIF",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "CPM"
+                },
+                {
+                  "fdId": "k8b717e08054d4954ab758ed",
+                  "name": "ROI",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "case when SUM([费用金额])=0 then 0 else SUM([总成交金额])/SUM([费用金额]) end ",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "baseFdType": "DOUBLE",
+                  "key": "OKlztFsyciklwpRNwfSMywnR",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "ROI"
+                },
+                {
+                  "fdId": "lc588d3083dde4cef8deffe5",
+                  "name": "转化率",
+                  "fdType": "DOUBLE",
+                  "metaType": "METRIC",
+                  "formula": "case when SUM([点击量])=0 then 0 else SUM([总成交笔数])/SUM([点击量]) end ",
+                  "isAggregated": true,
+                  "calculationType": "aggregation",
+                  "fieldFormat": {
+                    "numberFormat": {
+                      "formatType": "PERCENTAGE",
+                      "decimalPlaces": 2,
+                      "useThousandsSeparator": false,
+                      "suffix": "",
+                      "divideDataBy": 1
+                    },
+                    "conditionFormat": {
+                      "thresholdType": "SINGLE_COLOR"
+                    }
+                  },
+                  "baseFdType": "DOUBLE",
+                  "key": "DwNCmbRKYXQkXAQYCnkegIeV",
+                  "level": "dataset",
+                  "annotation": "",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "nameTranslated": "转化率"
+                }
+              ]
+            },
+            "props": {
+              "grandTotal": {
+                "onRow": {
+                  "position": "TOP"
+                }
+              }
+            },
+            "isSplit": false
+          },
+          "summary": {
+            "fdId": "",
+            "name": "",
+            "label": "",
+            "fdType": "STRING",
+            "aggrType": "NUL",
+            "summaryType": "NONE",
+            "metaType": "NONE"
+          }
+        },
+        "hasDrill": false,
+        "drillViews": []
+      },
+      "isDsReadable": false,
+      "cdId": "ad764c200bf6845c99036425",
+      "cdType": "CHART",
+      "ctime": "2026-05-20 15:33:20+0800"
+    },
+    {
+      "cdId": "m1f9a2a431ca84776b300b2d",
+      "domId": "guanbi",
+      "name": "合并的字段窗格",
+      "originName": "合并的字段窗格",
+      "content": {
+        "selectorType": "MERGE_ZONE_ELEMENT",
+        "group": [
+          {
+            "cdId": "r5122964618314e7c8ac3359",
+            "domId": "guanbi",
+            "name": "维度",
+            "originName": "字段窗格1",
+            "content": {
+              "source": "ad764c200bf6845c99036425",
+              "options": [
+                "rKiyyQHxnoWkeuKoOCstNYJn",
+                "MvvSXvtRgFudPyWvWWneUIhG",
+                "hyoYoMiGWnqdBfgwgdyCctJj",
+                "NRqUtPhgceoteYlMibVmPkuO",
+                "LJBrCHAfJMAiqTsPezOBZkyf",
+                "ACHqQmjxFvkvulztYNcdkYrc",
+                "mHBeRNkkKohUjcuWofEoIuNy",
+                "JsEsDCvbAOLGrwuZxGnkdcaS",
+                "HfIxXlXnGVHQUWrXrDYMXNOy",
+                "QJOKSkXNkdtqXgMIPyYLOPnD",
+                "nhLqcLgkMVrysvHeWDlmdgmq",
+                "bHztBWLWORniQCDynVzoTNSx",
+                "EalpdbWXXVfXuomuhNlHOcZU",
+                "tLeSITWVGRYUHzZodKDsdOHg",
+                "RRlahEVxnDOjYlhUxRunTUCe"
+              ],
+              "defaultValue": [
+                "NRqUtPhgceoteYlMibVmPkuO",
+                "JsEsDCvbAOLGrwuZxGnkdcaS"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "settings": {
+              "asFilter": {
+                "targetCdIds": [
+                  "ad764c200bf6845c99036425"
+                ]
+              }
+            },
+            "pgId": "s4b872716d99c43d7b22dc17_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft",
+            "ctime": "2026-05-20 15:33:21+0800",
+            "utime": "2026-05-20 15:33:21+0800",
+            "originCdId": "x8363a457d7d242fc91f5647",
+            "cdType": "SELECTOR"
+          },
+          {
+            "cdId": "gec29f47b877e479f8c7d32a",
+            "domId": "guanbi",
+            "name": "指标",
+            "originName": "新建字段窗格 2026-05-20 15:38",
+            "content": {
+              "source": "ad764c200bf6845c99036425",
+              "options": [
+                "QzXkAssRbvXSQeBjvLDHBSbZ",
+                "lRAVrFYYXPTpPxnWceYvGGJE",
+                "EjtbFsHNZtKtMHSzgkKsnXcJ",
+                "sXpsxWWNRsTmSQNpQOaLPluV",
+                "LRivZTuncnQmwcLEcopxnrvQ",
+                "AzYbJxqqkgCCsSWuZclAhEEA",
+                "WWLCZjOaRjtcuqRFnPLhidOM",
+                "qEfITwmjcHAIccuORFTuGsjO",
+                "HSrbmltJsDaHiBhAKLrQwRVM",
+                "HnfRUKPsJWmYvtFQKfoEbRSr",
+                "IoWMdfsOeIhtOtShcZPWjgyd",
+                "dupLfZuRTbhBPrXAFWBMBcIF",
+                "OKlztFsyciklwpRNwfSMywnR",
+                "DwNCmbRKYXQkXAQYCnkegIeV",
+                "xKRNxLSnmRDeHFRIiUaIUTTn",
+                "keowLILTXGpZEuOQoKNdPTIv",
+                "VnEUNgRYoeFWOlVtyJawycPp"
+              ],
+              "defaultValue": [
+                "QzXkAssRbvXSQeBjvLDHBSbZ",
+                "lRAVrFYYXPTpPxnWceYvGGJE",
+                "EjtbFsHNZtKtMHSzgkKsnXcJ",
+                "sXpsxWWNRsTmSQNpQOaLPluV",
+                "LRivZTuncnQmwcLEcopxnrvQ",
+                "IoWMdfsOeIhtOtShcZPWjgyd",
+                "dupLfZuRTbhBPrXAFWBMBcIF",
+                "OKlztFsyciklwpRNwfSMywnR",
+                "DwNCmbRKYXQkXAQYCnkegIeV"
+              ],
+              "selectorType": "ZONE_ELEMENT"
+            },
+            "pgId": "s4b872716d99c43d7b22dc17_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft_draft",
+            "ctime": "2026-05-20 15:38:07+0800",
+            "utime": "2026-05-20 15:38:07+0800",
+            "cdType": "SELECTOR"
+          }
+        ]
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:38:12+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "cdType": "MERGE_SELECTOR"
+    },
+    {
+      "cdType": "TEXT",
+      "cdId": "g6b84a428c501465881ccfea",
+      "domId": "guanbi",
+      "name": "新建文本 2026-06-05 09:56",
+      "originName": "新建文本 2026-06-05 09:56",
+      "content": {
+        "text": "注意：1、因抽数原因T-15固化数据，推广类型描述=账户报表 除外\n          2、除账户报表和超级直播外其余类型推广只有15天周期统计",
+        "body": {
+          "blocks": [
+            {
+              "key": "1aj2m",
+              "text": "注意：1、因抽数原因T-15固化数据，推广类型描述=账户报表 除外",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 3,
+                  "length": 30,
+                  "style": "#e6122f"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            },
+            {
+              "key": "bccof",
+              "text": "          2、除账户报表和超级直播外其余类型推广只有15天周期统计",
+              "type": "unstyled",
+              "depth": 0,
+              "inlineStyleRanges": [
+                {
+                  "offset": 0,
+                  "length": 38,
+                  "style": "#e6122f"
+                }
+              ],
+              "entityRanges": [],
+              "data": {}
+            }
+          ],
+          "entityMap": {}
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-06-05 09:56:40+0800",
+      "utime": "2026-09-10 11:15:47+0800"
+    },
+    {
+      "cdId": "hb1e90cebaa5a4441bc89f37",
+      "domId": "guanbi",
+      "name": "日期",
+      "originName": "日期",
+      "content": {
+        "filterType": "BT",
+        "defaultValue": {
+          "valueType": "ADV_FILTER",
+          "value": [
+            "2026-10-09",
+            "2026-10-15"
+          ],
+          "expr": [
+            "LAST_7_DAY"
+          ],
+          "granularity": "DAY"
+        },
+        "display": {
+          "showColName": true
+        },
+        "props": {
+          "withTime": false,
+          "canClear": true
+        },
+        "granularityOptions": [
+          "DAY"
+        ],
+        "selectorType": "CALENDAR"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "日期",
+                "fdId": "SELECTOR_FPH"
+              },
+              "targetFields": [
+                {
+                  "name": "统计日期",
+                  "fdId": "lef28bd30691a46d9aa5f15e",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:55:32+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "o172d3de12d3a49f189a5d7e",
+      "domId": "guanbi",
+      "name": "归因周期",
+      "originName": "归因周期",
+      "content": {
+        "multiSelect": false,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [
+            "7"
+          ],
+          "displayValue": [],
+          "dvt": [
+            "7"
+          ],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "e6ad39802e02740998e28cd5",
+            "name": "归因周期",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "sorting": [
+            {
+              "fdId": "e6ad39802e02740998e28cd5",
+              "name": "归因周期",
+              "fdType": "STRING",
+              "metaType": "DIM",
+              "calculationType": "normal",
+              "baseFdType": "STRING",
+              "customSort": {
+                "turnedOn": true,
+                "sortOrder": [
+                  "2",
+                  "3",
+                  "7",
+                  "15",
+                  "30"
+                ]
+              }
+            }
+          ],
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchList",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": false
+        },
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "归因周期",
+                "fdId": "e6ad39802e02740998e28cd5",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "归因周期",
+                  "fdId": "e6ad39802e02740998e28cd5",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:56:12+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "c5bbe6eaaf2b341c58831c6a",
+      "domId": "guanbi",
+      "name": "营销场景",
+      "originName": "营销场景",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "e86a015086181453398432f4",
+            "name": "营销场景",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "营销场景",
+                "fdId": "e86a015086181453398432f4",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "营销场景",
+                  "fdId": "e86a015086181453398432f4",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:59:11+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "b738b2e4fe3c6458e87392b1",
+      "domId": "guanbi",
+      "name": "词名/词包名称",
+      "originName": "词名/词包名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "hae6d5d2789ac4facbab4c18",
+            "name": "词名/词包名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "词名/词包名称",
+                "fdId": "hae6d5d2789ac4facbab4c18",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "词名/词包名称",
+                  "fdId": "hae6d5d2789ac4facbab4c18",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:59:29+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "s2ce38db227ad4407822253f",
+      "domId": "guanbi",
+      "name": "宝贝ID/主体ID",
+      "originName": "宝贝ID/主体ID",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "x1b7d40afdf2f4a4380a7157",
+            "name": "宝贝ID/主体ID",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "宝贝ID/主体ID",
+                "fdId": "x1b7d40afdf2f4a4380a7157",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "宝贝ID/主体ID",
+                  "fdId": "x1b7d40afdf2f4a4380a7157",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 15:59:48+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "wbb5c96857ccb4b88ad6afbf",
+      "domId": "guanbi",
+      "name": "宝贝名称/主体名称",
+      "originName": "宝贝名称/主体名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "i1d5adfd8a0474e2bb634116",
+            "name": "宝贝名称/主体名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "宝贝名称/主体名称",
+                "fdId": "i1d5adfd8a0474e2bb634116",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "宝贝名称/主体名称",
+                  "fdId": "i1d5adfd8a0474e2bb634116",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 16:00:06+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "cdc8cb94f30d1455e988e0c1",
+      "domId": "guanbi",
+      "name": "人群名称",
+      "originName": "人群名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "m11e8466474d34ea9b7b8c06",
+            "name": "人群名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "人群名称",
+                "fdId": "m11e8466474d34ea9b7b8c06",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "人群名称",
+                  "fdId": "m11e8466474d34ea9b7b8c06",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 16:00:18+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "sa0acaf1c48e240e5ab95b88",
+      "domId": "guanbi",
+      "name": "计划ID",
+      "originName": "计划ID",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "ncbc5e280afc6442aaa1862e",
+            "name": "计划ID",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "计划ID",
+                "fdId": "ncbc5e280afc6442aaa1862e",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "计划ID",
+                  "fdId": "ncbc5e280afc6442aaa1862e",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 16:00:43+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "x5a403261d4224378bb0a1e6",
+      "domId": "guanbi",
+      "name": "计划名称",
+      "originName": "计划名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "p629201977f1e4b22b5dd8b1",
+            "name": "计划名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "计划名称",
+                "fdId": "p629201977f1e4b22b5dd8b1",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "计划名称",
+                  "fdId": "p629201977f1e4b22b5dd8b1",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 16:01:29+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "jf7ed895cb87a4833a526819",
+      "domId": "guanbi",
+      "name": "省份名称",
+      "originName": "省份名称",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "x5603f639a94a411996773fb",
+            "name": "省份名称",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "省份名称",
+                "fdId": "x5603f639a94a411996773fb",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "省份名称",
+                  "fdId": "x5603f639a94a411996773fb",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 16:01:45+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "c7b34177d133d43839132abb",
+      "domId": "guanbi",
+      "name": "推广类型描述",
+      "originName": "推广类型描述",
+      "content": {
+        "multiSelect": true,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [],
+          "displayValue": [],
+          "dvt": [],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "oa103fd4823c94804984d614",
+            "name": "推广类型描述",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchBox",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": true
+        },
+        "filterType": "IN",
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "推广类型描述",
+                "fdId": "oa103fd4823c94804984d614",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "推广类型描述",
+                  "fdId": "oa103fd4823c94804984d614",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-20 17:30:18+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    },
+    {
+      "cdId": "ab96865b30b564c85af996b9",
+      "domId": "guanbi",
+      "name": "归因模型",
+      "originName": "归因模型",
+      "content": {
+        "multiSelect": false,
+        "defaultValue": {
+          "valueType": "FIXED_VALUE",
+          "value": [
+            "zhai"
+          ],
+          "displayValue": [],
+          "dvt": [
+            "zhai"
+          ],
+          "expr": []
+        },
+        "source": {
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "dsName": "ER04-推广效果分析报表",
+          "displayType": "CLICKHOUSE",
+          "field": {
+            "fdId": "ff495a9e365eb4d558ad1a9e",
+            "name": "归因模型",
+            "fdType": "STRING",
+            "metaType": "DIM",
+            "isAggregated": false,
+            "calculationType": "normal",
+            "baseFdType": "STRING",
+            "level": "dataset",
+            "annotation": "",
+            "dsId": "k579c9d2ba02248e0bbba923"
+          },
+          "filters": [],
+          "compFields": []
+        },
+        "display": {
+          "type": "SearchList",
+          "showSelectAll": true,
+          "showColName": true,
+          "showExclude": false
+        },
+        "selectorType": "DS_ELEMENTS"
+      },
+      "settings": {
+        "asFilter": {
+          "targetCdIds": [
+            "ad764c200bf6845c99036425"
+          ],
+          "columnMappings": [
+            {
+              "sourceField": {
+                "name": "归因模型",
+                "fdId": "ff495a9e365eb4d558ad1a9e",
+                "dsId": "k579c9d2ba02248e0bbba923"
+              },
+              "targetFields": [
+                {
+                  "name": "归因模型",
+                  "fdId": "ff495a9e365eb4d558ad1a9e",
+                  "dsId": "k579c9d2ba02248e0bbba923",
+                  "cdId": "ad764c200bf6845c99036425"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pgId": "s4b872716d99c43d7b22dc17",
+      "ctime": "2026-05-26 15:57:53+0800",
+      "utime": "2026-09-10 11:15:47+0800",
+      "isDsReadable": false,
+      "cdType": "SELECTOR"
+    }
+  ],
+  "dsInfos": [
+    {
+      "parentDirId": "wd58f679c44f34d409279942",
+      "storageId": "k579c9d2ba02248e0bbba923",
+      "aliasMap": {
+        "互动量": "互动量",
+        "账户类型": "账户类型",
+        "总购物车数": "总购物车数",
+        "门店名称": "门店名称",
+        "观看次数": "观看次数",
+        "展现量": "展现量",
+        "门店编码": "门店编码",
+        "成交新客占比": "成交新客占比",
+        "费用金额": "费用金额",
+        "宝贝名称/主体名称": "宝贝名称/主体名称",
+        "点击率": "点击率",
+        "推广类型描述": "推广类型描述",
+        "归因模型": "归因模型",
+        "加购成本": "加购成本",
+        "总成交笔数": "总成交笔数",
+        "进店量": "进店量",
+        "投放类型": "投放类型",
+        "宝贝ID/主体ID": "宝贝ID/主体ID",
+        "计划ID": "计划ID",
+        "点击量": "点击量",
+        "成交新客数": "成交新客数",
+        "统计日期": "统计日期",
+        "词名/词包名称": "词名/词包名称",
+        "营销场景": "营销场景",
+        "计划名称": "计划名称",
+        "总成交人数": "总成交人数",
+        "总成交金额": "总成交金额",
+        "省份名称": "省份名称",
+        "人群名称": "人群名称",
+        "归因周期": "归因周期"
+      },
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "colCount": 30,
+      "dirPath": [
+        {
+          "dirId": "u169da343e5af4dcea87e145",
+          "dirName": "根目录"
+        },
+        {
+          "dirId": "t63a96786e57a4e1ebefeb62",
+          "dirName": "05MAIA"
+        },
+        {
+          "dirId": "wd58f679c44f34d409279942",
+          "dirName": "零售"
+        }
+      ],
+      "columns": [
+        {
+          "name": "费用金额",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "ab12ff028e2ae455e96a3b18",
+          "metaType": "METRIC",
+          "seqNo": 18,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "展现量",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "bc85ea88334cb4e2b848a444",
+          "metaType": "METRIC",
+          "seqNo": 16,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "门店名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "d7d3b53b2f713497883e09a3",
+          "metaType": "DIM",
+          "seqNo": 2,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "归因周期",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "e6ad39802e02740998e28cd5",
+          "metaType": "DIM",
+          "seqNo": 4,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "营销场景",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "e86a015086181453398432f4",
+          "metaType": "DIM",
+          "seqNo": 8,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "CPC",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "f51442373081448c9aab4242",
+          "metaType": "METRIC",
+          "seqNo": 32,
+          "formula": "case when SUM([点击量])=0 then 0 else SUM([费用金额])/SUM([点击量]) end ",
+          "isAggregated": true,
+          "calculationType": "aggregation",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "成交新客数",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "f9dba2ade53c846409f69740",
+          "metaType": "METRIC",
+          "seqNo": 22,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "归因模型",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "ff495a9e365eb4d558ad1a9e",
+          "metaType": "DIM",
+          "seqNo": 5,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "进店量",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "ga553fe1bc4fc47a5af54733",
+          "metaType": "METRIC",
+          "seqNo": 25,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "总成交金额",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "h04b14a4f8f5e43c6ad40114",
+          "metaType": "METRIC",
+          "seqNo": 19,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "词名/词包名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "hae6d5d2789ac4facbab4c18",
+          "metaType": "DIM",
+          "seqNo": 9,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "宝贝名称/主体名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "i1d5adfd8a0474e2bb634116",
+          "metaType": "DIM",
+          "seqNo": 11,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "账户类型",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "i4acb72448bde49f7a062112",
+          "metaType": "DIM",
+          "seqNo": 7,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "门店编码",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "i9a8b4fe43c614ab885e0bd9",
+          "metaType": "DIM",
+          "seqNo": 1,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "投放类型",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "j22f3e606443d450fa96f9ea",
+          "metaType": "DIM",
+          "seqNo": 6,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "CPM",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "je5501f4f3b67412297d5b19",
+          "metaType": "METRIC",
+          "seqNo": 31,
+          "formula": "case when SUM([展现量])=0 then 0 else (SUM([费用金额])/SUM([展现量]))*1000 end ",
+          "isAggregated": true,
+          "calculationType": "aggregation",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "ROI",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "k8b717e08054d4954ab758ed",
+          "metaType": "METRIC",
+          "seqNo": 30,
+          "formula": "case when SUM([费用金额])=0 then 0 else SUM([总成交金额])/SUM([费用金额]) end ",
+          "isAggregated": true,
+          "calculationType": "aggregation",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "观看次数",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "l074ca8ae340843e5a2bebf7",
+          "metaType": "METRIC",
+          "seqNo": 24,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "总购物车数",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "lb25b523f795e4f90bbcaf25",
+          "metaType": "METRIC",
+          "seqNo": 23,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "转化率",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "lc588d3083dde4cef8deffe5",
+          "metaType": "METRIC",
+          "seqNo": 33,
+          "formula": "case when SUM([点击量])=0 then 0 else SUM([总成交笔数])/SUM([点击量]) end ",
+          "isAggregated": true,
+          "calculationType": "aggregation",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "统计日期",
+          "fdType": "DATE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "lef28bd30691a46d9aa5f15e",
+          "metaType": "DIM",
+          "seqNo": 0,
+          "subs": [
+            {
+              "name": "年",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "k579c9d2ba02248e0bbba923",
+              "fdId": "lef28bd30691a46d9aa5f15e_year",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "YEAR",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "季度",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "k579c9d2ba02248e0bbba923",
+              "fdId": "lef28bd30691a46d9aa5f15e_quarter",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "QUARTER",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "月",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "k579c9d2ba02248e0bbba923",
+              "fdId": "lef28bd30691a46d9aa5f15e_month",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "MONTH",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "周",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "k579c9d2ba02248e0bbba923",
+              "fdId": "lef28bd30691a46d9aa5f15e_week",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "WEEK",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            },
+            {
+              "name": "星期",
+              "fdType": "SUB_DATE",
+              "parentFdName": "统计日期",
+              "dsId": "k579c9d2ba02248e0bbba923",
+              "fdId": "lef28bd30691a46d9aa5f15e_dayofweek",
+              "metaType": "DIM",
+              "seqNo": 0,
+              "granularity": "DAYOFWEEK",
+              "isAggregated": false,
+              "calculationType": "normal",
+              "level": "dataset",
+              "annotation": "",
+              "isDetectionSensitive": false,
+              "isSensitive": false,
+              "baseFdType": "DATE",
+              "hidden": false
+            }
+          ],
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DATE",
+          "hidden": false
+        },
+        {
+          "name": "人群名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "m11e8466474d34ea9b7b8c06",
+          "metaType": "DIM",
+          "seqNo": 12,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "总成交人数",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "me4dd59b4590f481ab20ef4a",
+          "metaType": "METRIC",
+          "seqNo": 21,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "计划ID",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "ncbc5e280afc6442aaa1862e",
+          "metaType": "DIM",
+          "seqNo": 13,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "总成交笔数",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "o4ba8cceef1a644a28d15dc0",
+          "metaType": "METRIC",
+          "seqNo": 20,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "推广类型描述",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "oa103fd4823c94804984d614",
+          "metaType": "DIM",
+          "seqNo": 3,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "计划名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "p629201977f1e4b22b5dd8b1",
+          "metaType": "DIM",
+          "seqNo": 14,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "加购成本",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "q6bc28c4608a8402fb1a8222",
+          "metaType": "METRIC",
+          "seqNo": 28,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "互动量",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "t17993d740e7e484cbcabdf4",
+          "metaType": "METRIC",
+          "seqNo": 26,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "成交新客占比",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "t4017aaf719364c90a61c0e1",
+          "metaType": "METRIC",
+          "seqNo": 29,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "点击率",
+          "fdType": "DOUBLE",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "uc15553de74c244d8b07f226",
+          "metaType": "METRIC",
+          "seqNo": 27,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "DOUBLE",
+          "hidden": false
+        },
+        {
+          "name": "点击量",
+          "fdType": "LONG",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "v61a05b4522144e1eb111ef4",
+          "metaType": "METRIC",
+          "seqNo": 17,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "LONG",
+          "hidden": false
+        },
+        {
+          "name": "宝贝ID/主体ID",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "x1b7d40afdf2f4a4380a7157",
+          "metaType": "DIM",
+          "seqNo": 10,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        },
+        {
+          "name": "省份名称",
+          "fdType": "STRING",
+          "dsId": "k579c9d2ba02248e0bbba923",
+          "fdId": "x5603f639a94a411996773fb",
+          "metaType": "DIM",
+          "seqNo": 15,
+          "isAggregated": false,
+          "calculationType": "normal",
+          "level": "dataset",
+          "annotation": "",
+          "isDetectionSensitive": false,
+          "isSensitive": false,
+          "baseFdType": "STRING",
+          "hidden": false
+        }
+      ],
+      "cnId": "clickhouse",
+      "isReadable": false,
+      "name": "ER04-推广效果分析报表",
+      "description": "",
+      "displayType": "CLICKHOUSE",
+      "rowCount": 1401940,
+      "acId": "udcca59f87b4d4b75ad73b5f",
+      "config": {
+        "tableQuery": {
+          "queryType": "query",
+          "query": "select \n  statis_dt as \"统计日期\"\n, store_code as \"门店编码\"\n, store_name as \"门店名称\"\n, extent_type_desc as \"推广类型描述\"\n, attribution_period as \"归因周期\"\n, attribution_model  as \"归因模型\"\n, deliv_type as \"投放类型\"\n, acct_type as \"账户类型\"\n, cam_scene as \"营销场景\"\n, word_bag_name as \"词名/词包名称\"\n, item_main_id as \"宝贝ID/主体ID\"\n, item_main_name as \"宝贝名称/主体名称\"\n, crowd_name as \"人群名称\"\n, plan_id as \"计划ID\"\n, plan_name as \"计划名称\"\n, province_name as \"省份名称\"\n, ifnull(press_amt,0) as \"展现量\"\n, ifnull(click_amt,0) as \"点击量\"\n, ifnull(cost_amt,0) as \"费用金额\"\n, ifnull(total_barg_amt,0) as \"总成交金额\"\n, ifnull(total_barg_cnt,0) as \"总成交笔数\"\n, ifnull(total_barg_per_cnt,0) as \"总成交人数\"\n, ifnull(barg_new_cust_qty,0) as \"成交新客数\"\n, ifnull(total_cart_qty,0) as \"总购物车数\"\n, ifnull(visit_cnt,0) as \"观看次数\"\n, ifnull(in_store_amt,0) as \"进店量\"\n, ifnull(interact_num,0) as \"互动量\"\n, ifnull(click_ratio,0) as \"点击率\"\n--, ifnull(cpc_amt,0) as \"平均点击花费CPC\"\n--, ifnull(cpm_amt,0) as \"千次展现花费CPM\"\n--, ifnull(roi,0) as \"投入产出比ROI\"\n--, ifnull(conversion_ratio,0) as \"转化率\"\n, ifnull(add_cart_cost,0) as \"加购成本\"\n, ifnull(barg_new_cust_pct,0) as \"成交新客占比\"\n  \n  \nfrom dm_ebi_maia_rpa_extent_anl_df",
+          "isBasicSelectForm": false,
+          "preSql": []
+        },
+        "storageType": "VIRTUAL",
+        "sourceType": "DIRECT_CONNECT_DATABASE",
+        "realTimeUpdateSetting": {
+          "enabled": false,
+          "interval": 600,
+          "disableCache": false,
+          "cacheType": "GLOBAL"
+        },
+        "primaryKeyColumns": [],
+        "guanIndexIncrementalUpdateSetting": null,
+        "dynamicParameters": [],
+        "sensitive": null,
+        "datasourceModifyTime": "2026-06-10 17:16:40+0800",
+        "dataDesensitization": null,
+        "priority": null,
+        "enableSchedule": false,
+        "lastExecution": {
+          "startTime": "2026-06-10 17:16:43+0800",
+          "endTime": "2026-06-10 17:16:44+0800",
+          "executionTime": 1
+        },
+        "taskId": "191e1e00-64ad-11f1-b69e-99f2dd918fcf"
+      },
+      "version": 17,
+      "utime": "2026-06-10 17:16:44+0800"
+    }
+  ],
+  "ctime": "2026-05-20 15:33:20+0800",
+  "utime": "2026-09-10 11:15:47+0800",
+  "settings": {
+    "authorized": true,
+    "authorizedOnPC": true,
+    "authorizedOnMobile": false,
+    "inheritAuth": true,
+    "descriptionVisible": false
+  },
+  "isOwner": false,
+  "canManage": false,
+  "canExport": true,
+  "isFavorite": false,
+  "pgPaths": {
+    "origin": [
+      {
+        "id": "lb18ea674e6bd4cc9b31be86",
+        "name": "根目录"
+      },
+      {
+        "id": "m01310c009b1c44dcb8fac2c",
+        "name": "MAIA"
+      },
+      {
+        "id": "h5f61131039bb4924a537b56",
+        "name": "电商"
+      },
+      {
+        "id": "s4b872716d99c43d7b22dc17",
+        "name": "ER04-推广效果分析报表",
+        "isPage": true
+      }
+    ]
+  },
+  "uniformResourceType": "DATA_ANALYSIS_CUSTOM_REPORT"
+}

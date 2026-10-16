@@ -1,0 +1,186 @@
+{
+  "page_id": "jd142c588aac241ab8639250",
+  "page_name": "ER03-商品流量流水分析",
+  "card_count": 12,
+  "datasets": [
+    {
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "name": "ER03-商品流量流水分析",
+      "cols": 74
+    }
+  ],
+  "chart_cards": [
+    {
+      "card_id": "e95d02c629eac43619836687",
+      "card_layer_name": "ER03-商品流量流水分析",
+      "content_name": null,
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "row_names": [
+        "统计日期",
+        "周",
+        "星期",
+        "月",
+        "季度",
+        "年",
+        "电商平台",
+        "门店编码",
+        "门店名称",
+        "商品品牌",
+        "大类",
+        "商品品牌编码",
+        "中类",
+        "小类",
+        "属性",
+        "上下装",
+        "商品ID",
+        "款号",
+        "商品名称",
+        "主题",
+        "故事包"
+      ],
+      "metric_names": [
+        "同期商品曝光次数",
+        "同期商品访问人数",
+        "同期商品访问次数",
+        "同期商品加购件数",
+        "同期商品加购人数",
+        "同期商品下单人数",
+        "同期商品下单数量",
+        "同期商品下单金额",
+        "同期商品成交人数",
+        "同期商品成交单数",
+        "同期商品成交老客数",
+        "同期商品成交老客金额",
+        "同期商品成交新客数",
+        "同期客单价",
+        "本期推广直接成交金额",
+        "本期推广成交笔数",
+        "本期推广直接成交笔数",
+        "本期推广加购数",
+        "同期推广展现量",
+        "同期推广点击量",
+        "同期推广花费",
+        "同期推广成交金额",
+        "同期推广直接成交金额",
+        "同期推广成交笔数",
+        "同期推广直接成交笔数",
+        "同期推广加购数",
+        "同期商品成交商品数",
+        "同期商品成交金额",
+        "同期件单价",
+        "本期销售金额",
+        "本期销售吊牌金额",
+        "本期销售数量",
+        "同期销售金额",
+        "同期销售吊牌金额",
+        "同期销售数量",
+        "本期商品加购件数",
+        "本期商品下单人数",
+        "本期商品下单数量",
+        "本期商品下单金额",
+        "本期商品成交单数",
+        "本期商品成交商品数",
+        "本期商品成交老客数",
+        "本期商品成交老客金额",
+        "本期商品成交新客数",
+        "本期客单价",
+        "件单价",
+        "本期商品加购人数",
+        "本期商品曝光次数",
+        "本期商品访问次数",
+        "本期商品成交人数",
+        "本期商品成交金额",
+        "本期推广展现量",
+        "本期推广点击量",
+        "本期推广花费",
+        "本期推广成交金额",
+        "本期商品访问人数"
+      ],
+      "metric_aliases": {
+        "本期销售金额": "本期零售金额",
+        "本期销售吊牌金额": "本期零售吊牌金额",
+        "本期销售数量": "本期零售数量",
+        "同期销售金额": "同期零售金额",
+        "同期销售吊牌金额": "同期零售吊牌金额",
+        "同期销售数量": "同期零售数量",
+        "件单价": "本期件单价"
+      }
+    }
+  ],
+  "dynamic_params": {
+    "MAIA报表开始时间": {
+      "selector_card": "开始时间",
+      "cdId": "ee08ecf7267eb42dc9fc184d",
+      "dpId": "o1fd655a544974ec7a3707dc",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false
+    },
+    "MAIA报表结束时间": {
+      "selector_card": "结束时间",
+      "cdId": "vd0201987217b45aabab5a6a",
+      "dpId": "md2ca7b9112034b84803c874",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false
+    },
+    "MAIA报表同期开始时间": {
+      "selector_card": "同期开始时间",
+      "cdId": "x33f43e35b4ee4173a5d4f0a",
+      "dpId": "haf0e9fcc999c4b438f18e45",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false
+    },
+    "MAIA报表同期结束时间": {
+      "selector_card": "同期结束时间",
+      "cdId": "i4a5091db3ca54d1087173b7",
+      "dpId": "g27135225cea244c3955ce50",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false
+    }
+  },
+  "field_selectors": {
+    "平台名称": {
+      "cdId": "r51d922a57d504c51a0348b2",
+      "field_name": "电商平台",
+      "field_fdId": "g39a37d0b8d5640ac883d631",
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "dsName": "ER03-商品流量流水分析",
+      "multiSelect": true
+    },
+    "店铺编码": {
+      "cdId": "bd2d8fb52de3c492eb0eceef",
+      "field_name": "门店编码",
+      "field_fdId": "ada0b25dd6481412d8921068",
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "dsName": "ER03-商品流量流水分析",
+      "multiSelect": true
+    },
+    "店铺名称": {
+      "cdId": "ee7ae9eb5218e49638dbde73",
+      "field_name": "门店名称",
+      "field_fdId": "i90e6da4040ff44888853b14",
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "dsName": "ER03-商品流量流水分析",
+      "multiSelect": true
+    },
+    "平台商品ID": {
+      "cdId": "v62bda560f3804f098dadc8b",
+      "field_name": "商品ID",
+      "field_fdId": "jc1e5c7c2d61249d6a6860a6",
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "dsName": "ER03-商品流量流水分析",
+      "multiSelect": true
+    },
+    "款号": {
+      "cdId": "n0a2911f219b34af1b5a1f14",
+      "field_name": "款号",
+      "field_fdId": "nf8d232985da64fc98c6a798",
+      "dsId": "f8f546bc9621d48b78ad8953",
+      "dsName": "ER03-商品流量流水分析",
+      "multiSelect": true
+    }
+  }
+}

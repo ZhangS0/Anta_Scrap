@@ -1,0 +1,34 @@
+# R02 区域汇总 + 同店增长（区域筛选已实测生效）
+report_spec:
+  key: r02_gripper_maia
+  card_name: R02-零售抓手分析报表
+  page_id: jcee6539f2fcd4706a3ec543
+  card_id: o9fd05d58c51c4770b84d7e3
+  default_ds_id: u4a657b9d50944bfea270fb9
+  dynamic_params:
+    MAIA报表开始时间: { dpId: o1fd655a544974ec7a3707dc, valueType: DATE, sourceCdId: b1b89ced97d32429980a32b8 }
+    MAIA报表结束时间: { dpId: md2ca7b9112034b84803c874, valueType: DATE, sourceCdId: ib1cbde94e85a46228909e23 }
+    MAIA报表同期开始时间: { dpId: haf0e9fcc999c4b438f18e45, valueType: DATE, sourceCdId: fc709e65be9f844a29133788 }
+    MAIA报表同期结束时间: { dpId: g27135225cea244c3955ce50, valueType: DATE, sourceCdId: m9d7cd11c1e5a4cd9bd690e9 }
+  field_source_cdid:
+    店铺类型名称: u305e4693f1054ddd9248a51
+    店铺编码: w85e6b5d2ca7a41819620080
+    店铺名称: oda8eb3166d1c485686ff5e4
+    区域: ic6e1df57d64f4c71a91fd36
+    品牌大区: o5840b1e21a034ec99909583
+    店铺类型明细: r040421f3a2da465bb4c998b
+    店铺等级: e23090a52b78643878382ffa
+    城市等级: e44004cb0636e4ca6ad2c63a
+    省份: nce15f9b6867544649df7797
+    经营类型: qb43d7ed8d09140c88c9d0f2
+
+rows: [区域, 店铺名称]
+metrics: [本期零售金额, 本期零售数量, 预算目标达成]
+filters: []
+  # - { name: 区域, values: [玛伊娅-东区, 玛伊娅-南区] }   # 值域见指引，可多选
+dynamic_params:
+  MAIA报表开始时间: "2026-10-14"
+  MAIA报表结束时间: "2026-10-14"
+  MAIA报表同期开始时间: "2025-10-14"
+  MAIA报表同期结束时间: "2025-10-14"
+limit: 200

@@ -1,0 +1,34 @@
+# ER04 推广效果全量导出（已实测 2026-10-16）
+# ⚠ 无日期动态参数（页面是 CALENDAR 区间控件，模板不支持 BT）——不加日期条件全量导出，本地按 统计日期 过滤
+
+report_spec:
+  key: er04_promotion_maia
+  card_name: ER04-推广效果分析报表
+  page_id: s4b872716d99c43d7b22dc17
+  card_id: ad764c200bf6845c99036425
+  default_ds_id: k579c9d2ba02248e0bbba923
+  dynamic_params: {}
+  field_source_cdid:
+    归因周期: o172d3de12d3a49f189a5d7e
+    营销场景: c5bbe6eaaf2b341c58831c6a
+    词名/词包名称: b738b2e4fe3c6458e87392b1
+    宝贝ID/主体ID: s2ce38db227ad4407822253f
+    宝贝名称/主体名称: wbb5c96857ccb4b88ad6afbf
+    人群名称: cdc8cb94f30d1455e988e0c1
+    计划ID: sa0acaf1c48e240e5ab95b88
+    计划名称: x5a403261d4224378bb0a1e6
+    省份名称: jf7ed895cb87a4833a526819
+    推广类型描述: c7b34177d133d43839132abb
+    归因模型: ab96865b30b564c85af996b9
+rows:
+- 统计日期
+metrics:
+- 费用金额
+- 展现量
+- 点击量
+- 总成交金额
+- ROI
+- CPC
+- CPM
+- 转化率
+limit: 500

@@ -1,0 +1,44 @@
+# ER02 店铺流量日报（已实测 2026-10-16）
+# 注意列名映射：GMV/UV（访客数）/PV（浏览量）/平台成交人数；门店名称→店铺名称
+
+report_spec:
+  key: er02_shop_traffic_maia
+  card_name: ER02-电商店铺流量流水分析
+  page_id: w7ddf5dba214e4232a00b1ee
+  card_id: g06c73b6673e944f9be01e35
+  default_ds_id: qdb4282cdc87442fc88cc277
+  dynamic_params:
+    MAIA报表开始时间:
+      dpId: o1fd655a544974ec7a3707dc
+      valueType: DATE
+      sourceCdId: d09bde929964b4d998141e71
+    MAIA报表结束时间:
+      dpId: md2ca7b9112034b84803c874
+      valueType: DATE
+      sourceCdId: a59f0bb57ba3c4f97927c2c5
+    MAIA报表同期开始时间:
+      dpId: haf0e9fcc999c4b438f18e45
+      valueType: DATE
+      sourceCdId: ea7246cd4343b4341897851f
+    MAIA报表同期结束时间:
+      dpId: g27135225cea244c3955ce50
+      valueType: DATE
+      sourceCdId: od4b8d91291fb4c9cb2a5c35
+  field_source_cdid:
+    门店名称: le15d72524b774b108b29c97
+    店铺类型名称: n7521dfe3c3fd4f9b917d229
+    店铺类型明细: j50b2dbb259754af58530ed4
+rows:
+- 门店名称
+metrics:
+- 本期成交金额(GMV)
+- 本期访客数(UV)
+- 本期浏览量(PV)
+- 本期成交人数
+- 本期成交订单数
+dynamic_params:
+  MAIA报表开始时间: '2026-10-13'
+  MAIA报表结束时间: '2026-10-14'
+  MAIA报表同期开始时间: '2025-10-13'
+  MAIA报表同期结束时间: '2025-10-14'
+limit: 100

@@ -1,0 +1,51 @@
+# C01 月度门店业绩（已实测 2026-10-16；年月参数格式 YYYY-MM）
+# ⚠ 行/筛选必须用主数据集名字（门店名称等），禁用 店铺名称/店铺编码（维度表名字→导出 FAILED）
+
+report_spec:
+  key: c01_channel_maia
+  card_name: C01-渠道报表
+  page_id: p6ab768b8558747c9a0353ca
+  card_id: o2848553791904a36a730f3c
+  default_ds_id: pca0ebaeda9de470783fe5e7
+  dynamic_params:
+    MAIA报表_开始年月:
+      dpId: cf398b008c69d4dcda4bf2eb
+      valueType: STRING
+      sourceCdId: e7bbacd7274304446946dbd2
+    MAIA报表_结束年月:
+      dpId: m2e0d040a31564aef8484995
+      valueType: STRING
+      sourceCdId: m8a646e41f48746489d28187
+  field_source_cdid:
+    区域: a74659a03b8da43159da20cb
+    门店编码: d8db7727919774724ab74dc3
+    门店名称: p28b5bbfbcb3a4a23b749c9e
+    渠道品牌: me5696919acdd4b278dcd57a
+    品牌大区: n2e7dce75c53d4697b2af79c
+    门店等级: ad7f8a0fe43d8447ab6ff0a3
+    门店类型明细: h2a05f655aade4ccc861a359
+    经营类型: afe894e80c2924be48d4c300
+    省份: x47bce16d8e5740778abf77f
+    城市: ndeeab67ceec140b8bc613c5
+    区县: qedcbbae5d3df4ed087f9427
+    商场名称: b86d28287086a42cb8dbaf79
+    开业状态: j7bdb8bbe84db45dbba5e676
+    租赁类型: t0b45656c13d048b4a291b64
+    集合店属性: wf2f6f32ecc4f4d0bbc8e1c7
+    重点项目类型: ib0d72e9ec86c450f9aff477
+rows:
+- 门店名称
+metrics:
+- 本期零售金额
+- 本期零售数量
+- 本期折扣率
+- 本期店效
+- 本期坪效
+filters:
+- name: 渠道品牌
+  values:
+  - 玛伊娅
+dynamic_params:
+  MAIA报表_开始年月: 2026-09
+  MAIA报表_结束年月: 2026-09
+limit: 100

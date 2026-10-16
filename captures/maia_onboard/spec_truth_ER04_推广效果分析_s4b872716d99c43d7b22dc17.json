@@ -1,0 +1,148 @@
+{
+  "page_id": "s4b872716d99c43d7b22dc17",
+  "page_name": "ER04-推广效果分析报表",
+  "card_count": 15,
+  "datasets": [
+    {
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "name": "ER04-推广效果分析报表",
+      "cols": 34
+    }
+  ],
+  "chart_cards": [
+    {
+      "card_id": "ad764c200bf6845c99036425",
+      "card_layer_name": "报表",
+      "content_name": null,
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "row_names": [
+        "统计日期",
+        "门店编码",
+        "门店名称",
+        "归因周期",
+        "账户类型",
+        "词名/词包名称",
+        "宝贝ID/主体ID",
+        "宝贝名称/主体名称",
+        "人群名称",
+        "计划ID",
+        "计划名称",
+        "省份名称",
+        "推广类型描述",
+        "投放类型",
+        "营销场景"
+      ],
+      "metric_names": [
+        "成交新客数",
+        "总购物车数",
+        "加购成本",
+        "成交新客占比",
+        "观看次数",
+        "进店量",
+        "互动量",
+        "费用金额",
+        "展现量",
+        "点击量",
+        "总成交金额",
+        "总成交笔数",
+        "总成交人数",
+        "CPC",
+        "CPM",
+        "ROI",
+        "转化率"
+      ],
+      "metric_aliases": {}
+    }
+  ],
+  "dynamic_params": {},
+  "field_selectors": {
+    "归因周期": {
+      "cdId": "o172d3de12d3a49f189a5d7e",
+      "field_name": "归因周期",
+      "field_fdId": "e6ad39802e02740998e28cd5",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": false
+    },
+    "营销场景": {
+      "cdId": "c5bbe6eaaf2b341c58831c6a",
+      "field_name": "营销场景",
+      "field_fdId": "e86a015086181453398432f4",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "词名/词包名称": {
+      "cdId": "b738b2e4fe3c6458e87392b1",
+      "field_name": "词名/词包名称",
+      "field_fdId": "hae6d5d2789ac4facbab4c18",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "宝贝ID/主体ID": {
+      "cdId": "s2ce38db227ad4407822253f",
+      "field_name": "宝贝ID/主体ID",
+      "field_fdId": "x1b7d40afdf2f4a4380a7157",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "宝贝名称/主体名称": {
+      "cdId": "wbb5c96857ccb4b88ad6afbf",
+      "field_name": "宝贝名称/主体名称",
+      "field_fdId": "i1d5adfd8a0474e2bb634116",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "人群名称": {
+      "cdId": "cdc8cb94f30d1455e988e0c1",
+      "field_name": "人群名称",
+      "field_fdId": "m11e8466474d34ea9b7b8c06",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "计划ID": {
+      "cdId": "sa0acaf1c48e240e5ab95b88",
+      "field_name": "计划ID",
+      "field_fdId": "ncbc5e280afc6442aaa1862e",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "计划名称": {
+      "cdId": "x5a403261d4224378bb0a1e6",
+      "field_name": "计划名称",
+      "field_fdId": "p629201977f1e4b22b5dd8b1",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "省份名称": {
+      "cdId": "jf7ed895cb87a4833a526819",
+      "field_name": "省份名称",
+      "field_fdId": "x5603f639a94a411996773fb",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "推广类型描述": {
+      "cdId": "c7b34177d133d43839132abb",
+      "field_name": "推广类型描述",
+      "field_fdId": "oa103fd4823c94804984d614",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": true
+    },
+    "归因模型": {
+      "cdId": "ab96865b30b564c85af996b9",
+      "field_name": "归因模型",
+      "field_fdId": "ff495a9e365eb4d558ad1a9e",
+      "dsId": "k579c9d2ba02248e0bbba923",
+      "dsName": "ER04-推广效果分析报表",
+      "multiSelect": false
+    }
+  }
+}

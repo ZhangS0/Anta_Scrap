@@ -1,0 +1,48 @@
+# ER03 商品流量明细（已实测 2026-10-16；单日全量 7170 行——务必保留筛选/窄日期窗口）
+# 注意列名映射：商品ID→平台商品ID；电商平台→平台名称；本期销售*→本期零售*
+
+report_spec:
+  key: er03_product_traffic_maia
+  card_name: ER03-商品流量流水分析
+  page_id: jd142c588aac241ab8639250
+  card_id: e95d02c629eac43619836687
+  default_ds_id: f8f546bc9621d48b78ad8953
+  dynamic_params:
+    MAIA报表开始时间:
+      dpId: o1fd655a544974ec7a3707dc
+      valueType: DATE
+      sourceCdId: ee08ecf7267eb42dc9fc184d
+    MAIA报表结束时间:
+      dpId: md2ca7b9112034b84803c874
+      valueType: DATE
+      sourceCdId: vd0201987217b45aabab5a6a
+    MAIA报表同期开始时间:
+      dpId: haf0e9fcc999c4b438f18e45
+      valueType: DATE
+      sourceCdId: x33f43e35b4ee4173a5d4f0a
+    MAIA报表同期结束时间:
+      dpId: g27135225cea244c3955ce50
+      valueType: DATE
+      sourceCdId: i4a5091db3ca54d1087173b7
+  field_source_cdid:
+    电商平台: r51d922a57d504c51a0348b2
+    门店编码: bd2d8fb52de3c492eb0eceef
+    门店名称: ee7ae9eb5218e49638dbde73
+    商品ID: v62bda560f3804f098dadc8b
+    款号: n0a2911f219b34af1b5a1f14
+rows:
+- 商品ID
+- 商品名称
+metrics:
+- 本期商品访问人数
+- 本期商品成交人数
+- 本期商品成交金额
+- 本期推广花费
+filters:
+- name: 电商平台
+  values:
+  - 天猫
+dynamic_params:
+  MAIA报表开始时间: '2026-10-13'
+  MAIA报表结束时间: '2026-10-13'
+limit: 100

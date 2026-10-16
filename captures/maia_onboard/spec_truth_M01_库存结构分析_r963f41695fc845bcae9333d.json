@@ -1,0 +1,259 @@
+{
+  "page_id": "r963f41695fc845bcae9333d",
+  "page_name": "M01-库存结构分析",
+  "card_count": 18,
+  "datasets": [
+    {
+      "dsId": "sa1c64da7fd0846b6a4c3248",
+      "name": "MAIABI_库存分析-M01库存模型报表",
+      "cols": 72
+    },
+    {
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "name": "商品主数据维度表",
+      "cols": 32
+    },
+    {
+      "dsId": "u730340758006432baa26e97",
+      "name": "渠道店铺信息维度表",
+      "cols": 69
+    }
+  ],
+  "chart_cards": [
+    {
+      "card_id": "v4608ebf2022e42ceb01d8d9",
+      "card_layer_name": "M01库存模型报表",
+      "content_name": null,
+      "dsId": "sa1c64da7fd0846b6a4c3248",
+      "row_names": [
+        "日历日期",
+        "品牌大区",
+        "渠道品牌",
+        "店仓编码",
+        "店仓名称",
+        "省份",
+        "城市",
+        "城市等级",
+        "店铺类型明细",
+        "店铺等级",
+        "经营类型",
+        "商场体系",
+        "商场名称",
+        "开店日期",
+        "闭店日期",
+        "商品品牌编码",
+        "商品品牌",
+        "大类",
+        "中类",
+        "小类",
+        "属性",
+        "上下装",
+        "业务类型",
+        "IMC类型",
+        "产品年",
+        "产品季",
+        "产品年季",
+        "配货季",
+        "款号",
+        "货号",
+        "商品名称",
+        "上市日期",
+        "产品颜色",
+        "产品尺码",
+        "上市天数周期",
+        "是否新品",
+        "渠道品牌编码",
+        "区域",
+        "上市天数new",
+        "吊牌价",
+        "店仓标记",
+        "店铺类型",
+        "星期",
+        "周",
+        "月",
+        "日历年份",
+        "季度",
+        "年",
+        "区域编码",
+        "图片",
+        "主题",
+        "故事包",
+        "系列"
+      ],
+      "metric_names": [
+        "在途库存数量本期",
+        "在途库存吊牌金额本期",
+        "在仓库库存吊牌金额本期",
+        "财务库库存吊牌金额本期",
+        "财务库存数量本期",
+        "财务库存SKC数本期",
+        "在途库存数量同期",
+        "在途库存吊牌金额同期",
+        "在仓库库存吊牌金额同期",
+        "财务库存数量同期",
+        "财务库库存吊牌金额同期",
+        "财务库存SKC数同期",
+        "在途库存数量同比",
+        "在途库存吊牌金额同比",
+        "在仓库库存吊牌金额同比",
+        "财务库存数量同比",
+        "财务库库存吊牌金额同比",
+        "在仓库存数量同比",
+        "在仓库存数量本期",
+        "在仓库存数量同期",
+        "财务库存SKC数同比"
+      ],
+      "metric_aliases": {
+        "在途库存数量本期": "本期在途库存数量",
+        "在途库存吊牌金额本期": "本期在途库存吊牌金额",
+        "在仓库库存吊牌金额本期": "本期在仓库存吊牌金额",
+        "财务库库存吊牌金额本期": "本期库存吊牌金额",
+        "财务库存数量本期": "本期库存数量",
+        "财务库存SKC数本期": "本期库存SKU数",
+        "在途库存数量同期": "同期在途库存数量",
+        "在途库存吊牌金额同期": "同期在途库存吊牌金额",
+        "在仓库库存吊牌金额同期": "同期在仓库存吊牌金额",
+        "财务库存数量同期": "同期库存数量",
+        "财务库库存吊牌金额同期": "同期库存吊牌金额",
+        "财务库存SKC数同期": "同期库存SKU数",
+        "财务库存数量同比": "库存数量同比",
+        "财务库库存吊牌金额同比": "库存吊牌金额同比",
+        "在仓库存数量本期": "本期在仓库存数量",
+        "在仓库存数量同期": "同期在仓库存数量",
+        "财务库存SKC数同比": "库存SKU数同比"
+      }
+    }
+  ],
+  "dynamic_params": {
+    "MAIA报表结束时间": {
+      "selector_card": "日期选择",
+      "cdId": "fa6a5f1e387234c71818fa5d",
+      "dpId": "md2ca7b9112034b84803c874",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false
+    }
+  },
+  "field_selectors": {
+    "店铺类型明细": {
+      "cdId": "a9f37a519a5ac4e9482e4cde",
+      "field_name": "店铺类型明细",
+      "field_fdId": "p5c62498f99d44e46a8de4e1",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "产品年季": {
+      "cdId": "i1ca24fe143564431b6264eb",
+      "field_name": "产品年季",
+      "field_fdId": "k5755dfb7f0d141aeaccc911",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "省份": {
+      "cdId": "ad6d7888c563b477294f9f2a",
+      "field_name": "省份",
+      "field_fdId": "df11ad55b92ca4914bfe2b1c",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "货号": {
+      "cdId": "ued3207ea1d2246bdaa40236",
+      "field_name": "货号",
+      "field_fdId": "wcb5e396375a541c19715719",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "区域": {
+      "cdId": "ga1777f28667f484081bee5b",
+      "field_name": "区域",
+      "field_fdId": "k561a6b88ef2e4358a4fa2d2",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "品牌大区": {
+      "cdId": "ff20d15f53e4a4a9994a8ae8",
+      "field_name": "品牌大区",
+      "field_fdId": "td7248d7b4c3540b5a8bc4a0",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店仓编码": {
+      "cdId": "c69da45cadd354bd6ae56a23",
+      "field_name": "店铺编码",
+      "field_fdId": "f3ca64502515b4aeaaa9e7eb",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "大类": {
+      "cdId": "u1eb2c631d42b42c9b7b62ef",
+      "field_name": "大类",
+      "field_fdId": "f46e8b20fbe204b11a54de03",
+      "dsId": "sa1c64da7fd0846b6a4c3248",
+      "dsName": "MAIABI_库存分析-M01库存模型报表",
+      "multiSelect": true
+    },
+    "店仓名称": {
+      "cdId": "u099f867b04184c55a5c5495",
+      "field_name": "店铺名称",
+      "field_fdId": "w83f810492c014f56bbf52f8",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "中类": {
+      "cdId": "v62c31ee87eaf421eac3c7de",
+      "field_name": "中类",
+      "field_fdId": "sb9120bf9601343e79de5984",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "款号": {
+      "cdId": "p33860e29febf42b18b8e94b",
+      "field_name": "款号",
+      "field_fdId": "lc25438871de6432d99da329",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "小类": {
+      "cdId": "m362ed69f214445239fa5078",
+      "field_name": "小类",
+      "field_fdId": "ib640b87fa55a4aa291aa9a6",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "店铺类型": {
+      "cdId": "fd07a8b1c22b74d9da21b7b4",
+      "field_name": "店铺类型名称",
+      "field_fdId": "o876b57164c794b7686da0b2",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "配货季": {
+      "cdId": "i55159400694a460ca90ca3a",
+      "field_name": "配货季",
+      "field_fdId": "le2c4b428015246d9a1776a5",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "主题": {
+      "cdId": "q385a92787bec4c048a26d41",
+      "field_name": "主题",
+      "field_fdId": "ua81d4c39ff58427d895fd5e",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    }
+  }
+}

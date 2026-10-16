@@ -1,0 +1,46 @@
+# R01 货号销售明细（已实测 2026-10-16，limit=30 返回 2209 行——limit 不截断导出）
+# 用法：改 dynamic_params 日期、必要时加 filters 收窄后整份传 export_report
+report_spec:
+  key: r01_product_maia
+  card_name: R01-零售商品分析报表
+  page_id: d8387bb63c75448e49decb7f
+  card_id: fade2d170091040a9a433722
+  default_ds_id: b695ab6d05afc4800ae06f20
+  dynamic_params:
+    MAIA报表开始时间: { dpId: o1fd655a544974ec7a3707dc, valueType: DATE, sourceCdId: ic8cef1635b54449d81e6cda }
+    MAIA报表结束时间: { dpId: md2ca7b9112034b84803c874, valueType: DATE, sourceCdId: ud3bd5d8b3fde4d2a8079563 }
+    MAIA报表同期开始时间: { dpId: haf0e9fcc999c4b438f18e45, valueType: DATE, sourceCdId: t11c12e96ee5f45bca78d796 }
+    MAIA报表同期结束时间: { dpId: g27135225cea244c3955ce50, valueType: DATE, sourceCdId: l9c53c8f3d3bb4c998606178 }
+  field_source_cdid:
+    区域: f6e0e1e6623b147cba1bf074
+    品牌大区: p951bdc118bae4c39ad71a7e
+    店铺等级: x02fc69aa2ae643b6a20c3be
+    店铺类型名称: ebbb0b2f978844eb89e7cb2f
+    店铺类型明细: e740efcf3476b462ab49c182
+    省份: m1bc9b7c5011848bdaee4f96
+    城市等级: t944f99a7ceef4fd9a0486e9
+    大类: l4daece37698d404fa87af3b
+    配货季: f24581dab31b54549a7f6e22
+    业务类型: s53ad5dbf70c448efb2323b8
+    产品季: g1ef9b8d44ea54aabb334da6
+    中类: p8af20a79b30e445f97ce3c4
+    主题: xadf0a0e2a7c54b0b8d8b452
+    故事包: x60d998dac6804e5c9479303
+    小类: i151d71e0f5cb466081d9bdc
+    上下装: s8bcee800665242c898504e1
+    款号: w0cfcb0071cee45369666d19
+    货号: wb6350b3b834946f5bdd4d9e
+    IMC类型: d2cfb17f634c641b0b154ec6
+    店铺编码: kff5d816f33ae4c9fbef1162
+    店铺名称: q85acdde66b6d467c83507f5
+    经营类型: ra0a85425b38e487b91af784
+
+rows: [货号]
+metrics: [本期零售金额, 本期零售数量, 本期折扣率]
+# filters:
+#   - { name: 大类, values: [服装] }          # 服装/配件
+#   - { name: 中类, values: [羽绒, 中/长裤] }
+dynamic_params:
+  MAIA报表开始时间: "2026-10-14"
+  MAIA报表结束时间: "2026-10-14"
+limit: 50    # 注意：limit 不截断 CSV 导出，仅占位

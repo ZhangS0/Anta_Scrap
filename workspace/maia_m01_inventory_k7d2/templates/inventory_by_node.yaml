@@ -1,0 +1,39 @@
+# M01 店仓库存快照（已实测 2026-10-16；库存为截止到「结束时间」的快照口径）
+# 用法：改 dynamic_params 结束时间后整份传 export_report 的 template_yaml
+
+report_spec:
+  key: m01_inventory_maia
+  card_name: M01-库存结构分析
+  page_id: r963f41695fc845bcae9333d
+  card_id: v4608ebf2022e42ceb01d8d9
+  default_ds_id: sa1c64da7fd0846b6a4c3248
+  dynamic_params:
+    MAIA报表结束时间:
+      dpId: md2ca7b9112034b84803c874
+      valueType: DATE
+      sourceCdId: fa6a5f1e387234c71818fa5d
+  field_source_cdid:
+    店铺类型明细: a9f37a519a5ac4e9482e4cde
+    产品年季: i1ca24fe143564431b6264eb
+    省份: ad6d7888c563b477294f9f2a
+    货号: ued3207ea1d2246bdaa40236
+    区域: ga1777f28667f484081bee5b
+    品牌大区: ff20d15f53e4a4a9994a8ae8
+    店仓编码: c69da45cadd354bd6ae56a23
+    大类: u1eb2c631d42b42c9b7b62ef
+    店仓名称: u099f867b04184c55a5c5495
+    中类: v62c31ee87eaf421eac3c7de
+    款号: p33860e29febf42b18b8e94b
+    小类: m362ed69f214445239fa5078
+    配货季: i55159400694a460ca90ca3a
+    主题: q385a92787bec4c048a26d41
+rows:
+- 店仓名称
+metrics:
+- 财务库存数量本期
+- 财务库存SKC数本期
+- 在仓库存数量本期
+- 在仓库存数量同期
+dynamic_params:
+  MAIA报表结束时间: '2026-10-14'
+limit: 200

@@ -1,0 +1,64 @@
+# ER01 电商订单日报（已实测 2026-10-16；日期类型=支付时间/出入库时间/创建时间）
+# 注意：本期订单数量 CSV 列名带「（含赠品）」；同比类指标需显式传同期两参
+
+report_spec:
+  key: er01_ecom_orders_maia
+  card_name: ER01-电商订单分析报表
+  page_id: o0699ad202bfd43059e664d3
+  card_id: mc011d6d021ad48f7b6d491b
+  default_ds_id: ba130ab86742c473a95a01ed
+  dynamic_params:
+    MAIA报表_日期类型（线上订单）:
+      dpId: ne8fec8c91c694f4690f8b53
+      valueType: STRING
+      sourceCdId: b04af407367784c97a6d79d5
+    MAIA报表开始时间:
+      dpId: o1fd655a544974ec7a3707dc
+      valueType: DATE
+      sourceCdId: v031af31e9fc24d8d996e276
+    MAIA报表结束时间:
+      dpId: md2ca7b9112034b84803c874
+      valueType: DATE
+      sourceCdId: x9347e16ef39a4e2cac24665
+    MAIA报表同期开始时间:
+      dpId: haf0e9fcc999c4b438f18e45
+      valueType: DATE
+      sourceCdId: acad50f58932b4cb8a11ad24
+    MAIA报表同期结束时间:
+      dpId: g27135225cea244c3955ce50
+      valueType: DATE
+      sourceCdId: ke906ef4045ee4e67ace2c3c
+  field_source_cdid:
+    店铺类型明细: sc16fae94fcad425d9d61b65
+    店铺名称: j376a9e8291174c4b9ad5bec
+    店铺编码: bd61373216dc44c2fa258d65
+    大类: t4b27cbb877964b7daafd7d8
+    中类: xea6a3ec67599460e85db1a6
+    小类: b2ddbae982e844809b472950
+    产品季: x343527ca6d3a44f09f9e760
+    配货季: wf9ace65c2c9b4fd1842473c
+    业务类型: t986b1949dbda443bafe5ac8
+    主题: v7197b21e54d143b091b5dc0
+    故事包: jf01f1f181d494262a947b8b
+    上下装: md2594d6946c842b9af6f363
+    款号: ce3d937c258dc422580ebb50
+    货号: cf022a13e523046e3a2cbdc6
+    预售类型: vfbb5201ea3014a3f9665e79
+    达人名称: j4987c596ed114134b0156c1
+    达人类型: d48150e417fbe4c7a837b08d
+    店铺类型名称: cc838293547c940b08017e47
+rows:
+- 店铺名称
+metrics:
+- 本期零售金额
+- 本期订单数量
+- 本期折扣率
+- 本期退货率(金额)
+- 同期零售金额
+dynamic_params:
+  MAIA报表_日期类型（线上订单）: 支付时间
+  MAIA报表开始时间: '2026-10-13'
+  MAIA报表结束时间: '2026-10-14'
+  MAIA报表同期开始时间: '2025-10-13'
+  MAIA报表同期结束时间: '2025-10-14'
+limit: 100

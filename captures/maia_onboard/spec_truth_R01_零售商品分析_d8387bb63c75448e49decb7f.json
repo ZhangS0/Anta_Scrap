@@ -1,0 +1,333 @@
+{
+  "page_id": "d8387bb63c75448e49decb7f",
+  "page_name": "R01-零售商品分析报表",
+  "card_id": "fade2d170091040a9a433722",
+  "main_ds_id": "b695ab6d05afc4800ae06f20",
+  "datasets": [
+    {
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "name": "商品主数据维度表",
+      "colCount": 32
+    },
+    {
+      "dsId": "b695ab6d05afc4800ae06f20",
+      "name": "MAIABI_零售分析-R01零售商品分析报表",
+      "colCount": 87
+    },
+    {
+      "dsId": "u730340758006432baa26e97",
+      "name": "渠道店铺信息维度表",
+      "colCount": 69
+    }
+  ],
+  "dynamic_params": {
+    "MAIA报表开始时间": {
+      "selector_card": "开始日期",
+      "cdId": "ic8cef1635b54449d81e6cda",
+      "dpId": "o1fd655a544974ec7a3707dc",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false,
+      "customize": false
+    },
+    "MAIA报表结束时间": {
+      "selector_card": "结束日期",
+      "cdId": "ud3bd5d8b3fde4d2a8079563",
+      "dpId": "md2ca7b9112034b84803c874",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false,
+      "customize": false
+    },
+    "MAIA报表同期结束时间": {
+      "selector_card": "同期结束日期",
+      "cdId": "l9c53c8f3d3bb4c998606178",
+      "dpId": "g27135225cea244c3955ce50",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false,
+      "customize": false
+    },
+    "MAIA报表同期开始时间": {
+      "selector_card": "同期开始日期",
+      "cdId": "t11c12e96ee5f45bca78d796",
+      "dpId": "haf0e9fcc999c4b438f18e45",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false,
+      "customize": false
+    }
+  },
+  "field_selectors": {
+    "区域": {
+      "cdId": "f6e0e1e6623b147cba1bf074",
+      "field_name": "区域",
+      "field_fdId": "k561a6b88ef2e4358a4fa2d2",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "品牌大区": {
+      "cdId": "p951bdc118bae4c39ad71a7e",
+      "field_name": "品牌大区",
+      "field_fdId": "td7248d7b4c3540b5a8bc4a0",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺等级": {
+      "cdId": "x02fc69aa2ae643b6a20c3be",
+      "field_name": "店铺等级",
+      "field_fdId": "m1416e79e14dc4ff3adf2144",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺类型": {
+      "cdId": "ebbb0b2f978844eb89e7cb2f",
+      "field_name": "店铺类型名称",
+      "field_fdId": "o876b57164c794b7686da0b2",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺类型明细": {
+      "cdId": "e740efcf3476b462ab49c182",
+      "field_name": "店铺类型明细",
+      "field_fdId": "p5c62498f99d44e46a8de4e1",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "省份": {
+      "cdId": "m1bc9b7c5011848bdaee4f96",
+      "field_name": "省份",
+      "field_fdId": "df11ad55b92ca4914bfe2b1c",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "城市等级": {
+      "cdId": "t944f99a7ceef4fd9a0486e9",
+      "field_name": "城市等级",
+      "field_fdId": "t9a0f3c3aec184b7b8877b1b",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "大类": {
+      "cdId": "l4daece37698d404fa87af3b",
+      "field_name": "大类",
+      "field_fdId": "sdfe575a9fc014794b799054",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "配货季": {
+      "cdId": "f24581dab31b54549a7f6e22",
+      "field_name": "配货季",
+      "field_fdId": "le2c4b428015246d9a1776a5",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "业务类型": {
+      "cdId": "s53ad5dbf70c448efb2323b8",
+      "field_name": "业务类型",
+      "field_fdId": "m78cef5475f6d4ca29caf24c",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "产品季": {
+      "cdId": "g1ef9b8d44ea54aabb334da6",
+      "field_name": "产品季",
+      "field_fdId": "p69aa9bd04bc94cccabc735a",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "中类": {
+      "cdId": "p8af20a79b30e445f97ce3c4",
+      "field_name": "中类",
+      "field_fdId": "sb9120bf9601343e79de5984",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "主题": {
+      "cdId": "xadf0a0e2a7c54b0b8d8b452",
+      "field_name": "主题",
+      "field_fdId": "ua81d4c39ff58427d895fd5e",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "故事包": {
+      "cdId": "x60d998dac6804e5c9479303",
+      "field_name": "故事包",
+      "field_fdId": "m5888645f6ec14c9bb46ba50",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "小类": {
+      "cdId": "i151d71e0f5cb466081d9bdc",
+      "field_name": "小类",
+      "field_fdId": "ib640b87fa55a4aa291aa9a6",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "上下装": {
+      "cdId": "s8bcee800665242c898504e1",
+      "field_name": "上下装",
+      "field_fdId": "s62dfdc0f799e4d5fa0a9d1b",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "款号": {
+      "cdId": "w0cfcb0071cee45369666d19",
+      "field_name": "款号",
+      "field_fdId": "lc25438871de6432d99da329",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "货号": {
+      "cdId": "wb6350b3b834946f5bdd4d9e",
+      "field_name": "货号",
+      "field_fdId": "wcb5e396375a541c19715719",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "IMC类型": {
+      "cdId": "d2cfb17f634c641b0b154ec6",
+      "field_name": "IMC类型",
+      "field_fdId": "qdc470a94f0154532aab590d",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "店铺编码": {
+      "cdId": "kff5d816f33ae4c9fbef1162",
+      "field_name": "店铺编码",
+      "field_fdId": "f3ca64502515b4aeaaa9e7eb",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺名称": {
+      "cdId": "q85acdde66b6d467c83507f5",
+      "field_name": "店铺名称",
+      "field_fdId": "w83f810492c014f56bbf52f8",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "经营类型": {
+      "cdId": "ra0a85425b38e487b91af784",
+      "field_name": "经营类型",
+      "field_fdId": "g5dde6d22a617487b81c3960",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    }
+  },
+  "row_names": [
+    "品牌大区",
+    "省份",
+    "城市",
+    "城市等级",
+    "店铺类型明细",
+    "店铺等级",
+    "经营类型",
+    "商场体系",
+    "商场名称",
+    "开业日期",
+    "闭店日期",
+    "中类",
+    "小类",
+    "属性",
+    "上下装",
+    "业务类型",
+    "IMC类型",
+    "产品年",
+    "产品季",
+    "产品年季",
+    "配货季",
+    "款号",
+    "货号",
+    "商品名称",
+    "上市日期",
+    "颜色",
+    "店铺名称",
+    "尺码代码",
+    "颜色代码",
+    "月",
+    "季度",
+    "星期",
+    "年",
+    "大类编码",
+    "中类编码",
+    "小类编码",
+    "店铺类型代码",
+    "店铺类型名称",
+    "大类",
+    "区域",
+    "销售小时",
+    "销售日期",
+    "渠道品牌",
+    "商品品牌",
+    "cms编码",
+    "图片",
+    "周",
+    "销售年份",
+    "销售周",
+    "销售季",
+    "五大爆品",
+    "主题",
+    "故事包",
+    "系列"
+  ],
+  "metric_names": [
+    "本期折扣率",
+    "同期折扣率",
+    "本期零售数量",
+    "零售金额同比",
+    "零售吊牌金额同比",
+    "本期件单价",
+    "同期件单价",
+    "件单价同比",
+    "本期件吊牌",
+    "同期件吊牌",
+    "件吊牌同比",
+    "折扣率同比",
+    "销售数量同比",
+    "本期零售吊牌金额",
+    "同期零售数量",
+    "同期零售金额",
+    "同期零售吊牌金额",
+    "本期小程序零售数量",
+    "本期小程序零售吊牌金额",
+    "同期小程序零售数量",
+    "同期小程序零售金额",
+    "同期小程序零售吊牌金额",
+    "本期零售数量(含小程序)",
+    "本期零售吊牌金额(含小程序)",
+    "同期零售数量(含小程序)",
+    "同期零售金额(含小程序)",
+    "同期零售吊牌金额(含小程序)",
+    "本期折扣率(含小程序)",
+    "同期折扣率(含小程序)",
+    "零售数量同比(含小程序)",
+    "零售金额同比(含小程序)",
+    "零售吊牌金额同比(含小程序)",
+    "折扣率同比(含小程序)",
+    "本期零售金额",
+    "本期小程序零售金额",
+    "本期零售金额(含小程序)"
+  ]
+}

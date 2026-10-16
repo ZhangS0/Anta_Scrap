@@ -1,0 +1,327 @@
+{
+  "page_id": "o0699ad202bfd43059e664d3",
+  "page_name": "ER01-电商订单分析报表",
+  "card_count": 26,
+  "datasets": [
+    {
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "name": "商品主数据维度表",
+      "cols": 32
+    },
+    {
+      "dsId": "u730340758006432baa26e97",
+      "name": "渠道店铺信息维度表",
+      "cols": 69
+    },
+    {
+      "dsId": "ba130ab86742c473a95a01ed",
+      "name": "ER01-电商订单分析",
+      "cols": 79
+    }
+  ],
+  "chart_cards": [
+    {
+      "card_id": "mc011d6d021ad48f7b6d491b",
+      "card_layer_name": "ER01-电商订单分析报表",
+      "content_name": null,
+      "dsId": "ba130ab86742c473a95a01ed",
+      "row_names": [
+        "日",
+        "周",
+        "月",
+        "季",
+        "年",
+        "星期几",
+        "渠道品牌编码",
+        "渠道品牌",
+        "品牌大区",
+        "区域",
+        "店铺编码",
+        "店铺类型代码",
+        "店铺类型名称",
+        "店铺类型明细",
+        "开店日期",
+        "闭店日期",
+        "商品品牌编码",
+        "商品品牌",
+        "大类",
+        "中类",
+        "小类",
+        "属性",
+        "上下装",
+        "业务类型",
+        "IMC类型",
+        "产品年",
+        "产品季",
+        "产品年季",
+        "配货季",
+        "款号",
+        "货号",
+        "商品名称",
+        "上市日期",
+        "颜色编码",
+        "颜色",
+        "期旧货",
+        "预售类型",
+        "店铺名称",
+        "达人ID",
+        "达人名称",
+        "流量体载",
+        "达人类型",
+        "主题",
+        "故事包",
+        "渠道货品",
+        "系列"
+      ],
+      "metric_names": [
+        "同期零售金额",
+        "同期零售数量",
+        "同期零售吊牌金额",
+        "同期折扣率",
+        "同期订单数量",
+        "同期件单价",
+        "同期销售单金额",
+        "同期销售单数量",
+        "同期换货单金额",
+        "同期换货单数量",
+        "同期换货单占比",
+        "同期退单金额",
+        "同期退单数量",
+        "同期退货率(金额)",
+        "同期退货率(数量)",
+        "折扣率偏差",
+        "退货率同比(金额)",
+        "退货率同比(数量)",
+        "退货率(金额)偏差",
+        "退货率(数量)偏差",
+        "同期订单金额",
+        "本期零售吊牌金额",
+        "本期折扣率",
+        "本期订单数量",
+        "本期件单价",
+        "本期销售单数量",
+        "本期换货单数量",
+        "本期换货单占比",
+        "本期退单数量",
+        "本期退货率(金额)",
+        "本期退货率(数量)",
+        "预算目标",
+        "本期预算目标达成率",
+        "本期零售金额",
+        "本期零售数量",
+        "本期订单金额",
+        "本期销售单金额",
+        "本期换货单金额",
+        "本期退单金额",
+        "本期销售单吊牌金额",
+        "本期换货单吊牌金额",
+        "本期退单吊牌金额",
+        "同期销售单吊牌金额",
+        "同期换货单吊牌金额",
+        "同期退单吊牌金额",
+        "本期订单吊牌金额",
+        "同期订单吊牌金额",
+        "折扣目标"
+      ],
+      "metric_aliases": {
+        "同期订单数量": "同期订单数量（含赠品）",
+        "同期销售单数量": "同期销售单数量（含赠品）",
+        "同期换货单数量": "同期换货单数量（含赠品）",
+        "同期退单数量": "同期退单数量（含赠品）",
+        "本期订单数量": "本期订单数量（含赠品）",
+        "本期销售单数量": "本期销售单数量（含赠品）",
+        "本期换货单数量": "本期换货单数量（含赠品）",
+        "本期退单数量": "本期退单数量（含赠品）",
+        "预算目标": "本期预算目标"
+      }
+    }
+  ],
+  "dynamic_params": {
+    "MAIA报表_日期类型（线上订单）": {
+      "selector_card": "日期类型",
+      "cdId": "b04af407367784c97a6d79d5",
+      "dpId": "ne8fec8c91c694f4690f8b53",
+      "valueType": "STRING",
+      "defaultValue_expr": "出库时间,支付时间",
+      "multiple": false
+    },
+    "MAIA报表开始时间": {
+      "selector_card": "开始时间",
+      "cdId": "v031af31e9fc24d8d996e276",
+      "dpId": "o1fd655a544974ec7a3707dc",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1years}}}",
+      "multiple": false
+    },
+    "MAIA报表结束时间": {
+      "selector_card": "结束时间",
+      "cdId": "x9347e16ef39a4e2cac24665",
+      "dpId": "md2ca7b9112034b84803c874",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday}}}",
+      "multiple": false
+    },
+    "MAIA报表同期开始时间": {
+      "selector_card": "同期开始时间",
+      "cdId": "acad50f58932b4cb8a11ad24",
+      "dpId": "haf0e9fcc999c4b438f18e45",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false
+    },
+    "MAIA报表同期结束时间": {
+      "selector_card": "同期结束时间",
+      "cdId": "ke906ef4045ee4e67ace2c3c",
+      "dpId": "g27135225cea244c3955ce50",
+      "valueType": "DATE",
+      "defaultValue_expr": "{{{yesterday-1 years}}}",
+      "multiple": false
+    }
+  },
+  "field_selectors": {
+    "店铺类型明细": {
+      "cdId": "sc16fae94fcad425d9d61b65",
+      "field_name": "店铺类型明细",
+      "field_fdId": "p5c62498f99d44e46a8de4e1",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺名称": {
+      "cdId": "j376a9e8291174c4b9ad5bec",
+      "field_name": "店铺名称",
+      "field_fdId": "w83f810492c014f56bbf52f8",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "店铺编码": {
+      "cdId": "bd61373216dc44c2fa258d65",
+      "field_name": "店铺编码",
+      "field_fdId": "f3ca64502515b4aeaaa9e7eb",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    },
+    "大类": {
+      "cdId": "t4b27cbb877964b7daafd7d8",
+      "field_name": "大类",
+      "field_fdId": "sdfe575a9fc014794b799054",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "中类": {
+      "cdId": "xea6a3ec67599460e85db1a6",
+      "field_name": "中类",
+      "field_fdId": "sb9120bf9601343e79de5984",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "小类": {
+      "cdId": "b2ddbae982e844809b472950",
+      "field_name": "小类",
+      "field_fdId": "ib640b87fa55a4aa291aa9a6",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "产品季": {
+      "cdId": "x343527ca6d3a44f09f9e760",
+      "field_name": "产品季",
+      "field_fdId": "p69aa9bd04bc94cccabc735a",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "配货季": {
+      "cdId": "wf9ace65c2c9b4fd1842473c",
+      "field_name": "配货季",
+      "field_fdId": "le2c4b428015246d9a1776a5",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "业务类型": {
+      "cdId": "t986b1949dbda443bafe5ac8",
+      "field_name": "业务类型",
+      "field_fdId": "m78cef5475f6d4ca29caf24c",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "主题": {
+      "cdId": "v7197b21e54d143b091b5dc0",
+      "field_name": "主题",
+      "field_fdId": "ua81d4c39ff58427d895fd5e",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "故事包": {
+      "cdId": "jf01f1f181d494262a947b8b",
+      "field_name": "故事包",
+      "field_fdId": "m5888645f6ec14c9bb46ba50",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "上下装": {
+      "cdId": "md2594d6946c842b9af6f363",
+      "field_name": "上下装",
+      "field_fdId": "s62dfdc0f799e4d5fa0a9d1b",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "款号": {
+      "cdId": "ce3d937c258dc422580ebb50",
+      "field_name": "款号",
+      "field_fdId": "lc25438871de6432d99da329",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "货号": {
+      "cdId": "cf022a13e523046e3a2cbdc6",
+      "field_name": "货号",
+      "field_fdId": "wcb5e396375a541c19715719",
+      "dsId": "f775a2a5f1dcb47c7b7a0fb5",
+      "dsName": "商品主数据维度表",
+      "multiSelect": true
+    },
+    "预售类型": {
+      "cdId": "vfbb5201ea3014a3f9665e79",
+      "field_name": "预售类型",
+      "field_fdId": "ma740b2291a6f4b05bfcecae",
+      "dsId": "ba130ab86742c473a95a01ed",
+      "dsName": "ER01-电商订单分析",
+      "multiSelect": false
+    },
+    "达人名称": {
+      "cdId": "j4987c596ed114134b0156c1",
+      "field_name": "达人名称",
+      "field_fdId": "j6dd9b967e4ee4285977e1c8",
+      "dsId": "ba130ab86742c473a95a01ed",
+      "dsName": "ER01-电商订单分析",
+      "multiSelect": true
+    },
+    "达人类型": {
+      "cdId": "d48150e417fbe4c7a837b08d",
+      "field_name": "达人类型",
+      "field_fdId": "e613afe7a3fd4489789f4a76",
+      "dsId": "ba130ab86742c473a95a01ed",
+      "dsName": "ER01-电商订单分析",
+      "multiSelect": true
+    },
+    "店铺类型名称": {
+      "cdId": "cc838293547c940b08017e47",
+      "field_name": "店铺类型名称",
+      "field_fdId": "o876b57164c794b7686da0b2",
+      "dsId": "u730340758006432baa26e97",
+      "dsName": "渠道店铺信息维度表",
+      "multiSelect": true
+    }
+  }
+}
